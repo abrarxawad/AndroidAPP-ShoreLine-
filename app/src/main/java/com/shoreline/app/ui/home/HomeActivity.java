@@ -69,8 +69,10 @@ public class HomeActivity extends BaseActivity {
         });
 
         // Feature 2: Overload Report (Stage 3)
-        binding.cardOverloadReport.setOnClickListener(v ->
-                showSnackbar(binding.getRoot(), "Overload Reporting: Ready for Stage 3 (Photo & Offline Queue)"));
+        binding.cardOverloadReport.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, com.shoreline.app.ui.report.ReportOverloadActivity.class);
+            startActivity(intent);
+        });
 
         // Feature 3: Safe Route & Weather (Stage 4)
         binding.cardSafeRoute.setOnClickListener(v ->

@@ -179,6 +179,29 @@
             android:label="@string/nav_vessel_check"
             android:parentActivityName="com.shoreline.app.ui.vessel.VesselCheckActivity" />
 
+        <!-- Stage 3: Overload Reporting & Offline Queue Screens -->
+        <activity
+            android:name="com.shoreline.app.ui.report.ReportOverloadActivity"
+            android:exported="false"
+            android:label="@string/title_report_overload"
+            android:parentActivityName="com.shoreline.app.ui.home.HomeActivity"
+            android:windowSoftInputMode="adjustResize" />
+        <activity
+            android:name="com.shoreline.app.ui.report.ReportHistoryActivity"
+            android:exported="false"
+            android:label="@string/title_report_history"
+            android:parentActivityName="com.shoreline.app.ui.home.HomeActivity" />
+
+        <!-- SYLLABUS: FileProvider for secure photo capture URI exposure -->
+        <provider
+            android:name="androidx.core.content.FileProvider"
+            android:authorities="com.shoreline.app.fileprovider"
+            android:exported="false"
+            android:grantUriPermissions="true" >
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/file_paths" />
+        </provider>
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.shoreline.app.androidx-startup"

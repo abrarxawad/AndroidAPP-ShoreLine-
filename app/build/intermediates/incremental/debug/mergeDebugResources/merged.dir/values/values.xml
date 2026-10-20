@@ -972,7 +972,11 @@
     <color name="secondary_text_disabled_material_light">#24000000</color>
     <color name="secondary_variant_amber">#FF8F00</color>
     <color name="status_danger_red">#C62828</color>
+    <color name="status_danger_text">#B71C1C</color>
+    <color name="status_flagged_bg">#FFEBEE</color>
+    <color name="status_safe_bg">#E8F5E9</color>
     <color name="status_safe_green">#2E7D32</color>
+    <color name="status_safe_text">#1B5E20</color>
     <color name="status_sos_crimson">#B71C1C</color>
     <color name="status_warning_amber">#F57F17</color>
     <color name="surface_card_border">#E2E8F0</color>
@@ -983,7 +987,9 @@
     <color name="switch_thumb_normal_material_light">#fff1f1f1</color>
     <color name="text_on_primary">#FFFFFF</color>
     <color name="text_primary">#0F172A</color>
+    <color name="text_primary_navy">#0F172A</color>
     <color name="text_secondary">#475569</color>
+    <color name="text_secondary_muted">#475569</color>
     <color name="text_tertiary">#64748B</color>
     <color name="tooltip_background_dark">#e6616161</color>
     <color name="tooltip_background_light">#e6FFFFFF</color>
@@ -2039,14 +2045,19 @@
     <string description="A description of an action that a user of an accessibility service can perform to expand a bottomsheet halfway to its full height. [CHAR LIMIT=25]" name="bottomsheet_action_expand_halfway">Expand halfway</string>
     <string description="An accessibility feedback when the bottom sheet drag handle is clicked [CHAR LIMIT=NONE]" name="bottomsheet_drag_handle_clicked">Drag handle double-tapped</string>
     <string description="The content description of bottom sheet drag handles [CHAR LIMIT=NONE]" name="bottomsheet_drag_handle_content_description">Drag handle</string>
+    <string name="btn_force_sync">🔄 Sync Pending Queue Now</string>
     <string name="btn_guest_admin">Demo BIWTA Inspector (Admin)</string>
     <string name="btn_guest_passenger">Demo Passenger Mode (Instant)</string>
     <string name="btn_login">Sign In</string>
     <string name="btn_logout">Logout</string>
     <string name="btn_open_lifecycle_lab">Open Lifecycle Lab</string>
+    <string name="btn_refresh_gps">Refresh GPS Fix</string>
     <string name="btn_register">Register Account</string>
     <string name="btn_report_overload_action">🚨 Report Overcrowding for this Launch</string>
     <string name="btn_scan_vessel_qr">📷 Scan Official Launch QR Code</string>
+    <string name="btn_submit_report">🚨 Submit Official Overload Report</string>
+    <string name="btn_take_photo">📷 Capture Launch Deck Photo</string>
+    <string name="btn_view_history">📋 View Submitted Reports Queue</string>
     <string name="cacheManagerCancelBody">Do you want to cancel the map download?</string>
     <string name="cacheManagerCancelTitle">Cancel map download</string>
     <string name="cacheManagerCleanFailed">Cleaning failed. %s tiles deleted.</string>
@@ -2081,8 +2092,13 @@
     <string name="common_signin_button_text_long">Sign in with Google</string>
     <string name="compass">Compass</string>
     <string name="copy_toast_msg">Link copied to clipboard</string>
+    <string formatted="false" name="crowd_critical">CRITICAL OVERLOAD (> 100%)</string>
+    <string formatted="false" name="crowd_moderate">Crowded (75% - 100%)</string>
+    <string formatted="false" name="crowd_normal">Safe (&lt; 75%)</string>
     <string name="cyclemap">Cycle Map</string>
     <string name="define_zxingandroidembedded" translatable="false"/>
+    <string name="empty_no_reports">No Overload Reports Yet</string>
+    <string name="empty_no_reports_hint">When you witness dangerous overcrowding at river ghats, document evidence here.</string>
     <string name="empty_no_vessels">No Vessels Found</string>
     <string name="empty_no_vessels_hint">Try searching by launch name or registration number</string>
     <string description="Screen reader announcement for when a checkbox is on error. [CHAR LIMIT=NONE]" name="error_a11y_label">
@@ -2116,8 +2132,11 @@
     <string name="google_app_id" translatable="false">1:123456789012:android:abcdef0123456789</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyFakeKeyForStage0BuildVerificationOnly</string>
     <string name="google_storage_bucket" translatable="false">shoreline-bd-safety.appspot.com</string>
+    <string name="gps_fetching">Acquiring high-accuracy GPS coordinates...</string>
+    <string name="gps_header">GPS River Geotag (Fused Provider)</string>
     <string name="hide_bottom_view_on_scroll_behavior" translatable="false">com.google.android.material.behavior.HideBottomViewOnScrollBehavior</string>
     <string name="hills">Hills</string>
+    <string name="hint_passenger_count">e.g. 1200 passengers</string>
     <string name="hint_vessel_number">Vessel Reg No. (e.g. M-01-2489)</string>
     <string description="Content description for an icon that appears in the title area of a dialog" name="icon_content_description">Dialog Icon</string>
     <string name="item_view_role_description">Tab</string>
@@ -2138,9 +2157,11 @@
     <string name="lab_switch_off">SYNC OFF</string>
     <string name="lab_switch_on">SYNC ON</string>
     <string name="lab_text_watcher_prefix">TextWatcher Callback: </string>
+    <string name="label_anonymous_report">Submit Anonymously (Hide Name &amp; Contact)</string>
     <string name="label_community_rating">Community Safety Rating:</string>
     <string name="label_email">Email Address</string>
     <string name="label_emergency_contact">Emergency Contact Phone (Kin/Friend)</string>
+    <string name="label_estimated_passengers">Estimated Passengers on Board</string>
     <string name="label_fitness_expiry">Fitness Certificate Expiry:</string>
     <string name="label_full_name">Full Name</string>
     <string name="label_licensed_capacity">Licensed Passenger Limit:</string>
@@ -2286,15 +2307,21 @@
     <string name="nav_vessel_check_desc">Scan QR or check boat fitness &amp; capacity</string>
     <string name="nearby_device_type_tablet">tablet</string>
     <string name="offline">Offline mode</string>
+    <string name="offline_queue_banner">OFFLINE QUEUE ACTIVE: Mid-river signal is weak. Report is saved locally in Room and will automatically upload via WorkManager when network returns.</string>
     <string name="password_toggle_content_description">Show password</string>
     <string name="path_password_eye" translatable="false">M12,4.5C7,4.5 2.73,7.61 1,12c1.73,4.39 6,7.5 11,7.5s9.27,-3.11 11,-7.5c-1.73,-4.39 -6,-7.5 -11,-7.5zM12,17c-2.76,0 -5,-2.24 -5,-5s2.24,-5 5,-5 5,2.24 5,5 -2.24,5 -5,5zM12,9c-1.66,0 -3,1.34 -3,3s1.34,3 3,3 3,-1.34 3,-3 -1.34,-3 -3,-3z</string>
     <string name="path_password_eye_mask_strike_through" translatable="false">M2,4.27 L19.73,22 L22.27,19.46 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_eye_mask_visible" translatable="false">M2,4.27 L2,4.27 L4.54,1.73 L4.54,1.73 L4.54,1 L23,1 L23,23 L1,23 L1,4.27 Z</string>
     <string name="path_password_strike_through" translatable="false">M3.27,4.27 L19.74,20.74</string>
+    <string name="photo_header">Deck Photo Evidence (Compressed &lt; 200KB)</string>
     <string name="project_id" translatable="false">shoreline-bd-safety</string>
     <string name="prompt_has_account">Already registered? Sign In</string>
     <string name="prompt_no_account">Don\'t have an account? Register</string>
     <string name="public_transport">Public transport</string>
+    <string name="report_crowd_header">Observed Overcrowding Severity</string>
+    <string name="report_submitted_offline">Saved to Offline Queue! Will auto-sync in background.</string>
+    <string name="report_submitted_online">Report uploaded to Port Authority server!</string>
+    <string name="report_vessel_label">Target Vessel Registration</string>
     <string name="roads_nl">Netherlands roads overlay</string>
     <string name="role_admin">Authority / Inspector</string>
     <string name="role_admin_desc">BIWTA river police &amp; port safety officials</string>
@@ -2320,10 +2347,14 @@
     <string name="status_bar_notification_info_overflow">999+</string>
     <string name="status_offline">Offline Mode (Using Local Cache)</string>
     <string name="status_online">Online (Connected)</string>
+    <string name="status_pending_sync">PENDING OFFLINE QUEUE</string>
+    <string name="status_synced">UPLOADED TO BIWTA</string>
     <string name="title_home">ShoreLine Dashboard</string>
     <string name="title_lifecycle_lab">Activity Lifecycle &amp; UI Lab</string>
     <string name="title_login">Sign In</string>
     <string name="title_register">Create Safety Account</string>
+    <string name="title_report_history">Overload Report Queue</string>
+    <string name="title_report_overload">Report Launch Overload</string>
     <string name="topo">Topographic</string>
     <string name="unknown">Unknown</string>
     <string name="vessel_directory_header">Registered River Launches (Room Cache)</string>

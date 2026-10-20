@@ -11,18 +11,31 @@
     <string name="app_tagline">নৌপথের অফলাইন নিরাপত্তা নেটওয়ার্ক</string>
     <string name="badge_admin">বিআইডব্লিউটিএ কর্মকর্তা</string>
     <string name="badge_passenger">নৌ-যাত্রী</string>
+    <string name="btn_force_sync">🔄 এখনই অফলাইন অভিযোগ আপলোড করুন</string>
     <string name="btn_guest_admin">বিআইডব্লিউটিএ পরিদর্শক (অ্যাডমিন) ডেমো</string>
     <string name="btn_guest_passenger">সরাসরি ডেমো যাত্রী হিসেবে প্রবেশ</string>
     <string name="btn_login">লগইন করুন</string>
     <string name="btn_logout">লগআউট</string>
     <string name="btn_open_lifecycle_lab">লাইফসাইকেল ল্যাব দেখুন</string>
+    <string name="btn_refresh_gps">জিপিএস রিফ্রেশ করুন</string>
     <string name="btn_register">অ্যাকাউন্ট তৈরি করুন</string>
     <string name="btn_report_overload_action">🚨 এই লঞ্চের বিরুদ্ধে অতিরিক্ত যাত্রীর অভিযোগ করুন</string>
     <string name="btn_scan_vessel_qr">📷 লঞ্চের অফিশিয়াল QR কোড স্ক্যান করুন</string>
+    <string name="btn_submit_report">🚨 জরুরি অভিযোগ দায়ের করুন</string>
+    <string name="btn_take_photo">📷 লঞ্চের ডেকের ছবি তুলুন</string>
+    <string name="btn_view_history">📋 জমাকৃত অভিযোগের তালিকা দেখুন</string>
+    <string formatted="false" name="crowd_critical">বিপজ্জনক ওভারলোড (> ১০০%)</string>
+    <string formatted="false" name="crowd_moderate">অতিরিক্ত ভিড় (৭৫% - ১০০%)</string>
+    <string formatted="false" name="crowd_normal">নিরাপদ (&lt; ৭৫%)</string>
+    <string name="empty_no_reports">এখনও কোনো অভিযোগ দায়ের করা হয়নি</string>
+    <string name="empty_no_reports_hint">ঘাট বা লঞ্চে ঝুঁকিপূর্ণ অতিরিক্ত যাত্রী দেখলে এখানে ছবিসহ অভিযোগ দিন।</string>
     <string name="empty_no_vessels">কোনো নৌযান পাওয়া যায়নি</string>
     <string name="empty_no_vessels_hint">লঞ্চের নাম বা সঠিক রেজিস্ট্রেশন নম্বর দিয়ে খুঁজুন</string>
     <string formatted="false" name="gauge_interactive_hint">কাস্টম ভিউ: নিরাপদ (&lt;৭৫%), সতর্কবার্তা (৭৫-১০০%), বিপজ্জনক ওভারলোড (>১০০%)</string>
     <string name="gauge_section_title">লাইভ যাত্রী ধারণক্ষমতা মিটার</string>
+    <string name="gps_fetching">সঠিক জিপিএস লোকেশন নেওয়া হচ্ছে...</string>
+    <string name="gps_header">জিপিএস অবস্থান (ফিউজড প্রোভাইডার)</string>
+    <string name="hint_passenger_count">যেমন: ১২০০ জন যাত্রী</string>
     <string name="hint_vessel_number">লঞ্চের নম্বর (যেমন: M-01-2489)</string>
     <string name="lab_btn_clear_log">লগ মুছুন</string>
     <string name="lab_btn_interface">ক্লিক লিসেনার (View.OnClickListener)</string>
@@ -41,9 +54,11 @@
     <string name="lab_switch_off">সিঙ্ক বন্ধ</string>
     <string name="lab_switch_on">সিঙ্ক চালু</string>
     <string name="lab_text_watcher_prefix">টেক্সটওয়াচার কলব্যাক: </string>
+    <string name="label_anonymous_report">পরিচয় গোপন রাখুন (নাম ও ফোন নম্বর প্রকাশ হবে না)</string>
     <string name="label_community_rating">যাত্রী নিরাপত্তা রেটিং:</string>
     <string name="label_email">ইমেইল ঠিকানা</string>
     <string name="label_emergency_contact">জরুরি যোগাযোগের নম্বর (স্বজন/অভিভাবক)</string>
+    <string name="label_estimated_passengers">আনুমানিক মোট যাত্রী সংখ্যা</string>
     <string name="label_fitness_expiry">ফিটনেস সার্টিফিকেটের মেয়াদ:</string>
     <string name="label_full_name">আপনার পুরো নাম</string>
     <string name="label_licensed_capacity">অনুমোদিত যাত্রী ধারণক্ষমতা:</string>
@@ -67,8 +82,14 @@
     <string name="nav_safety_guides_desc">অফলাইন সিউপিআর ও লাইফ জ্যাকেট ব্যবহার বিধি</string>
     <string name="nav_vessel_check">লঞ্চ/নৌযান যাচাই</string>
     <string name="nav_vessel_check_desc">QR স্ক্যান বা নম্বরে ফিটনেস ও ধারণক্ষমতা দেখুন</string>
+    <string name="offline_queue_banner">অফলাইন মোড সক্রিয়: নদীর মাঝে মোবাইল নেটওয়ার্ক নেই। অভিযোগটি আপনার ফোনে জমা রাখা হয়েছে এবং নেটওয়ার্ক পেলেই স্বয়ংক্রিয়ভাবে আপলোড হবে।</string>
+    <string name="photo_header">লঞ্চ ডেকের ছবি প্রমাণ (কম্প্রেসড &lt; ২০০KB)</string>
     <string name="prompt_has_account">আগে থেকেই অ্যাকাউন্ট আছে? লগইন করুন</string>
     <string name="prompt_no_account">অ্যাকাউন্ট নেই? নতুন অ্যাকাউন্ট খুলুন</string>
+    <string name="report_crowd_header">অতিরিক্ত যাত্রীর মাত্রা</string>
+    <string name="report_submitted_offline">অফলাইন কিউতে সংরক্ষিত হয়েছে! নেটওয়ার্ক পেলে আপলোড হবে।</string>
+    <string name="report_submitted_online">অভিযোগ সফলভাবে বিআইডব্লিউটিএ সার্ভারে জমা হয়েছে!</string>
+    <string name="report_vessel_label">অভিযুক্ত নৌযানের নম্বর</string>
     <string name="role_admin">কর্তৃপক্ষ / পরিদর্শক</string>
     <string name="role_admin_desc">বিআইডব্লিউটিএ কর্মকর্তা ও নৌপুলিশ পরিদর্শকদের জন্য</string>
     <string name="role_passenger">যাত্রী</string>
@@ -77,10 +98,14 @@
     <string name="splash_version">সংস্করণ ১.০.০ (বিশ্ববিদ্যালয় সংস্করণ)</string>
     <string name="status_offline">অফলাইন মোড (লোকাল ক্যাশ)</string>
     <string name="status_online">অনলাইন (সংযুক্ত)</string>
+    <string name="status_pending_sync">অফলাইন অপেক্ষমাণ (পেন্ডিং)</string>
+    <string name="status_synced">সার্ভারে আপলোড সম্পন্ন</string>
     <string name="title_home">শোরলাইন ড্যাশবোর্ড</string>
     <string name="title_lifecycle_lab">লাইফসাইকেল ও ইভেন্ট ল্যাব</string>
     <string name="title_login">লগইন করুন</string>
     <string name="title_register">নতুন নিরাপত্তা অ্যাকাউন্ট খুলুন</string>
+    <string name="title_report_history">অভিযোগের অফলাইন কিউ</string>
+    <string name="title_report_overload">অতিরিক্ত যাত্রীর অভিযোগ</string>
     <string name="vessel_directory_header">নৌযানের তালিকা (অফলাইন রুম ক্যাশ)</string>
     <string name="vessel_search_subtitle">লঞ্চে ওঠার আগেই বিআইডব্লিউটিএ সনদ ও ধারণক্ষমতা নিশ্চিত করুন</string>
     <string name="vessel_search_title">লঞ্চ লাইসেন্স ও ফিটনেস যাচাই</string>

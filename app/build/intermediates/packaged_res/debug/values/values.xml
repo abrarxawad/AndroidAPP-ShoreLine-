@@ -10,14 +10,20 @@
     <color name="secondary_safety_orange">#E65100</color>
     <color name="secondary_variant_amber">#FF8F00</color>
     <color name="status_danger_red">#C62828</color>
+    <color name="status_danger_text">#B71C1C</color>
+    <color name="status_flagged_bg">#FFEBEE</color>
+    <color name="status_safe_bg">#E8F5E9</color>
     <color name="status_safe_green">#2E7D32</color>
+    <color name="status_safe_text">#1B5E20</color>
     <color name="status_sos_crimson">#B71C1C</color>
     <color name="status_warning_amber">#F57F17</color>
     <color name="surface_card_border">#E2E8F0</color>
     <color name="surface_white">#FFFFFF</color>
     <color name="text_on_primary">#FFFFFF</color>
     <color name="text_primary">#0F172A</color>
+    <color name="text_primary_navy">#0F172A</color>
     <color name="text_secondary">#475569</color>
+    <color name="text_secondary_muted">#475569</color>
     <color name="text_tertiary">#64748B</color>
     <dimen name="button_corner_radius">8dp</dimen>
     <dimen name="card_corner_radius">12dp</dimen>
@@ -49,14 +55,24 @@
     <string name="app_tagline">Offline-First River Safety Net</string>
     <string name="badge_admin">AUTHORITY (ADMIN)</string>
     <string name="badge_passenger">PASSENGER</string>
+    <string name="btn_force_sync">🔄 Sync Pending Queue Now</string>
     <string name="btn_guest_admin">Demo BIWTA Inspector (Admin)</string>
     <string name="btn_guest_passenger">Demo Passenger Mode (Instant)</string>
     <string name="btn_login">Sign In</string>
     <string name="btn_logout">Logout</string>
     <string name="btn_open_lifecycle_lab">Open Lifecycle Lab</string>
+    <string name="btn_refresh_gps">Refresh GPS Fix</string>
     <string name="btn_register">Register Account</string>
     <string name="btn_report_overload_action">🚨 Report Overcrowding for this Launch</string>
     <string name="btn_scan_vessel_qr">📷 Scan Official Launch QR Code</string>
+    <string name="btn_submit_report">🚨 Submit Official Overload Report</string>
+    <string name="btn_take_photo">📷 Capture Launch Deck Photo</string>
+    <string name="btn_view_history">📋 View Submitted Reports Queue</string>
+    <string formatted="false" name="crowd_critical">CRITICAL OVERLOAD (> 100%)</string>
+    <string formatted="false" name="crowd_moderate">Crowded (75% - 100%)</string>
+    <string formatted="false" name="crowd_normal">Safe (&lt; 75%)</string>
+    <string name="empty_no_reports">No Overload Reports Yet</string>
+    <string name="empty_no_reports_hint">When you witness dangerous overcrowding at river ghats, document evidence here.</string>
     <string name="empty_no_vessels">No Vessels Found</string>
     <string name="empty_no_vessels_hint">Try searching by launch name or registration number</string>
     <string formatted="false" name="gauge_interactive_hint">Custom Canvas View: Green (&lt;75%), Amber (75-100%), Red (>100% Overload)</string>
@@ -66,6 +82,9 @@
     <string name="google_app_id" translatable="false">1:123456789012:android:abcdef0123456789</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyFakeKeyForStage0BuildVerificationOnly</string>
     <string name="google_storage_bucket" translatable="false">shoreline-bd-safety.appspot.com</string>
+    <string name="gps_fetching">Acquiring high-accuracy GPS coordinates...</string>
+    <string name="gps_header">GPS River Geotag (Fused Provider)</string>
+    <string name="hint_passenger_count">e.g. 1200 passengers</string>
     <string name="hint_vessel_number">Vessel Reg No. (e.g. M-01-2489)</string>
     <string name="lab_btn_clear_log">Clear Log</string>
     <string name="lab_btn_interface">Click Listener (View.OnClickListener)</string>
@@ -84,9 +103,11 @@
     <string name="lab_switch_off">SYNC OFF</string>
     <string name="lab_switch_on">SYNC ON</string>
     <string name="lab_text_watcher_prefix">TextWatcher Callback: </string>
+    <string name="label_anonymous_report">Submit Anonymously (Hide Name &amp; Contact)</string>
     <string name="label_community_rating">Community Safety Rating:</string>
     <string name="label_email">Email Address</string>
     <string name="label_emergency_contact">Emergency Contact Phone (Kin/Friend)</string>
+    <string name="label_estimated_passengers">Estimated Passengers on Board</string>
     <string name="label_fitness_expiry">Fitness Certificate Expiry:</string>
     <string name="label_full_name">Full Name</string>
     <string name="label_licensed_capacity">Licensed Passenger Limit:</string>
@@ -110,9 +131,15 @@
     <string name="nav_safety_guides_desc">Offline CPR, drowning &amp; lifejacket guides</string>
     <string name="nav_vessel_check">Vessel Verification</string>
     <string name="nav_vessel_check_desc">Scan QR or check boat fitness &amp; capacity</string>
+    <string name="offline_queue_banner">OFFLINE QUEUE ACTIVE: Mid-river signal is weak. Report is saved locally in Room and will automatically upload via WorkManager when network returns.</string>
+    <string name="photo_header">Deck Photo Evidence (Compressed &lt; 200KB)</string>
     <string name="project_id" translatable="false">shoreline-bd-safety</string>
     <string name="prompt_has_account">Already registered? Sign In</string>
     <string name="prompt_no_account">Don\'t have an account? Register</string>
+    <string name="report_crowd_header">Observed Overcrowding Severity</string>
+    <string name="report_submitted_offline">Saved to Offline Queue! Will auto-sync in background.</string>
+    <string name="report_submitted_online">Report uploaded to Port Authority server!</string>
+    <string name="report_vessel_label">Target Vessel Registration</string>
     <string name="role_admin">Authority / Inspector</string>
     <string name="role_admin_desc">BIWTA river police &amp; port safety officials</string>
     <string name="role_passenger">Passenger</string>
@@ -121,10 +148,14 @@
     <string name="splash_version">Version 1.0.0 (Award Edition)</string>
     <string name="status_offline">Offline Mode (Using Local Cache)</string>
     <string name="status_online">Online (Connected)</string>
+    <string name="status_pending_sync">PENDING OFFLINE QUEUE</string>
+    <string name="status_synced">UPLOADED TO BIWTA</string>
     <string name="title_home">ShoreLine Dashboard</string>
     <string name="title_lifecycle_lab">Activity Lifecycle &amp; UI Lab</string>
     <string name="title_login">Sign In</string>
     <string name="title_register">Create Safety Account</string>
+    <string name="title_report_history">Overload Report Queue</string>
+    <string name="title_report_overload">Report Launch Overload</string>
     <string name="vessel_directory_header">Registered River Launches (Room Cache)</string>
     <string name="vessel_search_subtitle">Verify official BIWTA fitness certificate before boarding</string>
     <string name="vessel_search_title">Vessel License Verification</string>

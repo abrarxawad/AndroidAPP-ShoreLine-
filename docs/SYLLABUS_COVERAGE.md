@@ -35,7 +35,7 @@ This document tracks every syllabus concept required by the university curriculu
 | **Custom View 1** | `CapacityGaugeView` (subclass View, custom `attrs.xml`, `onDraw`, `onMeasure`) | Stage 2 | [`CapacityGaugeView.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/ui/view/CapacityGaugeView.java) | **COMPLETED** |
 | **Custom View 2** | `NearbyRadarView` / Route-risk meter drawn with Canvas/Paint | Stage 6 | `app/src/main/java/.../ui/view/NearbyRadarView.java` | Stage 6 |
 | **RecyclerView 1** | Vessel search list (custom ViewHolder, ItemDecoration, DiffUtil) | Stage 2 | [`VesselAdapter.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/ui/vessel/VesselAdapter.java) | **COMPLETED** |
-| **RecyclerView 2** | Overload reports list (card layout, empty states) | Stage 3 | `app/src/main/java/.../ui/report/ReportAdapter.java` | Stage 3 |
+| **RecyclerView 2** | Overload reports list (card layout, empty states) | Stage 3 | [`ReportAdapter.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/ui/report/ReportAdapter.java) | **COMPLETED** |
 | **RecyclerView 3** | River route steps (multi-view-type adapter: ghat step vs weather warning row) | Stage 4 | `app/src/main/java/.../ui/route/RouteStepAdapter.java` | Stage 4 |
 | **RecyclerView 4** | SOS Inbox / Admin incident logs (swipe-to-action / long-press menu) | Stage 7 | `app/src/main/java/.../ui/admin/SosInboxAdapter.java` | Stage 7 |
 | **Layout Managers** | `LinearLayoutManager` & `GridLayoutManager` (dashboard tiles) | Stage 2/7 | [`VesselCheckActivity.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/ui/vessel/VesselCheckActivity.java) | **COMPLETED (Stage 2)** |
@@ -49,7 +49,7 @@ This document tracks every syllabus concept required by the university curriculu
 | :--- | :--- | :--- | :--- | :--- |
 | **Foreground Service** | Journey GPS tracking, notification channel, `FOREGROUND_SERVICE_LOCATION` | Stage 5 | `app/src/main/java/.../service/JourneyTrackingService.java` | Stage 5 |
 | **Bound Service** | Binder IPC interface communicating live journey stats to Activity | Stage 5 | `app/src/main/java/.../service/JourneyTrackingService.java` | Stage 5 |
-| **WorkManager** | Guaranteed background offline queue sync with network constraints | Stage 3 | `app/src/main/java/.../worker/ReportUploadWorker.java` | Stage 3 |
+| **WorkManager** | Guaranteed background offline queue sync with network constraints | Stage 3 | [`ReportUploadWorker.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/worker/ReportUploadWorker.java) | **COMPLETED** |
 | **Boot BroadcastReceiver** | `RECEIVE_BOOT_COMPLETED` receiver to restore tracking / offline alerts | Stage 8 | `app/src/main/java/.../receiver/BootReceiver.java` | Stage 8 |
 | **Connectivity Receiver** | Dynamic NetworkCallback / BroadcastReceiver for immediate auto-sync | Stage 3/8 | `app/src/main/java/.../receiver/ConnectivityReceiver.java` | Stage 3/8 |
 | **Custom Broadcast** | In-app package-restricted broadcast for SOS detection updates | Stage 6 | `app/src/main/java/.../receiver/SosAlertReceiver.java` | Stage 6 |
@@ -78,4 +78,4 @@ This document tracks every syllabus concept required by the university curriculu
 | **OpenStreetMap (osmdroid)**| Offline-capable interactive river map with polylines and custom markers | Stage 4 | `app/src/main/java/.../ui/map/RiverMapActivity.java` | Stage 4 |
 | **Nearby Connections** | P2P_CLUSTER offline SOS mesh relay (hop count, dedupe, forward) | Stage 6 | `app/src/main/java/.../nearby/NearbySosRelayManager.java` | Stage 6 |
 | **Barcode / QR Scanner** | ZXing QR code scanner for launch registration lookup | Stage 2 | [`VesselCheckActivity.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/ui/vessel/VesselCheckActivity.java) | **COMPLETED** |
-| **Fused Location Provider** | High-accuracy GPS tracking with runtime permissions & fallback | Stage 3/5 | `app/src/main/java/.../util/LocationHelper.java` | Stage 3/5 |
+| **Fused Location Provider** | High-accuracy GPS tracking with runtime permissions & fallback | Stage 3/5 | [`LocationHelper.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/util/LocationHelper.java) | **COMPLETED (Stage 3)** |

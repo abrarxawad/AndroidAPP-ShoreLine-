@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYLLABUS: FileProvider configuration for secure photo capture without file:// URI exposure -->
+<paths xmlns:android="http://schemas.android.com/apk/res/android">
+    <external-files-path name="report_images" path="Pictures/" />
+    <cache-path name="report_cache" path="." />
+</paths>

@@ -97,8 +97,11 @@ public class VesselDetailActivity extends BaseActivity {
 
     private void setupActionListeners() {
         binding.btnReportThisVessel.setOnClickListener(v -> {
-            showSnackbar(binding.getRoot(),
-                    String.format("Ready to report overcrowding for %s in Stage 3 (Photo & GPS queue)", vesselName));
+            Intent intent = new Intent(VesselDetailActivity.this, com.shoreline.app.ui.report.ReportOverloadActivity.class);
+            intent.putExtra("EXTRA_VESSEL_ID", vesselId);
+            intent.putExtra("EXTRA_REG_NUMBER", regNumber);
+            intent.putExtra("EXTRA_VESSEL_NAME", vesselName);
+            startActivity(intent);
         });
     }
 
