@@ -1,9 +1,9 @@
 -- Merging decision tree log ---
 manifest
-ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-138:12
-INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-138:12
-INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-138:12
-INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-138:12
+ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-152:12
+INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-152:12
+INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-152:12
+INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-152:12
 MERGED from [androidx.databinding:viewbinding:7.4.2] C:\Users\Abrar Jawad\.gradle\caches\transforms-3\07dd3139fd2c4012fb7976fb47b51c65\transformed\jetified-viewbinding-7.4.2\AndroidManifest.xml:2:1-7:12
 MERGED from [com.google.android.material:material:1.9.0] C:\Users\Abrar Jawad\.gradle\caches\transforms-3\423e7d34569fddedacd5529941075241\transformed\material-1.9.0\AndroidManifest.xml:17:1-26:12
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Abrar Jawad\.gradle\caches\transforms-3\9d57d159b5c890ce87e2d003c6fc153e\transformed\constraintlayout-2.1.4\AndroidManifest.xml:2:1-11:12
@@ -85,22 +85,22 @@ MERGED from [androidx.print:print:1.0.0] C:\Users\Abrar Jawad\.gradle\caches\tra
 MERGED from [androidx.annotation:annotation-experimental:1.3.0] C:\Users\Abrar Jawad\.gradle\caches\transforms-3\fde5c6d443f97abf408a513c184ff0fb\transformed\jetified-annotation-experimental-1.3.0\AndroidManifest.xml:17:1-22:12
 MERGED from [io.grpc:grpc-android:1.52.1] C:\Users\Abrar Jawad\.gradle\caches\transforms-3\9abceedfe74378d8050f51b64a62b606\transformed\jetified-grpc-android-1.52.1\AndroidManifest.xml:2:1-11:12
 MERGED from [com.google.firebase:protolite-well-known-types:18.0.0] C:\Users\Abrar Jawad\.gradle\caches\transforms-3\aa83aed66f97c9d41df76fb71c1dc39a\transformed\jetified-protolite-well-known-types-18.0.0\AndroidManifest.xml:2:1-11:12
-INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-138:12
-INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-138:12
-INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-138:12
+INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-152:12
+INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-152:12
+INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-152:12
 	package
 		INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-138:12
+		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-152:12
 		INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml
 	android:versionName
 		INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-138:12
+		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-152:12
 		INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml
 	xmlns:tools
 		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:4:5-51
 	android:versionCode
 		INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml
-		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-138:12
+		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:1-152:12
 		INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml
 	xmlns:android
 		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:3:11-69
@@ -339,7 +339,7 @@ ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\Android
 	android:name
 		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:83:21-62
 application
-ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:88:5-136:19
+ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:88:5-150:19
 MERGED from [com.google.android.material:material:1.9.0] C:\Users\Abrar Jawad\.gradle\caches\transforms-3\423e7d34569fddedacd5529941075241\transformed\material-1.9.0\AndroidManifest.xml:24:5-20
 MERGED from [com.google.android.material:material:1.9.0] C:\Users\Abrar Jawad\.gradle\caches\transforms-3\423e7d34569fddedacd5529941075241\transformed\material-1.9.0\AndroidManifest.xml:24:5-20
 MERGED from [androidx.constraintlayout:constraintlayout:2.1.4] C:\Users\Abrar Jawad\.gradle\caches\transforms-3\9d57d159b5c890ce87e2d003c6fc153e\transformed\constraintlayout-2.1.4\AndroidManifest.xml:9:5-20
@@ -476,6 +476,28 @@ ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\Android
 		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:131:13-59
 	android:name
 		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:130:13-62
+activity#com.shoreline.app.ui.vessel.VesselCheckActivity
+ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:137:9-142:55
+	android:parentActivityName
+		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:141:13-63
+	android:label
+		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:140:13-53
+	android:windowSoftInputMode
+		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:142:13-52
+	android:exported
+		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:139:13-37
+	android:name
+		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:138:13-58
+activity#com.shoreline.app.ui.vessel.VesselDetailActivity
+ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:144:9-148:75
+	android:parentActivityName
+		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:148:13-72
+	android:label
+		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:147:13-53
+	android:exported
+		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:146:13-37
+	android:name
+		ADDED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml:145:13-59
 uses-sdk
 INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml reason: use-sdk injection requested
 INJECTED from C:\Users\Abrar Jawad\OneDrive\Desktop\AndroidApk\app\src\main\AndroidManifest.xml

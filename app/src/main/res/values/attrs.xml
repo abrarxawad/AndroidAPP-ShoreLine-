@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYLLABUS: Custom View Attributes (attrs.xml) for CapacityGaugeView -->
+<resources>
+    <declare-styleable name="CapacityGaugeView">
+        <attr name="licensedCapacity" format="integer" />
+        <attr name="currentLoad" format="integer" />
+        <attr name="safeColor" format="color" />
+        <attr name="warningColor" format="color" />
+        <attr name="dangerColor" format="color" />
+        <attr name="gaugeStrokeWidth" format="dimension" />
+    </declare-styleable>
+</resources>

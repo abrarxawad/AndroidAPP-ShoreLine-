@@ -41,6 +41,7 @@
     <string name="action_retry">পুনরায় চেষ্টা করুন</string>
     <string name="action_close">বন্ধ করুন</string>
     <string name="action_back">ফিরে যান</string>
+    <string name="action_search">অনুসন্ধান</string>
     <string name="status_online">অনলাইন (সংযুক্ত)</string>
     <string name="status_offline">অফলাইন মোড (লোকাল ক্যাশ)</string>
 
@@ -71,6 +72,22 @@
     <string name="badge_passenger">নৌ-যাত্রী</string>
     <string name="badge_admin">বিআইডব্লিউটিএ কর্মকর্তা</string>
     <string name="btn_logout">লগআউট</string>
+
+    <!-- Stage 2: Vessel Verification & Custom Gauge -->
+    <string name="vessel_search_title">লঞ্চ লাইসেন্স ও ফিটনেস যাচাই</string>
+    <string name="vessel_search_subtitle">লঞ্চে ওঠার আগেই বিআইডব্লিউটিএ সনদ ও ধারণক্ষমতা নিশ্চিত করুন</string>
+    <string name="hint_vessel_number">লঞ্চের নম্বর (যেমন: M-01-2489)</string>
+    <string name="btn_scan_vessel_qr">📷 লঞ্চের অফিশিয়াল QR কোড স্ক্যান করুন</string>
+    <string name="vessel_directory_header">নৌযানের তালিকা (অফলাইন রুম ক্যাশ)</string>
+    <string name="empty_no_vessels">কোনো নৌযান পাওয়া যায়নি</string>
+    <string name="empty_no_vessels_hint">লঞ্চের নাম বা সঠিক রেজিস্ট্রেশন নম্বর দিয়ে খুঁজুন</string>
+    <string name="gauge_section_title">লাইভ যাত্রী ধারণক্ষমতা মিটার</string>
+    <string name="gauge_interactive_hint" formatted="false">কাস্টম ভিউ: নিরাপদ (&lt;৭৫%), সতর্কবার্তা (৭৫-১০০%), বিপজ্জনক ওভারলোড (&gt;১০০%)</string>
+    <string name="vessel_specs_header">বিআইডব্লিউটিএ অফিশিয়াল তথ্য</string>
+    <string name="label_licensed_capacity">অনুমোদিত যাত্রী ধারণক্ষমতা:</string>
+    <string name="label_fitness_expiry">ফিটনেস সার্টিফিকেটের মেয়াদ:</string>
+    <string name="label_community_rating">যাত্রী নিরাপত্তা রেটিং:</string>
+    <string name="btn_report_overload_action">🚨 এই লঞ্চের বিরুদ্ধে অতিরিক্ত যাত্রীর অভিযোগ করুন</string>
 
     <!-- Feature Titles for Navigation -->
     <string name="nav_vessel_check">লঞ্চ/নৌযান যাচাই</string>

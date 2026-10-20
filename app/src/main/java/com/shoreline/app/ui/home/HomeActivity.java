@@ -63,8 +63,10 @@ public class HomeActivity extends BaseActivity {
         });
 
         // Feature 1: Vessel Verification (Stage 2)
-        binding.cardVesselCheck.setOnClickListener(v ->
-                showSnackbar(binding.getRoot(), "Vessel Verification: Ready for Stage 2 (QR Scan & Lookup)"));
+        binding.cardVesselCheck.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, com.shoreline.app.ui.vessel.VesselCheckActivity.class);
+            startActivity(intent);
+        });
 
         // Feature 2: Overload Report (Stage 3)
         binding.cardOverloadReport.setOnClickListener(v ->

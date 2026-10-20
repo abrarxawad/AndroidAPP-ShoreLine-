@@ -41,6 +41,7 @@
     <string name="action_retry">Retry</string>
     <string name="action_close">Close</string>
     <string name="action_back">Back</string>
+    <string name="action_search">Search</string>
     <string name="status_online">Online (Connected)</string>
     <string name="status_offline">Offline Mode (Using Local Cache)</string>
 
@@ -71,6 +72,22 @@
     <string name="badge_passenger">PASSENGER</string>
     <string name="badge_admin">AUTHORITY (ADMIN)</string>
     <string name="btn_logout">Logout</string>
+
+    <!-- Stage 2: Vessel Verification & Custom Gauge -->
+    <string name="vessel_search_title">Vessel License Verification</string>
+    <string name="vessel_search_subtitle">Verify official BIWTA fitness certificate before boarding</string>
+    <string name="hint_vessel_number">Vessel Reg No. (e.g. M-01-2489)</string>
+    <string name="btn_scan_vessel_qr">📷 Scan Official Launch QR Code</string>
+    <string name="vessel_directory_header">Registered River Launches (Room Cache)</string>
+    <string name="empty_no_vessels">No Vessels Found</string>
+    <string name="empty_no_vessels_hint">Try searching by launch name or registration number</string>
+    <string name="gauge_section_title">Live Passenger Capacity Gauge</string>
+    <string name="gauge_interactive_hint" formatted="false">Custom Canvas View: Green (&lt;75%), Amber (75-100%), Red (&gt;100% Overload)</string>
+    <string name="vessel_specs_header">Official BIWTA Registry Details</string>
+    <string name="label_licensed_capacity">Licensed Passenger Limit:</string>
+    <string name="label_fitness_expiry">Fitness Certificate Expiry:</string>
+    <string name="label_community_rating">Community Safety Rating:</string>
+    <string name="btn_report_overload_action">🚨 Report Overcrowding for this Launch</string>
 
     <!-- Feature Titles for Navigation -->
     <string name="nav_vessel_check">Vessel Verification</string>

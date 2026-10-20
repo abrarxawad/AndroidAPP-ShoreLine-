@@ -166,6 +166,19 @@
             android:label="@string/title_lifecycle_lab"
             android:parentActivityName="com.shoreline.app.ui.home.HomeActivity" />
 
+        <!-- Stage 2: Vessel Verification & Custom Gauge Screens -->
+        <activity
+            android:name="com.shoreline.app.ui.vessel.VesselCheckActivity"
+            android:exported="false"
+            android:label="@string/nav_vessel_check"
+            android:parentActivityName="com.shoreline.app.ui.home.HomeActivity"
+            android:windowSoftInputMode="adjustPan" />
+        <activity
+            android:name="com.shoreline.app.ui.vessel.VesselDetailActivity"
+            android:exported="false"
+            android:label="@string/nav_vessel_check"
+            android:parentActivityName="com.shoreline.app.ui.vessel.VesselCheckActivity" />
+
         <provider
             android:name="androidx.startup.InitializationProvider"
             android:authorities="com.shoreline.app.androidx-startup"

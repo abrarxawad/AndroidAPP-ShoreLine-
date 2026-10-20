@@ -5,6 +5,7 @@
     <string name="action_close">বন্ধ করুন</string>
     <string name="action_ok">ঠিক আছে</string>
     <string name="action_retry">পুনরায় চেষ্টা করুন</string>
+    <string name="action_search">অনুসন্ধান</string>
     <string name="app_description">বাংলাদেশের উপকূলীয় ও নৌপথের যাত্রীদের জন্য অফলাইন নিরাপত্তা, লঞ্চ যাচাই এবং জরুরি এসওএস ব্যবস্থা</string>
     <string name="app_name">শোরলাইন</string>
     <string name="app_tagline">নৌপথের অফলাইন নিরাপত্তা নেটওয়ার্ক</string>
@@ -16,6 +17,13 @@
     <string name="btn_logout">লগআউট</string>
     <string name="btn_open_lifecycle_lab">লাইফসাইকেল ল্যাব দেখুন</string>
     <string name="btn_register">অ্যাকাউন্ট তৈরি করুন</string>
+    <string name="btn_report_overload_action">🚨 এই লঞ্চের বিরুদ্ধে অতিরিক্ত যাত্রীর অভিযোগ করুন</string>
+    <string name="btn_scan_vessel_qr">📷 লঞ্চের অফিশিয়াল QR কোড স্ক্যান করুন</string>
+    <string name="empty_no_vessels">কোনো নৌযান পাওয়া যায়নি</string>
+    <string name="empty_no_vessels_hint">লঞ্চের নাম বা সঠিক রেজিস্ট্রেশন নম্বর দিয়ে খুঁজুন</string>
+    <string formatted="false" name="gauge_interactive_hint">কাস্টম ভিউ: নিরাপদ (&lt;৭৫%), সতর্কবার্তা (৭৫-১০০%), বিপজ্জনক ওভারলোড (>১০০%)</string>
+    <string name="gauge_section_title">লাইভ যাত্রী ধারণক্ষমতা মিটার</string>
+    <string name="hint_vessel_number">লঞ্চের নম্বর (যেমন: M-01-2489)</string>
     <string name="lab_btn_clear_log">লগ মুছুন</string>
     <string name="lab_btn_interface">ক্লিক লিসেনার (View.OnClickListener)</string>
     <string name="lab_btn_lambda">ক্লিক লিসেনার (Lambda)</string>
@@ -33,9 +41,12 @@
     <string name="lab_switch_off">সিঙ্ক বন্ধ</string>
     <string name="lab_switch_on">সিঙ্ক চালু</string>
     <string name="lab_text_watcher_prefix">টেক্সটওয়াচার কলব্যাক: </string>
+    <string name="label_community_rating">যাত্রী নিরাপত্তা রেটিং:</string>
     <string name="label_email">ইমেইল ঠিকানা</string>
     <string name="label_emergency_contact">জরুরি যোগাযোগের নম্বর (স্বজন/অভিভাবক)</string>
+    <string name="label_fitness_expiry">ফিটনেস সার্টিফিকেটের মেয়াদ:</string>
     <string name="label_full_name">আপনার পুরো নাম</string>
+    <string name="label_licensed_capacity">অনুমোদিত যাত্রী ধারণক্ষমতা:</string>
     <string name="label_password">পাসওয়ার্ড</string>
     <string name="label_phone">মোবাইল নম্বর</string>
     <string name="label_role">ব্যবহারকারীর ধরন</string>
@@ -70,5 +81,9 @@
     <string name="title_lifecycle_lab">লাইফসাইকেল ও ইভেন্ট ল্যাব</string>
     <string name="title_login">লগইন করুন</string>
     <string name="title_register">নতুন নিরাপত্তা অ্যাকাউন্ট খুলুন</string>
+    <string name="vessel_directory_header">নৌযানের তালিকা (অফলাইন রুম ক্যাশ)</string>
+    <string name="vessel_search_subtitle">লঞ্চে ওঠার আগেই বিআইডব্লিউটিএ সনদ ও ধারণক্ষমতা নিশ্চিত করুন</string>
+    <string name="vessel_search_title">লঞ্চ লাইসেন্স ও ফিটনেস যাচাই</string>
+    <string name="vessel_specs_header">বিআইডব্লিউটিএ অফিশিয়াল তথ্য</string>
     <string name="welcome_prefix">স্বাগতম, </string>
 </resources>

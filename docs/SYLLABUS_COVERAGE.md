@@ -32,14 +32,14 @@ This document tracks every syllabus concept required by the university curriculu
 | :--- | :--- | :--- | :--- | :--- |
 | **Accessibility Targets** | Minimum 48dp touch targets on all buttons and interactive elements | Stage 0/1 | [`dimens.xml`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/res/values/dimens.xml), [`activity_login.xml`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/res/layout/activity_login.xml) | **COMPLETED** |
 | **Vector Drawables** | Custom XML vector drawables (resolution-independent icons) | Stage 0 | [`ic_shoreline_logo.xml`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/res/drawable/ic_shoreline_logo.xml) | **COMPLETED** |
-| **Custom View 1** | `CapacityGaugeView` (subclass View, custom `attrs.xml`, `onDraw`, `onMeasure`) | Stage 2 | `app/src/main/java/.../ui/view/CapacityGaugeView.java` | Stage 2 |
+| **Custom View 1** | `CapacityGaugeView` (subclass View, custom `attrs.xml`, `onDraw`, `onMeasure`) | Stage 2 | [`CapacityGaugeView.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/ui/view/CapacityGaugeView.java) | **COMPLETED** |
 | **Custom View 2** | `NearbyRadarView` / Route-risk meter drawn with Canvas/Paint | Stage 6 | `app/src/main/java/.../ui/view/NearbyRadarView.java` | Stage 6 |
-| **RecyclerView 1** | Vessel search list (custom ViewHolder, ItemDecoration, DiffUtil) | Stage 2 | `app/src/main/java/.../ui/vessel/VesselAdapter.java` | Stage 2 |
+| **RecyclerView 1** | Vessel search list (custom ViewHolder, ItemDecoration, DiffUtil) | Stage 2 | [`VesselAdapter.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/ui/vessel/VesselAdapter.java) | **COMPLETED** |
 | **RecyclerView 2** | Overload reports list (card layout, empty states) | Stage 3 | `app/src/main/java/.../ui/report/ReportAdapter.java` | Stage 3 |
 | **RecyclerView 3** | River route steps (multi-view-type adapter: ghat step vs weather warning row) | Stage 4 | `app/src/main/java/.../ui/route/RouteStepAdapter.java` | Stage 4 |
 | **RecyclerView 4** | SOS Inbox / Admin incident logs (swipe-to-action / long-press menu) | Stage 7 | `app/src/main/java/.../ui/admin/SosInboxAdapter.java` | Stage 7 |
-| **Layout Managers** | `LinearLayoutManager` & `GridLayoutManager` (dashboard tiles) | Stage 2/7 | Home / Admin dashboards | Stage 2/7 |
-| **Reusable Components** | Shared toolbar via `<include>`, reusable card layouts | Stage 2 | `res/layout/layout_toolbar.xml` | Stage 2 |
+| **Layout Managers** | `LinearLayoutManager` & `GridLayoutManager` (dashboard tiles) | Stage 2/7 | [`VesselCheckActivity.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/ui/vessel/VesselCheckActivity.java) | **COMPLETED (Stage 2)** |
+| **Reusable Components** | Shared toolbar via `<include>`, reusable card layouts | Stage 2 | [`layout_toolbar.xml`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/res/layout/layout_toolbar.xml) | **COMPLETED** |
 
 ---
 
@@ -77,5 +77,5 @@ This document tracks every syllabus concept required by the university curriculu
 | **Graph Algorithms** | Dijkstra & A* pathfinding on river network with weather edge-weights | Stage 4 | `app/src/main/java/.../graph/RiverGraphRouter.java` | Stage 4 |
 | **OpenStreetMap (osmdroid)**| Offline-capable interactive river map with polylines and custom markers | Stage 4 | `app/src/main/java/.../ui/map/RiverMapActivity.java` | Stage 4 |
 | **Nearby Connections** | P2P_CLUSTER offline SOS mesh relay (hop count, dedupe, forward) | Stage 6 | `app/src/main/java/.../nearby/NearbySosRelayManager.java` | Stage 6 |
-| **Barcode / QR Scanner** | ZXing QR code scanner for launch registration lookup | Stage 2 | `app/src/main/java/.../ui/vessel/VesselScannerActivity.java` | Stage 2 |
+| **Barcode / QR Scanner** | ZXing QR code scanner for launch registration lookup | Stage 2 | [`VesselCheckActivity.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/ui/vessel/VesselCheckActivity.java) | **COMPLETED** |
 | **Fused Location Provider** | High-accuracy GPS tracking with runtime permissions & fallback | Stage 3/5 | `app/src/main/java/.../util/LocationHelper.java` | Stage 3/5 |

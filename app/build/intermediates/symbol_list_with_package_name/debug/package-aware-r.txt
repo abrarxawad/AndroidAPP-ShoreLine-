@@ -422,6 +422,7 @@ attr counterOverflowTextColor
 attr counterTextAppearance
 attr counterTextColor
 attr crossfade
+attr currentLoad
 attr currentState
 attr curveFit
 attr customBoolean
@@ -434,6 +435,7 @@ attr customNavigationLayout
 attr customPixelDimension
 attr customReference
 attr customStringValue
+attr dangerColor
 attr dayInvalidStyle
 attr daySelectedStyle
 attr dayStyle
@@ -593,6 +595,7 @@ attr forceDefaultNavigationOnClickListener
 attr foregroundInsidePadding
 attr framePosition
 attr gapBetweenBars
+attr gaugeStrokeWidth
 attr gestureInsetBottomIgnored
 attr goIcon
 attr guidelineUseRtl
@@ -760,6 +763,7 @@ attr layout_scrollEffect
 attr layout_scrollFlags
 attr layout_scrollInterpolator
 attr layout_wrapBehaviorInParent
+attr licensedCapacity
 attr liftOnScroll
 attr liftOnScrollColor
 attr liftOnScrollTargetViewId
@@ -994,6 +998,7 @@ attr rippleColor
 attr rotationCenterId
 attr round
 attr roundPercent
+attr safeColor
 attr saturation
 attr scaleFromTextSize
 attr scopeUris
@@ -1288,6 +1293,7 @@ attr viewTransitionOnPositiveCross
 attr visibilityMode
 attr voiceIcon
 attr warmth
+attr warningColor
 attr waveDecay
 attr waveOffset
 attr wavePeriod
@@ -3215,6 +3221,7 @@ id animateToEnd
 id animateToStart
 id antiClockwise
 id anticipate
+id appToolbar
 id arc
 id asConfigured
 id async
@@ -3247,6 +3254,9 @@ id btnLambda
 id btnLogin
 id btnLogout
 id btnOpenLifecycleLab
+id btnReportThisVessel
+id btnScanQr
+id btnSearchVessel
 id btnSimulateNav
 id btnXmlClick
 id bubble_description
@@ -3258,6 +3268,7 @@ id buttonPanel
 id cache_measures
 id callMeasure
 id cancel_button
+id capacityGauge
 id cardAdminDashboard
 id cardFamilyTracker
 id cardLongPress
@@ -3265,7 +3276,9 @@ id cardOfflineSos
 id cardOverloadReport
 id cardSafeRoute
 id cardSafetyGuides
+id cardSearchControl
 id cardVesselCheck
+id cardVesselItem
 id carryVelocity
 id center
 id centerCrop
@@ -3352,6 +3365,7 @@ id etRegFullName
 id etRegPassword
 id etRegPhone
 id etStateInput
+id etVesselSearch
 id exitUntilCollapsed
 id expand_activities_button
 id expanded_menu
@@ -3395,6 +3409,7 @@ id ignoreRequest
 id image
 id immediateStop
 id included
+id includedToolbar
 id indeterminate
 id info
 id invisible
@@ -3408,6 +3423,7 @@ id jumpToStart
 id labScrollView
 id labeled
 id layout
+id layoutEmptyState
 id left
 id leftToRight
 id legacy
@@ -3519,6 +3535,7 @@ id position
 id postLayout
 id pressed
 id progressLoading
+id progressVesselLoading
 id progress_circular
 id progress_horizontal
 id radio
@@ -3535,6 +3552,7 @@ id right_icon
 id right_side
 id rounded
 id row_index_key
+id rvVessels
 id save_non_transition_alpha
 id save_overlay_view
 id sawtooth
@@ -3659,9 +3677,23 @@ id transition_scene_layoutid_cache
 id transition_transform
 id triangle
 id tvAppName
+id tvDetailCapacity
+id tvDetailFitness
+id tvDetailRating
+id tvDetailRegNumber
+id tvDetailRoute
+id tvDetailVesselName
+id tvDirectoryTitle
 id tvEmergencyContact
+id tvFlaggedAlert
 id tvGoToLogin
 id tvGoToRegister
+id tvItemCapacity
+id tvItemFitnessBadge
+id tvItemRating
+id tvItemRegNumber
+id tvItemRoute
+id tvItemVesselName
 id tvLabSubtitle
 id tvLabTitle
 id tvLaunchMetadata
@@ -3831,6 +3863,8 @@ layout activity_lifecycle_lab
 layout activity_login
 layout activity_register
 layout activity_splash
+layout activity_vessel_check
+layout activity_vessel_detail
 layout bonuspack_bubble
 layout browser_actions_context_menu_page
 layout browser_actions_context_menu_row
@@ -3850,6 +3884,8 @@ layout design_navigation_menu
 layout design_navigation_menu_item
 layout design_text_input_end_icon
 layout design_text_input_start_icon
+layout item_vessel
+layout layout_toolbar
 layout m3_alert_dialog
 layout m3_alert_dialog_actions
 layout m3_alert_dialog_title
@@ -3950,6 +3986,7 @@ string action_cancel
 string action_close
 string action_ok
 string action_retry
+string action_search
 string androidx_startup
 string app_description
 string app_name
@@ -3973,6 +4010,8 @@ string btn_login
 string btn_logout
 string btn_open_lifecycle_lab
 string btn_register
+string btn_report_overload_action
+string btn_scan_vessel_qr
 string cacheManagerCancelBody
 string cacheManagerCancelTitle
 string cacheManagerCleanFailed
@@ -4009,6 +4048,8 @@ string compass
 string copy_toast_msg
 string cyclemap
 string define_zxingandroidembedded
+string empty_no_vessels
+string empty_no_vessels_hint
 string error_a11y_label
 string error_icon_content_description
 string exposed_dropdown_menu_content_description
@@ -4031,6 +4072,8 @@ string format_distance_only_meter
 string format_distance_only_mile
 string format_distance_only_nautical_mile
 string format_distance_value_unit
+string gauge_interactive_hint
+string gauge_section_title
 string gcm_defaultSenderId
 string google_api_key
 string google_app_id
@@ -4038,6 +4081,7 @@ string google_crash_reporting_api_key
 string google_storage_bucket
 string hide_bottom_view_on_scroll_behavior
 string hills
+string hint_vessel_number
 string icon_content_description
 string item_view_role_description
 string lab_btn_clear_log
@@ -4057,9 +4101,12 @@ string lab_switch_label
 string lab_switch_off
 string lab_switch_on
 string lab_text_watcher_prefix
+string label_community_rating
 string label_email
 string label_emergency_contact
+string label_fitness_expiry
 string label_full_name
+string label_licensed_capacity
 string label_password
 string label_phone
 string label_role
@@ -4234,6 +4281,10 @@ string title_login
 string title_register
 string topo
 string unknown
+string vessel_directory_header
+string vessel_search_subtitle
+string vessel_search_title
+string vessel_specs_header
 string welcome_prefix
 string zxing_app_name
 string zxing_button_ok
@@ -5373,6 +5424,7 @@ styleable BottomNavigationView android_minHeight compatShadowEnabled itemHorizon
 styleable BottomSheetBehavior_Layout android_maxWidth android_maxHeight android_elevation backgroundTint behavior_draggable behavior_expandedOffset behavior_fitToContents behavior_halfExpandedRatio behavior_hideable behavior_peekHeight behavior_saveFlags behavior_significantVelocityThreshold behavior_skipCollapsed gestureInsetBottomIgnored marginLeftSystemWindowInsets marginRightSystemWindowInsets marginTopSystemWindowInsets paddingBottomSystemWindowInsets paddingLeftSystemWindowInsets paddingRightSystemWindowInsets paddingTopSystemWindowInsets shapeAppearance shapeAppearanceOverlay shouldRemoveExpandedCorners
 styleable ButtonBarLayout allowStacking
 styleable Capability queryPatterns shortcutMatchRequired
+styleable CapacityGaugeView currentLoad dangerColor gaugeStrokeWidth licensedCapacity safeColor warningColor
 styleable CardView android_minWidth android_minHeight cardBackgroundColor cardCornerRadius cardElevation cardMaxElevation cardPreventCornerOverlap cardUseCompatPadding contentPadding contentPaddingBottom contentPaddingLeft contentPaddingRight contentPaddingTop
 styleable Carousel carousel_backwardTransition carousel_emptyViewsBehavior carousel_firstView carousel_forwardTransition carousel_infinite carousel_nextState carousel_previousState carousel_touchUpMode carousel_touchUp_dampeningFactor carousel_touchUp_velocityThreshold
 styleable CheckedTextView android_checkMark checkMarkCompat checkMarkTint checkMarkTintMode

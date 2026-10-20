@@ -43,6 +43,7 @@
     <string name="action_close">Close</string>
     <string name="action_ok">OK</string>
     <string name="action_retry">Retry</string>
+    <string name="action_search">Search</string>
     <string name="app_description">Safety, Verification &amp; Offline Distress System for Waterway Travelers in Bangladesh</string>
     <string name="app_name">ShoreLine</string>
     <string name="app_tagline">Offline-First River Safety Net</string>
@@ -54,11 +55,18 @@
     <string name="btn_logout">Logout</string>
     <string name="btn_open_lifecycle_lab">Open Lifecycle Lab</string>
     <string name="btn_register">Register Account</string>
+    <string name="btn_report_overload_action">🚨 Report Overcrowding for this Launch</string>
+    <string name="btn_scan_vessel_qr">📷 Scan Official Launch QR Code</string>
+    <string name="empty_no_vessels">No Vessels Found</string>
+    <string name="empty_no_vessels_hint">Try searching by launch name or registration number</string>
+    <string formatted="false" name="gauge_interactive_hint">Custom Canvas View: Green (&lt;75%), Amber (75-100%), Red (>100% Overload)</string>
+    <string name="gauge_section_title">Live Passenger Capacity Gauge</string>
     <string name="gcm_defaultSenderId" translatable="false">123456789012</string>
     <string name="google_api_key" translatable="false">AIzaSyFakeKeyForStage0BuildVerificationOnly</string>
     <string name="google_app_id" translatable="false">1:123456789012:android:abcdef0123456789</string>
     <string name="google_crash_reporting_api_key" translatable="false">AIzaSyFakeKeyForStage0BuildVerificationOnly</string>
     <string name="google_storage_bucket" translatable="false">shoreline-bd-safety.appspot.com</string>
+    <string name="hint_vessel_number">Vessel Reg No. (e.g. M-01-2489)</string>
     <string name="lab_btn_clear_log">Clear Log</string>
     <string name="lab_btn_interface">Click Listener (View.OnClickListener)</string>
     <string name="lab_btn_lambda">Click Listener (Lambda)</string>
@@ -76,9 +84,12 @@
     <string name="lab_switch_off">SYNC OFF</string>
     <string name="lab_switch_on">SYNC ON</string>
     <string name="lab_text_watcher_prefix">TextWatcher Callback: </string>
+    <string name="label_community_rating">Community Safety Rating:</string>
     <string name="label_email">Email Address</string>
     <string name="label_emergency_contact">Emergency Contact Phone (Kin/Friend)</string>
+    <string name="label_fitness_expiry">Fitness Certificate Expiry:</string>
     <string name="label_full_name">Full Name</string>
+    <string name="label_licensed_capacity">Licensed Passenger Limit:</string>
     <string name="label_password">Password</string>
     <string name="label_phone">Mobile Number</string>
     <string name="label_role">Account Role</string>
@@ -114,8 +125,12 @@
     <string name="title_lifecycle_lab">Activity Lifecycle &amp; UI Lab</string>
     <string name="title_login">Sign In</string>
     <string name="title_register">Create Safety Account</string>
+    <string name="vessel_directory_header">Registered River Launches (Room Cache)</string>
+    <string name="vessel_search_subtitle">Verify official BIWTA fitness certificate before boarding</string>
+    <string name="vessel_search_title">Vessel License Verification</string>
+    <string name="vessel_specs_header">Official BIWTA Registry Details</string>
     <string name="welcome_prefix">Welcome, </string>
-    <style name="Theme.ShoreLine" parent="Theme.MaterialComponents.Light.DarkActionBar">
+    <style name="Theme.ShoreLine" parent="Theme.MaterialComponents.Light.NoActionBar">
         
         <item name="colorPrimary">@color/primary_maritime</item>
         <item name="colorPrimaryVariant">@color/primary_variant_navy</item>
@@ -172,4 +187,12 @@
         <item name="strokeWidth">@dimen/stroke_width_standard</item>
         <item name="cardBackgroundColor">@color/surface_white</item>
     </style>
+    <declare-styleable name="CapacityGaugeView">
+        <attr format="integer" name="licensedCapacity"/>
+        <attr format="integer" name="currentLoad"/>
+        <attr format="color" name="safeColor"/>
+        <attr format="color" name="warningColor"/>
+        <attr format="color" name="dangerColor"/>
+        <attr format="dimension" name="gaugeStrokeWidth"/>
+    </declare-styleable>
 </resources>
