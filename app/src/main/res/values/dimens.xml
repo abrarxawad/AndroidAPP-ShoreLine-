@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYLLABUS: Dimension resources (dimens.xml) - dp for layout, sp for text, 48dp touch targets -->
+<resources>
+    <!-- Accessibility Minimum Touch Target Rule (Google Material Spec: 48dp x 48dp) -->
+    <dimen name="min_touch_target">48dp</dimen>
+
+    <!-- Standard Spacing Grid (8dp multiplier) -->
+    <dimen name="spacing_micro">4dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_medium">16dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="spacing_xlarge">32dp</dimen>
+    <dimen name="spacing_xxlarge">48dp</dimen>
+
+    <!-- Card & Component Geometry -->
+    <dimen name="card_corner_radius">12dp</dimen>
+    <dimen name="card_elevation">3dp</dimen>
+    <dimen name="button_corner_radius">8dp</dimen>
+    <dimen name="stroke_width_standard">1dp</dimen>
+    <dimen name="stroke_width_active">2dp</dimen>
+
+    <!-- Typography Scale (Always sp for user accessibility scaling) -->
+    <dimen name="text_caption">12sp</dimen>
+    <dimen name="text_body_secondary">14sp</dimen>
+    <dimen name="text_body_primary">16sp</dimen>
+    <dimen name="text_subheading">18sp</dimen>
+    <dimen name="text_title">20sp</dimen>
+    <dimen name="text_heading">24sp</dimen>
+    <dimen name="text_display">30sp</dimen>
+</resources>

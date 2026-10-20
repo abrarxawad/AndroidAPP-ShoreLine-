@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYLLABUS: Color resources (colors.xml) - High contrast maritime palette -->
+<resources>
+    <!-- Brand / Maritime Primary -->
+    <color name="primary_maritime">#0A3A60</color>
+    <color name="primary_variant_navy">#06253D</color>
+    <color name="secondary_safety_orange">#E65100</color>
+    <color name="secondary_variant_amber">#FF8F00</color>
+    <color name="coastal_cyan">#00838F</color>
+
+    <!-- Semantic / Status Colors for Launch Safety -->
+    <color name="status_safe_green">#2E7D32</color>
+    <color name="status_warning_amber">#F57F17</color>
+    <color name="status_danger_red">#C62828</color>
+    <color name="status_sos_crimson">#B71C1C</color>
+
+    <!-- Backgrounds & Surfaces (Light theme, high-contrast) -->
+    <color name="bg_light_canvas">#F8FAFC</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="surface_card_border">#E2E8F0</color>
+
+    <!-- Typography -->
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#475569</color>
+    <color name="text_tertiary">#64748B</color>
+    <color name="text_on_primary">#FFFFFF</color>
+
+    <!-- Interactive & Highlights -->
+    <color name="ripple_dark">#1F000000</color>
+    <color name="ripple_light">#33FFFFFF</color>
+    <color name="chip_bg">#EEF2F6</color>
+</resources>

@@ -1,0 +1,175 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources xmlns:ns1="http://schemas.android.com/tools">
+    <color name="bg_light_canvas">#F8FAFC</color>
+    <color name="chip_bg">#EEF2F6</color>
+    <color name="coastal_cyan">#00838F</color>
+    <color name="primary_maritime">#0A3A60</color>
+    <color name="primary_variant_navy">#06253D</color>
+    <color name="ripple_dark">#1F000000</color>
+    <color name="ripple_light">#33FFFFFF</color>
+    <color name="secondary_safety_orange">#E65100</color>
+    <color name="secondary_variant_amber">#FF8F00</color>
+    <color name="status_danger_red">#C62828</color>
+    <color name="status_safe_green">#2E7D32</color>
+    <color name="status_sos_crimson">#B71C1C</color>
+    <color name="status_warning_amber">#F57F17</color>
+    <color name="surface_card_border">#E2E8F0</color>
+    <color name="surface_white">#FFFFFF</color>
+    <color name="text_on_primary">#FFFFFF</color>
+    <color name="text_primary">#0F172A</color>
+    <color name="text_secondary">#475569</color>
+    <color name="text_tertiary">#64748B</color>
+    <dimen name="button_corner_radius">8dp</dimen>
+    <dimen name="card_corner_radius">12dp</dimen>
+    <dimen name="card_elevation">3dp</dimen>
+    <dimen name="min_touch_target">48dp</dimen>
+    <dimen name="spacing_large">24dp</dimen>
+    <dimen name="spacing_medium">16dp</dimen>
+    <dimen name="spacing_micro">4dp</dimen>
+    <dimen name="spacing_small">8dp</dimen>
+    <dimen name="spacing_xlarge">32dp</dimen>
+    <dimen name="spacing_xxlarge">48dp</dimen>
+    <dimen name="stroke_width_active">2dp</dimen>
+    <dimen name="stroke_width_standard">1dp</dimen>
+    <dimen name="text_body_primary">16sp</dimen>
+    <dimen name="text_body_secondary">14sp</dimen>
+    <dimen name="text_caption">12sp</dimen>
+    <dimen name="text_display">30sp</dimen>
+    <dimen name="text_heading">24sp</dimen>
+    <dimen name="text_subheading">18sp</dimen>
+    <dimen name="text_title">20sp</dimen>
+    <string name="action_back">Back</string>
+    <string name="action_cancel">Cancel</string>
+    <string name="action_close">Close</string>
+    <string name="action_ok">OK</string>
+    <string name="action_retry">Retry</string>
+    <string name="app_description">Safety, Verification &amp; Offline Distress System for Waterway Travelers in Bangladesh</string>
+    <string name="app_name">ShoreLine</string>
+    <string name="app_tagline">Offline-First River Safety Net</string>
+    <string name="badge_admin">AUTHORITY (ADMIN)</string>
+    <string name="badge_passenger">PASSENGER</string>
+    <string name="btn_guest_admin">Demo BIWTA Inspector (Admin)</string>
+    <string name="btn_guest_passenger">Demo Passenger Mode (Instant)</string>
+    <string name="btn_login">Sign In</string>
+    <string name="btn_logout">Logout</string>
+    <string name="btn_open_lifecycle_lab">Open Lifecycle Lab</string>
+    <string name="btn_register">Register Account</string>
+    <string name="gcm_defaultSenderId" translatable="false">123456789012</string>
+    <string name="google_api_key" translatable="false">AIzaSyFakeKeyForStage0BuildVerificationOnly</string>
+    <string name="google_app_id" translatable="false">1:123456789012:android:abcdef0123456789</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyFakeKeyForStage0BuildVerificationOnly</string>
+    <string name="google_storage_bucket" translatable="false">shoreline-bd-safety.appspot.com</string>
+    <string name="lab_btn_clear_log">Clear Log</string>
+    <string name="lab_btn_interface">Click Listener (View.OnClickListener)</string>
+    <string name="lab_btn_lambda">Click Listener (Lambda)</string>
+    <string name="lab_btn_simulate_nav">Simulate Navigation (Explicit Intent)</string>
+    <string name="lab_btn_xml">Click Listener (android:onClick)</string>
+    <string name="lab_edit_hint">Type text to test TextWatcher…</string>
+    <string name="lab_long_press_card">Long-press this card to trigger OnLongClickListener</string>
+    <string name="lab_rotation_counter_label">Screen Rotations Preserved:</string>
+    <string name="lab_section_lifecycle">Lifecycle Events Log</string>
+    <string name="lab_section_listeners">Event Listener Demonstrations</string>
+    <string name="lab_section_state">State Preservation (Rotation Demo)</string>
+    <string name="lab_status_idle">Ready. Perform actions or rotate phone.</string>
+    <string name="lab_subtitle">Live monitoring of Android lifecycle transitions and event listeners</string>
+    <string name="lab_switch_label">Background Sync Listener:</string>
+    <string name="lab_switch_off">SYNC OFF</string>
+    <string name="lab_switch_on">SYNC ON</string>
+    <string name="lab_text_watcher_prefix">TextWatcher Callback: </string>
+    <string name="label_email">Email Address</string>
+    <string name="label_emergency_contact">Emergency Contact Phone (Kin/Friend)</string>
+    <string name="label_full_name">Full Name</string>
+    <string name="label_password">Password</string>
+    <string name="label_phone">Mobile Number</string>
+    <string name="label_role">Account Role</string>
+    <string name="msg_empty_fields">Please enter both email and password.</string>
+    <string name="msg_invalid_email">Please enter a valid email address.</string>
+    <string name="msg_weak_password">Password must be at least 6 characters.</string>
+    <string name="nav_admin_dashboard">Port Authority Dashboard</string>
+    <string name="nav_admin_dashboard_desc">Monitor overload hotspots &amp; SOS alerts</string>
+    <string name="nav_family_tracker">Family Journey Tracker</string>
+    <string name="nav_family_tracker_desc">Live GPS journey share via code</string>
+    <string name="nav_offline_sos">Nearby SOS Beacon</string>
+    <string name="nav_offline_sos_desc">Multi-hop peer-to-peer distress relay</string>
+    <string name="nav_overload_report">Report Overcrowding</string>
+    <string name="nav_overload_report_desc">Photo evidence with offline sync queue</string>
+    <string name="nav_safe_route">Safe River Route &amp; Storms</string>
+    <string name="nav_safe_route_desc">Dijkstra &amp; A* pathfinding + weather warnings</string>
+    <string name="nav_safety_guides">Emergency Water Guides</string>
+    <string name="nav_safety_guides_desc">Offline CPR, drowning &amp; lifejacket guides</string>
+    <string name="nav_vessel_check">Vessel Verification</string>
+    <string name="nav_vessel_check_desc">Scan QR or check boat fitness &amp; capacity</string>
+    <string name="project_id" translatable="false">shoreline-bd-safety</string>
+    <string name="prompt_has_account">Already registered? Sign In</string>
+    <string name="prompt_no_account">Don\'t have an account? Register</string>
+    <string name="role_admin">Authority / Inspector</string>
+    <string name="role_admin_desc">BIWTA river police &amp; port safety officials</string>
+    <string name="role_passenger">Passenger</string>
+    <string name="role_passenger_desc">For launch, trawler, and river boat travelers</string>
+    <string name="splash_loading">Initializing offline security protocols…</string>
+    <string name="splash_version">Version 1.0.0 (Award Edition)</string>
+    <string name="status_offline">Offline Mode (Using Local Cache)</string>
+    <string name="status_online">Online (Connected)</string>
+    <string name="title_home">ShoreLine Dashboard</string>
+    <string name="title_lifecycle_lab">Activity Lifecycle &amp; UI Lab</string>
+    <string name="title_login">Sign In</string>
+    <string name="title_register">Create Safety Account</string>
+    <string name="welcome_prefix">Welcome, </string>
+    <style name="Theme.ShoreLine" parent="Theme.MaterialComponents.Light.DarkActionBar">
+        
+        <item name="colorPrimary">@color/primary_maritime</item>
+        <item name="colorPrimaryVariant">@color/primary_variant_navy</item>
+        <item name="colorOnPrimary">@color/text_on_primary</item>
+
+        
+        <item name="colorSecondary">@color/secondary_safety_orange</item>
+        <item name="colorSecondaryVariant">@color/secondary_variant_amber</item>
+        <item name="colorOnSecondary">@color/text_on_primary</item>
+
+        
+        <item name="android:statusBarColor">@color/primary_variant_navy</item>
+        <item name="android:windowLightStatusBar" ns1:targetApi="m">false</item>
+
+        
+        <item name="android:windowBackground">@color/bg_light_canvas</item>
+        <item name="android:colorBackground">@color/bg_light_canvas</item>
+
+        
+        <item name="fontFamily">sans-serif</item>
+    </style>
+    <style name="Theme.ShoreLine.NoActionBar">
+        <item name="windowActionBar">false</item>
+        <item name="windowNoTitle">true</item>
+    </style>
+    <style name="Widget.ShoreLine.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
+        <item name="android:minHeight">@dimen/min_touch_target</item>
+        <item name="strokeColor">@color/primary_maritime</item>
+        <item name="strokeWidth">@dimen/stroke_width_active</item>
+        <item name="android:textColor">@color/primary_maritime</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:textSize">@dimen/text_body_primary</item>
+    </style>
+    <style name="Widget.ShoreLine.Button.Primary" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">@dimen/min_touch_target</item>
+        <item name="backgroundTint">@color/primary_maritime</item>
+        <item name="android:textColor">@color/text_on_primary</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:textSize">@dimen/text_body_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Widget.ShoreLine.Button.Secondary" parent="Widget.MaterialComponents.Button">
+        <item name="android:minHeight">@dimen/min_touch_target</item>
+        <item name="backgroundTint">@color/secondary_safety_orange</item>
+        <item name="android:textColor">@color/text_on_primary</item>
+        <item name="cornerRadius">@dimen/button_corner_radius</item>
+        <item name="android:textSize">@dimen/text_body_primary</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+    <style name="Widget.ShoreLine.Card" parent="Widget.MaterialComponents.CardView">
+        <item name="cardCornerRadius">@dimen/card_corner_radius</item>
+        <item name="cardElevation">@dimen/card_elevation</item>
+        <item name="strokeColor">@color/surface_card_border</item>
+        <item name="strokeWidth">@dimen/stroke_width_standard</item>
+        <item name="cardBackgroundColor">@color/surface_white</item>
+    </style>
+</resources>

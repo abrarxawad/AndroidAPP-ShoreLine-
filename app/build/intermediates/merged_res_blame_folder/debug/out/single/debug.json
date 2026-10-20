@@ -1,0 +1,34 @@
+[
+    {
+        "merged": "com.shoreline.app-merged_res-44:/drawable_bg_card_rounded.xml.flat",
+        "source": "com.shoreline.app-main-46:/drawable/bg_card_rounded.xml"
+    },
+    {
+        "merged": "com.shoreline.app-merged_res-44:/drawable_bg_terminal_window.xml.flat",
+        "source": "com.shoreline.app-main-46:/drawable/bg_terminal_window.xml"
+    },
+    {
+        "merged": "com.shoreline.app-merged_res-44:/layout_activity_splash.xml.flat",
+        "source": "com.shoreline.app-main-46:/layout/activity_splash.xml"
+    },
+    {
+        "merged": "com.shoreline.app-merged_res-44:/layout_activity_home.xml.flat",
+        "source": "com.shoreline.app-main-46:/layout/activity_home.xml"
+    },
+    {
+        "merged": "com.shoreline.app-merged_res-44:/drawable_ic_shoreline_logo.xml.flat",
+        "source": "com.shoreline.app-main-46:/drawable/ic_shoreline_logo.xml"
+    },
+    {
+        "merged": "com.shoreline.app-merged_res-44:/layout_activity_register.xml.flat",
+        "source": "com.shoreline.app-main-46:/layout/activity_register.xml"
+    },
+    {
+        "merged": "com.shoreline.app-merged_res-44:/layout_activity_login.xml.flat",
+        "source": "com.shoreline.app-main-46:/layout/activity_login.xml"
+    },
+    {
+        "merged": "com.shoreline.app-merged_res-44:/layout_activity_lifecycle_lab.xml.flat",
+        "source": "com.shoreline.app-main-46:/layout/activity_lifecycle_lab.xml"
+    }
+]
