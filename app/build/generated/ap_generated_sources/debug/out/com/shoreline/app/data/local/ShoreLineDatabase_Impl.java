@@ -17,6 +17,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 import androidx.sqlite.db.SupportSQLiteOpenHelper.Callback;
 import androidx.sqlite.db.SupportSQLiteOpenHelper.Configuration;
+import com.shoreline.app.data.local.dao.NodeWeatherDao;
+import com.shoreline.app.data.local.dao.NodeWeatherDao_Impl;
 import com.shoreline.app.data.local.dao.ReportDao;
 import com.shoreline.app.data.local.dao.ReportDao_Impl;
 import com.shoreline.app.data.local.dao.SosDao;
@@ -46,9 +48,11 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
 
   private volatile SosDao _sosDao;
 
+  private volatile NodeWeatherDao _nodeWeatherDao;
+
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(1) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `users` (`user_id` TEXT NOT NULL, `email` TEXT, `full_name` TEXT, `phone_number` TEXT, `role` TEXT, `emergency_contact` TEXT, `created_at` INTEGER NOT NULL, PRIMARY KEY(`user_id`))");
@@ -57,8 +61,11 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
         _db.execSQL("CREATE UNIQUE INDEX IF NOT EXISTS `index_vessels_registration_number` ON `vessels` (`registration_number`)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `overload_reports` (`report_id` TEXT NOT NULL, `vessel_id` TEXT, `vessel_number` TEXT, `crowd_level` TEXT, `passenger_count_estimate` INTEGER NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `timestamp` INTEGER NOT NULL, `photo_base64` TEXT, `reporter_user_id` TEXT, `is_anonymous` INTEGER NOT NULL, `is_synced` INTEGER NOT NULL, `sync_timestamp` INTEGER NOT NULL, PRIMARY KEY(`report_id`))");
         _db.execSQL("CREATE TABLE IF NOT EXISTS `sos_signals` (`sos_id` TEXT NOT NULL, `sender_name` TEXT, `sender_phone` TEXT, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `timestamp` INTEGER NOT NULL, `hop_count` INTEGER NOT NULL, `origin_device_id` TEXT, `status` TEXT, `is_relayed` INTEGER NOT NULL, `is_synced_to_cloud` INTEGER NOT NULL, PRIMARY KEY(`sos_id`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `node_weather` (`nodeId` TEXT NOT NULL, `nodeName` TEXT NOT NULL, `forecastTime` TEXT NOT NULL, `tempC` REAL NOT NULL, `windKmh` REAL NOT NULL, `gustKmh` REAL NOT NULL, `rainMm` REAL NOT NULL, `weatherCode` INTEGER NOT NULL, `waveHeightM` REAL, `fetchedAt` INTEGER NOT NULL, `riskLevel` INTEGER NOT NULL, `riskMultiplier` REAL NOT NULL, PRIMARY KEY(`nodeId`, `forecastTime`))");
+        _db.execSQL("CREATE INDEX IF NOT EXISTS `index_node_weather_nodeId` ON `node_weather` (`nodeId`)");
+        _db.execSQL("CREATE INDEX IF NOT EXISTS `index_node_weather_fetchedAt` ON `node_weather` (`fetchedAt`)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd2efe26132bd8ea4245acff00d091436')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd05eb12b072906980b7f50284fe4aed9')");
       }
 
       @Override
@@ -67,6 +74,7 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
         _db.execSQL("DROP TABLE IF EXISTS `vessels`");
         _db.execSQL("DROP TABLE IF EXISTS `overload_reports`");
         _db.execSQL("DROP TABLE IF EXISTS `sos_signals`");
+        _db.execSQL("DROP TABLE IF EXISTS `node_weather`");
         if (mCallbacks != null) {
           for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
             mCallbacks.get(_i).onDestructiveMigration(_db);
@@ -188,9 +196,33 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
                   + " Expected:\n" + _infoSosSignals + "\n"
                   + " Found:\n" + _existingSosSignals);
         }
+        final HashMap<String, TableInfo.Column> _columnsNodeWeather = new HashMap<String, TableInfo.Column>(12);
+        _columnsNodeWeather.put("nodeId", new TableInfo.Column("nodeId", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNodeWeather.put("nodeName", new TableInfo.Column("nodeName", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNodeWeather.put("forecastTime", new TableInfo.Column("forecastTime", "TEXT", true, 2, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNodeWeather.put("tempC", new TableInfo.Column("tempC", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNodeWeather.put("windKmh", new TableInfo.Column("windKmh", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNodeWeather.put("gustKmh", new TableInfo.Column("gustKmh", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNodeWeather.put("rainMm", new TableInfo.Column("rainMm", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNodeWeather.put("weatherCode", new TableInfo.Column("weatherCode", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNodeWeather.put("waveHeightM", new TableInfo.Column("waveHeightM", "REAL", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNodeWeather.put("fetchedAt", new TableInfo.Column("fetchedAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNodeWeather.put("riskLevel", new TableInfo.Column("riskLevel", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsNodeWeather.put("riskMultiplier", new TableInfo.Column("riskMultiplier", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysNodeWeather = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesNodeWeather = new HashSet<TableInfo.Index>(2);
+        _indicesNodeWeather.add(new TableInfo.Index("index_node_weather_nodeId", false, Arrays.asList("nodeId"), Arrays.asList("ASC")));
+        _indicesNodeWeather.add(new TableInfo.Index("index_node_weather_fetchedAt", false, Arrays.asList("fetchedAt"), Arrays.asList("ASC")));
+        final TableInfo _infoNodeWeather = new TableInfo("node_weather", _columnsNodeWeather, _foreignKeysNodeWeather, _indicesNodeWeather);
+        final TableInfo _existingNodeWeather = TableInfo.read(_db, "node_weather");
+        if (! _infoNodeWeather.equals(_existingNodeWeather)) {
+          return new RoomOpenHelper.ValidationResult(false, "node_weather(com.shoreline.app.data.local.entity.NodeWeatherEntity).\n"
+                  + " Expected:\n" + _infoNodeWeather + "\n"
+                  + " Found:\n" + _existingNodeWeather);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "d2efe26132bd8ea4245acff00d091436", "b0a9399ae8bd07616a77e97ff297f8e7");
+    }, "d05eb12b072906980b7f50284fe4aed9", "43c88d5dff8d8962e6fb9c6845f5b265");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -203,7 +235,7 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "users","vessels","overload_reports","sos_signals");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "users","vessels","overload_reports","sos_signals","node_weather");
   }
 
   @Override
@@ -216,6 +248,7 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
       _db.execSQL("DELETE FROM `vessels`");
       _db.execSQL("DELETE FROM `overload_reports`");
       _db.execSQL("DELETE FROM `sos_signals`");
+      _db.execSQL("DELETE FROM `node_weather`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -233,6 +266,7 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
     _typeConvertersMap.put(VesselDao.class, VesselDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(ReportDao.class, ReportDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(SosDao.class, SosDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(NodeWeatherDao.class, NodeWeatherDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -300,6 +334,20 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
           _sosDao = new SosDao_Impl(this);
         }
         return _sosDao;
+      }
+    }
+  }
+
+  @Override
+  public NodeWeatherDao nodeWeatherDao() {
+    if (_nodeWeatherDao != null) {
+      return _nodeWeatherDao;
+    } else {
+      synchronized(this) {
+        if(_nodeWeatherDao == null) {
+          _nodeWeatherDao = new NodeWeatherDao_Impl(this);
+        }
+        return _nodeWeatherDao;
       }
     }
   }

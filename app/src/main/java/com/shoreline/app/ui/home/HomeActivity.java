@@ -75,8 +75,10 @@ public class HomeActivity extends BaseActivity {
         });
 
         // Feature 3: Safe Route & Weather (Stage 4)
-        binding.cardSafeRoute.setOnClickListener(v ->
-                showSnackbar(binding.getRoot(), "Safe River Route: Ready for Stage 4 (Dijkstra + Open-Meteo)"));
+        binding.cardSafeRoute.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, com.shoreline.app.ui.route.SafeRouteActivity.class);
+            startActivity(intent);
+        });
 
         // Feature 4: Family Tracker (Stage 5)
         binding.cardFamilyTracker.setOnClickListener(v ->

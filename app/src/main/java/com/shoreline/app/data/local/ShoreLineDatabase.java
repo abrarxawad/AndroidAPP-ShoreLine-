@@ -8,10 +8,12 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
 import com.shoreline.app.data.local.converter.DateConverter;
+import com.shoreline.app.data.local.dao.NodeWeatherDao;
 import com.shoreline.app.data.local.dao.ReportDao;
 import com.shoreline.app.data.local.dao.SosDao;
 import com.shoreline.app.data.local.dao.UserDao;
 import com.shoreline.app.data.local.dao.VesselDao;
+import com.shoreline.app.data.local.entity.NodeWeatherEntity;
 import com.shoreline.app.data.local.entity.OverloadReportEntity;
 import com.shoreline.app.data.local.entity.SosSignalEntity;
 import com.shoreline.app.data.local.entity.UserEntity;
@@ -34,9 +36,10 @@ import java.util.concurrent.Executors;
                 UserEntity.class,
                 VesselEntity.class,
                 OverloadReportEntity.class,
-                SosSignalEntity.class
+                SosSignalEntity.class,
+                NodeWeatherEntity.class
         },
-        version = 1,
+        version = 2,
         exportSchema = false
 )
 @TypeConverters({DateConverter.class})
@@ -54,6 +57,7 @@ public abstract class ShoreLineDatabase extends RoomDatabase {
     public abstract VesselDao vesselDao();
     public abstract ReportDao reportDao();
     public abstract SosDao sosDao();
+    public abstract NodeWeatherDao nodeWeatherDao();
 
     /**
      * SYLLABUS: Double-Checked Locking Singleton Pattern

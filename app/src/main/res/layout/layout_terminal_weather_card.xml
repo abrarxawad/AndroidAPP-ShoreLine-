@@ -1,0 +1,154 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYLLABUS: Reusable Terminal Weather Card Layout -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.ShoreLine.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_small">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_medium">
+
+        <!-- Header: Card Title & Risk Badge -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvCardTerminalTitle"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-bold"
+                android:textColor="@color/primary_maritime"
+                android:textSize="@dimen/text_subheading"
+                tools:text="Origin: Dhaka Sadarghat" />
+
+            <TextView
+                android:id="@+id/tvCardRiskBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_chip_safe"
+                android:fontFamily="sans-serif-bold"
+                android:paddingStart="@dimen/spacing_small"
+                android:paddingTop="3dp"
+                android:paddingEnd="@dimen/spacing_small"
+                android:paddingBottom="3dp"
+                android:textColor="@color/status_safe_text"
+                android:textSize="11sp"
+                tools:text="✓ SAFE / নিরাপদ" />
+        </LinearLayout>
+
+        <!-- Scheduled Target Time (e.g. Departure / Arrival) -->
+        <TextView
+            android:id="@+id/tvCardScheduledTime"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/text_secondary_muted"
+            android:textSize="12sp"
+            tools:text="Scheduled Departure: Today 14:00 (Asia/Dhaka)" />
+
+        <!-- Weather Display: Big Temp & Condition -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvCardTemperature"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/text_primary_navy"
+                android:textSize="32sp"
+                tools:text="29.4°C" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="@dimen/spacing_medium"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvCardCondition"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/text_primary_navy"
+                    android:textSize="14sp"
+                    tools:text="Mainly Clear (বেশিরভাগ পরিষ্কার)" />
+
+                <TextView
+                    android:id="@+id/tvCardWindStats"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:textColor="@color/text_primary_navy"
+                    android:textSize="12sp"
+                    tools:text="💨 Wind: 18.5 km/h (Gusts: 28.0 km/h)" />
+
+                <TextView
+                    android:id="@+id/tvCardPrecipitation"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:textColor="@color/text_secondary_muted"
+                    android:textSize="12sp"
+                    tools:text="🌧️ Rain: 0.0 mm/h" />
+
+                <!-- Wave height (Visible only for coastal/marine checkpoints) -->
+                <TextView
+                    android:id="@+id/tvCardWaveHeight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:textColor="@color/primary_maritime"
+                    android:textSize="12sp"
+                    android:visibility="gone"
+                    tools:text="🌊 Wave: 0.8m (Slight)"
+                    tools:visibility="visible" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:layout_marginBottom="4dp"
+            android:background="@color/surface_card_border" />
+
+        <!-- Footer: Updated timestamp and legal priority notice -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvCardTimestamp"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:textColor="@color/text_secondary_muted"
+                android:textSize="11sp"
+                tools:text="Updated 14:15 • Advisory model data" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="BMD Signals Priority"
+                android:textColor="@color/primary_maritime"
+                android:textSize="10sp" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>

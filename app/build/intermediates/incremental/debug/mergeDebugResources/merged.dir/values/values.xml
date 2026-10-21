@@ -971,6 +971,7 @@
     <color name="secondary_text_disabled_material_dark">#36ffffff</color>
     <color name="secondary_text_disabled_material_light">#24000000</color>
     <color name="secondary_variant_amber">#FF8F00</color>
+    <color name="status_danger_bg">#FFEBEE</color>
     <color name="status_danger_red">#C62828</color>
     <color name="status_danger_text">#B71C1C</color>
     <color name="status_flagged_bg">#FFEBEE</color>
@@ -979,6 +980,8 @@
     <color name="status_safe_text">#1B5E20</color>
     <color name="status_sos_crimson">#B71C1C</color>
     <color name="status_warning_amber">#F57F17</color>
+    <color name="status_warning_bg">#FFF8E1</color>
+    <color name="status_warning_text">#BF360C</color>
     <color name="surface_card_border">#E2E8F0</color>
     <color name="surface_white">#FFFFFF</color>
     <color name="switch_thumb_disabled_material_dark">#ff616161</color>
@@ -2039,6 +2042,7 @@
     <string name="base">OSM base layer</string>
     <string name="base_nl">Netherlands base overlay</string>
     <string name="bing">Bing</string>
+    <string name="bmd_priority_notice">BMD Signals Priority</string>
     <string name="bottom_sheet_behavior" translatable="false">com.google.android.material.bottomsheet.BottomSheetBehavior</string>
     <string description="A description of an accessibility action to collapse the bottom sheet [CHAR LIMIT=NONE]" name="bottomsheet_action_collapse">Collapse the bottom sheet</string>
     <string description="A description of an accessibility action to expand the bottom sheet [CHAR LIMIT=NONE]" name="bottomsheet_action_expand">Expand the bottom sheet</string>
@@ -2096,7 +2100,10 @@
     <string formatted="false" name="crowd_moderate">Crowded (75% - 100%)</string>
     <string formatted="false" name="crowd_normal">Safe (&lt; 75%)</string>
     <string name="cyclemap">Cycle Map</string>
+    <string name="date_picker_title">Select Voyage Date</string>
     <string name="define_zxingandroidembedded" translatable="false"/>
+    <string name="departure_schedule_header">Departure Schedule &amp; Speed (যাত্রার সময়)</string>
+    <string name="departure_time_label">🕒 Departure: %s (Change Time)</string>
     <string name="empty_no_reports">No Overload Reports Yet</string>
     <string name="empty_no_reports_hint">When you witness dangerous overcrowding at river ghats, document evidence here.</string>
     <string name="empty_no_vessels">No Vessels Found</string>
@@ -2105,6 +2112,7 @@
     Error: invalid
   </string>
     <string name="error_icon_content_description">Error</string>
+    <string name="estimated_arrival_format">⚓ Estimated Destination Arrival: %1$s (~%2$.1f hrs voyage)</string>
     <string name="exposed_dropdown_menu_content_description">Show dropdown menu</string>
     <string name="fab_transformation_scrim_behavior" translatable="false">com.google.android.material.transformation.FabTransformationScrimBehavior</string>
     <string name="fab_transformation_sheet_behavior" translatable="false">com.google.android.material.transformation.FabTransformationSheetBehavior</string>
@@ -2306,6 +2314,8 @@
     <string name="nav_vessel_check">Vessel Verification</string>
     <string name="nav_vessel_check_desc">Scan QR or check boat fitness &amp; capacity</string>
     <string name="nearby_device_type_tablet">tablet</string>
+    <string name="notice_departure_future_clamped">Forecast model available up to 7 days ahead.</string>
+    <string name="notice_departure_past_clamped">Past departure time adjusted to next upcoming forecast hour.</string>
     <string name="offline">Offline mode</string>
     <string name="offline_queue_banner">OFFLINE QUEUE ACTIVE: Mid-river signal is weak. Report is saved locally in Room and will automatically upload via WorkManager when network returns.</string>
     <string name="password_toggle_content_description">Show password</string>
@@ -2318,15 +2328,22 @@
     <string name="prompt_has_account">Already registered? Sign In</string>
     <string name="prompt_no_account">Don\'t have an account? Register</string>
     <string name="public_transport">Public transport</string>
+    <string name="recommendation_be_careful">⚠️ BE CAREFUL (সতর্কতার সাথে চলুন)</string>
+    <string name="recommendation_delay">⛔ DELAY TRIP (যাত্রা স্থগিত রাখুন)</string>
+    <string name="recommendation_go">✓ GO (যাত্রা নিরাপদ)</string>
     <string name="report_crowd_header">Observed Overcrowding Severity</string>
     <string name="report_submitted_offline">Saved to Offline Queue! Will auto-sync in background.</string>
     <string name="report_submitted_online">Report uploaded to Port Authority server!</string>
     <string name="report_vessel_label">Target Vessel Registration</string>
+    <string name="risk_caution">⚠️ CAUTION / সতর্কতা</string>
+    <string name="risk_danger">⛔ HIGH RISK / ঝুঁকিপূর্ণ</string>
+    <string name="risk_safe">✓ SAFE / নিরাপদ</string>
     <string name="roads_nl">Netherlands roads overlay</string>
     <string name="role_admin">Authority / Inspector</string>
     <string name="role_admin_desc">BIWTA river police &amp; port safety officials</string>
     <string name="role_passenger">Passenger</string>
     <string name="role_passenger_desc">For launch, trawler, and river boat travelers</string>
+    <string name="route_two_nodes_only">Direct river channel (Origin &amp; Destination only)</string>
     <string name="samples">Samples</string>
     <string name="search_menu_title">Search</string>
     <string name="searchbar_scrolling_view_behavior" translatable="false">
@@ -2349,19 +2366,29 @@
     <string name="status_online">Online (Connected)</string>
     <string name="status_pending_sync">PENDING OFFLINE QUEUE</string>
     <string name="status_synced">UPLOADED TO BIWTA</string>
+    <string name="terminal_weather_destination">Destination River Port (গন্তব্য ঘাট):</string>
+    <string name="terminal_weather_origin">Origin Launch Terminal (উৎস ঘাট):</string>
+    <string name="time_picker_title">Select Launch Departure Time</string>
     <string name="title_home">ShoreLine Dashboard</string>
     <string name="title_lifecycle_lab">Activity Lifecycle &amp; UI Lab</string>
     <string name="title_login">Sign In</string>
     <string name="title_register">Create Safety Account</string>
     <string name="title_report_history">Overload Report Queue</string>
     <string name="title_report_overload">Report Launch Overload</string>
+    <string name="toggle_waypoints_hide">▲ Hide Route Waypoint Weather (লুকান)</string>
+    <string name="toggle_waypoints_show">▼ Show All Route Waypoint Weather (রুট পয়েন্টসমূহ)</string>
     <string name="topo">Topographic</string>
     <string name="unknown">Unknown</string>
     <string name="vessel_directory_header">Registered River Launches (Room Cache)</string>
     <string name="vessel_search_subtitle">Verify official BIWTA fitness certificate before boarding</string>
     <string name="vessel_search_title">Vessel License Verification</string>
     <string name="vessel_specs_header">Official BIWTA Registry Details</string>
+    <string name="vessel_speed_format">Launch Speed: %d km/h</string>
+    <string name="weather_offline_cache_notice">Loaded from offline Room cache (%s ago)</string>
+    <string name="weather_updated_format">Updated %s • Advisory model data</string>
     <string name="welcome_prefix">Welcome, </string>
+    <string name="worst_point_safe">✓ All checkpoints report calm river waters (Risk: LOW)</string>
+    <string name="worst_point_summary_format">⚠️ Worst point on route: %1$s (%2$s • Risk: %3$s)</string>
     <string name="zxing_app_name">Barcode Scanner</string>
     <string name="zxing_button_ok">OK</string>
     <string name="zxing_msg_camera_framework_bug">Sorry, the Android camera encountered a problem. You may need to restart the device.</string>

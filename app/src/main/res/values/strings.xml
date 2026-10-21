@@ -141,4 +141,31 @@
     <string name="empty_no_reports">No Overload Reports Yet</string>
     <string name="empty_no_reports_hint">When you witness dangerous overcrowding at river ghats, document evidence here.</string>
     <string name="btn_force_sync">🔄 Sync Pending Queue Now</string>
+
+    <!-- Stage 4 Extension: Route Weather, Departure Time, & Risk Evaluation -->
+    <string name="terminal_weather_origin">Origin Launch Terminal (উৎস ঘাট):</string>
+    <string name="terminal_weather_destination">Destination River Port (গন্তব্য ঘাট):</string>
+    <string name="departure_schedule_header">Departure Schedule &amp; Speed (যাত্রার সময়)</string>
+    <string name="departure_time_label">🕒 Departure: %s (Change Time)</string>
+    <string name="vessel_speed_format">Launch Speed: %d km/h</string>
+    <string name="estimated_arrival_format">⚓ Estimated Destination Arrival: %1$s (~%2$.1f hrs voyage)</string>
+    <string name="worst_point_summary_format">⚠️ Worst point on route: %1$s (%2$s • Risk: %3$s)</string>
+    <string name="worst_point_safe">✓ All checkpoints report calm river waters (Risk: LOW)</string>
+    <string name="toggle_waypoints_show">▼ Show All Route Waypoint Weather (রুট পয়েন্টসমূহ)</string>
+    <string name="toggle_waypoints_hide">▲ Hide Route Waypoint Weather (লুকান)</string>
+    <string name="risk_safe">✓ SAFE / নিরাপদ</string>
+    <string name="risk_caution">⚠️ CAUTION / সতর্কতা</string>
+    <string name="risk_danger">⛔ HIGH RISK / ঝুঁকিপূর্ণ</string>
+    <string name="recommendation_go">✓ GO (যাত্রা নিরাপদ)</string>
+    <string name="recommendation_be_careful">⚠️ BE CAREFUL (সতর্কতার সাথে চলুন)</string>
+    <string name="recommendation_delay">⛔ DELAY TRIP (যাত্রা স্থগিত রাখুন)</string>
+    <string name="bmd_priority_notice">BMD Signals Priority</string>
+    <string name="weather_updated_format">Updated %s • Advisory model data</string>
+    <string name="weather_offline_cache_notice">Loaded from offline Room cache (%s ago)</string>
+    <string name="time_picker_title">Select Launch Departure Time</string>
+    <string name="date_picker_title">Select Voyage Date</string>
+    <string name="notice_departure_past_clamped">Past departure time adjusted to next upcoming forecast hour.</string>
+    <string name="notice_departure_future_clamped">Forecast model available up to 7 days ahead.</string>
+    <string name="route_two_nodes_only">Direct river channel (Origin &amp; Destination only)</string>
 </resources>
+

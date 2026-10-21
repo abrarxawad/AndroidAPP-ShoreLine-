@@ -141,4 +141,31 @@
     <string name="empty_no_reports">এখনও কোনো অভিযোগ দায়ের করা হয়নি</string>
     <string name="empty_no_reports_hint">ঘাট বা লঞ্চে ঝুঁকিপূর্ণ অতিরিক্ত যাত্রী দেখলে এখানে ছবিসহ অভিযোগ দিন।</string>
     <string name="btn_force_sync">🔄 এখনই অফলাইন অভিযোগ আপলোড করুন</string>
+
+    <!-- Stage 4 Extension: Route Weather, Departure Time, & Risk Evaluation (Bangla) -->
+    <string name="terminal_weather_origin">উৎস লঞ্চ টার্মিনাল:</string>
+    <string name="terminal_weather_destination">গন্তব্য নদী বন্দর:</string>
+    <string name="departure_schedule_header">যাত্রার সময়সূচি ও গতি</string>
+    <string name="departure_time_label">🕒 যাত্রার সময়: %s (পরিবর্তন করুন)</string>
+    <string name="vessel_speed_format">লঞ্চের গতি: %d কিমি/ঘণ্টা</string>
+    <string name="estimated_arrival_format">⚓ গন্তব্যে পৌঁছানোর সম্ভাব্য সময়: %1$s (~%2$.1f ঘণ্টা যাত্রা)</string>
+    <string name="worst_point_summary_format">⚠️ রুটের সবচেয়ে ঝুঁকিপূর্ণ পয়েন্ট: %1$s (%2$s • ঝুঁকি: %3$s)</string>
+    <string name="worst_point_safe">✓ সব চেকপয়েন্টে নদী শান্ত ও অনুকূল রয়েছে (ঝুঁকি: নিরাপদ)</string>
+    <string name="toggle_waypoints_show">▼ সব রুট পয়েন্টের আবহাওয়া দেখুন</string>
+    <string name="toggle_waypoints_hide">▲ রুট পয়েন্টের আবহাওয়া লুকান</string>
+    <string name="risk_safe">✓ নিরাপদ</string>
+    <string name="risk_caution">⚠️ সতর্কতা</string>
+    <string name="risk_danger">⛔ ঝুঁকিপূর্ণ</string>
+    <string name="recommendation_go">✓ নিরাপদ (যাত্রা করা যায়)</string>
+    <string name="recommendation_be_careful">⚠️ সতর্ক থাকুন (ধীরে চলুন)</string>
+    <string name="recommendation_delay">⛔ যাত্রা স্থগিত রাখুন (ঝুঁকিপূর্ণ)</string>
+    <string name="bmd_priority_notice">বিএমডি সতর্ক সংকেত সর্বোচ্চ অগ্রাধিকার</string>
+    <string name="weather_updated_format">হালনাগাদ: %s • পূর্বাভাস মডেল তথ্য</string>
+    <string name="weather_offline_cache_notice">অফলাইন রুম ক্যাশ থেকে প্রদর্শিত (%s আগে)</string>
+    <string name="time_picker_title">লঞ্চ ছাড়ার সময় নির্বাচন করুন</string>
+    <string name="date_picker_title">যাত্রার তারিখ নির্বাচন করুন</string>
+    <string name="notice_departure_past_clamped">অতীতের সময়কে পরবর্তী পূর্বাভাস ঘণ্টায় সমন্বয় করা হয়েছে।</string>
+    <string name="notice_departure_future_clamped">আবহাওয়া পূর্বাভাস সর্বোচ্চ ৭ দিন পর্যন্ত বিদ্যমান।</string>
+    <string name="route_two_nodes_only">সরাসরি নদী চ্যানেল (শুধু উৎস ও গন্তব্য)</string>
 </resources>
+

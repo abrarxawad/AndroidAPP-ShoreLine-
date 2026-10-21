@@ -35,6 +35,9 @@
     <color name="text_secondary_muted">#475569</color>
     <color name="status_safe_text">#1B5E20</color>
     <color name="status_safe_bg">#E8F5E9</color>
+    <color name="status_warning_text">#BF360C</color>
+    <color name="status_warning_bg">#FFF8E1</color>
     <color name="status_danger_text">#B71C1C</color>
+    <color name="status_danger_bg">#FFEBEE</color>
     <color name="status_flagged_bg">#FFEBEE</color>
 </resources>

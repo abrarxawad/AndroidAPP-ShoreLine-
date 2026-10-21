@@ -161,6 +161,19 @@
             android:label="@string/title_report_history"
             android:parentActivityName=".ui.home.HomeActivity" />
 
+        <!-- Stage 4: Safe River Route & Interactive Map Screens -->
+        <activity
+            android:name=".ui.route.SafeRouteActivity"
+            android:exported="false"
+            android:label="@string/nav_safe_route"
+            android:parentActivityName=".ui.home.HomeActivity" />
+
+        <activity
+            android:name=".ui.map.RiverMapActivity"
+            android:exported="false"
+            android:label="Interactive River Route"
+            android:parentActivityName=".ui.route.SafeRouteActivity" />
+
         <!-- SYLLABUS: FileProvider for secure photo capture URI exposure -->
         <provider
             android:name="androidx.core.content.FileProvider"

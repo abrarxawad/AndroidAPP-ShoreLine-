@@ -9,6 +9,7 @@
     <color name="ripple_light">#33FFFFFF</color>
     <color name="secondary_safety_orange">#E65100</color>
     <color name="secondary_variant_amber">#FF8F00</color>
+    <color name="status_danger_bg">#FFEBEE</color>
     <color name="status_danger_red">#C62828</color>
     <color name="status_danger_text">#B71C1C</color>
     <color name="status_flagged_bg">#FFEBEE</color>
@@ -17,6 +18,8 @@
     <color name="status_safe_text">#1B5E20</color>
     <color name="status_sos_crimson">#B71C1C</color>
     <color name="status_warning_amber">#F57F17</color>
+    <color name="status_warning_bg">#FFF8E1</color>
+    <color name="status_warning_text">#BF360C</color>
     <color name="surface_card_border">#E2E8F0</color>
     <color name="surface_white">#FFFFFF</color>
     <color name="text_on_primary">#FFFFFF</color>
@@ -55,6 +58,7 @@
     <string name="app_tagline">Offline-First River Safety Net</string>
     <string name="badge_admin">AUTHORITY (ADMIN)</string>
     <string name="badge_passenger">PASSENGER</string>
+    <string name="bmd_priority_notice">BMD Signals Priority</string>
     <string name="btn_force_sync">🔄 Sync Pending Queue Now</string>
     <string name="btn_guest_admin">Demo BIWTA Inspector (Admin)</string>
     <string name="btn_guest_passenger">Demo Passenger Mode (Instant)</string>
@@ -71,10 +75,14 @@
     <string formatted="false" name="crowd_critical">CRITICAL OVERLOAD (> 100%)</string>
     <string formatted="false" name="crowd_moderate">Crowded (75% - 100%)</string>
     <string formatted="false" name="crowd_normal">Safe (&lt; 75%)</string>
+    <string name="date_picker_title">Select Voyage Date</string>
+    <string name="departure_schedule_header">Departure Schedule &amp; Speed (যাত্রার সময়)</string>
+    <string name="departure_time_label">🕒 Departure: %s (Change Time)</string>
     <string name="empty_no_reports">No Overload Reports Yet</string>
     <string name="empty_no_reports_hint">When you witness dangerous overcrowding at river ghats, document evidence here.</string>
     <string name="empty_no_vessels">No Vessels Found</string>
     <string name="empty_no_vessels_hint">Try searching by launch name or registration number</string>
+    <string name="estimated_arrival_format">⚓ Estimated Destination Arrival: %1$s (~%2$.1f hrs voyage)</string>
     <string formatted="false" name="gauge_interactive_hint">Custom Canvas View: Green (&lt;75%), Amber (75-100%), Red (>100% Overload)</string>
     <string name="gauge_section_title">Live Passenger Capacity Gauge</string>
     <string name="gcm_defaultSenderId" translatable="false">123456789012</string>
@@ -131,36 +139,55 @@
     <string name="nav_safety_guides_desc">Offline CPR, drowning &amp; lifejacket guides</string>
     <string name="nav_vessel_check">Vessel Verification</string>
     <string name="nav_vessel_check_desc">Scan QR or check boat fitness &amp; capacity</string>
+    <string name="notice_departure_future_clamped">Forecast model available up to 7 days ahead.</string>
+    <string name="notice_departure_past_clamped">Past departure time adjusted to next upcoming forecast hour.</string>
     <string name="offline_queue_banner">OFFLINE QUEUE ACTIVE: Mid-river signal is weak. Report is saved locally in Room and will automatically upload via WorkManager when network returns.</string>
     <string name="photo_header">Deck Photo Evidence (Compressed &lt; 200KB)</string>
     <string name="project_id" translatable="false">shoreline-bd-safety</string>
     <string name="prompt_has_account">Already registered? Sign In</string>
     <string name="prompt_no_account">Don\'t have an account? Register</string>
+    <string name="recommendation_be_careful">⚠️ BE CAREFUL (সতর্কতার সাথে চলুন)</string>
+    <string name="recommendation_delay">⛔ DELAY TRIP (যাত্রা স্থগিত রাখুন)</string>
+    <string name="recommendation_go">✓ GO (যাত্রা নিরাপদ)</string>
     <string name="report_crowd_header">Observed Overcrowding Severity</string>
     <string name="report_submitted_offline">Saved to Offline Queue! Will auto-sync in background.</string>
     <string name="report_submitted_online">Report uploaded to Port Authority server!</string>
     <string name="report_vessel_label">Target Vessel Registration</string>
+    <string name="risk_caution">⚠️ CAUTION / সতর্কতা</string>
+    <string name="risk_danger">⛔ HIGH RISK / ঝুঁকিপূর্ণ</string>
+    <string name="risk_safe">✓ SAFE / নিরাপদ</string>
     <string name="role_admin">Authority / Inspector</string>
     <string name="role_admin_desc">BIWTA river police &amp; port safety officials</string>
     <string name="role_passenger">Passenger</string>
     <string name="role_passenger_desc">For launch, trawler, and river boat travelers</string>
+    <string name="route_two_nodes_only">Direct river channel (Origin &amp; Destination only)</string>
     <string name="splash_loading">Initializing offline security protocols…</string>
     <string name="splash_version">Version 1.0.0 (Award Edition)</string>
     <string name="status_offline">Offline Mode (Using Local Cache)</string>
     <string name="status_online">Online (Connected)</string>
     <string name="status_pending_sync">PENDING OFFLINE QUEUE</string>
     <string name="status_synced">UPLOADED TO BIWTA</string>
+    <string name="terminal_weather_destination">Destination River Port (গন্তব্য ঘাট):</string>
+    <string name="terminal_weather_origin">Origin Launch Terminal (উৎস ঘাট):</string>
+    <string name="time_picker_title">Select Launch Departure Time</string>
     <string name="title_home">ShoreLine Dashboard</string>
     <string name="title_lifecycle_lab">Activity Lifecycle &amp; UI Lab</string>
     <string name="title_login">Sign In</string>
     <string name="title_register">Create Safety Account</string>
     <string name="title_report_history">Overload Report Queue</string>
     <string name="title_report_overload">Report Launch Overload</string>
+    <string name="toggle_waypoints_hide">▲ Hide Route Waypoint Weather (লুকান)</string>
+    <string name="toggle_waypoints_show">▼ Show All Route Waypoint Weather (রুট পয়েন্টসমূহ)</string>
     <string name="vessel_directory_header">Registered River Launches (Room Cache)</string>
     <string name="vessel_search_subtitle">Verify official BIWTA fitness certificate before boarding</string>
     <string name="vessel_search_title">Vessel License Verification</string>
     <string name="vessel_specs_header">Official BIWTA Registry Details</string>
+    <string name="vessel_speed_format">Launch Speed: %d km/h</string>
+    <string name="weather_offline_cache_notice">Loaded from offline Room cache (%s ago)</string>
+    <string name="weather_updated_format">Updated %s • Advisory model data</string>
     <string name="welcome_prefix">Welcome, </string>
+    <string name="worst_point_safe">✓ All checkpoints report calm river waters (Risk: LOW)</string>
+    <string name="worst_point_summary_format">⚠️ Worst point on route: %1$s (%2$s • Risk: %3$s)</string>
     <style name="Theme.ShoreLine" parent="Theme.MaterialComponents.Light.NoActionBar">
         
         <item name="colorPrimary">@color/primary_maritime</item>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYLLABUS: XML Manual Parsing - Comprehensive Bangladesh River Network with Dense Riverbed Curves -->
+<river_network>
+    <ghats>
+        <ghat id="G01" name="Dhaka (Sadarghat)" river="Buriganga" lat="23.7045" lon="90.4131" division="Dhaka" />
+        <ghat id="G02" name="Chandpur (Molhead Ghat)" river="Padma-Meghna" lat="23.2321" lon="90.6473" division="Chittagong" />
+        <ghat id="G03" name="Barisal (River Port)" river="Kirtankhola" lat="22.7058" lon="90.3705" division="Barisal" />
+        <ghat id="G04" name="Bhola (Ilisha Ghat)" river="Meghna-Tetulia" lat="22.7584" lon="90.6725" division="Barisal" />
+        <ghat id="G05" name="Patuakhali (Launch Ghat)" river="Laukathi" lat="22.3596" lon="90.3297" division="Barisal" />
+        <ghat id="G06" name="Khulna (Rupsha Ghat)" river="Rupsha" lat="22.8098" lon="89.5644" division="Khulna" />
+        <ghat id="G07" name="Mongla Port (Sundarbans)" river="Pasur" lat="22.4833" lon="89.6000" division="Khulna" />
+        <ghat id="G08" name="Hatiya Island (Nalchira)" river="Coastal Estuary" lat="22.3667" lon="91.1333" division="Chittagong" />
+    </ghats>
+
+    <routes>
+        <!-- R01: Dhaka <-> Chandpur via Buriganga, Dhaleshwari, and Upper Meghna riverbeds -->
+        <route id="R01" from="G01" to="G02" distanceKm="65.0" baseTimeMinutes="150" hazard="MODERATE" channelType="RIVER_CONFLUENCE">
+            <waypoint lat="23.6930" lon="90.4180" />
+            <waypoint lat="23.6780" lon="90.4320" />
+            <waypoint lat="23.6600" lon="90.4500" />
+            <waypoint lat="23.6420" lon="90.4780" />
+            <waypoint lat="23.6200" lon="90.5050" />
+            <waypoint lat="23.6010" lon="90.5250" />
+            <waypoint lat="23.5700" lon="90.5360" />
+            <waypoint lat="23.5480" lon="90.5520" />
+            <waypoint lat="23.5300" lon="90.5850" />
+            <waypoint lat="23.5080" lon="90.6250" />
+            <waypoint lat="23.4600" lon="90.6200" />
+            <waypoint lat="23.4000" lon="90.6180" />
+            <waypoint lat="23.3500" lon="90.6280" />
+            <waypoint lat="23.2900" lon="90.6380" />
+            <waypoint lat="23.2550" lon="90.6430" />
+        </route>
+
+        <!-- R02: Chandpur <-> Barisal via Lower Meghna, Mehendiganj, and Kirtankhola riverbeds -->
+        <route id="R02" from="G02" to="G03" distanceKm="75.0" baseTimeMinutes="180" hazard="MODERATE" channelType="WIDE_RIVER">
+            <waypoint lat="23.1800" lon="90.6460" />
+            <waypoint lat="23.1200" lon="90.6420" />
+            <waypoint lat="23.0500" lon="90.6350" />
+            <waypoint lat="22.9800" lon="90.6150" />
+            <waypoint lat="22.9200" lon="90.5700" />
+            <waypoint lat="22.8750" lon="90.5200" />
+            <waypoint lat="22.8400" lon="90.4750" />
+            <waypoint lat="22.8050" lon="90.4400" />
+            <waypoint lat="22.7750" lon="90.4150" />
+            <waypoint lat="22.7450" lon="90.3950" />
+            <waypoint lat="22.7200" lon="90.3800" />
+        </route>
+
+        <!-- R03: Chandpur <-> Bhola Ilisha via Lower Meghna Estuary -->
+        <route id="R03" from="G02" to="G04" distanceKm="50.0" baseTimeMinutes="120" hazard="HIGH_WIND_ZONE" channelType="ESTUARY_CROSSING">
+            <waypoint lat="23.1500" lon="90.6480" />
+            <waypoint lat="23.0500" lon="90.6520" />
+            <waypoint lat="22.9500" lon="90.6580" />
+            <waypoint lat="22.8600" lon="90.6650" />
+            <waypoint lat="22.8000" lon="90.6700" />
+        </route>
+
+        <!-- R04: Barisal <-> Bhola Ilisha via Kirtankhola, Arial Khan, Mehendiganj, and North Meghna curves -->
+        <route id="R04" from="G03" to="G04" distanceKm="48.0" baseTimeMinutes="115" hazard="LOW" channelType="SHELTERED_INLAND">
+            <waypoint lat="22.7200" lon="90.3800" />
+            <waypoint lat="22.7450" lon="90.3950" />
+            <waypoint lat="22.7750" lon="90.4150" />
+            <waypoint lat="22.8050" lon="90.4400" />
+            <waypoint lat="22.8350" lon="90.4850" />
+            <waypoint lat="22.8550" lon="90.5450" />
+            <waypoint lat="22.8650" lon="90.6050" />
+            <waypoint lat="22.8400" lon="90.6450" />
+            <waypoint lat="22.8000" lon="90.6680" />
+        </route>
+
+        <!-- R05: Barisal <-> Patuakhali via Kirtankhola, Nalchity, Sugandha, Bakerganj, and Laukathi rivers -->
+        <route id="R05" from="G03" to="G05" distanceKm="45.0" baseTimeMinutes="110" hazard="LOW" channelType="INLAND_RIVER">
+            <waypoint lat="22.6850" lon="90.3680" />
+            <waypoint lat="22.6580" lon="90.3550" />
+            <waypoint lat="22.6320" lon="90.3300" />
+            <waypoint lat="22.6050" lon="90.3100" />
+            <waypoint lat="22.5680" lon="90.3120" />
+            <waypoint lat="22.5350" lon="90.3320" />
+            <waypoint lat="22.4900" lon="90.3450" />
+            <waypoint lat="22.4450" lon="90.3420" />
+            <waypoint lat="22.4100" lon="90.3350" />
+            <waypoint lat="22.3800" lon="90.3320" />
+        </route>
+
+        <!-- R06: Khulna <-> Mongla Port via Rupsha, Kazibacha, and Pasur deepwater riverbeds -->
+        <route id="R06" from="G06" to="G07" distanceKm="48.0" baseTimeMinutes="115" hazard="LOW" channelType="TIDAL_CREEK">
+            <waypoint lat="22.7750" lon="89.5660" />
+            <waypoint lat="22.7400" lon="89.5690" />
+            <waypoint lat="22.7050" lon="89.5720" />
+            <waypoint lat="22.6650" lon="89.5760" />
+            <waypoint lat="22.6200" lon="89.5820" />
+            <waypoint lat="22.5750" lon="89.5880" />
+            <waypoint lat="22.5300" lon="89.5940" />
+        </route>
+
+        <!-- R07: Barisal <-> Khulna via historical Gabkhan Canal / Rocket Steamer inland waterway -->
+        <route id="R07" from="G03" to="G06" distanceKm="110.0" baseTimeMinutes="270" hazard="LOW" channelType="INTER_DISTRICT_CANAL">
+            <waypoint lat="22.6850" lon="90.3250" />
+            <waypoint lat="22.6620" lon="90.2600" />
+            <waypoint lat="22.6450" lon="90.2000" />
+            <waypoint lat="22.6380" lon="90.1500" />
+            <waypoint lat="22.6280" lon="90.1000" />
+            <waypoint lat="22.6220" lon="90.0600" />
+            <waypoint lat="22.6100" lon="90.0200" />
+            <waypoint lat="22.5850" lon="89.9700" />
+            <waypoint lat="22.5950" lon="89.9200" />
+            <waypoint lat="22.6200" lon="89.8700" />
+            <waypoint lat="22.6480" lon="89.8250" />
+            <waypoint lat="22.6800" lon="89.7800" />
+            <waypoint lat="22.7150" lon="89.7200" />
+            <waypoint lat="22.7550" lon="89.6500" />
+            <waypoint lat="22.7850" lon="89.5950" />
+            <waypoint lat="22.8050" lon="89.5750" />
+        </route>
+
+        <!-- R08: Bhola <-> Hatiya Island via coastal Lower Meghna estuary -->
+        <route id="R08" from="G04" to="G08" distanceKm="60.0" baseTimeMinutes="160" hazard="COASTAL_SURGE" channelType="OPEN_BAY_ESTUARY">
+            <waypoint lat="22.7100" lon="90.7000" />
+            <waypoint lat="22.6400" lon="90.7350" />
+            <waypoint lat="22.5700" lon="90.7850" />
+            <waypoint lat="22.5000" lon="90.8500" />
+            <waypoint lat="22.4450" lon="90.9350" />
+            <waypoint lat="22.4100" lon="91.0300" />
+            <waypoint lat="22.3850" lon="91.0900" />
+        </route>
+
+        <!-- R09: Mongla Port <-> Barisal via Baleshwar River and Gabkhan Canal Corridor -->
+        <route id="R09" from="G07" to="G03" distanceKm="95.0" baseTimeMinutes="230" hazard="LOW" channelType="INTER_DISTRICT_CANAL">
+            <waypoint lat="22.4600" lon="89.6350" />
+            <waypoint lat="22.4450" lon="89.7000" />
+            <waypoint lat="22.4300" lon="89.7700" />
+            <waypoint lat="22.4150" lon="89.8500" />
+            <waypoint lat="22.4700" lon="89.8700" />
+            <waypoint lat="22.5400" lon="89.8850" />
+            <waypoint lat="22.5850" lon="89.9700" />
+            <waypoint lat="22.6100" lon="90.0200" />
+            <waypoint lat="22.6220" lon="90.0600" />
+            <waypoint lat="22.6280" lon="90.1000" />
+            <waypoint lat="22.6450" lon="90.2000" />
+            <waypoint lat="22.6620" lon="90.2600" />
+            <waypoint lat="22.6850" lon="90.3250" />
+        </route>
+
+        <!-- R10: Patuakhali <-> Bhola Ilisha via Laukathi, Pandab, and North Meghna Channel -->
+        <route id="R10" from="G05" to="G04" distanceKm="68.0" baseTimeMinutes="165" hazard="LOW" channelType="SHELTERED_INLAND">
+            <waypoint lat="22.3800" lon="90.3320" />
+            <waypoint lat="22.4100" lon="90.3350" />
+            <waypoint lat="22.4900" lon="90.3450" />
+            <waypoint lat="22.5350" lon="90.3800" />
+            <waypoint lat="22.6100" lon="90.4600" />
+            <waypoint lat="22.7000" lon="90.5200" />
+            <waypoint lat="22.8050" lon="90.4400" />
+            <waypoint lat="22.8350" lon="90.4850" />
+            <waypoint lat="22.8650" lon="90.6050" />
+            <waypoint lat="22.8400" lon="90.6450" />
+            <waypoint lat="22.8000" lon="90.6680" />
+        </route>
+    </routes>
+</river_network>

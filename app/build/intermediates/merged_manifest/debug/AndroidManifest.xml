@@ -192,6 +192,18 @@
             android:label="@string/title_report_history"
             android:parentActivityName="com.shoreline.app.ui.home.HomeActivity" />
 
+        <!-- Stage 4: Safe River Route & Interactive Map Screens -->
+        <activity
+            android:name="com.shoreline.app.ui.route.SafeRouteActivity"
+            android:exported="false"
+            android:label="@string/nav_safe_route"
+            android:parentActivityName="com.shoreline.app.ui.home.HomeActivity" />
+        <activity
+            android:name="com.shoreline.app.ui.map.RiverMapActivity"
+            android:exported="false"
+            android:label="Interactive River Route"
+            android:parentActivityName="com.shoreline.app.ui.route.SafeRouteActivity" />
+
         <!-- SYLLABUS: FileProvider for secure photo capture URI exposure -->
         <provider
             android:name="androidx.core.content.FileProvider"
