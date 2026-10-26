@@ -53,8 +53,16 @@ public class SessionManager {
         return pref.getString(KEY_FULL_NAME, "Passenger");
     }
 
+    public String getUserName() {
+        return getFullName();
+    }
+
     public String getPhoneNumber() {
         return pref.getString(KEY_PHONE, "");
+    }
+
+    public String getUserPhone() {
+        return getPhoneNumber();
     }
 
     public String getUserRole() {

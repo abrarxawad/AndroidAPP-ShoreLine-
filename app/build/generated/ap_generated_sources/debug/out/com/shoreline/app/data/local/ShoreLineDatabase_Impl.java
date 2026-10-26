@@ -17,6 +17,8 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 import androidx.sqlite.db.SupportSQLiteOpenHelper;
 import androidx.sqlite.db.SupportSQLiteOpenHelper.Callback;
 import androidx.sqlite.db.SupportSQLiteOpenHelper.Configuration;
+import com.shoreline.app.data.local.dao.JourneyDao;
+import com.shoreline.app.data.local.dao.JourneyDao_Impl;
 import com.shoreline.app.data.local.dao.NodeWeatherDao;
 import com.shoreline.app.data.local.dao.NodeWeatherDao_Impl;
 import com.shoreline.app.data.local.dao.ReportDao;
@@ -50,9 +52,11 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
 
   private volatile NodeWeatherDao _nodeWeatherDao;
 
+  private volatile JourneyDao _journeyDao;
+
   @Override
   protected SupportSQLiteOpenHelper createOpenHelper(DatabaseConfiguration configuration) {
-    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(2) {
+    final SupportSQLiteOpenHelper.Callback _openCallback = new RoomOpenHelper(configuration, new RoomOpenHelper.Delegate(3) {
       @Override
       public void createAllTables(SupportSQLiteDatabase _db) {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `users` (`user_id` TEXT NOT NULL, `email` TEXT, `full_name` TEXT, `phone_number` TEXT, `role` TEXT, `emergency_contact` TEXT, `created_at` INTEGER NOT NULL, PRIMARY KEY(`user_id`))");
@@ -64,8 +68,11 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
         _db.execSQL("CREATE TABLE IF NOT EXISTS `node_weather` (`nodeId` TEXT NOT NULL, `nodeName` TEXT NOT NULL, `forecastTime` TEXT NOT NULL, `tempC` REAL NOT NULL, `windKmh` REAL NOT NULL, `gustKmh` REAL NOT NULL, `rainMm` REAL NOT NULL, `weatherCode` INTEGER NOT NULL, `waveHeightM` REAL, `fetchedAt` INTEGER NOT NULL, `riskLevel` INTEGER NOT NULL, `riskMultiplier` REAL NOT NULL, PRIMARY KEY(`nodeId`, `forecastTime`))");
         _db.execSQL("CREATE INDEX IF NOT EXISTS `index_node_weather_nodeId` ON `node_weather` (`nodeId`)");
         _db.execSQL("CREATE INDEX IF NOT EXISTS `index_node_weather_fetchedAt` ON `node_weather` (`fetchedAt`)");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `active_journeys` (`journeyCode` TEXT NOT NULL, `passengerId` TEXT, `passengerName` TEXT, `passengerPhone` TEXT, `emergencyContactPhone` TEXT, `vesselName` TEXT, `originGhatId` TEXT, `originGhatName` TEXT, `destGhatId` TEXT, `destGhatName` TEXT, `startedAt` INTEGER NOT NULL, `lastUpdatedAt` INTEGER NOT NULL, `status` TEXT, `currentLatitude` REAL NOT NULL, `currentLongitude` REAL NOT NULL, `currentSpeedKmh` REAL NOT NULL, `totalDistanceKm` REAL NOT NULL, `nearestGhatName` TEXT, `isSynced` INTEGER NOT NULL, PRIMARY KEY(`journeyCode`))");
+        _db.execSQL("CREATE TABLE IF NOT EXISTS `journey_breadcrumbs` (`id` INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL, `journeyCode` TEXT NOT NULL, `latitude` REAL NOT NULL, `longitude` REAL NOT NULL, `speedKmh` REAL NOT NULL, `timestamp` INTEGER NOT NULL, `isSynced` INTEGER NOT NULL)");
+        _db.execSQL("CREATE INDEX IF NOT EXISTS `index_journey_breadcrumbs_journeyCode` ON `journey_breadcrumbs` (`journeyCode`)");
         _db.execSQL("CREATE TABLE IF NOT EXISTS room_master_table (id INTEGER PRIMARY KEY,identity_hash TEXT)");
-        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, 'd05eb12b072906980b7f50284fe4aed9')");
+        _db.execSQL("INSERT OR REPLACE INTO room_master_table (id,identity_hash) VALUES(42, '7841aa2398e5dccfa064a40e2c620591')");
       }
 
       @Override
@@ -75,6 +82,8 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
         _db.execSQL("DROP TABLE IF EXISTS `overload_reports`");
         _db.execSQL("DROP TABLE IF EXISTS `sos_signals`");
         _db.execSQL("DROP TABLE IF EXISTS `node_weather`");
+        _db.execSQL("DROP TABLE IF EXISTS `active_journeys`");
+        _db.execSQL("DROP TABLE IF EXISTS `journey_breadcrumbs`");
         if (mCallbacks != null) {
           for (int _i = 0, _size = mCallbacks.size(); _i < _size; _i++) {
             mCallbacks.get(_i).onDestructiveMigration(_db);
@@ -220,9 +229,56 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
                   + " Expected:\n" + _infoNodeWeather + "\n"
                   + " Found:\n" + _existingNodeWeather);
         }
+        final HashMap<String, TableInfo.Column> _columnsActiveJourneys = new HashMap<String, TableInfo.Column>(19);
+        _columnsActiveJourneys.put("journeyCode", new TableInfo.Column("journeyCode", "TEXT", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("passengerId", new TableInfo.Column("passengerId", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("passengerName", new TableInfo.Column("passengerName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("passengerPhone", new TableInfo.Column("passengerPhone", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("emergencyContactPhone", new TableInfo.Column("emergencyContactPhone", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("vesselName", new TableInfo.Column("vesselName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("originGhatId", new TableInfo.Column("originGhatId", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("originGhatName", new TableInfo.Column("originGhatName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("destGhatId", new TableInfo.Column("destGhatId", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("destGhatName", new TableInfo.Column("destGhatName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("startedAt", new TableInfo.Column("startedAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("lastUpdatedAt", new TableInfo.Column("lastUpdatedAt", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("status", new TableInfo.Column("status", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("currentLatitude", new TableInfo.Column("currentLatitude", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("currentLongitude", new TableInfo.Column("currentLongitude", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("currentSpeedKmh", new TableInfo.Column("currentSpeedKmh", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("totalDistanceKm", new TableInfo.Column("totalDistanceKm", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("nearestGhatName", new TableInfo.Column("nearestGhatName", "TEXT", false, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsActiveJourneys.put("isSynced", new TableInfo.Column("isSynced", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysActiveJourneys = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesActiveJourneys = new HashSet<TableInfo.Index>(0);
+        final TableInfo _infoActiveJourneys = new TableInfo("active_journeys", _columnsActiveJourneys, _foreignKeysActiveJourneys, _indicesActiveJourneys);
+        final TableInfo _existingActiveJourneys = TableInfo.read(_db, "active_journeys");
+        if (! _infoActiveJourneys.equals(_existingActiveJourneys)) {
+          return new RoomOpenHelper.ValidationResult(false, "active_journeys(com.shoreline.app.data.local.entity.ActiveJourneyEntity).\n"
+                  + " Expected:\n" + _infoActiveJourneys + "\n"
+                  + " Found:\n" + _existingActiveJourneys);
+        }
+        final HashMap<String, TableInfo.Column> _columnsJourneyBreadcrumbs = new HashMap<String, TableInfo.Column>(7);
+        _columnsJourneyBreadcrumbs.put("id", new TableInfo.Column("id", "INTEGER", true, 1, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsJourneyBreadcrumbs.put("journeyCode", new TableInfo.Column("journeyCode", "TEXT", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsJourneyBreadcrumbs.put("latitude", new TableInfo.Column("latitude", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsJourneyBreadcrumbs.put("longitude", new TableInfo.Column("longitude", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsJourneyBreadcrumbs.put("speedKmh", new TableInfo.Column("speedKmh", "REAL", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsJourneyBreadcrumbs.put("timestamp", new TableInfo.Column("timestamp", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        _columnsJourneyBreadcrumbs.put("isSynced", new TableInfo.Column("isSynced", "INTEGER", true, 0, null, TableInfo.CREATED_FROM_ENTITY));
+        final HashSet<TableInfo.ForeignKey> _foreignKeysJourneyBreadcrumbs = new HashSet<TableInfo.ForeignKey>(0);
+        final HashSet<TableInfo.Index> _indicesJourneyBreadcrumbs = new HashSet<TableInfo.Index>(1);
+        _indicesJourneyBreadcrumbs.add(new TableInfo.Index("index_journey_breadcrumbs_journeyCode", false, Arrays.asList("journeyCode"), Arrays.asList("ASC")));
+        final TableInfo _infoJourneyBreadcrumbs = new TableInfo("journey_breadcrumbs", _columnsJourneyBreadcrumbs, _foreignKeysJourneyBreadcrumbs, _indicesJourneyBreadcrumbs);
+        final TableInfo _existingJourneyBreadcrumbs = TableInfo.read(_db, "journey_breadcrumbs");
+        if (! _infoJourneyBreadcrumbs.equals(_existingJourneyBreadcrumbs)) {
+          return new RoomOpenHelper.ValidationResult(false, "journey_breadcrumbs(com.shoreline.app.data.local.entity.JourneyBreadcrumbEntity).\n"
+                  + " Expected:\n" + _infoJourneyBreadcrumbs + "\n"
+                  + " Found:\n" + _existingJourneyBreadcrumbs);
+        }
         return new RoomOpenHelper.ValidationResult(true, null);
       }
-    }, "d05eb12b072906980b7f50284fe4aed9", "43c88d5dff8d8962e6fb9c6845f5b265");
+    }, "7841aa2398e5dccfa064a40e2c620591", "0b88a7c43d5fa0723b67f3f1f62825f8");
     final SupportSQLiteOpenHelper.Configuration _sqliteConfig = SupportSQLiteOpenHelper.Configuration.builder(configuration.context)
         .name(configuration.name)
         .callback(_openCallback)
@@ -235,7 +291,7 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
   protected InvalidationTracker createInvalidationTracker() {
     final HashMap<String, String> _shadowTablesMap = new HashMap<String, String>(0);
     HashMap<String, Set<String>> _viewTables = new HashMap<String, Set<String>>(0);
-    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "users","vessels","overload_reports","sos_signals","node_weather");
+    return new InvalidationTracker(this, _shadowTablesMap, _viewTables, "users","vessels","overload_reports","sos_signals","node_weather","active_journeys","journey_breadcrumbs");
   }
 
   @Override
@@ -249,6 +305,8 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
       _db.execSQL("DELETE FROM `overload_reports`");
       _db.execSQL("DELETE FROM `sos_signals`");
       _db.execSQL("DELETE FROM `node_weather`");
+      _db.execSQL("DELETE FROM `active_journeys`");
+      _db.execSQL("DELETE FROM `journey_breadcrumbs`");
       super.setTransactionSuccessful();
     } finally {
       super.endTransaction();
@@ -267,6 +325,7 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
     _typeConvertersMap.put(ReportDao.class, ReportDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(SosDao.class, SosDao_Impl.getRequiredConverters());
     _typeConvertersMap.put(NodeWeatherDao.class, NodeWeatherDao_Impl.getRequiredConverters());
+    _typeConvertersMap.put(JourneyDao.class, JourneyDao_Impl.getRequiredConverters());
     return _typeConvertersMap;
   }
 
@@ -348,6 +407,20 @@ public final class ShoreLineDatabase_Impl extends ShoreLineDatabase {
           _nodeWeatherDao = new NodeWeatherDao_Impl(this);
         }
         return _nodeWeatherDao;
+      }
+    }
+  }
+
+  @Override
+  public JourneyDao journeyDao() {
+    if (_journeyDao != null) {
+      return _journeyDao;
+    } else {
+      synchronized(this) {
+        if(_journeyDao == null) {
+          _journeyDao = new JourneyDao_Impl(this);
+        }
+        return _journeyDao;
       }
     }
   }

@@ -8,11 +8,14 @@ import androidx.room.RoomDatabase;
 import androidx.room.TypeConverters;
 
 import com.shoreline.app.data.local.converter.DateConverter;
+import com.shoreline.app.data.local.dao.JourneyDao;
 import com.shoreline.app.data.local.dao.NodeWeatherDao;
 import com.shoreline.app.data.local.dao.ReportDao;
 import com.shoreline.app.data.local.dao.SosDao;
 import com.shoreline.app.data.local.dao.UserDao;
 import com.shoreline.app.data.local.dao.VesselDao;
+import com.shoreline.app.data.local.entity.ActiveJourneyEntity;
+import com.shoreline.app.data.local.entity.JourneyBreadcrumbEntity;
 import com.shoreline.app.data.local.entity.NodeWeatherEntity;
 import com.shoreline.app.data.local.entity.OverloadReportEntity;
 import com.shoreline.app.data.local.entity.SosSignalEntity;
@@ -37,9 +40,11 @@ import java.util.concurrent.Executors;
                 VesselEntity.class,
                 OverloadReportEntity.class,
                 SosSignalEntity.class,
-                NodeWeatherEntity.class
+                NodeWeatherEntity.class,
+                ActiveJourneyEntity.class,
+                JourneyBreadcrumbEntity.class
         },
-        version = 2,
+        version = 3,
         exportSchema = false
 )
 @TypeConverters({DateConverter.class})
@@ -58,6 +63,7 @@ public abstract class ShoreLineDatabase extends RoomDatabase {
     public abstract ReportDao reportDao();
     public abstract SosDao sosDao();
     public abstract NodeWeatherDao nodeWeatherDao();
+    public abstract JourneyDao journeyDao();
 
     /**
      * SYLLABUS: Double-Checked Locking Singleton Pattern

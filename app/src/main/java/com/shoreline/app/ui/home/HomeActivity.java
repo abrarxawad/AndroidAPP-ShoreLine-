@@ -81,8 +81,10 @@ public class HomeActivity extends BaseActivity {
         });
 
         // Feature 4: Family Tracker (Stage 5)
-        binding.cardFamilyTracker.setOnClickListener(v ->
-                showSnackbar(binding.getRoot(), "Family Journey Tracker: Ready for Stage 5 (Live GPS Service)"));
+        binding.cardFamilyTracker.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, com.shoreline.app.ui.tracker.FamilyTrackerActivity.class);
+            startActivity(intent);
+        });
 
         // Feature 5: Offline SOS Beacon (Stage 6)
         binding.cardOfflineSos.setOnClickListener(v ->

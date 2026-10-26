@@ -204,6 +204,21 @@
             android:label="Interactive River Route"
             android:parentActivityName="com.shoreline.app.ui.route.SafeRouteActivity" />
 
+        <!-- Stage 5: Family Journey Tracker Activity -->
+        <activity
+            android:name="com.shoreline.app.ui.tracker.FamilyTrackerActivity"
+            android:exported="false"
+            android:label="@string/nav_family_tracker"
+            android:parentActivityName="com.shoreline.app.ui.home.HomeActivity"
+            android:windowSoftInputMode="adjustPan" />
+
+        <!-- Stage 5: Foreground & Bound Service for Live GPS Telemetry -->
+        <service
+            android:name="com.shoreline.app.service.JourneyTrackingService"
+            android:enabled="true"
+            android:exported="false"
+            android:foregroundServiceType="location" />
+
         <!-- SYLLABUS: FileProvider for secure photo capture URI exposure -->
         <provider
             android:name="androidx.core.content.FileProvider"
