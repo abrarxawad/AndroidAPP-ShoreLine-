@@ -198,7 +198,30 @@
     <string name="tracker_copy_success">ট্র্যাকিং কোড কপি করা হয়েছে!</string>
     <string name="tracker_share_message">শোরলাইন অ্যাপে আমার নদীযাত্রা লাইভ ট্র্যাক করুন। কোড: %s (শোরলাইন অ্যাপ খুলুন -> স্বজন ট্র্যাকিং)</string>
     <string name="tracker_error_empty_code">দয়া করে একটি সঠিক ৬ অক্ষরের কোড লিখুন</string>
-    <string name="tracker_error_not_found">এই কোডে কোনো সক্রিয় নৌযাত্রা পাওয়া যায়নি: %s</string>
+    <string name="tracker_error_not_found">%s কোডের কোনো সক্রিয় যাত্রা পাওয়া যায়নি</string>
     <string name="tracker_perm_required">লাইভ ট্র্যাকিংয়ের জন্য জিপিএস পারমিশন প্রয়োজন</string>
+
+    <!-- Stage 6: Offline SOS Distress Beacon, Nearby Connections, & Implicit Intents (Bangla) -->
+    <string name="sos_beacon_title">টাওয়ারহীন জরুরি বিপৎসংকেত (SOS)</string>
+    <string name="sos_beacon_subtitle">মোবাইল নেটওয়ার্ক ছাড়া ব্লুটুথ ও ওয়াইফাই দিয়ে নিকটবর্তী লঞ্চ ও ট্রলারে বিপদ বার্তা পাঠান।</string>
+    <string name="sos_emergency_type_label">বিপদের ধরন নির্বাচন করুন:</string>
+    <string name="sos_type_capsizing">🌊 ডুবে যাওয়ার ঝুঁকি</string>
+    <string name="sos_type_engine">⚙️ ইঞ্জিন বিকল</string>
+    <string name="sos_type_medical">🚑 জরুরি চিকিৎসা</string>
+    <string name="sos_type_storm">🏴‍☠️ ঝড় / নিরাপত্তা ঝুঁকি</string>
+    <string name="sos_btn_broadcast">🚨 বিপৎসংকেত সম্প্রচার করুন</string>
+    <string name="sos_status_idle">বিপৎসংকেত পাঠানোর জন্য প্রস্তুত</string>
+    <string name="sos_radar_title">লাইভ নদী রাডার ও নিকটবর্তী নৌযান</string>
+    <string name="sos_radar_subtitle">নদীতে কাছাকাছি নৌযান ও বিপদ সংকেত পর্যবেক্ষণ করছে।</string>
+    <string name="sos_fallback_title">জরুরি উদ্ধারকারী নম্বর ও এসএমএস</string>
+    <string name="sos_fallback_subtitle">মোবাইল সিগন্যাল পাওয়া গেলে সরাসরি কল বা এসএমএস করুন।</string>
+    <string name="sos_btn_biwta">📞 বিআইডব্লিউটিএ (১৬১০৭)</string>
+    <string name="sos_btn_999">📞 জাতীয় জরুরি সেবা (৯৯৯)</string>
+    <string name="sos_btn_sms">✉️ স্বজনকে এসএমএস</string>
+    <string name="sos_btn_share">📤 লোকেশন শেয়ার</string>
+    <string name="sos_inbox_title">প্রাপ্ত জরুরি বিপৎসংকেত</string>
+    <string name="sos_inbox_empty">নিকটবর্তী নদীতে কোনো বিপৎসংকেত নেই।</string>
+    <string name="sos_broadcast_success">🚨 বিপৎসংকেত সফলভাবে %d টি নৌযানে পৌঁছেছে।</string>
+    <string name="sos_demo_simulated">⚡ ট্রলার \'এফভি মেঘনা রানী\' থেকে আগত বিপৎসংকেত সিমুলেশন সম্পন্ন!</string>
 </resources>
 

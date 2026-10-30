@@ -87,8 +87,10 @@ public class HomeActivity extends BaseActivity {
         });
 
         // Feature 5: Offline SOS Beacon (Stage 6)
-        binding.cardOfflineSos.setOnClickListener(v ->
-                showSnackbar(binding.getRoot(), "Offline SOS Beacon: Ready for Stage 6 (Nearby Mesh Relay)"));
+        binding.cardOfflineSos.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, com.shoreline.app.ui.sos.OfflineSosActivity.class);
+            startActivity(intent);
+        });
 
         // Feature 6: Safety Guides (Stage 8)
         binding.cardSafetyGuides.setOnClickListener(v ->

@@ -2358,6 +2358,27 @@
     <string description="Title of the side sheet&apos;s accessibility pane that is spoken by TalkBack when the side sheet appears on screen. [CHAR_LIMIT=NONE]" name="side_sheet_accessibility_pane_title">Side Sheet</string>
     <string name="side_sheet_behavior" translatable="false">com.google.android.material.sidesheet.SideSheetBehavior</string>
     <string name="snapshot">Snapshot</string>
+    <string name="sos_beacon_subtitle">Transmits over Bluetooth &amp; Wi-Fi Direct to nearby trawlers and river launches without internet.</string>
+    <string name="sos_beacon_title">Offline Distress SOS Beacon</string>
+    <string name="sos_broadcast_success">🚨 SOS Beacon transmitted! Reached %d peer vessels in range.</string>
+    <string name="sos_btn_999">📞 National Police (999)</string>
+    <string name="sos_btn_biwta">📞 BIWTA Rescue (16107)</string>
+    <string name="sos_btn_broadcast">🚨 TRANSMIT DISTRESS BEACON</string>
+    <string name="sos_btn_share">📤 Share Distress Sheet</string>
+    <string name="sos_btn_sms">✉️ Send SOS SMS</string>
+    <string name="sos_demo_simulated">⚡ Simulated incoming Mayday beacon from trawler \'FV Meghna Rani\'!</string>
+    <string name="sos_emergency_type_label">Select Emergency Nature (বিপদের ধরন):</string>
+    <string name="sos_fallback_subtitle">Trigger system dialers and SMS if cellular towers are reachable.</string>
+    <string name="sos_fallback_title">Emergency Direct Dialers &amp; SMS</string>
+    <string name="sos_inbox_empty">No emergency distress beacons in your water sector.</string>
+    <string name="sos_inbox_title">Received Mayday Signals (প্রাপ্ত বিপৎসংকেত)</string>
+    <string name="sos_radar_subtitle">Scans nearby water reaches for passing vessels and distress halos.</string>
+    <string name="sos_radar_title">Live Waterway Radar &amp; Peer Vessels</string>
+    <string name="sos_status_idle">Ready to broadcast distress signal</string>
+    <string name="sos_type_capsizing">🌊 Capsizing / Sinking</string>
+    <string name="sos_type_engine">⚙️ Engine Failure</string>
+    <string name="sos_type_medical">🚑 Medical Emergency</string>
+    <string name="sos_type_storm">🏴‍☠️ Storm / Security</string>
     <string name="splash_loading">Initializing offline security protocols…</string>
     <string name="splash_version">Version 1.0.0 (Award Edition)</string>
     <string name="states">States</string>
@@ -2390,7 +2411,7 @@
     <string name="tracker_copy_success">Tracking code copied to clipboard!</string>
     <string name="tracker_dest_label">Destination River Port (গন্তব্য ঘাট):</string>
     <string name="tracker_error_empty_code">Please enter a valid 6-character code</string>
-    <string name="tracker_error_not_found">No active river journey found for code: %s</string>
+    <string name="tracker_error_not_found">No active journey found with code: %s</string>
     <string name="tracker_metric_distance">Distance</string>
     <string name="tracker_metric_near">Nearest Ghat</string>
     <string name="tracker_metric_speed">Speed</string>

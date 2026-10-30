@@ -189,6 +189,22 @@
             android:exported="false"
             android:foregroundServiceType="location" />
 
+        <!-- Stage 6: Offline SOS Distress Beacon Screen -->
+        <activity
+            android:name=".ui.sos.OfflineSosActivity"
+            android:exported="false"
+            android:label="@string/nav_offline_sos"
+            android:parentActivityName=".ui.home.HomeActivity" />
+
+        <!-- Stage 6: SOS Alert BroadcastReceiver for custom broadcast -->
+        <receiver
+            android:name=".receiver.SosAlertReceiver"
+            android:exported="false">
+            <intent-filter>
+                <action android:name="com.shoreline.app.action.SOS_BEACON_DETECTED" />
+            </intent-filter>
+        </receiver>
+
         <!-- SYLLABUS: FileProvider for secure photo capture URI exposure -->
         <provider
             android:name="androidx.core.content.FileProvider"

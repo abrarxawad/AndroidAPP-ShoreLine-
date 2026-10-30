@@ -198,7 +198,30 @@
     <string name="tracker_copy_success">Tracking code copied to clipboard!</string>
     <string name="tracker_share_message">Track my river launch live on ShoreLine with code: %s (Download ShoreLine -> Track Family Launch)</string>
     <string name="tracker_error_empty_code">Please enter a valid 6-character code</string>
-    <string name="tracker_error_not_found">No active river journey found for code: %s</string>
+    <string name="tracker_error_not_found">No active journey found with code: %s</string>
     <string name="tracker_perm_required">High-accuracy GPS permission is required to track river voyage</string>
+
+    <!-- Stage 6: Offline SOS Distress Beacon, Nearby Connections, & Implicit Intents -->
+    <string name="sos_beacon_title">Offline Distress SOS Beacon</string>
+    <string name="sos_beacon_subtitle">Transmits over Bluetooth &amp; Wi-Fi Direct to nearby trawlers and river launches without internet.</string>
+    <string name="sos_emergency_type_label">Select Emergency Nature (বিপদের ধরন):</string>
+    <string name="sos_type_capsizing">🌊 Capsizing / Sinking</string>
+    <string name="sos_type_engine">⚙️ Engine Failure</string>
+    <string name="sos_type_medical">🚑 Medical Emergency</string>
+    <string name="sos_type_storm">🏴‍☠️ Storm / Security</string>
+    <string name="sos_btn_broadcast">🚨 TRANSMIT DISTRESS BEACON</string>
+    <string name="sos_status_idle">Ready to broadcast distress signal</string>
+    <string name="sos_radar_title">Live Waterway Radar &amp; Peer Vessels</string>
+    <string name="sos_radar_subtitle">Scans nearby water reaches for passing vessels and distress halos.</string>
+    <string name="sos_fallback_title">Emergency Direct Dialers &amp; SMS</string>
+    <string name="sos_fallback_subtitle">Trigger system dialers and SMS if cellular towers are reachable.</string>
+    <string name="sos_btn_biwta">📞 BIWTA Rescue (16107)</string>
+    <string name="sos_btn_999">📞 National Police (999)</string>
+    <string name="sos_btn_sms">✉️ Send SOS SMS</string>
+    <string name="sos_btn_share">📤 Share Distress Sheet</string>
+    <string name="sos_inbox_title">Received Mayday Signals (প্রাপ্ত বিপৎসংকেত)</string>
+    <string name="sos_inbox_empty">No emergency distress beacons in your water sector.</string>
+    <string name="sos_broadcast_success">🚨 SOS Beacon transmitted! Reached %d peer vessels in range.</string>
+    <string name="sos_demo_simulated">⚡ Simulated incoming Mayday beacon from trawler \'FV Meghna Rani\'!</string>
 </resources>
 

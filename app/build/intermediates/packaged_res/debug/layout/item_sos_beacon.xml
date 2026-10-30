@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYLLABUS: RecyclerView Item Layout - Received Distress Beacon in Mesh -->
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/Widget.ShoreLine.Card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="@dimen/spacing_small"
+    app:cardBackgroundColor="@color/status_danger_bg"
+    app:strokeColor="@color/status_danger_red"
+    app:strokeWidth="1.5dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="@dimen/spacing_medium">
+
+        <!-- Header: Vessel Name & Hop Badge -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/tvBeaconVessel"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-black"
+                android:textColor="@color/status_danger_text"
+                android:textSize="15sp"
+                tools:text="🚨 MV Karnaphuli 4" />
+
+            <TextView
+                android:id="@+id/tvBeaconHopBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_chip_flagged"
+                android:fontFamily="sans-serif-bold"
+                android:paddingStart="@dimen/spacing_small"
+                android:paddingTop="3dp"
+                android:paddingEnd="@dimen/spacing_small"
+                android:paddingBottom="3dp"
+                android:textColor="@color/status_danger_text"
+                android:textSize="11sp"
+                tools:text="HOP 1 OF 3 (MESH)" />
+        </LinearLayout>
+
+        <!-- Sender & Emergency Type -->
+        <TextView
+            android:id="@+id/tvBeaconSenderInfo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:textColor="@color/text_primary_navy"
+            android:textSize="13sp"
+            tools:text="Passenger: Rahim Uddin (01712345678)" />
+
+        <TextView
+            android:id="@+id/tvBeaconCoordinates"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/text_secondary_muted"
+            android:textSize="12sp"
+            tools:text="GPS: 23.2321° N, 90.6473° E • Received 2 mins ago" />
+
+        <!-- Quick Actions Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="@dimen/spacing_small"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCallSender"
+                style="@style/Widget.ShoreLine.Button.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_weight="1"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:text="📞 Call Vessel"
+                android:textSize="12sp" />
+
+            <Button
+                android:id="@+id/btnOpenLocation"
+                style="@style/Widget.ShoreLine.Button.Secondary"
+                android:layout_width="0dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_weight="1"
+                android:minHeight="0dp"
+                android:padding="0dp"
+                android:text="🗺️ Open Map"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+</com.google.android.material.card.MaterialCardView>
