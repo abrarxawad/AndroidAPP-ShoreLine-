@@ -221,6 +221,56 @@
             android:label="@string/nav_admin_dashboard"
             android:parentActivityName=".ui.home.HomeActivity" />
 
+        <!-- Stage 8: Safety Guides, Emergency Directory & ContentProvider Inspector -->
+        <!-- SYLLABUS: Activity with ContentResolver consumer & Evaluator Receiver Lab -->
+        <activity
+            android:name=".ui.guide.SafetyGuidesActivity"
+            android:exported="false"
+            android:label="@string/nav_safety_guides"
+            android:parentActivityName=".ui.home.HomeActivity" />
+
+        <!-- Stage 8: ShoreLine ContentProvider for River Safety & Emergency Directory -->
+        <!-- SYLLABUS: Custom ContentProvider with UriMatcher, CRUD, and MIME types -->
+        <provider
+            android:name=".provider.ShoreLineContentProvider"
+            android:authorities="com.shoreline.app.provider"
+            android:exported="true" />
+
+        <!-- Stage 8: System BroadcastReceivers (Boot, Battery, Connectivity) -->
+        <!-- SYLLABUS: RECEIVE_BOOT_COMPLETED receiver -->
+        <receiver
+            android:name=".receiver.BootReceiver"
+            android:enabled="true"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.QUICKBOOT_POWERON" />
+                <action android:name="com.shoreline.app.action.SIMULATE_BOOT" />
+            </intent-filter>
+        </receiver>
+
+        <!-- SYLLABUS: Battery state changes receiver -->
+        <receiver
+            android:name=".receiver.BatteryStateReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BATTERY_LOW" />
+                <action android:name="android.intent.action.BATTERY_OKAY" />
+                <action android:name="android.intent.action.ACTION_POWER_CONNECTED" />
+                <action android:name="com.shoreline.app.action.SIMULATE_BATTERY_LOW" />
+            </intent-filter>
+        </receiver>
+
+        <!-- SYLLABUS: Network connectivity transition receiver -->
+        <receiver
+            android:name=".receiver.ConnectivityReceiver"
+            android:exported="true">
+            <intent-filter>
+                <action android:name="android.net.conn.CONNECTIVITY_CHANGE" />
+                <action android:name="com.shoreline.app.action.SIMULATE_NETWORK_RESTORE" />
+            </intent-filter>
+        </receiver>
+
         <!-- SYLLABUS: FileProvider for secure photo capture URI exposure -->
         <provider
             android:name="androidx.core.content.FileProvider"

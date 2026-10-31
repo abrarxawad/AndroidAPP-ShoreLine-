@@ -53,12 +53,12 @@ This document tracks every syllabus concept required by the university curriculu
 | **Foreground Service** | Journey GPS tracking, notification channel, `FOREGROUND_SERVICE_LOCATION` | Stage 5 | [`JourneyTrackingService.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/service/JourneyTrackingService.java) | **COMPLETED** |
 | **Bound Service** | Binder IPC interface communicating live journey stats to Activity | Stage 5 | [`JourneyTrackingService.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/service/JourneyTrackingService.java) | **COMPLETED** |
 | **WorkManager** | Guaranteed background offline queue sync with network constraints | Stage 3 | [`ReportUploadWorker.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/worker/ReportUploadWorker.java) | **COMPLETED** |
-| **Boot BroadcastReceiver** | `RECEIVE_BOOT_COMPLETED` receiver to restore tracking / offline alerts | Stage 8 | `app/src/main/java/.../receiver/BootReceiver.java` | Stage 8 |
-| **Connectivity Receiver** | Dynamic NetworkCallback / BroadcastReceiver for immediate auto-sync | Stage 3/8 | `app/src/main/java/.../receiver/ConnectivityReceiver.java` | Stage 3/8 |
+| **Boot BroadcastReceiver** | `RECEIVE_BOOT_COMPLETED` receiver to restore tracking / offline alerts | Stage 8 | [`BootReceiver.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/receiver/BootReceiver.java) | **COMPLETED** |
+| **Connectivity Receiver** | Dynamic NetworkCallback / BroadcastReceiver for immediate auto-sync | Stage 8 | [`ConnectivityReceiver.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/receiver/ConnectivityReceiver.java) | **COMPLETED** |
 | **Custom Broadcast** | In-app package-restricted broadcast for SOS detection updates | Stage 6 | [`SosAlertReceiver.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/receiver/SosAlertReceiver.java) | **COMPLETED** |
-| **Battery Broadcast** | `ACTION_BATTERY_LOW` warning during active river journey | Stage 8 | `app/src/main/java/.../receiver/BatteryStateReceiver.java` | Stage 8 |
-| **Custom ContentProvider** | Exposes saved river routes & emergency contacts (`query`, `insert`, etc.) | Stage 8 | `app/src/main/java/.../provider/ShoreLineContentProvider.java` | Stage 8 |
-| **ContentProvider Consumer**| Consumer activity demonstrating `ContentResolver` queries | Stage 8 | `app/src/main/java/.../ui/provider/ProviderTestActivity.java` | Stage 8 |
+| **Battery Broadcast** | `ACTION_BATTERY_LOW` warning during active river journey | Stage 8 | [`BatteryStateReceiver.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/receiver/BatteryStateReceiver.java) | **COMPLETED** |
+| **Custom ContentProvider** | Exposes saved river routes & emergency contacts (`query`, `insert`, etc.) | Stage 8 | [`ShoreLineContentProvider.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/provider/ShoreLineContentProvider.java) | **COMPLETED** |
+| **ContentProvider Consumer**| Consumer activity demonstrating `ContentResolver` queries & Inspector | Stage 8 | [`SafetyGuidesActivity.java`](file:///c:/Users/Abrar%20Jawad/OneDrive/Desktop/AndroidApk/app/src/main/java/com/shoreline/app/ui/guide/SafetyGuidesActivity.java) | **COMPLETED** |
 
 ---
 

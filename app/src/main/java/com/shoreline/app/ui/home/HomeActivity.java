@@ -90,9 +90,12 @@ public class HomeActivity extends BaseActivity {
             startActivity(intent);
         });
 
-        // Feature 6: Safety Guides (Stage 8)
-        binding.cardSafetyGuides.setOnClickListener(v ->
-                showSnackbar(binding.getRoot(), "Emergency Guides: Ready for Stage 8 (Offline Water Rescue)"));
+        // Feature 6: Safety Guides & Emergency Directory (Stage 8)
+        // SYLLABUS: ContentProvider Consumer, ContentResolver, System Broadcasts
+        binding.cardSafetyGuides.setOnClickListener(v -> {
+            Intent intent = new Intent(HomeActivity.this, com.shoreline.app.ui.guide.SafetyGuidesActivity.class);
+            startActivity(intent);
+        });
 
         // Feature 7: Admin Dashboard (Stage 7)
         View.OnClickListener adminClickListener = v -> {
