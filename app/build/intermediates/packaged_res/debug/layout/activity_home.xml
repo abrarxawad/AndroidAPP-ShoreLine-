@@ -97,19 +97,20 @@
                         android:textSize="12sp"
                         tools:text="PASSENGER" />
 
-                    <View
-                        android:layout_width="0dp"
-                        android:layout_height="1dp"
-                        android:layout_weight="1" />
-
-                    <!-- Emergency Contact Display -->
-                    <TextView
-                        android:id="@+id/tvEmergencyContact"
+                    <!-- Quick Admin Portal Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnQuickAdminPortal"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                         android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:textColor="@color/text_tertiary"
-                        android:textSize="12sp"
-                        tools:text="Kin SOS: +8801700000000" />
+                        android:layout_height="38dp"
+                        android:layout_marginStart="8dp"
+                        android:text="🛡️ Admin Portal"
+                        android:textSize="11sp"
+                        android:textColor="@color/primary_maritime"
+                        app:strokeColor="@color/primary_maritime"
+                        app:strokeWidth="1.2dp"
+                        android:paddingTop="0dp"
+                        android:paddingBottom="0dp" />
                 </LinearLayout>
             </LinearLayout>
         </com.google.android.material.card.MaterialCardView>
@@ -338,7 +339,10 @@
             android:layout_height="wrap_content"
             android:layout_marginBottom="@dimen/spacing_small"
             android:clickable="true"
-            android:focusable="true">
+            android:focusable="true"
+            app:strokeColor="@color/primary_maritime"
+            app:strokeWidth="2dp"
+            app:cardBackgroundColor="@color/surface_white">
 
             <LinearLayout
                 android:layout_width="match_parent"
@@ -346,19 +350,40 @@
                 android:orientation="vertical"
                 android:padding="@dimen/spacing_medium">
 
-                <TextView
-                    android:layout_width="wrap_content"
+                <LinearLayout
+                    android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-bold"
-                    android:text="@string/nav_admin_dashboard"
-                    android:textColor="@color/status_warning_amber"
-                    android:textSize="@dimen/text_body_primary" />
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:fontFamily="sans-serif-black"
+                        android:text="🛡️ Port Authority Dashboard"
+                        android:textColor="@color/primary_maritime"
+                        android:textSize="@dimen/text_body_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/bg_chip_flagged"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:paddingTop="2dp"
+                        android:paddingBottom="2dp"
+                        android:text="BIWTA"
+                        android:textColor="@color/status_danger_text"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
 
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="2dp"
-                    android:text="@string/nav_admin_dashboard_desc"
+                    android:layout_marginTop="4dp"
+                    android:text="BIWTA river command center: live distress inbox, swipe actions, BMD storm signal broadcast &amp; hotspot mapping."
                     android:textColor="@color/text_secondary"
                     android:textSize="@dimen/text_caption" />
             </LinearLayout>

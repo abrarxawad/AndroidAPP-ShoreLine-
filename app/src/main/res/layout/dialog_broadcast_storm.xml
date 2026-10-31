@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYLLABUS: Material Dialog for BIWTA Storm Warning Signal Broadcast -->
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:padding="20dp"
+    android:background="@color/surface_white">
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="📢 Broadcast BMD Storm Warning"
+        android:textSize="18sp"
+        android:textStyle="bold"
+        android:textColor="@color/primary_maritime" />
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Transmits warning across Firebase Cloud Messaging (FCM) topic 'storm_alerts' to all passenger vessels."
+        android:textSize="12sp"
+        android:textColor="@color/text_secondary" />
+
+    <!-- Signal Level Dropdown -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilSignalLevel"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:hint="BMD Warning Signal Level (সংকেত স্তর)">
+
+        <AutoCompleteTextView
+            android:id="@+id/actvSignalLevel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:text="Signal 3: Local Cautionary (স্থানীয় সতর্ক সংকেত)" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Affected River Sector Dropdown -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilRiverBasin"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Affected Waterway Basin (নদী অববাহিকা)">
+
+        <AutoCompleteTextView
+            android:id="@+id/actvRiverBasin"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="none"
+            android:text="Padma-Meghna Confluence (চাঁদপুর মোহনা)" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Advisory Body Message -->
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/tilAdvisoryBody"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:hint="Advisory Directive / Emergency Note">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etAdvisoryBody"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="textMultiLine"
+            android:minLines="2"
+            android:text="Gusts exceeding 45 km/h. Small launches below 65ft prohibited from mid-river navigation." />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <!-- Checkbox for Local Test Broadcast -->
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/cbLocalNotification"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:checked="true"
+        android:text="Fire instant heads-up notification on this phone (Evaluator Test)"
+        android:textColor="@color/text_primary"
+        android:textSize="12sp" />
+
+</LinearLayout>
+

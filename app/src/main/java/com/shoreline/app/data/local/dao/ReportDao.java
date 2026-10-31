@@ -28,6 +28,9 @@ public interface ReportDao {
     @Query("SELECT * FROM overload_reports ORDER BY timestamp DESC")
     List<OverloadReportEntity> getAllReports();
 
+    @Query("SELECT COUNT(*) FROM overload_reports")
+    int getTotalReportCount();
+
     @Query("SELECT * FROM overload_reports WHERE vessel_id = :vesselId ORDER BY timestamp DESC")
     List<OverloadReportEntity> getReportsForVessel(String vesselId);
 }

@@ -83,6 +83,80 @@ public class RiverMapActivity extends BaseActivity {
         Intent intent = getIntent();
         if (intent == null) return;
 
+        // Check if opened for a single incident pin
+        if (intent.hasExtra("EXTRA_LATITUDE") && intent.hasExtra("EXTRA_LONGITUDE")) {
+            double lat = intent.getDoubleExtra("EXTRA_LATITUDE", 23.2321);
+            double lon = intent.getDoubleExtra("EXTRA_LONGITUDE", 90.6473);
+            String label = intent.getStringExtra("EXTRA_LABEL");
+            if (label == null) label = "Distress Incident";
+
+            binding.mapView.getOverlays().clear();
+            GeoPoint incidentPoint = new GeoPoint(lat, lon);
+            binding.mapView.getController().setZoom(14.0);
+            binding.mapView.getController().setCenter(incidentPoint);
+
+            Marker marker = new Marker(binding.mapView);
+            marker.setPosition(incidentPoint);
+            marker.setTitle("🚨 " + label);
+            marker.setSnippet(String.format(Locale.US, "GPS: %.4f° N, %.4f° E\nStatus: Immediate Rescue Needed", lat, lon));
+            marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+            binding.mapView.getOverlays().add(marker);
+            marker.showInfoWindow();
+
+            binding.tvMapRouteTitle.setText("🚨 Emergency Waterway Incident: " + label);
+            binding.tvMapStats.setText(String.format(Locale.US, "Target Coordinates: %.4f° N, %.4f° E", lat, lon));
+            binding.tvMapWeatherNotice.setText("BIWTA Rescue craft coordinates targeted.");
+            binding.mapView.invalidate();
+            return;
+        }
+
+        // Check if opened for Port Authority Hotspots overview
+        if (intent.getBooleanExtra("EXTRA_FOCUS_HOTSPOTS", false)) {
+            binding.mapView.getOverlays().clear();
+            binding.tvMapRouteTitle.setText("🗺️ Port Authority River Incident & Hotspots Map");
+            binding.tvMapStats.setText("Displaying all registered ghat confluences and active Mayday distress beacons.");
+            binding.tvMapWeatherNotice.setText("BMD storm signal sectors highlighted.");
+
+            GeoPoint centerPoint = new GeoPoint(23.2321, 90.6473); // Chandpur
+            binding.mapView.getController().setZoom(9.5);
+            binding.mapView.getController().setCenter(centerPoint);
+
+            // Add all ghats as baseline waterway nodes
+            for (GhatNode node : networkData.ghatMap.values()) {
+                GeoPoint pt = new GeoPoint(node.getLatitude(), node.getLongitude());
+                Marker marker = new Marker(binding.mapView);
+                marker.setPosition(pt);
+                marker.setTitle("⚓ " + node.getName() + " Terminal");
+                marker.setSnippet(node.getRiver() + " River • Division: " + node.getDivision());
+                marker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                binding.mapView.getOverlays().add(marker);
+            }
+
+            // Load and plot all active SOS signals from Room database
+            com.shoreline.app.data.local.ShoreLineDatabase.databaseWriteExecutor.execute(() -> {
+                List<com.shoreline.app.data.local.entity.SosSignalEntity> distressSignals =
+                        com.shoreline.app.data.local.ShoreLineDatabase.getInstance(this).sosDao().getAllSosSignals();
+
+                runOnUiThread(() -> {
+                    if (distressSignals != null) {
+                        for (com.shoreline.app.data.local.entity.SosSignalEntity sos : distressSignals) {
+                            GeoPoint pt = new GeoPoint(sos.getLatitude(), sos.getLongitude());
+                            Marker sosMarker = new Marker(binding.mapView);
+                            sosMarker.setPosition(pt);
+                            sosMarker.setTitle("🚨 " + sos.getOriginDeviceId());
+                            sosMarker.setSnippet("Sender: " + sos.getSenderName() + "\nStatus: " + sos.getStatus());
+                            sosMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                            binding.mapView.getOverlays().add(sosMarker);
+                        }
+                    }
+                    binding.mapView.invalidate();
+                });
+            });
+
+            binding.mapView.invalidate();
+            return;
+        }
+
         ArrayList<String> ghatIds = intent.getStringArrayListExtra("EXTRA_ROUTE_GHAT_IDS");
         String algo = intent.getStringExtra("EXTRA_ALGORITHM");
         double distanceKm = intent.getDoubleExtra("EXTRA_DISTANCE", 0.0);

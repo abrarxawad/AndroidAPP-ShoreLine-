@@ -27,6 +27,15 @@ public interface SosDao {
     @Query("SELECT * FROM sos_signals ORDER BY timestamp DESC")
     List<SosSignalEntity> getAllSosSignals();
 
+    @Query("UPDATE sos_signals SET status = :status WHERE sos_id = :sosId")
+    void updateStatus(String sosId, String status);
+
+    @Query("DELETE FROM sos_signals WHERE sos_id = :sosId")
+    void deleteSos(String sosId);
+
+    @Query("SELECT COUNT(*) FROM sos_signals WHERE status = 'ACTIVE'")
+    int getActiveSosCount();
+
     @Query("UPDATE sos_signals SET is_synced_to_cloud = 1 WHERE sos_id = :sosId")
     void markAsCloudSynced(String sosId);
 }

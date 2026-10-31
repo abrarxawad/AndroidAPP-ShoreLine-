@@ -28,6 +28,9 @@ public final class ActivityHomeBinding implements ViewBinding {
   public final MaterialButton btnOpenLifecycleLab;
 
   @NonNull
+  public final MaterialButton btnQuickAdminPortal;
+
+  @NonNull
   public final MaterialCardView cardAdminDashboard;
 
   @NonNull
@@ -49,9 +52,6 @@ public final class ActivityHomeBinding implements ViewBinding {
   public final MaterialCardView cardVesselCheck;
 
   @NonNull
-  public final TextView tvEmergencyContact;
-
-  @NonNull
   public final TextView tvRoleBadge;
 
   @NonNull
@@ -61,15 +61,16 @@ public final class ActivityHomeBinding implements ViewBinding {
   public final TextView tvUserName;
 
   private ActivityHomeBinding(@NonNull ScrollView rootView, @NonNull MaterialButton btnLogout,
-      @NonNull MaterialButton btnOpenLifecycleLab, @NonNull MaterialCardView cardAdminDashboard,
-      @NonNull MaterialCardView cardFamilyTracker, @NonNull MaterialCardView cardOfflineSos,
-      @NonNull MaterialCardView cardOverloadReport, @NonNull MaterialCardView cardSafeRoute,
-      @NonNull MaterialCardView cardSafetyGuides, @NonNull MaterialCardView cardVesselCheck,
-      @NonNull TextView tvEmergencyContact, @NonNull TextView tvRoleBadge,
+      @NonNull MaterialButton btnOpenLifecycleLab, @NonNull MaterialButton btnQuickAdminPortal,
+      @NonNull MaterialCardView cardAdminDashboard, @NonNull MaterialCardView cardFamilyTracker,
+      @NonNull MaterialCardView cardOfflineSos, @NonNull MaterialCardView cardOverloadReport,
+      @NonNull MaterialCardView cardSafeRoute, @NonNull MaterialCardView cardSafetyGuides,
+      @NonNull MaterialCardView cardVesselCheck, @NonNull TextView tvRoleBadge,
       @NonNull TextView tvUserEmail, @NonNull TextView tvUserName) {
     this.rootView = rootView;
     this.btnLogout = btnLogout;
     this.btnOpenLifecycleLab = btnOpenLifecycleLab;
+    this.btnQuickAdminPortal = btnQuickAdminPortal;
     this.cardAdminDashboard = cardAdminDashboard;
     this.cardFamilyTracker = cardFamilyTracker;
     this.cardOfflineSos = cardOfflineSos;
@@ -77,7 +78,6 @@ public final class ActivityHomeBinding implements ViewBinding {
     this.cardSafeRoute = cardSafeRoute;
     this.cardSafetyGuides = cardSafetyGuides;
     this.cardVesselCheck = cardVesselCheck;
-    this.tvEmergencyContact = tvEmergencyContact;
     this.tvRoleBadge = tvRoleBadge;
     this.tvUserEmail = tvUserEmail;
     this.tvUserName = tvUserName;
@@ -119,6 +119,12 @@ public final class ActivityHomeBinding implements ViewBinding {
       id = R.id.btnOpenLifecycleLab;
       MaterialButton btnOpenLifecycleLab = ViewBindings.findChildViewById(rootView, id);
       if (btnOpenLifecycleLab == null) {
+        break missingId;
+      }
+
+      id = R.id.btnQuickAdminPortal;
+      MaterialButton btnQuickAdminPortal = ViewBindings.findChildViewById(rootView, id);
+      if (btnQuickAdminPortal == null) {
         break missingId;
       }
 
@@ -164,12 +170,6 @@ public final class ActivityHomeBinding implements ViewBinding {
         break missingId;
       }
 
-      id = R.id.tvEmergencyContact;
-      TextView tvEmergencyContact = ViewBindings.findChildViewById(rootView, id);
-      if (tvEmergencyContact == null) {
-        break missingId;
-      }
-
       id = R.id.tvRoleBadge;
       TextView tvRoleBadge = ViewBindings.findChildViewById(rootView, id);
       if (tvRoleBadge == null) {
@@ -189,9 +189,9 @@ public final class ActivityHomeBinding implements ViewBinding {
       }
 
       return new ActivityHomeBinding((ScrollView) rootView, btnLogout, btnOpenLifecycleLab,
-          cardAdminDashboard, cardFamilyTracker, cardOfflineSos, cardOverloadReport, cardSafeRoute,
-          cardSafetyGuides, cardVesselCheck, tvEmergencyContact, tvRoleBadge, tvUserEmail,
-          tvUserName);
+          btnQuickAdminPortal, cardAdminDashboard, cardFamilyTracker, cardOfflineSos,
+          cardOverloadReport, cardSafeRoute, cardSafetyGuides, cardVesselCheck, tvRoleBadge,
+          tvUserEmail, tvUserName);
     }
     String missingId = rootView.getResources().getResourceName(id);
     throw new NullPointerException("Missing required view with ID: ".concat(missingId));

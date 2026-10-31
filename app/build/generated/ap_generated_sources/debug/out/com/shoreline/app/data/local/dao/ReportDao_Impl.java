@@ -294,6 +294,26 @@ public final class ReportDao_Impl implements ReportDao {
   }
 
   @Override
+  public int getTotalReportCount() {
+    final String _sql = "SELECT COUNT(*) FROM overload_reports";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _result;
+      if(_cursor.moveToFirst()) {
+        _result = _cursor.getInt(0);
+      } else {
+        _result = 0;
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
   public List<OverloadReportEntity> getReportsForVessel(final String vesselId) {
     final String _sql = "SELECT * FROM overload_reports WHERE vessel_id = ? ORDER BY timestamp DESC";
     final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 1);

@@ -2,6 +2,7 @@ package com.shoreline.app.ui.home;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
 
 import com.shoreline.app.R;
 import com.shoreline.app.databinding.ActivityHomeBinding;
@@ -49,9 +50,6 @@ public class HomeActivity extends BaseActivity {
             binding.tvRoleBadge.setText(R.string.badge_passenger);
             binding.tvRoleBadge.setTextColor(getColor(R.color.coastal_cyan));
         }
-
-        String kinInfo = "Kin SOS: " + sessionManager.getEmergencyContact();
-        binding.tvEmergencyContact.setText(kinInfo);
     }
 
     private void setupFeatureClicks() {
@@ -97,13 +95,27 @@ public class HomeActivity extends BaseActivity {
                 showSnackbar(binding.getRoot(), "Emergency Guides: Ready for Stage 8 (Offline Water Rescue)"));
 
         // Feature 7: Admin Dashboard (Stage 7)
-        binding.cardAdminDashboard.setOnClickListener(v -> {
+        View.OnClickListener adminClickListener = v -> {
             if (sessionManager.isAdmin()) {
-                showSnackbar(binding.getRoot(), "Admin Dashboard: Authorized access (Stage 7 Hotspots)");
+                Intent intent = new Intent(HomeActivity.this, com.shoreline.app.ui.admin.AdminDashboardActivity.class);
+                startActivity(intent);
             } else {
-                showSnackbar(binding.getRoot(), "Notice: Port Authority tools require BIWTA Inspector role.");
+                new androidx.appcompat.app.AlertDialog.Builder(HomeActivity.this)
+                        .setTitle("BIWTA Port Authority Portal")
+                        .setMessage("This dashboard is reserved for authorized BIWTA port inspectors and maritime patrol.\n\nFor course evaluation and project defense, would you like to activate the BIWTA Inspector Pass?")
+                        .setPositiveButton("Activate Inspector Pass", (dialog, which) -> {
+                            sessionManager.setUserRole("ADMIN");
+                            displayUserProfile();
+                            Intent intent = new Intent(HomeActivity.this, com.shoreline.app.ui.admin.AdminDashboardActivity.class);
+                            startActivity(intent);
+                        })
+                        .setNegativeButton("Cancel", null)
+                        .show();
             }
-        });
+        };
+
+        binding.cardAdminDashboard.setOnClickListener(adminClickListener);
+        binding.btnQuickAdminPortal.setOnClickListener(adminClickListener);
 
         // Syllabus requirement: Lifecycle Lab
         binding.btnOpenLifecycleLab.setOnClickListener(v -> {

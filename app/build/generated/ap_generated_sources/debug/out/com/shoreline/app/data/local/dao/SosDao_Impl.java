@@ -23,6 +23,10 @@ public final class SosDao_Impl implements SosDao {
 
   private final EntityInsertionAdapter<SosSignalEntity> __insertionAdapterOfSosSignalEntity;
 
+  private final SharedSQLiteStatement __preparedStmtOfUpdateStatus;
+
+  private final SharedSQLiteStatement __preparedStmtOfDeleteSos;
+
   private final SharedSQLiteStatement __preparedStmtOfMarkAsCloudSynced;
 
   public SosDao_Impl(RoomDatabase __db) {
@@ -70,6 +74,20 @@ public final class SosDao_Impl implements SosDao {
         stmt.bindLong(11, _tmp_1);
       }
     };
+    this.__preparedStmtOfUpdateStatus = new SharedSQLiteStatement(__db) {
+      @Override
+      public String createQuery() {
+        final String _query = "UPDATE sos_signals SET status = ? WHERE sos_id = ?";
+        return _query;
+      }
+    };
+    this.__preparedStmtOfDeleteSos = new SharedSQLiteStatement(__db) {
+      @Override
+      public String createQuery() {
+        final String _query = "DELETE FROM sos_signals WHERE sos_id = ?";
+        return _query;
+      }
+    };
     this.__preparedStmtOfMarkAsCloudSynced = new SharedSQLiteStatement(__db) {
       @Override
       public String createQuery() {
@@ -88,6 +106,52 @@ public final class SosDao_Impl implements SosDao {
       __db.setTransactionSuccessful();
     } finally {
       __db.endTransaction();
+    }
+  }
+
+  @Override
+  public void updateStatus(final String sosId, final String status) {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfUpdateStatus.acquire();
+    int _argIndex = 1;
+    if (status == null) {
+      _stmt.bindNull(_argIndex);
+    } else {
+      _stmt.bindString(_argIndex, status);
+    }
+    _argIndex = 2;
+    if (sosId == null) {
+      _stmt.bindNull(_argIndex);
+    } else {
+      _stmt.bindString(_argIndex, sosId);
+    }
+    __db.beginTransaction();
+    try {
+      _stmt.executeUpdateDelete();
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+      __preparedStmtOfUpdateStatus.release(_stmt);
+    }
+  }
+
+  @Override
+  public void deleteSos(final String sosId) {
+    __db.assertNotSuspendingTransaction();
+    final SupportSQLiteStatement _stmt = __preparedStmtOfDeleteSos.acquire();
+    int _argIndex = 1;
+    if (sosId == null) {
+      _stmt.bindNull(_argIndex);
+    } else {
+      _stmt.bindString(_argIndex, sosId);
+    }
+    __db.beginTransaction();
+    try {
+      _stmt.executeUpdateDelete();
+      __db.setTransactionSuccessful();
+    } finally {
+      __db.endTransaction();
+      __preparedStmtOfDeleteSos.release(_stmt);
     }
   }
 
@@ -340,6 +404,26 @@ public final class SosDao_Impl implements SosDao {
         _tmpIsSyncedToCloud = _tmp_1 != 0;
         _item = new SosSignalEntity(_tmpSosId,_tmpSenderName,_tmpSenderPhone,_tmpLatitude,_tmpLongitude,_tmpTimestamp,_tmpHopCount,_tmpOriginDeviceId,_tmpStatus,_tmpIsRelayed,_tmpIsSyncedToCloud);
         _result.add(_item);
+      }
+      return _result;
+    } finally {
+      _cursor.close();
+      _statement.release();
+    }
+  }
+
+  @Override
+  public int getActiveSosCount() {
+    final String _sql = "SELECT COUNT(*) FROM sos_signals WHERE status = 'ACTIVE'";
+    final RoomSQLiteQuery _statement = RoomSQLiteQuery.acquire(_sql, 0);
+    __db.assertNotSuspendingTransaction();
+    final Cursor _cursor = DBUtil.query(__db, _statement, false, null);
+    try {
+      final int _result;
+      if(_cursor.moveToFirst()) {
+        _result = _cursor.getInt(0);
+      } else {
+        _result = 0;
       }
       return _result;
     } finally {

@@ -69,6 +69,11 @@ public class SessionManager {
         return pref.getString(KEY_ROLE, "PASSENGER");
     }
 
+    public void setUserRole(String role) {
+        editor.putString(KEY_ROLE, role);
+        editor.apply();
+    }
+
     public boolean isAdmin() {
         return "ADMIN".equalsIgnoreCase(getUserRole());
     }

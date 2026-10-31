@@ -12,12 +12,24 @@
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_report.xml"
     },
     {
+        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\drawable_ic_storm.xml.flat",
+        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\drawable\\ic_storm.xml"
+    },
+    {
         "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_layout_toolbar.xml.flat",
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\layout_toolbar.xml"
     },
     {
+        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_item_admin_stat_tile.xml.flat",
+        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_admin_stat_tile.xml"
+    },
+    {
         "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_activity_register.xml.flat",
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_register.xml"
+    },
+    {
+        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_item_admin_incident.xml.flat",
+        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_admin_incident.xml"
     },
     {
         "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_activity_report_overload.xml.flat",
@@ -36,6 +48,10 @@
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_river_map.xml"
     },
     {
+        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\drawable_ic_sos.xml.flat",
+        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\drawable\\ic_sos.xml"
+    },
+    {
         "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_activity_splash.xml.flat",
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_splash.xml"
     },
@@ -44,8 +60,16 @@
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_vessel_detail.xml"
     },
     {
+        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\drawable_ic_map.xml.flat",
+        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\drawable\\ic_map.xml"
+    },
+    {
         "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\drawable_bg_chip_flagged.xml.flat",
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\drawable\\bg_chip_flagged.xml"
+    },
+    {
+        "merged": "com.shoreline.app-merged_res-44:/layout_activity_home.xml.flat",
+        "source": "com.shoreline.app-main-46:/layout/activity_home.xml"
     },
     {
         "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_item_vessel.xml.flat",
@@ -54,6 +78,14 @@
     {
         "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_item_route_node_weather.xml.flat",
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_route_node_weather.xml"
+    },
+    {
+        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\drawable_ic_vessel.xml.flat",
+        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\drawable\\ic_vessel.xml"
+    },
+    {
+        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\drawable_ic_report.xml.flat",
+        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\drawable\\ic_report.xml"
     },
     {
         "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\drawable_ic_shoreline_logo.xml.flat",
@@ -72,12 +104,16 @@
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_lifecycle_lab.xml"
     },
     {
-        "merged": "com.shoreline.app-merged_res-44:/layout_activity_offline_sos.xml.flat",
-        "source": "com.shoreline.app-main-46:/layout/activity_offline_sos.xml"
+        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_item_sos_beacon.xml.flat",
+        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_sos_beacon.xml"
     },
     {
         "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\xml_file_paths.xml.flat",
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\xml\\file_paths.xml"
+    },
+    {
+        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_dialog_broadcast_storm.xml.flat",
+        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\dialog_broadcast_storm.xml"
     },
     {
         "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\drawable_bg_chip_warning.xml.flat",
@@ -92,10 +128,6 @@
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_home.xml"
     },
     {
-        "merged": "com.shoreline.app-merged_res-44:/layout_item_sos_beacon.xml.flat",
-        "source": "com.shoreline.app-main-46:/layout/item_sos_beacon.xml"
-    },
-    {
         "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_activity_family_tracker.xml.flat",
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_family_tracker.xml"
     },
@@ -108,11 +140,19 @@
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\drawable\\bg_card_rounded.xml"
     },
     {
+        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_activity_admin_dashboard.xml.flat",
+        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_admin_dashboard.xml"
+    },
+    {
         "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_item_route_weather_warning.xml.flat",
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_route_weather_warning.xml"
     },
     {
         "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_activity_safe_route.xml.flat",
         "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_safe_route.xml"
+    },
+    {
+        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-merged_res-44:\\layout_activity_offline_sos.xml.flat",
+        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_offline_sos.xml"
     }
 ]

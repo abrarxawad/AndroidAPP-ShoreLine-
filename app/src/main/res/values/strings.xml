@@ -223,5 +223,22 @@
     <string name="sos_inbox_empty">No emergency distress beacons in your water sector.</string>
     <string name="sos_broadcast_success">🚨 SOS Beacon transmitted! Reached %d peer vessels in range.</string>
     <string name="sos_demo_simulated">⚡ Simulated incoming Mayday beacon from trawler \'FV Meghna Rani\'!</string>
+
+    <!-- Stage 7: Port Authority & BIWTA Admin Dashboard, FCM Topic Alerts -->
+    <string name="admin_dashboard_title">Port Authority Command Overview</string>
+    <string name="admin_stat_active_sos">Active SOS Signals</string>
+    <string name="admin_stat_overload_reports">Overload Reports</string>
+    <string name="admin_stat_monitored_fleet">Monitored Fleet</string>
+    <string name="admin_stat_storm_signal">BMD Warning Level</string>
+    <string name="admin_btn_broadcast_storm">📢 Broadcast Storm Signal (BMD Warning)</string>
+    <string name="admin_btn_hotspots_map">🗺️ River Hotspots Map</string>
+    <string name="admin_btn_simulate_incident">⚡ Simulate Test Incident</string>
+    <string name="admin_inbox_header">SOS Distress &amp; Incident Inbox</string>
+    <string name="admin_filter_all">All Incidents</string>
+    <string name="admin_filter_active">🚨 Active</string>
+    <string name="admin_filter_acknowledged">⏳ Acknowledged</string>
+    <string name="admin_filter_resolved">✓ Resolved</string>
+    <string name="admin_incident_resolved_toast">Incident marked as RESOLVED (Rescue Complete)</string>
+    <string name="admin_incident_ack_toast">Incident ACKNOWLEDGED. Patrol en route.</string>
 </resources>
 
