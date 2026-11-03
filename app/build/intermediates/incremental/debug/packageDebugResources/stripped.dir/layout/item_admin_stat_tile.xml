@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYLLABUS: Reusable Card Layout for GridLayoutManager Admin Command Overview -->
+<com.google.android.material.card.MaterialCardView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/cardStatTile"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="6dp"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="2dp"
+    app:strokeWidth="1dp"
+    app:strokeColor="@color/surface_card_border"
+    app:cardBackgroundColor="@color/surface_white">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="14dp">
+
+        <!-- Icon Container -->
+        <FrameLayout
+            android:id="@+id/iconContainer"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:background="@drawable/bg_card_rounded"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent">
+
+            <ImageView
+                android:id="@+id/ivTileIcon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                app:srcCompat="@drawable/ic_sos" />
+        </FrameLayout>
+
+        <!-- Big Stat Metric Value -->
+        <TextView
+            android:id="@+id/tvStatValue"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:textSize="24sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/iconContainer"
+            app:layout_constraintTop_toTopOf="@id/iconContainer"
+            tools:text="3" />
+
+        <!-- Stat Title -->
+        <TextView
+            android:id="@+id/tvStatTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:textColor="@color/text_primary"
+            app:layout_constraintTop_toBottomOf="@id/iconContainer"
+            tools:text="Active SOS Signals" />
+
+        <!-- Subtitle / Status note -->
+        <TextView
+            android:id="@+id/tvStatSubtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textSize="11sp"
+            android:textColor="@color/text_secondary"
+            app:layout_constraintTop_toBottomOf="@id/tvStatTitle"
+            tools:text="Requires immediate dispatch" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</com.google.android.material.card.MaterialCardView>
+

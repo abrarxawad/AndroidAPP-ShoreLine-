@@ -1,134 +1,118 @@
 [
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\item_sos_beacon.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_sos_beacon.xml"
-    },
-    {
         "merged": "com.shoreline.app-mergeDebugResources-43:/layout/item_rescue_guide.xml",
         "source": "com.shoreline.app-main-46:/layout/item_rescue_guide.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\item_admin_incident.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_admin_incident.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_register.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_register.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\dialog_add_emergency_contact.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\dialog_add_emergency_contact.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/item_sos_beacon.xml",
+        "source": "com.shoreline.app-main-46:/layout/item_sos_beacon.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\dialog_broadcast_storm.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\dialog_broadcast_storm.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/item_report.xml",
+        "source": "com.shoreline.app-main-46:/layout/item_report.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\item_admin_stat_tile.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_admin_stat_tile.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/item_admin_stat_tile.xml",
+        "source": "com.shoreline.app-main-46:/layout/item_admin_stat_tile.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_admin_dashboard.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_admin_dashboard.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/item_route_step.xml",
+        "source": "com.shoreline.app-main-46:/layout/item_route_step.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\item_route_step.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_route_step.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_report_history.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_report_history.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\item_route_node_weather.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_route_node_weather.xml"
-    },
-    {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_splash.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_splash.xml"
-    },
-    {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\item_route_weather_warning.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_route_weather_warning.xml"
-    },
-    {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_report_history.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_report_history.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_lifecycle_lab.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_lifecycle_lab.xml"
     },
     {
         "merged": "com.shoreline.app-mergeDebugResources-43:/layout/item_emergency_contact.xml",
         "source": "com.shoreline.app-main-46:/layout/item_emergency_contact.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_safety_guides.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_safety_guides.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_vessel_check.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_vessel_check.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\layout_toolbar.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\layout_toolbar.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_report_overload.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_report_overload.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_family_tracker.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_family_tracker.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/dialog_broadcast_storm.xml",
+        "source": "com.shoreline.app-main-46:/layout/dialog_broadcast_storm.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\item_report.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_report.xml"
-    },
-    {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_vessel_check.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_vessel_check.xml"
-    },
-    {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_river_map.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_river_map.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_river_map.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_river_map.xml"
     },
     {
         "merged": "com.shoreline.app-mergeDebugResources-43:/layout/dialog_add_emergency_contact.xml",
         "source": "com.shoreline.app-main-46:/layout/dialog_add_emergency_contact.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_safe_route.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_safe_route.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_offline_sos.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_offline_sos.xml"
     },
     {
         "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_safety_guides.xml",
         "source": "com.shoreline.app-main-46:/layout/activity_safety_guides.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_offline_sos.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_offline_sos.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/layout_terminal_weather_card.xml",
+        "source": "com.shoreline.app-main-46:/layout/layout_terminal_weather_card.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\item_emergency_contact.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_emergency_contact.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/item_vessel.xml",
+        "source": "com.shoreline.app-main-46:/layout/item_vessel.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\item_rescue_guide.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_rescue_guide.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_family_tracker.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_family_tracker.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\item_vessel.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\item_vessel.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/layout_toolbar.xml",
+        "source": "com.shoreline.app-main-46:/layout/layout_toolbar.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_lifecycle_lab.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_lifecycle_lab.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_home.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_home.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_home.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_home.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/item_admin_incident.xml",
+        "source": "com.shoreline.app-main-46:/layout/item_admin_incident.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_register.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_register.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_vessel_detail.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_vessel_detail.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_report_overload.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_report_overload.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_login.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_login.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_login.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_login.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_admin_dashboard.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_admin_dashboard.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\activity_vessel_detail.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\activity_vessel_detail.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_splash.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_splash.xml"
     },
     {
-        "merged": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-mergeDebugResources-43:\\layout\\layout_terminal_weather_card.xml",
-        "source": "C:\\Users\\Abrar Jawad\\.gradle\\daemon\\7.6.1\\com.shoreline.app-main-46:\\layout\\layout_terminal_weather_card.xml"
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/item_route_weather_warning.xml",
+        "source": "com.shoreline.app-main-46:/layout/item_route_weather_warning.xml"
+    },
+    {
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/item_route_node_weather.xml",
+        "source": "com.shoreline.app-main-46:/layout/item_route_node_weather.xml"
+    },
+    {
+        "merged": "com.shoreline.app-mergeDebugResources-43:/layout/activity_safe_route.xml",
+        "source": "com.shoreline.app-main-46:/layout/activity_safe_route.xml"
     }
 ]

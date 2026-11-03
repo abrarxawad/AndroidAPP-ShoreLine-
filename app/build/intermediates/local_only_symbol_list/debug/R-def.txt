@@ -448,6 +448,7 @@ string empty_no_reports_hint
 string empty_no_vessels
 string empty_no_vessels_hint
 string estimated_arrival_format
+string firebase_database_url
 string gauge_interactive_hint
 string gauge_section_title
 string gcm_defaultSenderId

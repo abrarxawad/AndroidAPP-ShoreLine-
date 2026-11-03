@@ -98,13 +98,14 @@
     <string name="empty_no_vessels">No Vessels Found</string>
     <string name="empty_no_vessels_hint">Try searching by launch name or registration number</string>
     <string name="estimated_arrival_format">⚓ Estimated Destination Arrival: %1$s (~%2$.1f hrs voyage)</string>
+    <string name="firebase_database_url" translatable="false">https://shoreline-safety-default-rtdb.asia-southeast1.firebasedatabase.app</string>
     <string formatted="false" name="gauge_interactive_hint">Custom Canvas View: Green (&lt;75%), Amber (75-100%), Red (>100% Overload)</string>
     <string name="gauge_section_title">Live Passenger Capacity Gauge</string>
-    <string name="gcm_defaultSenderId" translatable="false">123456789012</string>
-    <string name="google_api_key" translatable="false">AIzaSyFakeKeyForStage0BuildVerificationOnly</string>
-    <string name="google_app_id" translatable="false">1:123456789012:android:abcdef0123456789</string>
-    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyFakeKeyForStage0BuildVerificationOnly</string>
-    <string name="google_storage_bucket" translatable="false">shoreline-bd-safety.appspot.com</string>
+    <string name="gcm_defaultSenderId" translatable="false">534012607515</string>
+    <string name="google_api_key" translatable="false">AIzaSyCNXZnWa7pMx2eajfBmLE6t6Z7KbvRP9LY</string>
+    <string name="google_app_id" translatable="false">1:534012607515:android:3136f15ef3d4fd519bccbe</string>
+    <string name="google_crash_reporting_api_key" translatable="false">AIzaSyCNXZnWa7pMx2eajfBmLE6t6Z7KbvRP9LY</string>
+    <string name="google_storage_bucket" translatable="false">shoreline-safety.firebasestorage.app</string>
     <string name="gps_fetching">Acquiring high-accuracy GPS coordinates...</string>
     <string name="gps_header">GPS River Geotag (Fused Provider)</string>
     <string name="hint_passenger_count">e.g. 1200 passengers</string>
@@ -158,7 +159,7 @@
     <string name="notice_departure_past_clamped">Past departure time adjusted to next upcoming forecast hour.</string>
     <string name="offline_queue_banner">OFFLINE QUEUE ACTIVE: Mid-river signal is weak. Report is saved locally in Room and will automatically upload via WorkManager when network returns.</string>
     <string name="photo_header">Deck Photo Evidence (Compressed &lt; 200KB)</string>
-    <string name="project_id" translatable="false">shoreline-bd-safety</string>
+    <string name="project_id" translatable="false">shoreline-safety</string>
     <string name="prompt_has_account">Already registered? Sign In</string>
     <string name="prompt_no_account">Don\'t have an account? Register</string>
     <string name="recommendation_be_careful">⚠️ BE CAREFUL (সতর্কতার সাথে চলুন)</string>

@@ -56,9 +56,14 @@ public class LiveTrackingManager {
         this.journeyDao = database.journeyDao();
 
         try {
-            this.rtdbRef = FirebaseDatabase.getInstance().getReference(RTDB_JOURNEYS_NODE);
+            String rtdbUrl = "https://shoreline-safety-default-rtdb.asia-southeast1.firebasedatabase.app";
+            this.rtdbRef = FirebaseDatabase.getInstance(rtdbUrl).getReference(RTDB_JOURNEYS_NODE);
         } catch (Exception e) {
-            Log.w(TAG, "Firebase Realtime DB not initialized (using Room local persistence): " + e.getMessage());
+            try {
+                this.rtdbRef = FirebaseDatabase.getInstance().getReference(RTDB_JOURNEYS_NODE);
+            } catch (Exception ex) {
+                Log.w(TAG, "Firebase Realtime DB not initialized (using Room local persistence): " + ex.getMessage());
+            }
         }
 
         try {
@@ -125,7 +130,13 @@ public class LiveTrackingManager {
                 telemetry.put("nearestGhatName", nearestGhat);
                 telemetry.put("lastUpdatedAt", journey.getLastUpdatedAt());
 
-                rtdbRef.child(journey.getJourneyCode()).setValue(telemetry);
+                rtdbRef.child(journey.getJourneyCode()).setValue(telemetry, (error, ref) -> {
+                    if (error != null) {
+                        Log.e(TAG, "RTDB write failed: " + error.getMessage());
+                    } else {
+                        Log.d(TAG, "RTDB write successful for voyage: " + journey.getJourneyCode());
+                    }
+                });
             }
         } catch (Exception e) {
             Log.d(TAG, "Offline mid-river: Telemetry saved to local Room queue: " + e.getMessage());

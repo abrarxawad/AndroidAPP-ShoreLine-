@@ -329,6 +329,7 @@ public class SafeRouteActivity extends BaseActivity {
                 new WeatherRepository.RouteWeatherCallback() {
                     @Override
                     public void onSuccess(Map<String, NodeWeather> weatherMap, boolean isFromCache, @Nullable String statusMessage) {
+                        if (binding == null) return;
                         binding.progressBarWeather.setVisibility(View.GONE);
                         liveWeatherMap.clear();
                         liveWeatherMap.putAll(weatherMap);
@@ -341,6 +342,7 @@ public class SafeRouteActivity extends BaseActivity {
 
                     @Override
                     public void onFailure(String errorMessage, Map<String, NodeWeather> fallbackWeatherMap) {
+                        if (binding == null) return;
                         binding.progressBarWeather.setVisibility(View.GONE);
                         liveWeatherMap.clear();
                         liveWeatherMap.putAll(fallbackWeatherMap);

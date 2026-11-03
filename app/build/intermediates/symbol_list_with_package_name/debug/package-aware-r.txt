@@ -4350,6 +4350,7 @@ string fallback_menu_item_open_in_browser
 string fallback_menu_item_share_link
 string fcm_fallback_notification_channel_label
 string fiets_nl
+string firebase_database_url
 string first_fix_message
 string format_distance_feet
 string format_distance_kilometers

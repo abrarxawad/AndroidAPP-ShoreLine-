@@ -1,0 +1,246 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYLLABUS: XML Layout - Vessel Detail Screen with Custom CapacityGaugeView -->
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_light_canvas"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Toolbar -->
+        <include
+            android:id="@+id/includedToolbar"
+            layout="@layout/layout_toolbar" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
+
+            <!-- Vessel Header Card -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.ShoreLine.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_medium">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:id="@+id/tvDetailVesselName"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="@color/primary_maritime"
+                        android:textSize="@dimen/text_heading"
+                        tools:text="MV Parabat-12" />
+
+                    <TextView
+                        android:id="@+id/tvDetailRegNumber"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:fontFamily="monospace"
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="@dimen/text_body_secondary"
+                        tools:text="BIWTA Registration: M-01-2489" />
+
+                    <TextView
+                        android:id="@+id/tvDetailRoute"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/text_body_primary"
+                        tools:text="Route: Dhaka (Sadarghat) - Barisal" />
+
+                    <!-- Overload Flag Banner (If flagged) -->
+                    <TextView
+                        android:id="@+id/tvFlaggedAlert"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:background="@drawable/bg_terminal_window"
+                        android:fontFamily="sans-serif-bold"
+                        android:padding="@dimen/spacing_small"
+                        android:text="⚠️ WARNING: FLAGGED FOR CHRONIC OVERCROWDING"
+                        android:textColor="@color/status_danger_red"
+                        android:textSize="12sp"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- =========================================================== -->
+            <!-- SYLLABUS: Custom View - CapacityGaugeView Integration       -->
+            <!-- =========================================================== -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.ShoreLine.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_medium">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="@string/gauge_section_title"
+                        android:textColor="@color/text_primary"
+                        android:textSize="@dimen/text_subheading" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/gauge_interactive_hint"
+                        android:textColor="@color/text_tertiary"
+                        android:textSize="@dimen/text_caption" />
+
+                    <!-- Custom Gauge Widget -->
+                    <com.shoreline.app.ui.view.CapacityGaugeView
+                        android:id="@+id/capacityGauge"
+                        android:layout_width="match_parent"
+                        android:layout_height="220dp"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        app:gaugeStrokeWidth="26dp"
+                        app:licensedCapacity="950"
+                        app:currentLoad="540" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_micro"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="👆 Touch or drag across gauge to simulate live boarding influx"
+                        android:textColor="@color/coastal_cyan"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- BIWTA Official Credentials Card -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.ShoreLine.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_large">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="@string/vessel_specs_header"
+                        android:textColor="@color/primary_maritime"
+                        android:textSize="@dimen/text_subheading" />
+
+                    <!-- Spec 1: Licensed Capacity -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/label_licensed_capacity"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="@dimen/text_body_secondary" />
+
+                        <TextView
+                            android:id="@+id/tvDetailCapacity"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:textColor="@color/text_primary"
+                            android:textSize="@dimen/text_body_primary"
+                            tools:text="950 Persons" />
+                    </LinearLayout>
+
+                    <!-- Spec 2: Fitness Expiry -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/label_fitness_expiry"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="@dimen/text_body_secondary" />
+
+                        <TextView
+                            android:id="@+id/tvDetailFitness"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:textColor="@color/status_safe_green"
+                            android:textSize="@dimen/text_body_primary"
+                            tools:text="31 Dec 2027 (VALID)" />
+                    </LinearLayout>
+
+                    <!-- Spec 3: Community Safety Rating -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="@string/label_community_rating"
+                            android:textColor="@color/text_secondary"
+                            android:textSize="@dimen/text_body_secondary" />
+
+                        <TextView
+                            android:id="@+id/tvDetailRating"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:textColor="#F59E0B"
+                            android:textSize="@dimen/text_body_primary"
+                            tools:text="★ 4.6 / 5.0 (14 Reports)" />
+                    </LinearLayout>
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Action: Report Overcrowding Button -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnReportThisVessel"
+                style="@style/Widget.ShoreLine.Button.Secondary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="@string/btn_report_overload_action" />
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

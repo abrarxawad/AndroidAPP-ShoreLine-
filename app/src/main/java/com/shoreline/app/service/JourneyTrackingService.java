@@ -173,6 +173,9 @@ public class JourneyTrackingService extends Service {
             startForeground(NOTIFICATION_ID, notification);
         }
 
+        // Publish initial journey state to Firebase immediately so voyage node is live
+        liveTrackingManager.publishLocationUpdate(activeJourney, 0.0, 0.0, activeJourney.getNearestGhatName());
+
         startLocationUpdates();
     }
 

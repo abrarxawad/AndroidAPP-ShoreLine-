@@ -223,8 +223,12 @@ public class LifecycleLabActivity extends BaseActivity implements BaseActivity.L
         }
         if (binding != null) {
             binding.tvLifecycleLog.setText(logBuffer.toString());
-            // Auto-scroll console to bottom
-            binding.consoleScrollView.post(() -> binding.consoleScrollView.fullScroll(View.FOCUS_DOWN));
+            // Auto-scroll console to bottom safely
+            binding.consoleScrollView.post(() -> {
+                if (binding != null && binding.consoleScrollView != null) {
+                    binding.consoleScrollView.fullScroll(View.FOCUS_DOWN);
+                }
+            });
         }
     }
 

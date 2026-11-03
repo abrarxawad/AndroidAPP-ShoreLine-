@@ -1,13 +1,14 @@
 {
   "project_info": {
-    "project_number": "123456789012",
-    "project_id": "shoreline-bd-safety",
-    "storage_bucket": "shoreline-bd-safety.appspot.com"
+    "project_number": "534012607515",
+    "firebase_url": "https://shoreline-safety-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "shoreline-safety",
+    "storage_bucket": "shoreline-safety.firebasestorage.app"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:123456789012:android:abcdef0123456789",
+        "mobilesdk_app_id": "1:534012607515:android:3136f15ef3d4fd519bccbe",
         "android_client_info": {
           "package_name": "com.shoreline.app"
         }
@@ -15,7 +16,7 @@
       "oauth_client": [],
       "api_key": [
         {
-          "current_key": "AIzaSyFakeKeyForStage0BuildVerificationOnly"
+          "current_key": "AIzaSyCNXZnWa7pMx2eajfBmLE6t6Z7KbvRP9LY"
         }
       ],
       "services": {

@@ -1,0 +1,369 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYLLABUS: XML Layout - Safe River Route Planner with Route Weather (Origin, Destination, Intermediate Nodes) -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_light_canvas"
+    android:orientation="vertical">
+
+    <!-- Reusable Toolbar -->
+    <include
+        android:id="@+id/includedToolbar"
+        layout="@layout/layout_toolbar" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/spacing_medium">
+
+            <!-- Card 1: Origin & Destination River Ports -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.ShoreLine.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_small">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="Select Waterway Voyage (নৌপথ নির্বাচন)"
+                        android:textColor="@color/primary_maritime"
+                        android:textSize="@dimen/text_subheading" />
+
+                    <!-- Origin Terminal -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:text="Origin Launch Terminal (উৎস ঘাট):"
+                        android:textColor="@color/text_secondary_muted"
+                        android:textSize="12sp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerOrigin"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/bg_card_rounded"
+                        android:paddingStart="@dimen/spacing_small"
+                        android:paddingEnd="@dimen/spacing_small" />
+
+                    <!-- Destination Terminal -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:text="Destination River Port (গন্তব্য ঘাট):"
+                        android:textColor="@color/text_secondary_muted"
+                        android:textSize="12sp" />
+
+                    <Spinner
+                        android:id="@+id/spinnerDestination"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="2dp"
+                        android:background="@drawable/bg_card_rounded"
+                        android:paddingStart="@dimen/spacing_small"
+                        android:paddingEnd="@dimen/spacing_small" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 2: Departure Time & Average Vessel Speed Controls -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.ShoreLine.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_small">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-bold"
+                        android:text="Departure Schedule &amp; Speed (যাত্রার সময়)"
+                        android:textColor="@color/primary_maritime"
+                        android:textSize="@dimen/text_subheading" />
+
+                    <!-- Departure Time Picker Button -->
+                    <Button
+                        android:id="@+id/btnPickDepartureTime"
+                        style="@style/Widget.ShoreLine.Button.Secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:text="🕒 Departure: Today 14:00 (Change Time)"
+                        android:textSize="13sp" />
+
+                    <!-- Vessel Speed Controls -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvVesselSpeedLabel"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Launch Speed: 25 km/h"
+                            android:textColor="@color/text_primary_navy"
+                            android:textSize="13sp" />
+
+                        <Button
+                            android:id="@+id/btnSpeedDecrease"
+                            style="@style/Widget.ShoreLine.Button.Secondary"
+                            android:layout_width="44dp"
+                            android:layout_height="38dp"
+                            android:minWidth="0dp"
+                            android:padding="0dp"
+                            android:text="-" />
+
+                        <Button
+                            android:id="@+id/btnSpeedIncrease"
+                            style="@style/Widget.ShoreLine.Button.Secondary"
+                            android:layout_width="44dp"
+                            android:layout_height="38dp"
+                            android:layout_marginStart="6dp"
+                            android:minWidth="0dp"
+                            android:padding="0dp"
+                            android:text="+" />
+                    </LinearLayout>
+
+                    <!-- Estimated Arrival Time Display -->
+                    <TextView
+                        android:id="@+id/tvEstimatedArrival"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:textColor="@color/primary_maritime"
+                        android:textSize="12sp"
+                        tools:text="⚓ Estimated Destination Arrival: Today 19:30 (~5.5 hrs voyage)" />
+
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Loading Indicator -->
+            <ProgressBar
+                android:id="@+id/progressBarWeather"
+                style="?android:attr/progressBarStyleHorizontal"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:indeterminate="true"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <!-- Card 3: Recommendation Banner (Go / Be Careful / Delay) -->
+            <com.google.android.material.card.MaterialCardView
+                android:id="@+id/cardRecommendation"
+                style="@style/Widget.ShoreLine.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_small"
+                app:cardBackgroundColor="@color/status_safe_bg"
+                app:strokeColor="@color/status_safe_green"
+                app:strokeWidth="2dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:id="@+id/tvRecommendationTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
+                        android:textColor="@color/status_safe_text"
+                        android:textSize="18sp"
+                        tools:text="✓ GO (যাত্রা নিরাপদ)" />
+
+                    <TextView
+                        android:id="@+id/tvRecommendationDetails"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/text_primary_navy"
+                        android:textSize="13sp"
+                        tools:text="All route checkpoints report calm waters and favorable river sailing conditions." />
+
+                    <TextView
+                        android:id="@+id/tvRouteComparison"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/text_secondary_muted"
+                        android:textSize="11sp"
+                        tools:text="Standard waterway route is optimal and maintains low weather risk." />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 4: Origin Terminal Weather Card (ALWAYS VISIBLE) -->
+            <include
+                android:id="@+id/cardOriginWeather"
+                layout="@layout/layout_terminal_weather_card" />
+
+            <!-- Card 5: Destination Terminal Weather Card (ALWAYS VISIBLE) -->
+            <include
+                android:id="@+id/cardDestinationWeather"
+                layout="@layout/layout_terminal_weather_card" />
+
+            <!-- Card 6: Optional Current Location Weather Card -->
+            <include
+                android:id="@+id/cardCurrentLocationWeather"
+                layout="@layout/layout_terminal_weather_card"
+                android:visibility="gone"
+                tools:visibility="visible" />
+
+            <!-- Card 7: Route Metrics & Map Action -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.ShoreLine.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_small"
+                app:strokeColor="@color/primary_maritime">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:id="@+id/tvRouteSummaryHeader"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-bold"
+                        android:textColor="@color/primary_maritime"
+                        android:textSize="@dimen/text_subheading"
+                        tools:text="Dhaka ➔ Barisal (Dijkstra)" />
+
+                    <TextView
+                        android:id="@+id/tvRouteMetrics"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:textColor="@color/text_primary_navy"
+                        android:textSize="@dimen/text_body_primary"
+                        tools:text="Distance: 140.0 km | Est. Travel Time: 336 mins (~5.6 hrs)" />
+
+                    <TextView
+                        android:id="@+id/tvRouteWeatherNotice"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/status_safe_text"
+                        android:textSize="12sp"
+                        tools:text="✓ Weather-weighted Dijkstra route computed." />
+
+                    <Button
+                        android:id="@+id/btnOpenRiverMap"
+                        style="@style/Widget.ShoreLine.Button.Secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_medium"
+                        android:text="🗺️ Open Interactive River Map (osmdroid)" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 8: Intermediate Waypoints Weather Section -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.ShoreLine.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_small">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:padding="@dimen/spacing_medium">
+
+                    <!-- Worst Point on Route Summary Line -->
+                    <TextView
+                        android:id="@+id/tvWorstPointSummary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-bold"
+                        android:textColor="@color/status_danger_text"
+                        android:textSize="12sp"
+                        tools:text="⚠️ Worst point on route: Chandpur Confluence (Gust: 48 km/h • Risk: CAUTION)" />
+
+                    <!-- Expand/Collapse Button -->
+                    <Button
+                        android:id="@+id/btnToggleWaypoints"
+                        style="@style/Widget.ShoreLine.Button.Secondary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="▼ Show All Route Waypoint Weather (রুট পয়েন্টসমূহ)"
+                        android:textSize="12sp" />
+
+                    <!-- RecyclerView for intermediate nodes -->
+                    <androidx.recyclerview.widget.RecyclerView
+                        android:id="@+id/rvRouteNodesWeather"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/spacing_small"
+                        android:nestedScrollingEnabled="false"
+                        android:visibility="gone"
+                        tools:listitem="@layout/item_route_node_weather"
+                        tools:visibility="visible" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- Card 9: Evaluator Demo Storm Toggle -->
+            <com.google.android.material.card.MaterialCardView
+                style="@style/Widget.ShoreLine.Card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="@dimen/spacing_large">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="@dimen/spacing_medium">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="⛈️ Simulate Kalbaishakhi Storm (Signal 3):"
+                        android:textColor="@color/text_primary_navy"
+                        android:textSize="12sp" />
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/switchStormSimulation"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

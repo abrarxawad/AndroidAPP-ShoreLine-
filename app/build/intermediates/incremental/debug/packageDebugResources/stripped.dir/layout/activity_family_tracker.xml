@@ -1,0 +1,589 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYLLABUS: XML Layout - Family Journey Tracker with Foreground Telemetry & osmdroid Live Map -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/bg_light_canvas"
+    android:orientation="vertical">
+
+    <!-- Reusable Toolbar -->
+    <include
+        android:id="@+id/includedToolbar"
+        layout="@layout/layout_toolbar" />
+
+    <!-- Mode Selector: Passenger Mode vs Family Viewer Mode -->
+    <com.google.android.material.button.MaterialButtonToggleGroup
+        android:id="@+id/toggleModeGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_medium"
+        android:layout_marginTop="@dimen/spacing_small"
+        android:layout_marginEnd="@dimen/spacing_medium"
+        android:layout_marginBottom="@dimen/spacing_small"
+        app:checkedButton="@id/btnTabPassenger"
+        app:selectionRequired="true"
+        app:singleSelection="true">
+
+        <Button
+            android:id="@+id/btnTabPassenger"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tracker_tab_passenger"
+            android:textSize="12sp" />
+
+        <Button
+            android:id="@+id/btnTabViewer"
+            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/tracker_tab_family"
+            android:textSize="12sp" />
+    </com.google.android.material.button.MaterialButtonToggleGroup>
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fillViewport="true">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/spacing_medium"
+            android:paddingEnd="@dimen/spacing_medium"
+            android:paddingBottom="@dimen/spacing_large">
+
+            <!-- ========================================== -->
+            <!-- SECTION 1: PASSENGER MODE (MY JOURNEY)      -->
+            <!-- ========================================== -->
+            <LinearLayout
+                android:id="@+id/layoutPassengerMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Card 1A: Voyage Setup Form (Visible when idle) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardVoyageSetup"
+                    style="@style/Widget.ShoreLine.Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_medium">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="@string/tracker_setup_title"
+                            android:textColor="@color/primary_maritime"
+                            android:textSize="@dimen/text_subheading" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/tracker_setup_subtitle"
+                            android:textColor="@color/text_secondary_muted"
+                            android:textSize="12sp" />
+
+                        <!-- Origin Terminal -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:text="@string/tracker_origin_label"
+                            android:textColor="@color/text_secondary_muted"
+                            android:textSize="12sp" />
+
+                        <Spinner
+                            android:id="@+id/spinnerOrigin"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/bg_card_rounded"
+                            android:paddingStart="@dimen/spacing_small"
+                            android:paddingEnd="@dimen/spacing_small" />
+
+                        <!-- Destination Terminal -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:text="@string/tracker_dest_label"
+                            android:textColor="@color/text_secondary_muted"
+                            android:textSize="12sp" />
+
+                        <Spinner
+                            android:id="@+id/spinnerDestination"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="2dp"
+                            android:background="@drawable/bg_card_rounded"
+                            android:paddingStart="@dimen/spacing_small"
+                            android:paddingEnd="@dimen/spacing_small" />
+
+                        <!-- Vessel Name Input -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            app:boxBackgroundMode="outline">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etVesselName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:hint="@string/tracker_vessel_hint"
+                                android:inputType="textCapWords"
+                                android:text="MV Parabat 11"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Start Journey Button -->
+                        <Button
+                            android:id="@+id/btnStartJourney"
+                            style="@style/Widget.ShoreLine.Button.Primary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_medium"
+                            android:text="@string/tracker_btn_start" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Card 1B: Active Voyage Dashboard (Visible when tracking) -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardActiveJourney"
+                    style="@style/Widget.ShoreLine.Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_medium">
+
+                        <!-- Share Code Display -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="@string/tracker_code_title"
+                            android:textColor="@color/primary_maritime"
+                            android:textSize="13sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:background="@drawable/bg_terminal_window"
+                            android:gravity="center"
+                            android:padding="@dimen/spacing_small">
+
+                            <TextView
+                                android:id="@+id/tvShareCode"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="monospace"
+                                android:letterSpacing="0.25"
+                                android:textColor="@color/secondary_safety_orange"
+                                android:textSize="32sp"
+                                android:textStyle="bold"
+                                tools:text="PADMA7" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="@string/tracker_code_subtitle"
+                            android:textColor="@color/text_secondary_muted"
+                            android:textSize="11sp" />
+
+                        <!-- Share Actions -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:orientation="horizontal">
+
+                            <Button
+                                android:id="@+id/btnCopyCode"
+                                style="@style/Widget.ShoreLine.Button.Secondary"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="@string/tracker_btn_copy"
+                                android:textSize="11sp" />
+
+                            <Button
+                                android:id="@+id/btnShareCode"
+                                style="@style/Widget.ShoreLine.Button.Secondary"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="@dimen/spacing_small"
+                                android:layout_weight="1"
+                                android:text="@string/tracker_btn_share"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="@dimen/spacing_medium"
+                            android:layout_marginBottom="@dimen/spacing_small"
+                            android:background="@color/surface_card_border" />
+
+                        <!-- Live Metrics Title -->
+                        <TextView
+                            android:id="@+id/tvPassengerRouteHeader"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:textColor="@color/primary_maritime"
+                            android:textSize="14sp"
+                            tools:text="MV Parabat 11 • Dhaka ➔ Barisal" />
+
+                        <!-- 4 Telemetry Metrics Grid -->
+                        <GridLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:columnCount="2"
+                            android:rowCount="2">
+
+                            <!-- Metric 1: Speed -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_columnWeight="1"
+                                android:layout_margin="3dp"
+                                android:background="@drawable/bg_card_rounded"
+                                android:orientation="vertical"
+                                android:padding="@dimen/spacing_small">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/tracker_metric_speed"
+                                    android:textColor="@color/text_secondary_muted"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:id="@+id/tvPassengerSpeed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-black"
+                                    android:textColor="@color/text_primary_navy"
+                                    android:textSize="18sp"
+                                    tools:text="25.4 km/h" />
+                            </LinearLayout>
+
+                            <!-- Metric 2: Distance -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_columnWeight="1"
+                                android:layout_margin="3dp"
+                                android:background="@drawable/bg_card_rounded"
+                                android:orientation="vertical"
+                                android:padding="@dimen/spacing_small">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/tracker_metric_distance"
+                                    android:textColor="@color/text_secondary_muted"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:id="@+id/tvPassengerDistance"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-black"
+                                    android:textColor="@color/text_primary_navy"
+                                    android:textSize="18sp"
+                                    tools:text="42.8 km" />
+                            </LinearLayout>
+
+                            <!-- Metric 3: Nearest Ghat -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_columnWeight="1"
+                                android:layout_margin="3dp"
+                                android:background="@drawable/bg_card_rounded"
+                                android:orientation="vertical"
+                                android:padding="@dimen/spacing_small">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/tracker_metric_near"
+                                    android:textColor="@color/text_secondary_muted"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:id="@+id/tvPassengerNearestGhat"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:ellipsize="end"
+                                    android:fontFamily="sans-serif-bold"
+                                    android:maxLines="1"
+                                    android:textColor="@color/primary_maritime"
+                                    android:textSize="13sp"
+                                    tools:text="Chandpur (Molhead)" />
+                            </LinearLayout>
+
+                            <!-- Metric 4: Elapsed Time -->
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_columnWeight="1"
+                                android:layout_margin="3dp"
+                                android:background="@drawable/bg_card_rounded"
+                                android:orientation="vertical"
+                                android:padding="@dimen/spacing_small">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="@string/tracker_metric_time"
+                                    android:textColor="@color/text_secondary_muted"
+                                    android:textSize="11sp" />
+
+                                <TextView
+                                    android:id="@+id/tvPassengerElapsed"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-black"
+                                    android:textColor="@color/text_primary_navy"
+                                    android:textSize="18sp"
+                                    tools:text="01:42:15" />
+                            </LinearLayout>
+                        </GridLayout>
+
+                        <!-- Stop Journey Button -->
+                        <Button
+                            android:id="@+id/btnStopJourney"
+                            style="@style/Widget.ShoreLine.Button.Secondary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_medium"
+                            android:text="@string/tracker_btn_stop"
+                            android:textColor="@color/status_danger_red" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Passenger osmdroid River Map Card -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.ShoreLine.Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="260dp"
+                    android:layout_marginBottom="@dimen/spacing_medium">
+
+                    <org.osmdroid.views.MapView
+                        android:id="@+id/mapPassenger"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+            <!-- ========================================== -->
+            <!-- SECTION 2: FAMILY VIEWER MODE              -->
+            <!-- ========================================== -->
+            <LinearLayout
+                android:id="@+id/layoutViewerMode"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone"
+                tools:visibility="gone">
+
+                <!-- Card 2A: Search Journey Code -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.ShoreLine.Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_medium">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_medium">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="@string/tracker_viewer_title"
+                            android:textColor="@color/primary_maritime"
+                            android:textSize="@dimen/text_subheading" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/tracker_viewer_subtitle"
+                            android:textColor="@color/text_secondary_muted"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                app:boxBackgroundMode="outline">
+
+                                <com.google.android.material.textfield.TextInputEditText
+                                    android:id="@+id/etViewerCode"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="monospace"
+                                    android:hint="@string/tracker_viewer_hint"
+                                    android:inputType="textCapCharacters"
+                                    android:maxLength="8"
+                                    android:textAllCaps="true"
+                                    android:textSize="15sp" />
+                            </com.google.android.material.textfield.TextInputLayout>
+
+                            <Button
+                                android:id="@+id/btnSearchJourney"
+                                style="@style/Widget.ShoreLine.Button.Primary"
+                                android:layout_width="wrap_content"
+                                android:layout_height="56dp"
+                                android:layout_marginStart="@dimen/spacing_small"
+                                android:text="@string/tracker_btn_track"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Card 2B: Family Tracking Results -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardViewerDetails"
+                    style="@style/Widget.ShoreLine.Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="@dimen/spacing_small"
+                    android:visibility="gone"
+                    tools:visibility="visible">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="@dimen/spacing_medium">
+
+                        <!-- Status & Route Header -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvViewerVesselRoute"
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="sans-serif-bold"
+                                android:textColor="@color/primary_maritime"
+                                android:textSize="15sp"
+                                tools:text="MV Parabat 11 (Dhaka ➔ Barisal)" />
+
+                            <TextView
+                                android:id="@+id/tvViewerStatusBadge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_chip_safe"
+                                android:fontFamily="sans-serif-bold"
+                                android:paddingStart="@dimen/spacing_small"
+                                android:paddingTop="3dp"
+                                android:paddingEnd="@dimen/spacing_small"
+                                android:paddingBottom="3dp"
+                                android:textColor="@color/status_safe_text"
+                                android:textSize="11sp"
+                                tools:text="EN ROUTE" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/tvViewerPassengerInfo"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:textColor="@color/text_secondary_muted"
+                            android:textSize="12sp"
+                            tools:text="Passenger: Abrar Jawad" />
+
+                        <!-- Live Telemetry Row -->
+                        <TextView
+                            android:id="@+id/tvViewerTelemetry"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="sans-serif-black"
+                            android:textColor="@color/text_primary_navy"
+                            android:textSize="16sp"
+                            tools:text="Speed: 25.4 km/h • Near Chandpur (Molhead)" />
+
+                        <TextView
+                            android:id="@+id/tvViewerLastUpdated"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:textColor="@color/text_secondary_muted"
+                            android:textSize="11sp"
+                            tools:text="Updated 2 mins ago • GPS synced" />
+
+                        <!-- Call Passenger Button -->
+                        <Button
+                            android:id="@+id/btnCallPassenger"
+                            style="@style/Widget.ShoreLine.Button.Secondary"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/spacing_small"
+                            android:text="@string/tracker_call_passenger" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Viewer osmdroid River Map Card -->
+                <com.google.android.material.card.MaterialCardView
+                    style="@style/Widget.ShoreLine.Card"
+                    android:layout_width="match_parent"
+                    android:layout_height="280dp"
+                    android:layout_marginBottom="@dimen/spacing_medium">
+
+                    <org.osmdroid.views.MapView
+                        android:id="@+id/mapViewer"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent" />
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SYLLABUS: Multi-View-Type RecyclerView - Standard Route Waypoint Step -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingStart="@dimen/spacing_medium"
+    android:paddingTop="@dimen/spacing_small"
+    android:paddingEnd="@dimen/spacing_medium"
+    android:paddingBottom="@dimen/spacing_small">
+
+    <!-- Timeline indicator -->
+    <LinearLayout
+        android:layout_width="32dp"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvStepIndex"
+            android:layout_width="28dp"
+            android:layout_height="28dp"
+            android:background="@drawable/bg_chip_safe"
+            android:fontFamily="sans-serif-bold"
+            android:gravity="center"
+            android:textColor="@color/primary_maritime"
+            android:textSize="12sp"
+            tools:text="1" />
+
+        <View
+            android:id="@+id/lineStepConnector"
+            android:layout_width="2dp"
+            android:layout_height="32dp"
+            android:background="@color/surface_card_border" />
+    </LinearLayout>
+
+    <!-- Ghat & Step Details -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/spacing_small"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvStepGhatName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-bold"
+            android:textColor="@color/text_primary_navy"
+            android:textSize="@dimen/text_body_primary"
+            tools:text="Chandpur (Molhead Ghat)" />
+
+        <TextView
+            android:id="@+id/tvStepRiverDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/text_secondary_muted"
+            android:textSize="12sp"
+            tools:text="River: Padma-Meghna Confluence | Lat: 23.2321, Lon: 90.6473" />
+
+        <TextView
+            android:id="@+id/tvStepSegmentDetails"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:textColor="@color/primary_maritime"
+            android:textSize="11sp"
+            tools:text="Segment: 65.0 km (~150 mins) via Sheltered Inland Channel" />
+    </LinearLayout>
+</LinearLayout>
