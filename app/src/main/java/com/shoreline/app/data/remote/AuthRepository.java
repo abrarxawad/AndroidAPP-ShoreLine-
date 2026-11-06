@@ -105,7 +105,11 @@ public class AuthRepository {
             localDb.userDao().insertUser(guestUser);
             sessionManager.saveUserSession(guestId, email, name, "+8801700000000", role, "999");
 
-            mainHandler.post(() -> callback.onSuccess(guestUser, "Guest session active (" + role + ")"));
+            boolean isBn = "bn".equals(java.util.Locale.getDefault().getLanguage());
+            String successMsg = isBn
+                    ? ("ADMIN".equalsIgnoreCase(role) ? "বন্দর প্রশাসন ডেমো সেশন সক্রিয়" : "যাত্রী ডেমো সেশন সক্রিয়")
+                    : "Guest session active (" + role + ")";
+            mainHandler.post(() -> callback.onSuccess(guestUser, successMsg));
         });
     }
 

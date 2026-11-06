@@ -46,8 +46,21 @@
     <string name="status_offline">Offline Mode (Using Local Cache)</string>
 
     <!-- Authentication Screens (Stage 1) -->
+    <string name="login_hero_title">Navigating Safety</string>
+    <string name="login_hero_subtitle">Across Every River</string>
+    <string name="login_card_title">Sign In to Maritime Portal</string>
+    <string name="login_card_subtitle">Access verified passenger and inspector portal</string>
+    <string name="login_demo_header">INSTANT DEMO EVALUATION</string>
+    <string name="login_demo_passenger">👤 Passenger</string>
+    <string name="login_demo_admin">🛡️ Port Admin</string>
+    <string name="lang_bangla">বাংলা</string>
+    <string name="lang_english">English</string>
+    <string name="welcome_aboard">Welcome aboard</string>
+    <string name="active_river_fleet">Active River Fleet &amp; Passenger Safety Network</string>
+    <string name="shoreline_maritime">ShoreLine Maritime</string>
     <string name="title_login">Sign In</string>
     <string name="title_register">Create Safety Account</string>
+    <string name="register_subtitle">Join the safe river passenger network</string>
     <string name="label_email">Email Address</string>
     <string name="label_password">Password</string>
     <string name="label_full_name">Full Name</string>
@@ -72,6 +85,22 @@
     <string name="badge_passenger">PASSENGER</string>
     <string name="badge_admin">AUTHORITY (ADMIN)</string>
     <string name="btn_logout">Logout</string>
+    <string name="home_passenger_load">passenger load</string>
+    <string name="home_launch_safe_journey">LAUNCH SAFE RIVER JOURNEY</string>
+    <string name="home_river_transit_services">River Transit Services</string>
+    <string name="home_alert_sample">Meghna Confluence: Moderate cross-currents. Check weather-weighted routing.</string>
+    <string name="home_dismiss">Dismiss</string>
+    <string name="home_view_safe_route">View Safe Route</string>
+    <string name="home_vessel_desc">QR scan &amp; safe capacity</string>
+    <string name="home_route_desc">Weather-weighted map</string>
+    <string name="home_tracker_desc">Live GPS telemetry stream</string>
+    <string name="home_report_desc">Photo evidence upload</string>
+    <string name="home_sos_desc">P2P mesh radar beacon</string>
+    <string name="home_guide_desc">CPR &amp; rescue directory</string>
+    <string name="home_admin_card_title">Port Authority Dashboard</string>
+    <string name="home_admin_card_desc">BIWTA Command metrics, hotspots &amp; storm broadcast</string>
+    <string name="home_lifecycle_lab">🧪 Lifecycle Lab</string>
+    <string name="home_bottom_logout">🚪 Logout</string>
 
     <!-- Stage 2: Vessel Verification & Custom Gauge -->
     <string name="vessel_search_title">Vessel License Verification</string>
@@ -88,6 +117,8 @@
     <string name="label_fitness_expiry">Fitness Certificate Expiry:</string>
     <string name="label_community_rating">Community Safety Rating:</string>
     <string name="btn_report_overload_action">🚨 Report Overcrowding for this Launch</string>
+    <string name="vessel_warning_overcrowd">⚠️ WARNING: FLAGGED FOR CHRONIC OVERCROWDING</string>
+    <string name="vessel_gauge_drag_hint">👆 Touch or drag across gauge to simulate live boarding influx</string>
 
     <!-- Feature Titles for Navigation -->
     <string name="nav_vessel_check">Vessel Verification</string>
@@ -130,6 +161,7 @@
     <string name="btn_refresh_gps">Refresh GPS Fix</string>
     <string name="photo_header">Deck Photo Evidence (Compressed &lt; 200KB)</string>
     <string name="btn_take_photo">📷 Capture Launch Deck Photo</string>
+    <string name="btn_choose_gallery">Gallery</string>
     <string name="label_anonymous_report">Submit Anonymously (Hide Name &amp; Contact)</string>
     <string name="btn_submit_report">🚨 Submit Official Overload Report</string>
     <string name="btn_view_history">📋 View Submitted Reports Queue</string>
@@ -141,24 +173,26 @@
     <string name="empty_no_reports">No Overload Reports Yet</string>
     <string name="empty_no_reports_hint">When you witness dangerous overcrowding at river ghats, document evidence here.</string>
     <string name="btn_force_sync">🔄 Sync Pending Queue Now</string>
+    <string name="history_offline_notice">WorkManager will auto-upload when signal restores</string>
 
-    <!-- Stage 4 Extension: Route Weather, Departure Time, & Risk Evaluation -->
-    <string name="terminal_weather_origin">Origin Launch Terminal (উৎস ঘাট):</string>
-    <string name="terminal_weather_destination">Destination River Port (গন্তব্য ঘাট):</string>
-    <string name="departure_schedule_header">Departure Schedule &amp; Speed (যাত্রার সময়)</string>
+    <!-- Stage 4: Safe River Route, Weather & Risk Evaluation -->
+    <string name="route_select_header">Select Waterway Voyage</string>
+    <string name="terminal_weather_origin">Origin Launch Terminal:</string>
+    <string name="terminal_weather_destination">Destination River Port:</string>
+    <string name="departure_schedule_header">Departure Schedule &amp; Speed</string>
     <string name="departure_time_label">🕒 Departure: %s (Change Time)</string>
     <string name="vessel_speed_format">Launch Speed: %d km/h</string>
     <string name="estimated_arrival_format">⚓ Estimated Destination Arrival: %1$s (~%2$.1f hrs voyage)</string>
     <string name="worst_point_summary_format">⚠️ Worst point on route: %1$s (%2$s • Risk: %3$s)</string>
     <string name="worst_point_safe">✓ All checkpoints report calm river waters (Risk: LOW)</string>
-    <string name="toggle_waypoints_show">▼ Show All Route Waypoint Weather (রুট পয়েন্টসমূহ)</string>
-    <string name="toggle_waypoints_hide">▲ Hide Route Waypoint Weather (লুকান)</string>
-    <string name="risk_safe">✓ SAFE / নিরাপদ</string>
-    <string name="risk_caution">⚠️ CAUTION / সতর্কতা</string>
-    <string name="risk_danger">⛔ HIGH RISK / ঝুঁকিপূর্ণ</string>
-    <string name="recommendation_go">✓ GO (যাত্রা নিরাপদ)</string>
-    <string name="recommendation_be_careful">⚠️ BE CAREFUL (সতর্কতার সাথে চলুন)</string>
-    <string name="recommendation_delay">⛔ DELAY TRIP (যাত্রা স্থগিত রাখুন)</string>
+    <string name="toggle_waypoints_show">▼ Show All Route Waypoint Weather</string>
+    <string name="toggle_waypoints_hide">▲ Hide Route Waypoint Weather</string>
+    <string name="risk_safe">✓ SAFE</string>
+    <string name="risk_caution">⚠️ CAUTION</string>
+    <string name="risk_danger">⛔ HIGH RISK</string>
+    <string name="recommendation_go">✓ GO (Safe to Travel)</string>
+    <string name="recommendation_be_careful">⚠️ CAUTION (Proceed with Care)</string>
+    <string name="recommendation_delay">⛔ DELAY TRIP (Severe Weather Risk)</string>
     <string name="bmd_priority_notice">BMD Signals Priority</string>
     <string name="weather_updated_format">Updated %s • Advisory model data</string>
     <string name="weather_offline_cache_notice">Loaded from offline Room cache (%s ago)</string>
@@ -167,17 +201,25 @@
     <string name="notice_departure_past_clamped">Past departure time adjusted to next upcoming forecast hour.</string>
     <string name="notice_departure_future_clamped">Forecast model available up to 7 days ahead.</string>
     <string name="route_two_nodes_only">Direct river channel (Origin &amp; Destination only)</string>
+    <string name="btn_open_river_map">🗺️ Open Interactive River Map</string>
+    <string name="storm_simulate_label">⛈️ Simulate Kalbaishakhi Storm (Signal 3):</string>
+    <string name="worst_hazard_point_badge">⚠️ WORST HAZARD POINT ON ROUTE</string>
+    <string name="label_origin">Origin</string>
+    <string name="label_destination">Destination</string>
+    <string name="wind_format">💨 Wind: %1$.1f km/h (Gusts: %2$.1f km/h)</string>
+    <string name="rain_format">🌧️ Rain: %.1f mm/h</string>
+    <string name="wave_format">🌊 Wave: %.1fm</string>
 
     <!-- Stage 5: Family Journey Tracker & Live GPS Telemetry -->
-    <string name="tracker_tab_passenger">My Voyage (যাত্রী)</string>
-    <string name="tracker_tab_family">Family Tracker (স্বজন)</string>
+    <string name="tracker_tab_passenger">My Voyage</string>
+    <string name="tracker_tab_family">Track Family Launch</string>
     <string name="tracker_setup_title">Start Voyage &amp; Live Tracking</string>
     <string name="tracker_setup_subtitle">Continuous GPS telemetry with 6-char family share code</string>
-    <string name="tracker_origin_label">Departure River Ghat (ছাড়ার ঘাট):</string>
-    <string name="tracker_dest_label">Destination River Port (গন্তব্য ঘাট):</string>
+    <string name="tracker_origin_label">Departure River Ghat:</string>
+    <string name="tracker_dest_label">Destination River Port:</string>
     <string name="tracker_vessel_hint">Vessel Name (e.g. MV Sundarban 10)</string>
-    <string name="tracker_btn_start">⛵ Start River Journey (যাত্রা শুরু করুন)</string>
-    <string name="tracker_btn_stop">🛑 End River Voyage (যাত্রা সমাপ্ত করুন)</string>
+    <string name="tracker_btn_start">⛵ Start River Journey</string>
+    <string name="tracker_btn_stop">🛑 End River Voyage</string>
     <string name="tracker_code_title">Voyage Live Share Code</string>
     <string name="tracker_code_subtitle">Give this 6-character code to your family to track your vessel\'s live speed and river position.</string>
     <string name="tracker_btn_copy">📋 Copy Code</string>
@@ -191,20 +233,21 @@
     <string name="tracker_viewer_subtitle">Enter the 6-character journey code shared by the passenger</string>
     <string name="tracker_viewer_hint">6-char Code (e.g. PADMA7)</string>
     <string name="tracker_btn_track">🔍 Track Live Position</string>
-    <string name="tracker_status_active">EN ROUTE (নদীতে চলমান)</string>
+    <string name="tracker_status_active">EN ROUTE (Navigating River)</string>
     <string name="tracker_status_lost">⚠️ MID-RIVER SIGNAL LOST</string>
     <string name="tracker_status_arrived">✓ ARRIVED AT PORT</string>
-    <string name="tracker_call_passenger">📞 Call Passenger (স্বজনকে কল করুন)</string>
+    <string name="tracker_call_passenger">📞 Call Passenger</string>
     <string name="tracker_copy_success">Tracking code copied to clipboard!</string>
     <string name="tracker_share_message">Track my river launch live on ShoreLine with code: %s (Download ShoreLine -> Track Family Launch)</string>
     <string name="tracker_error_empty_code">Please enter a valid 6-character code</string>
     <string name="tracker_error_not_found">No active journey found with code: %s</string>
     <string name="tracker_perm_required">High-accuracy GPS permission is required to track river voyage</string>
+    <string name="tracker_voyage_ended_toast">Voyage ended. Family members notified of port arrival.</string>
 
     <!-- Stage 6: Offline SOS Distress Beacon, Nearby Connections, & Implicit Intents -->
     <string name="sos_beacon_title">Offline Distress SOS Beacon</string>
     <string name="sos_beacon_subtitle">Transmits over Bluetooth &amp; Wi-Fi Direct to nearby trawlers and river launches without internet.</string>
-    <string name="sos_emergency_type_label">Select Emergency Nature (বিপদের ধরন):</string>
+    <string name="sos_emergency_type_label">Select Emergency Nature:</string>
     <string name="sos_type_capsizing">🌊 Capsizing / Sinking</string>
     <string name="sos_type_engine">⚙️ Engine Failure</string>
     <string name="sos_type_medical">🚑 Medical Emergency</string>
@@ -213,32 +256,149 @@
     <string name="sos_status_idle">Ready to broadcast distress signal</string>
     <string name="sos_radar_title">Live Waterway Radar &amp; Peer Vessels</string>
     <string name="sos_radar_subtitle">Scans nearby water reaches for passing vessels and distress halos.</string>
+    <string name="sos_scanning_reach">🟢 Scanning River Reach (Nearby Connections Active)</string>
+    <string name="sos_demo_simulate_btn">⚡ Evaluator Demo: Simulate Incoming Distress Beacon</string>
+    <string name="sos_call_vessel">📞 Call Vessel</string>
+    <string name="sos_open_map">🗺️ Open Map</string>
+    <string name="sos_beacon_broadcasting">🚨 DISTRESS BEACON ACTIVE: Transmitting across river mesh...</string>
+    <string name="sos_broadcast_toast">🚨 Emergency Beacon broadcast across nearby waterways!</string>
     <string name="sos_fallback_title">Emergency Direct Dialers &amp; SMS</string>
     <string name="sos_fallback_subtitle">Trigger system dialers and SMS if cellular towers are reachable.</string>
     <string name="sos_btn_biwta">📞 BIWTA Rescue (16107)</string>
     <string name="sos_btn_999">📞 National Police (999)</string>
     <string name="sos_btn_sms">✉️ Send SOS SMS</string>
     <string name="sos_btn_share">📤 Share Distress Sheet</string>
-    <string name="sos_inbox_title">Received Mayday Signals (প্রাপ্ত বিপৎসংকেত)</string>
+    <string name="sos_inbox_title">Received Mayday Signals</string>
     <string name="sos_inbox_empty">No emergency distress beacons in your water sector.</string>
     <string name="sos_broadcast_success">🚨 SOS Beacon transmitted! Reached %d peer vessels in range.</string>
     <string name="sos_demo_simulated">⚡ Simulated incoming Mayday beacon from trawler \'FV Meghna Rani\'!</string>
 
-    <!-- Stage 7: Port Authority & BIWTA Admin Dashboard, FCM Topic Alerts -->
+    <!-- Stage 7: Port Authority & BIWTA Admin Dashboard -->
     <string name="admin_dashboard_title">Port Authority Command Overview</string>
+    <string name="admin_storm_card_title">BMD Storm Signal Advisory</string>
+    <string name="admin_storm_default_level">Signal 3</string>
+    <string name="admin_storm_advisory_text">Cautionary signal in effect for Padma-Meghna confluence. Trawlers must navigate near shorelines.</string>
+    <string name="admin_broadcast_storm_btn">📢 Broadcast BMD Storm Warning (FCM Alert)</string>
+    <string name="admin_command_overview_header">PORT AUTHORITY COMMAND OVERVIEW</string>
     <string name="admin_stat_active_sos">Active SOS Signals</string>
     <string name="admin_stat_overload_reports">Overload Reports</string>
     <string name="admin_stat_monitored_fleet">Monitored Fleet</string>
     <string name="admin_stat_storm_signal">BMD Warning Level</string>
-    <string name="admin_btn_broadcast_storm">📢 Broadcast Storm Signal (BMD Warning)</string>
-    <string name="admin_btn_hotspots_map">🗺️ River Hotspots Map</string>
-    <string name="admin_btn_simulate_incident">⚡ Simulate Test Incident</string>
-    <string name="admin_inbox_header">SOS Distress &amp; Incident Inbox</string>
+    <string name="admin_hotspots_map_btn">🗺️ Hotspots Map</string>
+    <string name="admin_simulate_alert_btn">⚡ Simulate Alert</string>
+    <string name="admin_sos_incidents_header">SOS DISTRESS &amp; INCIDENTS</string>
     <string name="admin_filter_all">All Incidents</string>
     <string name="admin_filter_active">🚨 Active</string>
     <string name="admin_filter_acknowledged">⏳ Acknowledged</string>
     <string name="admin_filter_resolved">✓ Resolved</string>
+    <string name="admin_empty_incidents">No distress incidents reported in this category.</string>
+    <string name="admin_dialog_broadcast_title">📢 Broadcast BMD Storm Warning</string>
+    <string name="admin_dialog_broadcast_desc">Transmits warning across Firebase Cloud Messaging (FCM) topic \'storm_alerts\' to all passenger vessels.</string>
+    <string name="admin_dialog_signal_label">Signal Level:</string>
+    <string name="admin_dialog_zone_label">Affected River Reach:</string>
+    <string name="admin_dialog_instruction_label">Vessel Advisory Instructions:</string>
+    <string name="admin_dialog_test_device_check">Fire instant heads-up notification on this phone (Evaluator Test)</string>
+    <string name="admin_incident_active_badge">🚨 ACTIVE MAYDAY</string>
+    <string name="admin_incident_hop_format">📡 Hop %1$d/%2$d (Relayed)</string>
+    <string name="admin_incident_call_btn">📞 Call Boat</string>
+    <string name="admin_incident_map_btn">🗺️ Map Pin</string>
+    <string name="admin_incident_swipe_hint">⇄ Swipe left to Resolve • Swipe right to Acknowledge</string>
     <string name="admin_incident_resolved_toast">Incident marked as RESOLVED (Rescue Complete)</string>
     <string name="admin_incident_ack_toast">Incident ACKNOWLEDGED. Patrol en route.</string>
-</resources>
 
+    <!-- Stage 8: Safety Guides, ContentProvider & Receivers Lab -->
+    <string name="guide_title_main">Offline River Rescue &amp; Safety</string>
+    <string name="guide_subtitle_main">All survival manuals, CPR protocols, and rescue direct-dialers work without cellular towers or internet via ShoreLineContentProvider.</string>
+    <string name="guide_tab_survival">🦺 Survival Guides</string>
+    <string name="guide_tab_contacts">📞 Rescue Directory</string>
+    <string name="guide_section_manual">Offline Water Survival Manual</string>
+    <string name="guide_tap_hint">Tap any guide to expand action checkpoints and instructions.</string>
+    <string name="guide_contacts_header">River Emergency Directory</string>
+    <string name="guide_btn_add_contact">+ Add Contact</string>
+    <string name="guide_contacts_note">Emergency numbers are cached offline for instant calling during river transit.</string>
+    <string name="guide_tab_lab">Diagnostics &amp; Sync</string>
+    <string name="guide_provider_title">📦 Offline Directory Integrity</string>
+    <string name="guide_provider_desc">Verifies that all emergency numbers and survival protocols are loaded in local offline storage for instant access.</string>
+    <string name="guide_btn_query_contacts">Verify Hotlines</string>
+    <string name="guide_btn_query_guides">Verify Survival Guides</string>
+    <string name="guide_adb_title">System Diagnostic Cache:</string>
+    <string name="guide_cursor_ready">[System Ready] Tap above to verify offline database integrity.</string>
+    <string name="guide_receivers_title">📡 System Event Simulation</string>
+    <string name="guide_receivers_desc">Simulate device power and network transitions to verify passenger safety notifications.</string>
+    <string name="guide_sim_boot">⚡ Device Startup Sequence</string>
+    <string name="guide_sim_battery">🔋 Low Battery Alert (&lt;15%)</string>
+    <string name="guide_sim_network">🌐 River Network Restored</string>
+    <string name="guide_receivers_ready">[Listeners Active] Tap any test button above to verify system reaction.</string>
+    <string name="guide_badge_water_survival">WATER SURVIVAL</string>
+    <string name="guide_action_protocol">📋 Action Protocol &amp; Checkpoints:</string>
+    <string name="guide_expand">▼ Expand</string>
+    <string name="guide_collapse">▲ Collapse</string>
+    <string name="guide_dialog_add_title">➕ Add Emergency River Contact</string>
+    <string name="guide_dialog_add_desc">Inserts a new record into ShoreLineContentProvider via ContentResolver.insert().</string>
+
+    <!-- SETTINGS & PROFILE MANAGEMENT STRINGS -->
+    <string name="nav_settings">Settings &amp; Profile</string>
+    <string name="settings_title">Settings &amp; Preferences</string>
+    <string name="settings_subtitle">Profile, Display &amp; Maritime Network</string>
+    <string name="settings_sec_profile">User Account &amp; Profile</string>
+    <string name="settings_label_fullname">Full Name</string>
+    <string name="settings_label_email">Email Address</string>
+    <string name="settings_label_phone">Personal Phone</string>
+    <string name="settings_label_emergency_phone">24/7 Family Emergency Phone</string>
+    <string name="settings_btn_save_profile">Save Profile Changes</string>
+    <string name="settings_btn_change_password">Change Account Password</string>
+    <string name="settings_current_password">Current Password</string>
+    <string name="settings_new_password">New Password (min 6 chars)</string>
+    <string name="settings_confirm_password">Confirm New Password</string>
+    <string name="settings_password_match_err">Passwords do not match.</string>
+    <string name="settings_password_short_err">Password must be at least 6 characters.</string>
+    <string name="settings_password_success">Password updated successfully.</string>
+    <string name="settings_profile_updated">Profile updated successfully.</string>
+
+    <string name="settings_sec_display">Typography &amp; Accessibility</string>
+    <string name="settings_font_scale_title">App Font Scaling (Text Size)</string>
+    <string name="settings_font_scale_desc">Dynamically scales all text across the app for comfortable river navigation reading.</string>
+    <string name="settings_font_small">Small (85%)</string>
+    <string name="settings_font_default">Normal (100%)</string>
+    <string name="settings_font_large">Large (115%)</string>
+    <string name="settings_font_xlarge">X-Large (130%)</string>
+    <string name="settings_preview_title">Live Typography Preview</string>
+    <string name="settings_preview_heading">MV Manami (45% Passenger Load)</string>
+    <string name="settings_preview_body">River route is clear with mild cross-currents near Chandpur confluence.</string>
+    <string name="settings_preview_caption">AIS Radar • 2,400 HP • GPS Connected</string>
+
+    <string name="settings_sec_preferences">Language &amp; Safety Notifications</string>
+    <string name="settings_lang_title">App Language</string>
+    <string name="settings_notifications_storm">BMD River Storm &amp; Weather Alerts</string>
+    <string name="settings_notifications_storm_desc">Receive instant push notifications for severe waterway storms.</string>
+    <string name="settings_nearby_mesh">Offline SOS Mesh Background Radar</string>
+    <string name="settings_nearby_mesh_desc">Scan for neighboring vessel Mayday signals via Bluetooth LE.</string>
+
+    <string name="settings_sec_storage">Offline Storage &amp; Cache</string>
+    <string name="settings_cache_size">Local Storage Cache: </string>
+    <string name="settings_btn_clear_weather">Clear Weather Cache</string>
+    <string name="settings_weather_cleared">Weather cache cleared. Fresh data will be fetched.</string>
+    <string name="settings_btn_resync_hotlines">Re-sync Emergency Hotlines</string>
+    <string name="settings_hotlines_resynced">Emergency contacts refreshed with latest official records.</string>
+
+    <string name="settings_sec_account">System Information &amp; Session</string>
+    <string name="settings_account_role">Active Role: </string>
+    <string name="settings_user_id">Account ID: </string>
+    <string name="settings_app_version">ShoreLine Maritime Network v1.0.0 (Release)</string>
+    <string name="settings_btn_logout">Sign Out Account</string>
+    <string name="settings_btn_reset_data">Reset All Local App Data</string>
+    <string name="settings_confirm_logout_title">Sign Out?</string>
+    <string name="settings_confirm_logout_msg">You will need to sign in again to access live passenger features.</string>
+    <string name="settings_confirm_reset_title">Reset Local Data?</string>
+    <string name="settings_confirm_reset_msg">This clears all local offline queues, caches, and active sessions.</string>
+    <string name="action_save">Save</string>
+
+    <!-- NEW POLISH: LIVE TELEMETRY, SMS GSM, & DECK ENVIRONMENT -->
+    <string name="status_cloud_synced">🟢 Live Cloud Sync (Firestore &amp; Weather)</string>
+    <string name="status_offline_radar">🟡 Offline SafeNet (Room SQLite Active)</string>
+    <string name="settings_deck_theme_title">Deck Environment &amp; Cockpit Theme</string>
+    <string name="settings_deck_theme_desc">Switch between nocturnal cockpit helm and sunlit yacht teak deck.</string>
+    <string name="settings_deck_night">🌙 Night Cockpit Helm</string>
+    <string name="settings_deck_day">☀️ Day Sunlit Teak Deck</string>
+    <string name="sos_direct_gsm_sent">Direct GSM SMS Mayday dispatched via cellular tower!</string>
+</resources>

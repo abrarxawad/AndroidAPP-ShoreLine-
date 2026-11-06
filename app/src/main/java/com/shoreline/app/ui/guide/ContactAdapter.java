@@ -67,6 +67,8 @@ public class ContactAdapter extends RecyclerView.Adapter<ContactAdapter.ContactV
             binding.tvContactName.setText(contact.getName());
             binding.tvContactRole.setText(contact.getRole());
             binding.tvContactPhone.setText("📞 " + contact.getPhone());
+            boolean isBn = com.shoreline.app.util.LocaleHelper.isBangla(itemView.getContext());
+            binding.btnActionDial.setText(isBn ? "কল করুন" : "Call");
 
             binding.btnActionDial.setOnClickListener(v -> {
                 if (listener != null) {

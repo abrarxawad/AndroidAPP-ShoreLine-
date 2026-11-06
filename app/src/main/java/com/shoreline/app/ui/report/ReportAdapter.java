@@ -90,8 +90,13 @@ public class ReportAdapter extends RecyclerView.Adapter<ReportAdapter.ReportView
             holder.tvCrowdLevel.setTextColor(ContextCompat.getColor(context, R.color.status_safe_text));
         }
 
-        holder.tvPassengerCount.setText(String.format(Locale.US, "Estimated: ~%,d Passengers", report.getEstimatedPassengerCount()));
-        holder.tvAnonymous.setText(report.isAnonymous() ? "🔒 Submitted Anonymously" : "👤 Verified Passenger Report");
+        boolean isBn = com.shoreline.app.util.LocaleHelper.isBangla(context);
+        holder.tvPassengerCount.setText(isBn
+                ? String.format(Locale.US, "আনুমানিক: ~%,d জন যাত্রী", report.getEstimatedPassengerCount())
+                : String.format(Locale.US, "Estimated: ~%,d Passengers", report.getEstimatedPassengerCount()));
+        holder.tvAnonymous.setText(report.isAnonymous()
+                ? (isBn ? "🔒 পরিচয় গোপন রেখে জমাকৃত" : "🔒 Submitted Anonymously")
+                : (isBn ? "👤 যাচাইকৃত যাত্রীর রিপোর্ট" : "👤 Verified Passenger Report"));
 
         // Photo Thumbnail
         Bitmap bitmap = ImageCompressionHelper.decodeBase64ToBitmap(report.getPhotoBase64());

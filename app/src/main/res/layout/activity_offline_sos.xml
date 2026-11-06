@@ -177,6 +177,19 @@
                             android:text="@string/sos_status_idle"
                             android:textColor="@color/navara_text_subtitle"
                             android:textSize="12sp" />
+
+                        <!-- Acoustic Siren Audio Alert Controller -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnToggleSiren"
+                            style="@style/Widget.MaterialComponents.Button.TextButton"
+                            android:layout_width="wrap_content"
+                            android:layout_height="36dp"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="4dp"
+                            android:text="🔊 Mayday Siren Active (Tap to Silence)"
+                            android:textColor="#FF2A55"
+                            android:textSize="11sp"
+                            android:visibility="gone" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
 
@@ -230,7 +243,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-bold"
-                            android:text="🟢 Scanning River Reach (Nearby Connections Active)"
+                            android:text="@string/sos_scanning_reach"
                             android:textColor="@color/status_safe_text"
                             android:textSize="12sp" />
 
@@ -242,7 +255,7 @@
                             android:layout_height="46dp"
                             android:layout_marginTop="12dp"
                             android:fontFamily="sans-serif-bold"
-                            android:text="⚡ Evaluator Demo: Simulate Incoming Distress Beacon"
+                            android:text="@string/sos_demo_simulate_btn"
                             android:textColor="@color/navara_neon_cyan"
                             android:textSize="11sp"
                             app:cornerRadius="23dp"

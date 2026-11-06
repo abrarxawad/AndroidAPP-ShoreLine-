@@ -65,6 +65,8 @@ public class JourneyTrackingService extends Service {
     public static final String EXTRA_PASSENGER_NAME = "extra_passenger_name";
     public static final String EXTRA_PASSENGER_PHONE = "extra_passenger_phone";
     public static final String EXTRA_EMERGENCY_PHONE = "extra_emergency_phone";
+    public static final String EXTRA_START_LAT = "extra_start_lat";
+    public static final String EXTRA_START_LON = "extra_start_lon";
 
     public interface JourneyUpdateListener {
         void onTelemetryUpdated(@NonNull Location location, double speedKmh,
@@ -137,6 +139,9 @@ public class JourneyTrackingService extends Service {
         String passPhone = intent.getStringExtra(EXTRA_PASSENGER_PHONE);
         String emPhone = intent.getStringExtra(EXTRA_EMERGENCY_PHONE);
 
+        double startLat = intent.getDoubleExtra(EXTRA_START_LAT, 23.7045);
+        double startLon = intent.getDoubleExtra(EXTRA_START_LON, 90.4131);
+
         totalDistanceKm = 0.0;
         lastKnownLocation = null;
 
@@ -154,8 +159,8 @@ public class JourneyTrackingService extends Service {
                 System.currentTimeMillis(),
                 System.currentTimeMillis(),
                 "ACTIVE",
-                23.7045,
-                90.4131,
+                startLat,
+                startLon,
                 0.0,
                 0.0,
                 originName != null ? originName : "Sadarghat",

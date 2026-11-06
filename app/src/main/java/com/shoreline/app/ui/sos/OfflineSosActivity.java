@@ -17,15 +17,25 @@ import androidx.annotation.Nullable;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 
+import android.telephony.SmsManager;
+import android.text.TextUtils;
+import android.util.Log;
+import com.shoreline.app.util.AcousticSirenHelper;
+import com.shoreline.app.util.HapticHelper;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.Query;
 import com.shoreline.app.R;
 import com.shoreline.app.data.local.ShoreLineDatabase;
 import com.shoreline.app.data.local.dao.SosDao;
 import com.shoreline.app.data.local.entity.SosSignalEntity;
+import com.shoreline.app.data.remote.FirestoreManager;
 import com.shoreline.app.databinding.ActivityOfflineSosBinding;
 import com.shoreline.app.nearby.NearbySosRelayManager;
 import com.shoreline.app.receiver.SosAlertReceiver;
 import com.shoreline.app.ui.base.BaseActivity;
 import com.shoreline.app.util.IntentHelper;
+import com.shoreline.app.util.LocaleHelper;
 import com.shoreline.app.util.LocationHelper;
 import com.shoreline.app.util.SessionManager;
 
@@ -54,6 +64,7 @@ public class OfflineSosActivity extends BaseActivity implements NearbySosRelayMa
     private SosBeaconAdapter beaconAdapter;
     private double currentLat = LocationHelper.DEFAULT_LATITUDE;
     private double currentLon = LocationHelper.DEFAULT_LONGITUDE;
+    private ListenerRegistration sosCloudListener;
 
     private final ActivityResultLauncher<String[]> nearbyPermissionLauncher =
             registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
@@ -120,13 +131,18 @@ public class OfflineSosActivity extends BaseActivity implements NearbySosRelayMa
         binding.btnDial999.setOnClickListener(v ->
                 IntentHelper.dialEmergencyNumber(this, IntentHelper.NATIONAL_EMERGENCY_999));
 
-        binding.btnSendSms.setOnClickListener(v -> {
-            String emergencyContact = sessionManager.getEmergencyContact();
-            String message = String.format(Locale.US,
-                    "MAYDAY! River vessel emergency at coordinates: %.4f° N, %.4f° E. Passenger: %s. Send rescue immediately!",
-                    currentLat, currentLon, sessionManager.getUserName());
-            IntentHelper.sendEmergencySms(this, emergencyContact, message);
-        });
+        // Mute / Silence Acoustic Mayday Siren
+        if (binding.btnToggleSiren != null) {
+            binding.btnToggleSiren.setOnClickListener(v -> {
+                if (AcousticSirenHelper.isAlarmActive()) {
+                    AcousticSirenHelper.stopMaydaySiren();
+                    binding.btnToggleSiren.setVisibility(View.GONE);
+                }
+            });
+        }
+
+        // Feature 2: Direct GSM SMS Mayday Dispatch (Zero-Internet Fallback)
+        binding.btnSendSms.setOnClickListener(v -> dispatchDirectGsmMaydaySms());
 
         binding.btnShareDistress.setOnClickListener(v -> {
             String message = String.format(Locale.US,
@@ -201,10 +217,82 @@ public class OfflineSosActivity extends BaseActivity implements NearbySosRelayMa
                 }
             });
         });
+        startCloudSosListener();
     }
 
     /**
-     * SYLLABUS: Transmit Distress Beacon over P2P_CLUSTER Mesh
+     * SYLLABUS: Real-Time Cloud Firestore SOS Snapshot Listener
+     * Listens for real-time Mayday distress signals across Bangladesh waterway network.
+     */
+    private void startCloudSosListener() {
+        try {
+            if (sosCloudListener != null) {
+                sosCloudListener.remove();
+            }
+            sosCloudListener = FirestoreManager.getInstance().getSosCollection()
+                    .orderBy("timestamp", Query.Direction.DESCENDING)
+                    .limit(30)
+                    .addSnapshotListener((snapshots, error) -> {
+                        if (error != null) {
+                            Log.w("SOS_CLOUD", "Cloud SOS real-time listener error: " + error.getMessage());
+                            return;
+                        }
+                        if (snapshots != null && !snapshots.isEmpty()) {
+                            List<SosSignalEntity> cloudList = new ArrayList<>();
+                            for (DocumentSnapshot doc : snapshots.getDocuments()) {
+                                try {
+                                    String id = doc.getString("sosId");
+                                    if (id == null) id = doc.getId();
+                                    String sender = doc.getString("senderName");
+                                    String phone = doc.getString("senderPhone");
+                                    Double lat = doc.getDouble("latitude");
+                                    Double lon = doc.getDouble("longitude");
+                                    Long time = doc.getLong("timestamp");
+                                    Long hops = doc.getLong("hopCount");
+                                    String device = doc.getString("originDeviceId");
+                                    String status = doc.getString("status");
+                                    Boolean relayed = doc.getBoolean("isRelayed");
+
+                                    SosSignalEntity entity = new SosSignalEntity(
+                                            id,
+                                            sender != null ? sender : "River Vessel",
+                                            phone != null ? phone : "16107",
+                                            lat != null ? lat : LocationHelper.DEFAULT_LATITUDE,
+                                            lon != null ? lon : LocationHelper.DEFAULT_LONGITUDE,
+                                            time != null ? time : System.currentTimeMillis(),
+                                            hops != null ? hops.intValue() : 0,
+                                            device != null ? device : "Cloud-Vessel",
+                                            status != null ? status : "ACTIVE",
+                                            relayed != null ? relayed : false,
+                                            true
+                                    );
+                                    cloudList.add(entity);
+
+                                    // Mirror into Room database
+                                    ShoreLineDatabase.databaseWriteExecutor.execute(() -> sosDao.insertSos(entity));
+                                } catch (Exception ignored) {}
+                            }
+
+                            if (!cloudList.isEmpty()) {
+                                runOnUiThread(() -> {
+                                    beaconAdapter.setBeacons(cloudList);
+                                    binding.tvEmptyInbox.setVisibility(View.GONE);
+                                    for (SosSignalEntity entity : cloudList) {
+                                        if ("ACTIVE".equalsIgnoreCase(entity.getStatus())) {
+                                            binding.radarView.addOrUpdatePeer(entity.getSosId(), entity.getOriginDeviceId(), true);
+                                        }
+                                    }
+                                });
+                            }
+                        }
+                    });
+        } catch (Exception e) {
+            Log.e("SOS_CLOUD", "Failed to initialize Cloud SOS listener: " + e.getMessage());
+        }
+    }
+
+    /**
+     * SYLLABUS: Transmit Distress Beacon over P2P_CLUSTER Mesh + Cloud Firestore
      */
     private void broadcastOfflineDistressBeacon() {
         String emergencyType = "CAPSIZING_RISK";
@@ -221,7 +309,7 @@ public class OfflineSosActivity extends BaseActivity implements NearbySosRelayMa
         String senderPhone = sessionManager.getUserPhone();
         String vesselName = "River Passenger Launch";
 
-        // Transmit through Nearby Connections Mesh
+        // 1. Transmit through Nearby Connections Offline Mesh
         nearbyManager.broadcastDistressBeacon(
                 senderName,
                 senderPhone,
@@ -231,12 +319,74 @@ public class OfflineSosActivity extends BaseActivity implements NearbySosRelayMa
                 emergencyType
         );
 
-        binding.tvBroadcastStatus.setText("🚨 DISTRESS BEACON ACTIVE: Transmitting across river mesh...");
+        // 2. Real-time Cloud API Sync via Cloud Firestore
+        String deviceId = sessionManager.getUserId() != null ? sessionManager.getUserId() : "LOCAL";
+        String sosId = "SOS-" + System.currentTimeMillis() + "-" + deviceId;
+        SosSignalEntity directCloudBeacon = new SosSignalEntity(
+                sosId, senderName, senderPhone, currentLat, currentLon,
+                System.currentTimeMillis(), 0, vesselName, "ACTIVE", false, true
+        );
+        NearbySosRelayManager.syncBeaconToFirestore(directCloudBeacon);
+
+        binding.tvBroadcastStatus.setText(getString(R.string.sos_beacon_broadcasting));
         binding.tvBroadcastStatus.setTextColor(ContextCompat.getColor(this, R.color.status_danger_red));
 
         // Add self distress halo on radar
         binding.radarView.addOrUpdatePeer("SELF_DISTRESS", "My Launch (SOS)", true);
-        showToast("🚨 Emergency Beacon broadcast across nearby waterways!");
+        showToast(getString(R.string.sos_broadcast_toast));
+
+        // Feature 1: Cockpit Tactile Haptic Distress & Acoustic Foghorn Siren
+        HapticHelper.vibrateSosEmergency(this);
+        AcousticSirenHelper.startMaydaySiren();
+        if (binding.btnToggleSiren != null) {
+            binding.btnToggleSiren.setVisibility(View.VISIBLE);
+        }
+    }
+
+    /**
+     * Feature 2: Direct GSM SMS Mayday Dispatch for Zero-Internet Zones
+     * Directly delivers vessel GPS coordinates and distress type to authorities over 2G/GSM cellular towers.
+     */
+    private void dispatchDirectGsmMaydaySms() {
+        HapticHelper.vibrateClick(binding.btnSendSms);
+        String emergencyPhone = sessionManager.getEmergencyContact();
+        if (TextUtils.isEmpty(emergencyPhone) || "999".equals(emergencyPhone)) {
+            emergencyPhone = "01320169595"; // River Police Headquarters Rescue Desk
+        }
+
+        int checkedChipId = binding.chipGroupEmergencyType.getCheckedChipId();
+        String nature = "CAPSIZING / IMMINENT DANGER";
+        if (checkedChipId == R.id.chipEngineFailure) {
+            nature = "PROPULSION / ENGINE FAILURE";
+        } else if (checkedChipId == R.id.chipMedical) {
+            nature = "CRITICAL MEDICAL EMERGENCY";
+        } else if (checkedChipId == R.id.chipStorm) {
+            nature = "SEVERE RIVER STORM / GALE";
+        }
+
+        String message = String.format(Locale.US,
+                "🚨 SHORELINE WATERWAY MAYDAY!\nVessel: Passenger Launch\nDistress: %s\nGPS: %.4f° N, %.4f° E\nMaps: https://maps.google.com/?q=%.4f,%.4f\nPassenger: %s (%s)\nImmediate rescue requested!",
+                nature, currentLat, currentLon, currentLat, currentLon,
+                sessionManager.getUserName(), sessionManager.getUserPhone());
+
+        if (ContextCompat.checkSelfPermission(this, Manifest.permission.SEND_SMS) == PackageManager.PERMISSION_GRANTED) {
+            try {
+                SmsManager smsManager = SmsManager.getDefault();
+                ArrayList<String> parts = smsManager.divideMessage(message);
+                smsManager.sendMultipartTextMessage(emergencyPhone, null, parts, null, null);
+
+                binding.tvBroadcastStatus.setText("📡 GSM SMS Mayday sent to " + emergencyPhone);
+                binding.tvBroadcastStatus.setTextColor(ContextCompat.getColor(this, R.color.status_safe_green));
+                showToast(getString(R.string.sos_direct_gsm_sent));
+                HapticHelper.vibrateWarning(this);
+                return;
+            } catch (Exception e) {
+                Log.w("SOS_SMS", "Direct SMS dispatch failed, falling back to intent: " + e.getMessage());
+            }
+        }
+
+        // Graceful intent fallback if runtime permission not granted
+        IntentHelper.sendEmergencySms(this, emergencyPhone, message);
     }
 
     /**
@@ -325,10 +475,13 @@ public class OfflineSosActivity extends BaseActivity implements NearbySosRelayMa
     private void updatePeerCountDisplay() {
         int peers = nearbyManager.getConnectedPeerCount();
         if (peers > 0) {
-            binding.tvRadarPeerCount.setText(String.format(Locale.US, "🟢 %d Neighboring Vessels in Mesh Range", peers));
+            boolean isBn = LocaleHelper.isBangla(this);
+            binding.tvRadarPeerCount.setText(isBn
+                    ? String.format(Locale.US, "🟢 %d টি নিকটবর্তী নৌযান রাডার সীমানায় সংযুক্ত", peers)
+                    : String.format(Locale.US, "🟢 %d Neighboring Vessels in Mesh Range", peers));
             binding.tvRadarPeerCount.setTextColor(ContextCompat.getColor(this, R.color.status_safe_text));
         } else {
-            binding.tvRadarPeerCount.setText("🟢 Scanning River Reach (Nearby Connections Active)");
+            binding.tvRadarPeerCount.setText(getString(R.string.sos_scanning_reach));
             binding.tvRadarPeerCount.setTextColor(ContextCompat.getColor(this, R.color.status_safe_text));
         }
     }
@@ -345,6 +498,11 @@ public class OfflineSosActivity extends BaseActivity implements NearbySosRelayMa
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        AcousticSirenHelper.stopMaydaySiren();
+        if (sosCloudListener != null) {
+            sosCloudListener.remove();
+            sosCloudListener = null;
+        }
         if (nearbyManager != null) {
             nearbyManager.unregisterListener(this);
             nearbyManager.stopMesh();

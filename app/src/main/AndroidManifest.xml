@@ -125,6 +125,14 @@
             android:exported="false"
             android:label="@string/title_home" />
 
+        <!-- Settings & Profile Management Screen -->
+        <activity
+            android:name=".ui.settings.SettingsActivity"
+            android:exported="false"
+            android:label="@string/settings_title"
+            android:parentActivityName=".ui.home.HomeActivity"
+            android:windowSoftInputMode="adjustResize" />
+
         <!-- Syllabus: Activity Lifecycle Lab -->
         <activity
             android:name=".ui.lifecycle.LifecycleLabActivity"

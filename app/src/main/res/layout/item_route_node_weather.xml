@@ -89,7 +89,7 @@
             android:paddingTop="3dp"
             android:paddingEnd="10dp"
             android:paddingBottom="3dp"
-            android:text="⚠️ WORST HAZARD POINT ON ROUTE (সর্বোচ্চ সতর্ক সংকেত পয়েন্ট)"
+            android:text="@string/worst_hazard_point_badge"
             android:textColor="#FF6B6B"
             android:textSize="10sp"
             android:visibility="gone"

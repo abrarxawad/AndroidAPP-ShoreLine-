@@ -64,7 +64,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
-                            android:text="Select Waterway Voyage (নৌপথ নির্বাচন)"
+                            android:text="@string/route_select_header"
                             android:textColor="@color/navara_text_title"
                             android:textSize="15sp" />
 
@@ -74,7 +74,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
                             android:fontFamily="sans-serif-medium"
-                            android:text="Origin Launch Terminal (উৎস ঘাট):"
+                            android:text="@string/terminal_weather_origin"
                             android:textColor="@color/navara_text_subtitle"
                             android:textSize="12sp" />
 
@@ -93,7 +93,7 @@
                             android:layout_height="wrap_content"
                             android:layout_marginTop="12dp"
                             android:fontFamily="sans-serif-medium"
-                            android:text="Destination River Port (গন্তব্য ঘাট):"
+                            android:text="@string/terminal_weather_destination"
                             android:textColor="@color/navara_text_subtitle"
                             android:textSize="12sp" />
 
@@ -130,7 +130,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
-                            android:text="Departure Schedule &amp; Speed (যাত্রার সময়)"
+                            android:text="@string/departure_schedule_header"
                             android:textColor="@color/navara_text_title"
                             android:textSize="15sp" />
 
@@ -344,7 +344,7 @@
                             android:layout_marginTop="16dp"
                             android:backgroundTint="@color/navara_neon_cyan"
                             android:fontFamily="sans-serif-black"
-                            android:text="🗺️ Open Interactive River Map"
+                            android:text="@string/btn_open_river_map"
                             android:textColor="#00141D"
                             android:textSize="14sp"
                             app:cornerRadius="26dp" />
@@ -386,7 +386,7 @@
                             android:layout_height="48dp"
                             android:layout_marginTop="8dp"
                             android:fontFamily="sans-serif-bold"
-                            android:text="▼ Show All Route Waypoint Weather (রুট পয়েন্টসমূহ)"
+                            android:text="@string/toggle_waypoints_show"
                             android:textColor="@color/navara_neon_cyan"
                             android:textSize="12sp"
                             app:cornerRadius="24dp"
@@ -429,7 +429,7 @@
                             android:layout_height="wrap_content"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-medium"
-                            android:text="⛈️ Simulate Kalbaishakhi Storm (Signal 3):"
+                            android:text="@string/storm_simulate_label"
                             android:textColor="@color/navara_text_title"
                             android:textSize="13sp" />
 

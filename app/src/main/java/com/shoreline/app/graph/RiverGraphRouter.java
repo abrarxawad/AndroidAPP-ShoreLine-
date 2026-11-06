@@ -47,7 +47,7 @@ public class RiverGraphRouter {
                     weatherNotice, algorithmUsed, path, totalDistanceKm,
                     "Standard waterway route selected.", NodeWeather.RISK_LOW,
                     (path != null && !path.isEmpty()) ? path.get(0).getName() : "Origin",
-                    "GO", "Safe to Travel (যাত্রা নিরাপদ)", "All waterway points report safe operating conditions.");
+                    "GO", "Safe to Travel", "All waterway points report safe operating conditions.");
         }
 
         public RouteResult(List<GhatNode> path, List<WaterwayEdge> edges, double totalDistanceKm,
@@ -215,31 +215,47 @@ public class RiverGraphRouter {
         String recommendationTitle;
         String recommendationDetails;
 
+        boolean isBn = "bn".equals(Locale.getDefault().getLanguage());
         if (worstRisk == NodeWeather.RISK_HIGH) {
             recommendation = "DELAY_TRIP";
-            recommendationTitle = "Delay Your Trip / যাত্রা স্থগিত রাখুন";
-            recommendationDetails = String.format(Locale.US,
+            recommendationTitle = isBn ? "যাত্রা স্থগিত রাখুন" : "Delay Your Trip";
+            recommendationDetails = isBn ? String.format(Locale.US,
+                    "তীব্র বিরূপ আবহাওয়া (%s পয়েন্টে %s)। নদী উত্তাল থাকায় যাত্রা স্থগিত রাখার পরামর্শ দেওয়া হচ্ছে।",
+                    worstNodeName, worstNodeMetric)
+                    : String.format(Locale.US,
                     "Severe weather (Risk Level: HIGH) at %s (%s). High capsizing hazard on open water. Delay voyage until conditions calm.",
                     worstNodeName, worstNodeMetric);
         } else if (worstRisk == NodeWeather.RISK_MEDIUM) {
             recommendation = "BE_CAREFUL";
-            recommendationTitle = "Be Careful / সতর্কতার সাথে চলুন";
-            recommendationDetails = String.format(Locale.US,
+            recommendationTitle = isBn ? "সতর্কতার সাথে চলুন" : "Be Careful";
+            recommendationDetails = isBn ? String.format(Locale.US,
+                    "মাঝারি ঢেউ ও দমকা বাতাস (%s পয়েন্টে)। নৌযানকে সাবধানে চলাচলের পরামর্শ দেওয়া হচ্ছে।",
+                    worstNodeName)
+                    : String.format(Locale.US,
                     "Moderate chop and wind gusts (Risk Level: MEDIUM) at %s. Vessels should navigate cautiously.",
                     worstNodeName);
         } else {
             recommendation = "GO";
-            recommendationTitle = "Safe to Travel / যাত্রা নিরাপদ";
-            recommendationDetails = "All route checkpoints report calm river waters and favorable sailing conditions.";
+            recommendationTitle = isBn ? "যাত্রা নিরাপদ" : "Safe to Travel";
+            recommendationDetails = isBn
+                    ? "সকল রুট পয়েন্টে নদী শান্ত এবং নৌচলাচলের অনুকূল পরিবেশ রয়েছে।"
+                    : "All route checkpoints report calm river waters and favorable sailing conditions.";
         }
 
         // Recalculate travel time using user's chosen vessel speed
         int speed = Math.max(10, vesselSpeedKmh);
         int totalMinutes = (int) Math.round((weatherRoute.totalDistanceKm / (double) speed) * 60.0);
 
-        String notice = isRerouted
-                ? "⚠️ WEATHER REROUTE ACTIVE: Navigation adjusted through sheltered channels."
-                : "✓ Standard river corridor selected.";
+        String notice;
+        if (isBn) {
+            notice = isRerouted
+                    ? "⚠️ আবহাওয়া পুনর্নির্ধারণ: নিরাপদ ও শান্ত নদী চ্যানেল দিয়ে রুট নির্ধারণ করা হয়েছে।"
+                    : "✓ নিয়মিত নদী করিডোর নির্বাচিত।";
+        } else {
+            notice = isRerouted
+                    ? "⚠️ WEATHER REROUTE ACTIVE: Navigation adjusted through sheltered channels."
+                    : "✓ Standard river corridor selected.";
+        }
 
         return new RouteResult(
                 weatherRoute.path,

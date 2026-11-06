@@ -37,6 +37,26 @@ public class SessionManager {
         editor.apply();
     }
 
+    public void updateFullName(String fullName) {
+        editor.putString(KEY_FULL_NAME, fullName);
+        editor.apply();
+    }
+
+    public void updateEmail(String email) {
+        editor.putString(KEY_EMAIL, email);
+        editor.apply();
+    }
+
+    public void updatePhone(String phone) {
+        editor.putString(KEY_PHONE, phone);
+        editor.apply();
+    }
+
+    public void updateEmergencyContact(String contact) {
+        editor.putString(KEY_EMERGENCY_CONTACT, contact);
+        editor.apply();
+    }
+
     public boolean isLoggedIn() {
         return pref.getBoolean(KEY_IS_LOGGED_IN, false);
     }

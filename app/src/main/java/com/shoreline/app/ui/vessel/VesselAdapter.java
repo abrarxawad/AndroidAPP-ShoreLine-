@@ -123,21 +123,28 @@ public class VesselAdapter extends RecyclerView.Adapter<VesselAdapter.VesselView
 
         public void bind(VesselEntity vessel, OnVesselClickListener listener) {
             Context context = itemView.getContext();
+            boolean isBn = com.shoreline.app.util.LocaleHelper.isBangla(context);
 
             binding.tvItemVesselName.setText(vessel.getVesselName());
-            binding.tvItemRegNumber.setText(String.format("BIWTA Reg: %s", vessel.getRegistrationNumber()));
-            binding.tvItemRoute.setText(String.format("Route: %s", vessel.getRouteName()));
-            binding.tvItemCapacity.setText(String.format(Locale.US, "Cap: %d", vessel.getLicensedCapacity()));
+            binding.tvItemRegNumber.setText(isBn
+                    ? String.format("রেজিস্ট্রেশন: %s", vessel.getRegistrationNumber())
+                    : String.format("BIWTA Reg: %s", vessel.getRegistrationNumber()));
+            binding.tvItemRoute.setText(isBn
+                    ? String.format("নৌপথ: %s", vessel.getRouteName())
+                    : String.format("Route: %s", vessel.getRouteName()));
+            binding.tvItemCapacity.setText(isBn
+                    ? String.format(Locale.US, "ধারণক্ষমতা: %d", vessel.getLicensedCapacity())
+                    : String.format(Locale.US, "Cap: %d", vessel.getLicensedCapacity()));
             binding.tvItemRating.setText(String.format(Locale.US, "★ %.1f", vessel.getCommunityRating()));
 
             // Fitness Status & Overcrowding Warning Badge
             if (vessel.isFlagged()) {
-                binding.tvItemFitnessBadge.setText("FLAGGED (OVERLOAD)");
+                binding.tvItemFitnessBadge.setText(isBn ? "ঝুঁকিপূর্ণ ওভারলোড" : "FLAGGED (OVERLOAD)");
                 binding.tvItemFitnessBadge.setTextColor(ContextCompat.getColor(context, R.color.status_danger_red));
                 binding.cardVesselItem.setStrokeColor(ContextCompat.getColor(context, R.color.status_danger_red));
                 binding.cardVesselItem.setStrokeWidth(3);
             } else {
-                binding.tvItemFitnessBadge.setText("FITNESS VALID");
+                binding.tvItemFitnessBadge.setText(isBn ? "সনদপত্র বৈধ" : "FITNESS VALID");
                 binding.tvItemFitnessBadge.setTextColor(ContextCompat.getColor(context, R.color.status_safe_green));
                 binding.cardVesselItem.setStrokeColor(ContextCompat.getColor(context, R.color.surface_card_border));
                 binding.cardVesselItem.setStrokeWidth(1);

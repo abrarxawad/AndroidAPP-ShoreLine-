@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- SYLLABUS: Emergency Directory Card populated via ContentProvider -->
+<!-- SYLLABUS: Emergency Directory Card populated via ContentProvider (Navara Dark Glassmorphic Theme) -->
 <com.google.android.material.card.MaterialCardView
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,35 +7,35 @@
     android:id="@+id/cardContact"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="12dp"
-    android:layout_marginEnd="12dp"
-    android:layout_marginTop="6dp"
-    android:layout_marginBottom="6dp"
-    app:cardCornerRadius="14dp"
+    android:layout_marginStart="14dp"
+    android:layout_marginEnd="14dp"
+    android:layout_marginTop="8dp"
+    android:layout_marginBottom="8dp"
+    app:cardCornerRadius="20dp"
     app:cardElevation="2dp"
     app:strokeWidth="1.2dp"
-    app:strokeColor="@color/surface_card_border"
-    app:cardBackgroundColor="@color/surface_white">
+    app:strokeColor="@color/navara_glass_border"
+    app:cardBackgroundColor="@color/navara_glass_surface">
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:padding="14dp">
+        android:padding="16dp">
 
         <!-- Agency Chip -->
         <TextView
             android:id="@+id/tvContactAgency"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="@drawable/bg_chip_safe"
+            android:background="@drawable/bg_navara_chip"
             android:paddingStart="8dp"
             android:paddingEnd="8dp"
-            android:paddingTop="2dp"
-            android:paddingBottom="2dp"
+            android:paddingTop="3dp"
+            android:paddingBottom="3dp"
             android:text="BIWTA"
-            android:textColor="@color/primary_maritime"
+            android:textColor="@color/navara_neon_cyan"
             android:textSize="11sp"
-            android:textStyle="bold"
+            android:fontFamily="sans-serif-bold"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
@@ -44,10 +44,10 @@
             android:id="@+id/tvContactName"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="8dp"
             android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="@color/text_primary"
+            android:fontFamily="sans-serif-bold"
+            android:textColor="@color/navara_text_title"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvContactAgency"
@@ -60,7 +60,8 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
             android:textSize="12sp"
-            android:textColor="@color/text_secondary"
+            android:fontFamily="sans-serif"
+            android:textColor="@color/navara_text_subtitle"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvContactName"
@@ -71,10 +72,10 @@
             android:id="@+id/tvContactPhone"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="6dp"
+            android:layout_marginTop="8dp"
             android:textSize="15sp"
-            android:textStyle="bold"
-            android:textColor="@color/secondary_safety_orange"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/navara_neon_cyan"
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintEnd_toStartOf="@id/btnActionDial"
             app:layout_constraintTop_toBottomOf="@id/tvContactRole"
@@ -83,14 +84,16 @@
         <!-- Dial Button -->
         <com.google.android.material.button.MaterialButton
             android:id="@+id/btnActionDial"
-            style="@style/Widget.MaterialComponents.Button"
             android:layout_width="wrap_content"
             android:layout_height="40dp"
             android:minHeight="40dp"
-            android:backgroundTint="@color/primary_maritime"
+            android:background="@drawable/bg_navara_neon_button"
             android:text="Call"
-            android:textColor="@color/surface_white"
+            android:textAllCaps="false"
+            android:fontFamily="sans-serif-black"
+            android:textColor="@color/navara_text_dark"
             android:textSize="12sp"
+            app:backgroundTint="@null"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toBottomOf="@id/tvContactRole" />
@@ -98,4 +101,3 @@
     </androidx.constraintlayout.widget.ConstraintLayout>
 
 </com.google.android.material.card.MaterialCardView>
-

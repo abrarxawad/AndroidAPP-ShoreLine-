@@ -145,15 +145,16 @@ public class CapacityGaugeView extends View {
         // 3. Determine dynamic color based on safety limits
         int activeColor;
         String statusLabel;
+        boolean isBn = com.shoreline.app.util.LocaleHelper.isBangla(getContext());
         if (ratio < 0.75f) {
             activeColor = safeColor;
-            statusLabel = "SAFE LOAD";
+            statusLabel = isBn ? "নিরাপদ যাত্রী লোড" : "SAFE LOAD";
         } else if (ratio <= 1.0f) {
             activeColor = warningColor;
-            statusLabel = "APPROACHING LIMIT";
+            statusLabel = isBn ? "ধারণক্ষমতার কাছাকাছি" : "APPROACHING LIMIT";
         } else {
             activeColor = dangerColor;
-            statusLabel = "OVERLOADED!";
+            statusLabel = isBn ? "বিপজ্জনক অতিরিক্ত বোঝাই!" : "OVERLOADED!";
         }
 
         progressArcPaint.setColor(activeColor);
@@ -169,16 +170,22 @@ public class CapacityGaugeView extends View {
         int percent = Math.round(ratio * 100f);
         canvas.drawText(percent + "%", centerX, centerY - 15f, textPercentPaint);
 
-        // 6. Draw passengers / limit subtext
-        String loadDetails = String.format(Locale.US, "%d / %d Passengers", currentLoad, licensedCapacity);
+        // 6. Draw passengers / limit subtext (Crisp white on dark yacht cockpit)
+        String loadDetails = isBn
+                ? String.format(Locale.US, "%d / %d জন যাত্রী", currentLoad, licensedCapacity)
+                : String.format(Locale.US, "%d / %d Passengers", currentLoad, licensedCapacity);
+        textSubPaint.setColor(0xFFFFFFFF);
+        textSubPaint.setTextSize(30f);
         canvas.drawText(loadDetails, centerX, centerY + 25f, textSubPaint);
 
         // 7. Draw status caption
         textSubPaint.setColor(activeColor);
         textSubPaint.setFakeBoldText(true);
+        textSubPaint.setTextSize(32f);
         canvas.drawText(statusLabel, centerX, centerY + 65f, textSubPaint);
         textSubPaint.setFakeBoldText(false);
-        textSubPaint.setColor(0xFF64748B);
+        textSubPaint.setColor(0xFF94D2BD);
+        textSubPaint.setTextSize(28f);
     }
 
     // =========================================================================
@@ -192,6 +199,9 @@ public class CapacityGaugeView extends View {
             float fraction = x / (float) getWidth();
             // Scale simulation from 0 to 140% of licensed capacity
             int simulatedLoad = Math.round(fraction * 1.4f * licensedCapacity);
+            if (Math.abs(simulatedLoad - currentLoad) >= Math.max(1, licensedCapacity / 25)) {
+                com.shoreline.app.util.HapticHelper.vibrateTick(this);
+            }
             setCurrentLoad(simulatedLoad);
             return true;
         }

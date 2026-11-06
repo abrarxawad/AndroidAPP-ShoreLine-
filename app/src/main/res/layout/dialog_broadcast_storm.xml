@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- SYLLABUS: Material Dialog for BIWTA Storm Warning Signal Broadcast -->
+<!-- SYLLABUS: Material Dialog for BIWTA Storm Warning Signal Broadcast (Navara Theme) -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -7,23 +7,23 @@
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="@color/surface_white">
+    android:background="@drawable/bg_navara_glass_card">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="📢 Broadcast BMD Storm Warning"
+        android:text="@string/admin_dialog_broadcast_title"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/primary_maritime" />
+        android:fontFamily="sans-serif-black"
+        android:textColor="@color/navara_text_title" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Transmits warning across Firebase Cloud Messaging (FCM) topic 'storm_alerts' to all passenger vessels."
+        android:text="@string/admin_dialog_broadcast_desc"
         android:textSize="12sp"
-        android:textColor="@color/text_secondary" />
+        android:textColor="@color/navara_text_subtitle" />
 
     <!-- Signal Level Dropdown -->
     <com.google.android.material.textfield.TextInputLayout
@@ -32,14 +32,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:hint="BMD Warning Signal Level (সংকেত স্তর)">
+        app:boxStrokeColor="@color/navara_neon_cyan"
+        app:hintTextColor="@color/navara_neon_cyan"
+        android:hint="@string/admin_dialog_signal_label">
 
         <AutoCompleteTextView
             android:id="@+id/actvSignalLevel"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"
-            android:text="Signal 3: Local Cautionary (স্থানীয় সতর্ক সংকেত)" />
+            android:textColor="@color/navara_text_title"
+            android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Affected River Sector Dropdown -->
@@ -49,14 +51,16 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:hint="Affected Waterway Basin (নদী অববাহিকা)">
+        app:boxStrokeColor="@color/navara_neon_cyan"
+        app:hintTextColor="@color/navara_neon_cyan"
+        android:hint="@string/admin_dialog_zone_label">
 
         <AutoCompleteTextView
             android:id="@+id/actvRiverBasin"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"
-            android:text="Padma-Meghna Confluence (চাঁদপুর মোহনা)" />
+            android:textColor="@color/navara_text_title"
+            android:inputType="none" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Advisory Body Message -->
@@ -66,15 +70,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
-        android:hint="Advisory Directive / Emergency Note">
+        app:boxStrokeColor="@color/navara_neon_cyan"
+        app:hintTextColor="@color/navara_neon_cyan"
+        android:hint="@string/admin_dialog_instruction_label">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etAdvisoryBody"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/navara_text_title"
             android:inputType="textMultiLine"
-            android:minLines="2"
-            android:text="Gusts exceeding 45 km/h. Small launches below 65ft prohibited from mid-river navigation." />
+            android:minLines="2" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <!-- Checkbox for Local Test Broadcast -->
@@ -84,9 +90,8 @@
         android:layout_height="wrap_content"
         android:layout_marginTop="12dp"
         android:checked="true"
-        android:text="Fire instant heads-up notification on this phone (Evaluator Test)"
-        android:textColor="@color/text_primary"
+        android:text="@string/admin_dialog_test_device_check"
+        android:textColor="@color/navara_text_title"
         android:textSize="12sp" />
 
 </LinearLayout>
-

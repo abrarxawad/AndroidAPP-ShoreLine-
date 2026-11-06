@@ -69,20 +69,33 @@ public class VesselDetailActivity extends BaseActivity {
     }
 
     private void populateVesselDetails() {
+        boolean isBn = com.shoreline.app.util.LocaleHelper.isBangla(this);
         binding.tvDetailVesselName.setText(vesselName);
-        binding.tvDetailRegNumber.setText(String.format("BIWTA Registration: %s", regNumber));
-        binding.tvDetailRoute.setText(String.format("Route: %s", routeName));
-        binding.tvDetailCapacity.setText(String.format(Locale.US, "%d Passengers", capacity));
-        binding.tvDetailRating.setText(String.format(Locale.US, "★ %.1f / 5.0 (%d Reports)", rating, reportCount));
+        binding.tvDetailRegNumber.setText(isBn
+                ? String.format("বিআইডব্লিউটিএ রেজিস্ট্রেশন: %s", regNumber)
+                : String.format("BIWTA Registration: %s", regNumber));
+        binding.tvDetailRoute.setText(isBn
+                ? String.format("নৌপথ: %s", routeName)
+                : String.format("Route: %s", routeName));
+        binding.tvDetailCapacity.setText(isBn
+                ? String.format(Locale.US, "%d জন যাত্রী", capacity)
+                : String.format(Locale.US, "%d Passengers", capacity));
+        binding.tvDetailRating.setText(isBn
+                ? String.format(Locale.US, "★ %.1f / ৫.০ (%d টি রিপোর্ট)", rating, reportCount)
+                : String.format(Locale.US, "★ %.1f / 5.0 (%d Reports)", rating, reportCount));
 
         // Fitness Certificate Evaluation
         if (isFlagged) {
             binding.tvFlaggedAlert.setVisibility(View.VISIBLE);
-            binding.tvDetailFitness.setText(String.format("%s (EXPIRED / SUSPENDED)", fitnessExpiry));
+            binding.tvDetailFitness.setText(isBn
+                    ? String.format("%s (মেয়াদোত্তীর্ণ / স্থগিত)", fitnessExpiry)
+                    : String.format("%s (EXPIRED / SUSPENDED)", fitnessExpiry));
             binding.tvDetailFitness.setTextColor(ContextCompat.getColor(this, R.color.status_danger_red));
         } else {
             binding.tvFlaggedAlert.setVisibility(View.GONE);
-            binding.tvDetailFitness.setText(String.format("%s (OFFICIALLY VALID)", fitnessExpiry));
+            binding.tvDetailFitness.setText(isBn
+                    ? String.format("%s (বৈধ ও অনুমোদিত)", fitnessExpiry)
+                    : String.format("%s (OFFICIALLY VALID)", fitnessExpiry));
             binding.tvDetailFitness.setTextColor(ContextCompat.getColor(this, R.color.status_safe_green));
         }
 

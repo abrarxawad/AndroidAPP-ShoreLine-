@@ -92,7 +92,7 @@ public class GuideAdapter extends RecyclerView.Adapter<GuideAdapter.GuideViewHol
             // Handle expansion state
             boolean isExpanded = expandedIds.contains(guide.getId());
             binding.layoutExpandedSteps.setVisibility(isExpanded ? View.VISIBLE : View.GONE);
-            binding.tvExpandIndicator.setText(isExpanded ? "▲ Collapse" : "▼ Expand");
+            binding.tvExpandIndicator.setText(isExpanded ? R.string.guide_collapse : R.string.guide_expand);
 
             binding.cardGuide.setOnClickListener(v -> {
                 if (expandedIds.contains(guide.getId())) {

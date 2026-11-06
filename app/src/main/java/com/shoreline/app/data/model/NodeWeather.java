@@ -67,26 +67,27 @@ public class NodeWeather implements Serializable {
      * Maps WMO weather code to clear waterway descriptive condition
      */
     public String getWeatherDescription() {
+        boolean isBn = "bn".equals(Locale.getDefault().getLanguage());
         switch (weatherCode) {
-            case 0: return "Clear Sky (পরিষ্কার আকাশ)";
-            case 1: return "Mainly Clear (বেশিরভাগ পরিষ্কার)";
-            case 2: return "Partly Cloudy (আংশিক মেঘলা)";
-            case 3: return "Overcast (মেঘলা)";
+            case 0: return isBn ? "পরিষ্কার আকাশ" : "Clear Sky";
+            case 1: return isBn ? "বেশিরভাগ পরিষ্কার" : "Mainly Clear";
+            case 2: return isBn ? "আংশিক মেঘলা" : "Partly Cloudy";
+            case 3: return isBn ? "মেঘলা" : "Overcast";
             case 45:
-            case 48: return "River Fog / Mist (নদীতে কুয়াশা)";
+            case 48: return isBn ? "নদীতে কুয়াশা" : "River Fog / Mist";
             case 51:
             case 53:
-            case 55: return "Light Drizzle (গুঁড়ি গুঁড়ি বৃষ্টি)";
-            case 61: return "Slight Rain (হালকা বৃষ্টি)";
-            case 63: return "Moderate Rain (মাঝারি বৃষ্টি)";
-            case 65: return "Heavy Downpour (ভারী বর্ষণ)";
+            case 55: return isBn ? "গুঁড়ি গুঁড়ি বৃষ্টি" : "Light Drizzle";
+            case 61: return isBn ? "হালকা বৃষ্টি" : "Slight Rain";
+            case 63: return isBn ? "মাঝারি বৃষ্টি" : "Moderate Rain";
+            case 65: return isBn ? "ভারী বর্ষণ" : "Heavy Downpour";
             case 80:
-            case 81: return "Rain Showers (বৃষ্টির দমকা)";
-            case 82: return "Violent Squall Showers (তীব্র ঝড়বৃষ্টি)";
-            case 95: return "Thunderstorm (বজ্রঝড় / কালবৈশাখী)";
+            case 81: return isBn ? "বৃষ্টির দমকা" : "Rain Showers";
+            case 82: return isBn ? "তীব্র ঝড়বৃষ্টি" : "Violent Squall Showers";
+            case 95: return isBn ? "বজ্রঝড় / কালবৈশাখী" : "Thunderstorm";
             case 96:
-            case 99: return "Severe Thunderstorm with Hail (শিলাবৃষ্টিসহ তীব্র ঝড়)";
-            default: return "Seasonal Weather (স্বাভাবিক আবহাওয়া)";
+            case 99: return isBn ? "শিলাবৃষ্টিসহ তীব্র ঝড়" : "Severe Thunderstorm with Hail";
+            default: return isBn ? "স্বাভাবিক আবহাওয়া" : "Seasonal Weather";
         }
     }
 
@@ -94,10 +95,11 @@ public class NodeWeather implements Serializable {
      * Maps risk level to user-friendly status badge text
      */
     public String getRiskBadgeText() {
+        boolean isBn = "bn".equals(Locale.getDefault().getLanguage());
         switch (riskLevel) {
-            case RISK_HIGH: return "⛔ DANGER / বিপদ";
-            case RISK_MEDIUM: return "⚠ CAUTION / সতর্কবার্তা";
-            default: return "✓ SAFE / নিরাপদ";
+            case RISK_HIGH: return isBn ? "⛔ বিপদ" : "⛔ DANGER";
+            case RISK_MEDIUM: return isBn ? "⚠️ সতর্কতা" : "⚠️ CAUTION";
+            default: return isBn ? "✓ নিরাপদ" : "✓ SAFE";
         }
     }
 

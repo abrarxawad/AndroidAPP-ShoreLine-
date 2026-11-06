@@ -1,5 +1,7 @@
 package com.shoreline.app.data.model;
 
+import java.util.Locale;
+
 /**
  * SYLLABUS: Marine Weather Model - Derived from Open-Meteo API
  * Maps wind speeds and weather codes to Bangladesh Meteorological Department (BMD) river storm signals.
@@ -24,21 +26,30 @@ public class WeatherInfo {
         // Signal 2 (Warning): Wind 35-50 km/h. Launch departures monitored.
         // Signal 3 (Danger / Kalbaishakhi): Wind 50-70 km/h. Confluence crossing prohibited.
         // Signal 4 (Great Danger): Wind > 70 km/h. All river launch operations halted.
+        boolean isBn = "bn".equals(Locale.getDefault().getLanguage());
         if (windGustKmh > 70 || windSpeedKmh > 60) {
             this.riverSignalNumber = 4;
-            this.riverStatusDescription = "Great Danger Signal 4 (মহাবিপদ সংকেত ৪): Launch operations suspended!";
+            this.riverStatusDescription = isBn
+                    ? "মহাবিপদ সংকেত ৪: সকল নৌযান চলাচল স্থগিত!"
+                    : "Great Danger Signal 4: Launch operations suspended!";
             this.isLaunchTravelSafe = false;
         } else if (windGustKmh > 50 || windSpeedKmh > 40) {
             this.riverSignalNumber = 3;
-            this.riverStatusDescription = "Danger Signal 3 (বিপদ সংকেত ৩): Severe Kalbaishakhi squalls on Meghna/Padma!";
+            this.riverStatusDescription = isBn
+                    ? "বিপদ সংকেত ৩: মেঘনা ও পদ্মায় তীব্র কালবৈশাখী ঝড়ের সম্ভাবনা!"
+                    : "Danger Signal 3: Severe Kalbaishakhi squalls on Meghna/Padma!";
             this.isLaunchTravelSafe = false;
         } else if (windGustKmh > 35 || windSpeedKmh > 28) {
             this.riverSignalNumber = 2;
-            this.riverStatusDescription = "Warning Signal 2 (হুঁশিয়ারি সংকেত ২): Choppy waters; navigate inland channels.";
+            this.riverStatusDescription = isBn
+                    ? "হুঁশিয়ারি সংকেত ২: উত্তাল নদী; উপকূলীয় চ্যানেল দিয়ে চলুন।"
+                    : "Warning Signal 2: Choppy waters; navigate inland channels.";
             this.isLaunchTravelSafe = true;
         } else {
             this.riverSignalNumber = 1;
-            this.riverStatusDescription = "Cautionary Signal 1 (সতর্ক সংকেত ১): River weather normal & navigable.";
+            this.riverStatusDescription = isBn
+                    ? "সতর্ক সংকেত ১: নৌপথ শান্ত ও নৌচলাচলের উপযোগী।"
+                    : "Cautionary Signal 1: River weather normal & navigable.";
             this.isLaunchTravelSafe = true;
         }
     }

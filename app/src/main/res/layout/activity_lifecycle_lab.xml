@@ -6,7 +6,7 @@
     android:id="@+id/labScrollView"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light_canvas"
+    android:background="@color/navara_bg_base"
     android:fillViewport="true">
 
     <LinearLayout

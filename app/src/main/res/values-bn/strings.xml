@@ -46,8 +46,21 @@
     <string name="status_offline">অফলাইন মোড (লোকাল ক্যাশ)</string>
 
     <!-- Authentication Screens (Stage 1) -->
+    <string name="login_hero_title">নিরাপদ নৌযাত্রা</string>
+    <string name="login_hero_subtitle">প্রতিটি নদীর মোহনায়</string>
+    <string name="login_card_title">মেরিটাইম পোর্টালে প্রবেশ</string>
+    <string name="login_card_subtitle">যাচাইকৃত যাত্রী ও পরিদর্শক পোর্টালে প্রবেশ করুন</string>
+    <string name="login_demo_header">তাৎক্ষণিক ডেমো পরীক্ষণ</string>
+    <string name="login_demo_passenger">👤 যাত্রী ডেমো</string>
+    <string name="login_demo_admin">🛡️ বন্দর প্রশাসন</string>
+    <string name="lang_bangla">বাংলা</string>
+    <string name="lang_english">English</string>
+    <string name="welcome_aboard">স্বাগতম</string>
+    <string name="active_river_fleet">সক্রিয় নৌবহর ও যাত্রী সুরক্ষা নেটওয়ার্ক</string>
+    <string name="shoreline_maritime">শোরলাইন মেরিটাইম</string>
     <string name="title_login">লগইন করুন</string>
     <string name="title_register">নতুন নিরাপত্তা অ্যাকাউন্ট খুলুন</string>
+    <string name="register_subtitle">নিরাপদ নদীযাত্রী নেটওয়ার্কে যুক্ত হোন</string>
     <string name="label_email">ইমেইল ঠিকানা</string>
     <string name="label_password">পাসওয়ার্ড</string>
     <string name="label_full_name">আপনার পুরো নাম</string>
@@ -72,6 +85,22 @@
     <string name="badge_passenger">নৌ-যাত্রী</string>
     <string name="badge_admin">বিআইডব্লিউটিএ কর্মকর্তা</string>
     <string name="btn_logout">লগআউট</string>
+    <string name="home_passenger_load">যাত্রী চাপ</string>
+    <string name="home_launch_safe_journey">নিরাপদ নদীযাত্রা শুরু করুন</string>
+    <string name="home_river_transit_services">নৌপথের সেবাসমূহ</string>
+    <string name="home_alert_sample">মেঘনা মোহনা: মাঝারি আড়াআড়ি স্রোত। আবহাওয়াভিত্তিক রুট চেক করুন।</string>
+    <string name="home_dismiss">বাতিল</string>
+    <string name="home_view_safe_route">নিরাপদ রুট দেখুন</string>
+    <string name="home_vessel_desc">কিউআর স্ক্যান ও ধারণক্ষমতা</string>
+    <string name="home_route_desc">ঝড় ও আবহাওয়া ভিত্তিক রুট</string>
+    <string name="home_tracker_desc">লাইভ জিপিএস ট্র্যাকিং</string>
+    <string name="home_report_desc">অতিরিক্ত যাত্রীর ছবি প্রমাণ</string>
+    <string name="home_sos_desc">টাওয়ারহীন জরুরি এসওএস</string>
+    <string name="home_guide_desc">সিপিআর ও জরুরি নির্দেশিকা</string>
+    <string name="home_admin_card_title">বন্দর কর্তৃপক্ষ ড্যাশবোর্ড</string>
+    <string name="home_admin_card_desc">বিআইডব্লিউটিএ কমান্ড, হটস্পট ও ঝড় সতর্কবার্তা</string>
+    <string name="home_lifecycle_lab">🧪 লাইফসাইকেল ল্যাব</string>
+    <string name="home_bottom_logout">🚪 লগআউট</string>
 
     <!-- Stage 2: Vessel Verification & Custom Gauge -->
     <string name="vessel_search_title">লঞ্চ লাইসেন্স ও ফিটনেস যাচাই</string>
@@ -88,6 +117,8 @@
     <string name="label_fitness_expiry">ফিটনেস সার্টিফিকেটের মেয়াদ:</string>
     <string name="label_community_rating">যাত্রী নিরাপত্তা রেটিং:</string>
     <string name="btn_report_overload_action">🚨 এই লঞ্চের বিরুদ্ধে অতিরিক্ত যাত্রীর অভিযোগ করুন</string>
+    <string name="vessel_warning_overcrowd">⚠️ সতর্কতা: বারবার অতিরিক্ত যাত্রী বহনের দায়ে চিহ্নিত</string>
+    <string name="vessel_gauge_drag_hint">👆 যাত্রী ধারণক্ষমতা পরিবর্তন দেখতে মিটারে স্পর্শ করুন</string>
 
     <!-- Feature Titles for Navigation -->
     <string name="nav_vessel_check">লঞ্চ/নৌযান যাচাই</string>
@@ -130,6 +161,7 @@
     <string name="btn_refresh_gps">জিপিএস রিফ্রেশ করুন</string>
     <string name="photo_header">লঞ্চ ডেকের ছবি প্রমাণ (কম্প্রেসড &lt; ২০০KB)</string>
     <string name="btn_take_photo">📷 লঞ্চের ডেকের ছবি তুলুন</string>
+    <string name="btn_choose_gallery">গ্যালারি</string>
     <string name="label_anonymous_report">পরিচয় গোপন রাখুন (নাম ও ফোন নম্বর প্রকাশ হবে না)</string>
     <string name="btn_submit_report">🚨 জরুরি অভিযোগ দায়ের করুন</string>
     <string name="btn_view_history">📋 জমাকৃত অভিযোগের তালিকা দেখুন</string>
@@ -141,23 +173,25 @@
     <string name="empty_no_reports">এখনও কোনো অভিযোগ দায়ের করা হয়নি</string>
     <string name="empty_no_reports_hint">ঘাট বা লঞ্চে ঝুঁকিপূর্ণ অতিরিক্ত যাত্রী দেখলে এখানে ছবিসহ অভিযোগ দিন।</string>
     <string name="btn_force_sync">🔄 এখনই অফলাইন অভিযোগ আপলোড করুন</string>
+    <string name="history_offline_notice">মোবাইল নেটওয়ার্ক পেলে স্বয়ংক্রিয়ভাবে আপলোড হবে</string>
 
-    <!-- Stage 4 Extension: Route Weather, Departure Time, & Risk Evaluation (Bangla) -->
-    <string name="terminal_weather_origin">উৎস লঞ্চ টার্মিনাল:</string>
+    <!-- Stage 4: Safe River Route, Weather & Risk Evaluation -->
+    <string name="route_select_header">নৌপথ নির্বাচন</string>
+    <string name="terminal_weather_origin">উৎস লঞ্চ ঘাট:</string>
     <string name="terminal_weather_destination">গন্তব্য নদী বন্দর:</string>
-    <string name="departure_schedule_header">যাত্রার সময়সূচি ও গতি</string>
-    <string name="departure_time_label">🕒 যাত্রার সময়: %s (পরিবর্তন করুন)</string>
+    <string name="departure_schedule_header">যাত্রার সময় ও গতি</string>
+    <string name="departure_time_label">🕒 ছাড়ার সময়: %s (পরিবর্তন করুন)</string>
     <string name="vessel_speed_format">লঞ্চের গতি: %d কিমি/ঘণ্টা</string>
-    <string name="estimated_arrival_format">⚓ গন্তব্যে পৌঁছানোর সম্ভাব্য সময়: %1$s (~%2$.1f ঘণ্টা যাত্রা)</string>
+    <string name="estimated_arrival_format">⚓ গন্তব্যে পৌঁছানোর সম্ভাব্য সময়: %1$s (~%2$.1f ঘণ্টা)</string>
     <string name="worst_point_summary_format">⚠️ রুটের সবচেয়ে ঝুঁকিপূর্ণ পয়েন্ট: %1$s (%2$s • ঝুঁকি: %3$s)</string>
-    <string name="worst_point_safe">✓ সব চেকপয়েন্টে নদী শান্ত ও অনুকূল রয়েছে (ঝুঁকি: নিরাপদ)</string>
+    <string name="worst_point_safe">✓ সব পয়েন্টে নদী শান্ত ও অনুকূল (ঝুঁকি: নিরাপদ)</string>
     <string name="toggle_waypoints_show">▼ সব রুট পয়েন্টের আবহাওয়া দেখুন</string>
     <string name="toggle_waypoints_hide">▲ রুট পয়েন্টের আবহাওয়া লুকান</string>
     <string name="risk_safe">✓ নিরাপদ</string>
     <string name="risk_caution">⚠️ সতর্কতা</string>
-    <string name="risk_danger">⛔ ঝুঁকিপূর্ণ</string>
-    <string name="recommendation_go">✓ নিরাপদ (যাত্রা করা যায়)</string>
-    <string name="recommendation_be_careful">⚠️ সতর্ক থাকুন (ধীরে চলুন)</string>
+    <string name="risk_danger">⛔ উচ্চ ঝুঁকি</string>
+    <string name="recommendation_go">✓ যাত্রা নিরাপদ (অনুকূল)</string>
+    <string name="recommendation_be_careful">⚠️ সতর্কতা (ধীরে চলুন)</string>
     <string name="recommendation_delay">⛔ যাত্রা স্থগিত রাখুন (ঝুঁকিপূর্ণ)</string>
     <string name="bmd_priority_notice">বিএমডি সতর্ক সংকেত সর্বোচ্চ অগ্রাধিকার</string>
     <string name="weather_updated_format">হালনাগাদ: %s • পূর্বাভাস মডেল তথ্য</string>
@@ -167,16 +201,24 @@
     <string name="notice_departure_past_clamped">অতীতের সময়কে পরবর্তী পূর্বাভাস ঘণ্টায় সমন্বয় করা হয়েছে।</string>
     <string name="notice_departure_future_clamped">আবহাওয়া পূর্বাভাস সর্বোচ্চ ৭ দিন পর্যন্ত বিদ্যমান।</string>
     <string name="route_two_nodes_only">সরাসরি নদী চ্যানেল (শুধু উৎস ও গন্তব্য)</string>
+    <string name="btn_open_river_map">🗺️ ইন্টারেক্টিভ নদী মানচিত্র দেখুন</string>
+    <string name="storm_simulate_label">⛈️ কালবৈশাখী ঝড় সিমুলেশন (৩ নম্বর সংকেত):</string>
+    <string name="worst_hazard_point_badge">⚠️ রুটের সর্বোচ্চ সতর্ক সংকেত পয়েন্ট</string>
+    <string name="label_origin">উৎস</string>
+    <string name="label_destination">গন্তব্য</string>
+    <string name="wind_format">💨 বাতাস: %1$.1f কিমি/ঘণ্টা (দমকা: %2$.1f কিমি/ঘণ্টা)</string>
+    <string name="rain_format">🌧️ বৃষ্টি: %.1f মিমি/ঘণ্টা</string>
+    <string name="wave_format">🌊 ঢেউ: %.1f মিটার</string>
 
-    <!-- Stage 5: Family Journey Tracker & Live GPS Telemetry (Bangla) -->
-    <string name="tracker_tab_passenger">আমার নৌযাত্রা (যাত্রী)</string>
-    <string name="tracker_tab_family">স্বজন ট্র্যাকিং (পরিবার)</string>
+    <!-- Stage 5: Family Journey Tracker & Live GPS Telemetry -->
+    <string name="tracker_tab_passenger">আমার নৌযাত্রা</string>
+    <string name="tracker_tab_family">স্বজন ট্র্যাকিং</string>
     <string name="tracker_setup_title">নৌযাত্রা ও লাইভ ট্র্যাকিং</string>
     <string name="tracker_setup_subtitle">৬ অক্ষরের কোড দিয়ে পরিবারকে লাইভ অবস্থান জানান</string>
     <string name="tracker_origin_label">ছাড়ার ঘাট:</string>
     <string name="tracker_dest_label">গন্তব্য ঘাট:</string>
     <string name="tracker_vessel_hint">লঞ্চের নাম (যেমন: এমভি সুন্দরবন ১০)</string>
-    <string name="tracker_btn_start">⛵ নৌযাত্রা শুরু করুন (কোড পান)</string>
+    <string name="tracker_btn_start">⛵ নৌযাত্রা শুরু করুন</string>
     <string name="tracker_btn_stop">🛑 যাত্রা সমাপ্ত করুন</string>
     <string name="tracker_code_title">আপনার যাত্রা ট্র্যাকিং কোড</string>
     <string name="tracker_code_subtitle">আপনার স্বজনদের এই ৬ অক্ষরের কোডটি দিন। তারা নদীর মানচিত্রে আপনার লঞ্চের অবস্থান লাইভ দেখতে পারবেন।</string>
@@ -200,11 +242,12 @@
     <string name="tracker_error_empty_code">দয়া করে একটি সঠিক ৬ অক্ষরের কোড লিখুন</string>
     <string name="tracker_error_not_found">%s কোডের কোনো সক্রিয় যাত্রা পাওয়া যায়নি</string>
     <string name="tracker_perm_required">লাইভ ট্র্যাকিংয়ের জন্য জিপিএস পারমিশন প্রয়োজন</string>
+    <string name="tracker_voyage_ended_toast">নৌযাত্রা সমাপ্ত হয়েছে। স্বজনদের ঘাটে পৌঁছানোর বার্তা পাঠানো হয়েছে।</string>
 
-    <!-- Stage 6: Offline SOS Distress Beacon, Nearby Connections, & Implicit Intents (Bangla) -->
+    <!-- Stage 6: Offline SOS Distress Beacon, Nearby Connections, & Implicit Intents -->
     <string name="sos_beacon_title">টাওয়ারহীন জরুরি বিপৎসংকেত (SOS)</string>
     <string name="sos_beacon_subtitle">মোবাইল নেটওয়ার্ক ছাড়া ব্লুটুথ ও ওয়াইফাই দিয়ে নিকটবর্তী লঞ্চ ও ট্রলারে বিপদ বার্তা পাঠান।</string>
-    <string name="sos_emergency_type_label">বিপদের ধরন নির্বাচন করুন:</string>
+    <string name="sos_emergency_type_label">জরুরি বিপদের ধরন নির্বাচন করুন:</string>
     <string name="sos_type_capsizing">🌊 ডুবে যাওয়ার ঝুঁকি</string>
     <string name="sos_type_engine">⚙️ ইঞ্জিন বিকল</string>
     <string name="sos_type_medical">🚑 জরুরি চিকিৎসা</string>
@@ -213,6 +256,12 @@
     <string name="sos_status_idle">বিপৎসংকেত পাঠানোর জন্য প্রস্তুত</string>
     <string name="sos_radar_title">লাইভ নদী রাডার ও নিকটবর্তী নৌযান</string>
     <string name="sos_radar_subtitle">নদীতে কাছাকাছি নৌযান ও বিপদ সংকেত পর্যবেক্ষণ করছে।</string>
+    <string name="sos_scanning_reach">🟢 নদীর সীমানায় স্ক্যান চলছে (নিয়ারবাই কানেকশন সক্রিয়)</string>
+    <string name="sos_demo_simulate_btn">⚡ পরীক্ষক ডেমো: আগত বিপৎসংকেত সিমুলেশন</string>
+    <string name="sos_call_vessel">📞 নৌযানে কল করুন</string>
+    <string name="sos_open_map">🗺️ মানচিত্র দেখুন</string>
+    <string name="sos_beacon_broadcasting">🚨 জরুরি বিপৎসংকেত সক্রিয়: নিকটবর্তী নৌযানে পাঠানো হচ্ছে...</string>
+    <string name="sos_broadcast_toast">🚨 নদী সীমানায় জরুরি বিপৎসংকেত সম্প্রচারিত হয়েছে!</string>
     <string name="sos_fallback_title">জরুরি উদ্ধারকারী নম্বর ও এসএমএস</string>
     <string name="sos_fallback_subtitle">মোবাইল সিগন্যাল পাওয়া গেলে সরাসরি কল বা এসএমএস করুন।</string>
     <string name="sos_btn_biwta">📞 বিআইডব্লিউটিএ (১৬১০৭)</string>
@@ -224,21 +273,132 @@
     <string name="sos_broadcast_success">🚨 বিপৎসংকেত সফলভাবে %d টি নৌযানে পৌঁছেছে।</string>
     <string name="sos_demo_simulated">⚡ ট্রলার \'এফভি মেঘনা রানী\' থেকে আগত বিপৎসংকেত সিমুলেশন সম্পন্ন!</string>
 
-    <!-- Stage 7: Port Authority & BIWTA Admin Dashboard, FCM Topic Alerts (Bangla) -->
+    <!-- Stage 7: Port Authority & BIWTA Admin Dashboard -->
     <string name="admin_dashboard_title">নদী বন্দর কমান্ড ওভারভিউ</string>
+    <string name="admin_storm_card_title">বিএমডি আবহাওয়া সতর্ক সংকেত</string>
+    <string name="admin_storm_default_level">৩ নম্বর সংকেত</string>
+    <string name="admin_storm_advisory_text">পদ্মা-মেঘনা মোহনায় সতর্ক সংকেত বলবৎ রয়েছে। ছোট নৌযান ও ট্রলারকে তীরের কাছাকাছি সাবধানে চলতে হবে।</string>
+    <string name="admin_broadcast_storm_btn">📢 ঝড় সতর্কবার্তা সম্প্রচার করুন (FCM অ্যালার্ট)</string>
+    <string name="admin_command_overview_header">পোর্ট অথরিটি কমান্ড ওভারভিউ</string>
     <string name="admin_stat_active_sos">সক্রিয় বিপৎসংকেত (SOS)</string>
     <string name="admin_stat_overload_reports">অতিরিক্ত যাত্রী রিপোর্ট</string>
     <string name="admin_stat_monitored_fleet">নজরদারিতে থাকা নৌযান</string>
     <string name="admin_stat_storm_signal">আবহাওয়া সতর্ক সংকেত</string>
-    <string name="admin_btn_broadcast_storm">📢 ঝড় সতর্কবার্তা সম্প্রচার (FCM অ্যালার্ট)</string>
-    <string name="admin_btn_hotspots_map">🗺️ নদী হটস্পট মানচিত্র</string>
-    <string name="admin_btn_simulate_incident">⚡ জরুরি ঘটনার সিমুলেশন</string>
-    <string name="admin_inbox_header">প্রাপ্ত বিপৎসংকেত ও উদ্ধার ইনবক্স</string>
+    <string name="admin_hotspots_map_btn">🗺️ হটস্পট মানচিত্র</string>
+    <string name="admin_simulate_alert_btn">⚡ জরুরি অ্যালার্ট সিমুলেশন</string>
+    <string name="admin_sos_incidents_header">প্রাপ্ত বিপৎসংকেত ও ঘটনা</string>
     <string name="admin_filter_all">সকল ঘটনা</string>
     <string name="admin_filter_active">🚨 সক্রিয়</string>
     <string name="admin_filter_acknowledged">⏳ গৃহীত / টহল রত</string>
     <string name="admin_filter_resolved">✓ উদ্ধার সম্পন্ন</string>
+    <string name="admin_empty_incidents">এই ক্যাটাগরিতে কোনো জরুরি বিপৎসংকেত নেই।</string>
+    <string name="admin_dialog_broadcast_title">📢 বিএমডি ঝড় সতর্কবার্তা সম্প্রচার</string>
+    <string name="admin_dialog_broadcast_desc">সকল যাত্রীবাহী নৌযানে ফায়ারবেস ক্লাউড মেসেজিং (FCM) এর মাধ্যমে তাৎক্ষণিক সতর্কবার্তা পৌঁছে দিবে।</string>
+    <string name="admin_dialog_signal_label">সংকেত স্তর:</string>
+    <string name="admin_dialog_zone_label">ঝুঁকিপূর্ণ নদী অঞ্চল:</string>
+    <string name="admin_dialog_instruction_label">নৌযান চলাচলের নির্দেশনা:</string>
+    <string name="admin_dialog_test_device_check">পরীক্ষণের জন্য এই ফোনেই তাৎক্ষণিক নোটিফিকেশন পাঠান</string>
+    <string name="admin_incident_active_badge">🚨 সক্রিয় বিপৎসংকেত</string>
+    <string name="admin_incident_hop_format">📡 ধাপ %1$d/%2$d (রিলেকৃত)</string>
+    <string name="admin_incident_call_btn">📞 নৌযানে কল</string>
+    <string name="admin_incident_map_btn">🗺️ মানচিত্রে দেখুন</string>
+    <string name="admin_incident_swipe_hint">⇄ সমাধান করতে বামে সোয়াইপ করুন • গ্রহণ করতে ডানে সোয়াইপ করুন</string>
     <string name="admin_incident_resolved_toast">উদ্ধার কাজ সফলভাবে সম্পন্ন হয়েছে</string>
     <string name="admin_incident_ack_toast">বিপৎসংকেত গৃহীত হয়েছে। উদ্ধারকারী টহল দল পাঠানো হয়েছে।</string>
-</resources>
 
+    <!-- Stage 8: Safety Guides, ContentProvider & Receivers Lab -->
+    <string name="guide_title_main">অফলাইন নদী উদ্ধার ও নিরাপত্তা নির্দেশিকা</string>
+    <string name="guide_subtitle_main">ইন্টারনেট বা মোবাইল নেটওয়ার্ক ছাড়াই সকল জীবনরক্ষাকারী নির্দেশিকা, সিপিআর ও জরুরি ডায়ালার কার্যকর থাকবে।</string>
+    <string name="guide_tab_survival">🦺 জীবনরক্ষা সহায়িকা</string>
+    <string name="guide_tab_contacts">📞 জরুরি নম্বর তালিকা</string>
+    <string name="guide_section_manual">অফলাইন নদী জীবনরক্ষা নির্দেশিকা</string>
+    <string name="guide_tap_hint">বিস্তারিত নির্দেশনা দেখতে যেকোনো গাইডে ট্যাপ করুন।</string>
+    <string name="guide_contacts_header">নৌপথের জরুরি যোগাযোগ ডিরেক্টরি</string>
+    <string name="guide_btn_add_contact">+ নতুন নম্বর যুক্ত করুন</string>
+    <string name="guide_contacts_note">নৌযাত্রায় তাৎক্ষণিক কলের জন্য জরুরি নম্বরসমূহ অফলাইনে সংরক্ষিত রয়েছে।</string>
+    <string name="guide_tab_lab">সিস্টেম ডায়াগনস্টিক</string>
+    <string name="guide_provider_title">📦 অফলাইন ডেটা সততা যাচাই</string>
+    <string name="guide_provider_desc">জরুরি হটলাইন এবং উদ্ধার নির্দেশিকা অফলাইন স্টোরেজে প্রস্তুত রয়েছে কি না তা নিশ্চিত করে।</string>
+    <string name="guide_btn_query_contacts">হটলাইন তালিকা যাচাই</string>
+    <string name="guide_btn_query_guides">সুরক্ষা গাইড যাচাই</string>
+    <string name="guide_adb_title">সিস্টেম ডায়াগনস্টিক ক্যাশ:</string>
+    <string name="guide_cursor_ready">[সিস্টেম প্রস্তুত] অফলাইন ডেটাবেস যাচাই করতে বাটন চাপুন।</string>
+    <string name="guide_receivers_title">📡 সিস্টেম ইভেন্ট সিমুলেশন</string>
+    <string name="guide_receivers_desc">ডিভাইস স্টার্টআপ ও নেটওয়ার্ক পরিবর্তনের প্রতিক্রিয়া পরীক্ষা করুন।</string>
+    <string name="guide_sim_boot">⚡ ডিভাইস স্টার্টআপ টেস্ট</string>
+    <string name="guide_sim_battery">🔋 ব্যাটারি লো সতর্কতা (&lt;১৫%)</string>
+    <string name="guide_sim_network">🌐 নদী নেটওয়ার্ক সংযোগ টেস্ট</string>
+    <string name="guide_receivers_ready">[রিসিভার সক্রিয়] ইভেন্ট পরীক্ষা করতে যেকোনো বাটনে চাপ দিন।</string>
+    <string name="guide_badge_water_survival">জীবনরক্ষা</string>
+    <string name="guide_action_protocol">📋 পদক্ষেপ ও করণীয় চেকপয়েন্ট:</string>
+    <string name="guide_expand">▼ বিস্তারিত</string>
+    <string name="guide_collapse">▲ সংক্ষেপ</string>
+    <string name="guide_dialog_add_title">➕ জরুরি নৌপথের যোগাযোগ নম্বর যোগ করুন</string>
+    <string name="guide_dialog_add_desc">ContentResolver.insert() এর মাধ্যমে নতুন রেকর্ড সরাসরি যুক্ত হবে।</string>
+
+    <!-- SETTINGS & PROFILE MANAGEMENT STRINGS (BANGLA) -->
+    <string name="nav_settings">সেটিংস ও প্রোফাইল</string>
+    <string name="settings_title">সেটিংস ও পছন্দসমূহ</string>
+    <string name="settings_subtitle">প্রোফাইল, ডিসপ্লে ও নদী নেটওয়ার্ক</string>
+    <string name="settings_sec_profile">ব্যবহারকারী প্রোফাইল ও নিরাপত্তা</string>
+    <string name="settings_label_fullname">পুরো নাম</string>
+    <string name="settings_label_email">ইমেইল ঠিকানা</string>
+    <string name="settings_label_phone">ব্যক্তিগত মোবাইল নম্বর</string>
+    <string name="settings_label_emergency_phone">২৪/৭ স্বজনের জরুরি নম্বর</string>
+    <string name="settings_btn_save_profile">প্রোফাইল পরিবর্তন সংরক্ষণ</string>
+    <string name="settings_btn_change_password">অ্যাকাউন্টের পাসওয়ার্ড পরিবর্তন</string>
+    <string name="settings_current_password">বর্তমান পাসওয়ার্ড</string>
+    <string name="settings_new_password">নতুন পাসওয়ার্ড (কমপক্ষে ৬ অক্ষর)</string>
+    <string name="settings_confirm_password">নতুন পাসওয়ার্ড নিশ্চিত করুন</string>
+    <string name="settings_password_match_err">পাসওয়ার্ড দুটি মিলছে না।</string>
+    <string name="settings_password_short_err">পাসওয়ার্ড কমপক্ষে ৬ অক্ষরের হতে হবে।</string>
+    <string name="settings_password_success">পাসওয়ার্ড সফলভাবে পরিবর্তিত হয়েছে।</string>
+    <string name="settings_profile_updated">প্রোফাইল সফলভাবে আপডেট হয়েছে।</string>
+
+    <string name="settings_sec_display">ফন্ট সাইজ ও ডিসপ্লে</string>
+    <string name="settings_font_scale_title">অ্যাপের ফন্ট সাইজ স্কেলিং</string>
+    <string name="settings_font_scale_desc">নৌযানে চলাচলের সময় সহজে পড়ার জন্য লেখার আকার পরিবর্তন করুন।</string>
+    <string name="settings_font_small">ছোট (৮৫%)</string>
+    <string name="settings_font_default">স্বাভাবিক (১০০%)</string>
+    <string name="settings_font_large">বড় (১১৫%)</string>
+    <string name="settings_font_xlarge">অতি বড় (১৩০%)</string>
+    <string name="settings_preview_title">লাইভ ফন্ট সাইজ প্রিভিউ</string>
+    <string name="settings_preview_heading">লঞ্চ এমভি মানামী (ধারণক্ষমতা ৪৫%)</string>
+    <string name="settings_preview_body">চাঁদপুর মোহনায় মৃদু স্রোত রয়েছে, নৌপথ সম্পূর্ণ স্বাভাবিক ও নিরাপদ।</string>
+    <string name="settings_preview_caption">এআইএস রাডার • ২৪০০ হর্সপাওয়ার • জিপিএস সক্রিয়</string>
+
+    <string name="settings_sec_preferences">ভাষা ও সুরক্ষা নোটিফিকেশন</string>
+    <string name="settings_lang_title">অ্যাপের ভাষা</string>
+    <string name="settings_notifications_storm">আবহাওয়া ও নদী বিপদ সংকেত নোটিফিকেশন</string>
+    <string name="settings_notifications_storm_desc">নৌপথে তীব্র ঝড়ের সংকেত এলে তাৎক্ষণিক পুশ নোটিফিকেশন পান।</string>
+    <string name="settings_nearby_mesh">অফলাইন এসওএস ব্লুটুথ মেশ রাডার</string>
+    <string name="settings_nearby_mesh_desc">নিকটবর্তী নৌযানের বিপদ সংকেত স্ক্যান করতে ব্যাকগ্রাউন্ড রাডার সক্রিয় রাখুন।</string>
+
+    <string name="settings_sec_storage">অফলাইন স্টোরেজ ও ক্যাশ</string>
+    <string name="settings_cache_size">স্থানীয় ক্যাশ মেমরি: </string>
+    <string name="settings_btn_clear_weather">আবহাওয়া ক্যাশ মুছুন</string>
+    <string name="settings_weather_cleared">আবহাওয়া ক্যাশ সফলভাবে মুছে ফেলা হয়েছে।</string>
+    <string name="settings_btn_resync_hotlines">জরুরি হটলাইন রি-সিঙ্ক</string>
+    <string name="settings_hotlines_resynced">সর্বশেষ জরুরি হটলাইনগুলো রি-সিঙ্ক সম্পন্ন হয়েছে।</string>
+
+    <string name="settings_sec_account">সিস্টেম তথ্য ও সেশন</string>
+    <string name="settings_account_role">অ্যাকাউন্টের ধরন: </string>
+    <string name="settings_user_id">অ্যাকাউন্ট আইডি: </string>
+    <string name="settings_app_version">শোরলাইন মেরিটাইম নেটওয়ার্ক v১.০.০ (রিলিজ)</string>
+    <string name="settings_btn_logout">লগআউট করুন</string>
+    <string name="settings_btn_reset_data">সকল স্থানীয় ডেটা রিসেট</string>
+    <string name="settings_confirm_logout_title">লগআউট নিশ্চিতকরণ</string>
+    <string name="settings_confirm_logout_msg">পুনরায় লাইভ ফিচার ব্যবহার করতে লগইন করতে হবে।</string>
+    <string name="settings_confirm_reset_title">সকল ডেটা রিসেট করবেন?</string>
+    <string name="settings_confirm_reset_msg">এটি অফলাইন কিউ, ক্যাশ ও সক্রিয় সেশন স্থায়ীভাবে মুছে ফেলবে।</string>
+    <string name="action_save">সংরক্ষণ</string>
+
+    <!-- NEW POLISH: LIVE TELEMETRY, SMS GSM, & DECK ENVIRONMENT -->
+    <string name="status_cloud_synced">🟢 লাইভ ক্লাউড সক্রিয় (ফায়ারস্টোর ও আবহাওয়া)</string>
+    <string name="status_offline_radar">🟡 অফলাইন সেফনেট সক্রিয় (লোকাল ক্যাশ)</string>
+    <string name="settings_deck_theme_title">ডেক পরিবেশ ও ককপিট থিম</string>
+    <string name="settings_deck_theme_desc">রাতের ককপিট হেল্ম ও দিনের সানলিট ইয়ট ডেকের মধ্যে পরিবর্তন করুন।</string>
+    <string name="settings_deck_night">🌙 রাতের ককপিট হেল্ম</string>
+    <string name="settings_deck_day">☀️ দিনের সানলিট ডেক</string>
+    <string name="sos_direct_gsm_sent">সেলুলার টাওয়ারের মাধ্যমে সরাসরি জিএসএম এসএমএস প্রেরণ সম্পন্ন!</string>
+</resources>

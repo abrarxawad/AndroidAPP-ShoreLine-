@@ -11,11 +11,12 @@
     <!-- FIXED FULLSCREEN BACKGROUND IMAGE (Visible Throughout Scroll)  -->
     <!-- ============================================================= -->
     <ImageView
+        android:id="@+id/ivHomeHeroBackground"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:contentDescription="Marine Hero Backdrop"
         android:scaleType="centerCrop"
-        android:src="@drawable/bg_deck_yacht_view" />
+        android:src="@drawable/bg_yacht_night_helm" />
 
     <!-- Ambient Scrim Tint for High Contrast Readability -->
     <View
@@ -48,135 +49,148 @@
             android:paddingEnd="16dp"
             android:paddingBottom="40dp">
 
-            <!-- 1. TOP APP BAR (Noah James / User Profile Pill + Glass Menu) -->
+            <!-- 1. TOP APP BAR (User Profile & Welcome + Settings Action) -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
-                <!-- Left Profile Pill -->
+                <!-- Left Profile & Welcome Card -->
                 <LinearLayout
                     android:layout_width="0dp"
-                    android:layout_height="44dp"
+                    android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:background="@drawable/bg_navara_glass_card"
                     android:gravity="center_vertical"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="12dp">
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="12dp">
 
-                    <TextView
-                        android:layout_width="26dp"
-                        android:layout_height="26dp"
-                        android:background="@drawable/bg_navara_chip"
-                        android:gravity="center"
-                        android:text="👤"
-                        android:textSize="13sp" />
+                    <!-- Avatar Circle with Glowing Teal Border -->
+                    <FrameLayout
+                        android:layout_width="46dp"
+                        android:layout_height="46dp"
+                        android:background="@drawable/bg_navara_chip">
 
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="👤"
+                            android:textSize="20sp" />
+                    </FrameLayout>
+
+                    <!-- Welcome Text, Full Name & Role Badge -->
                     <LinearLayout
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
-                        android:layout_marginStart="8dp"
+                        android:layout_marginStart="12dp"
                         android:layout_weight="1"
                         android:orientation="vertical">
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:text="Welcome aboard"
-                            android:textColor="@color/navara_text_subtitle"
-                            android:textSize="9sp" />
+                            android:fontFamily="sans-serif-medium"
+                            android:text="@string/welcome_aboard"
+                            android:textColor="@color/navara_neon_cyan"
+                            android:textSize="11sp" />
 
                         <TextView
                             android:id="@+id/tvUserName"
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
+                            android:layout_marginTop="1dp"
                             android:ellipsize="end"
                             android:fontFamily="sans-serif-black"
                             android:maxLines="1"
                             android:textColor="@color/navara_text_title"
-                            android:textSize="12sp"
-                            tools:text="Abrar Jawad" />
+                            android:textSize="16sp"
+                            tools:text="Ahnaf Jawad" />
+
+                        <!-- Role Badge and User Email -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/tvRoleBadge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:background="@drawable/bg_navara_chip"
+                                android:fontFamily="sans-serif-black"
+                                android:paddingStart="8dp"
+                                android:paddingTop="2dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="2dp"
+                                android:textColor="@color/navara_neon_cyan"
+                                android:textSize="9sp"
+                                tools:text="PASSENGER" />
+
+                            <TextView
+                                android:id="@+id/tvUserEmail"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:ellipsize="end"
+                                android:fontFamily="sans-serif"
+                                android:maxLines="1"
+                                android:textColor="@color/navara_text_muted"
+                                android:textSize="11sp"
+                                tools:text="ahnafxawad@gmail.com" />
+                        </LinearLayout>
                     </LinearLayout>
                 </LinearLayout>
 
-                <!-- Quick Admin Portal Button (Navara Glass Pill) -->
-                <TextView
-                    android:id="@+id/btnQuickAdminPortal"
-                    android:layout_width="wrap_content"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="8dp"
+                <!-- Settings Action Button on the Right -->
+                <ImageView
+                    android:id="@+id/btnOpenSettings"
+                    android:layout_width="48dp"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="10dp"
                     android:background="@drawable/bg_navara_glass_card"
                     android:clickable="true"
+                    android:contentDescription="@string/nav_settings"
                     android:focusable="true"
-                    android:fontFamily="sans-serif-bold"
-                    android:gravity="center"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="10dp"
-                    android:text="🛡️ Pass"
-                    android:textColor="@color/navara_neon_cyan"
-                    android:textSize="12sp" />
+                    android:padding="12dp"
+                    android:src="@drawable/ic_settings"
+                    app:tint="@color/navara_neon_cyan" />
 
-                <!-- Logout Button (Explicit, high-contrast, fully visible) -->
-                <LinearLayout
-                    android:id="@+id/btnLogout"
-                    android:layout_width="wrap_content"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="8dp"
-                    android:background="@drawable/bg_navara_glass_card"
-                    android:clickable="true"
-                    android:focusable="true"
-                    android:gravity="center_vertical"
-                    android:paddingStart="10dp"
-                    android:paddingEnd="12dp">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:text="🚪"
-                        android:textSize="14sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginStart="4dp"
-                        android:fontFamily="sans-serif-bold"
-                        android:text="Logout"
-                        android:textColor="#FF6B6B"
-                        android:textSize="12sp" />
-                </LinearLayout>
             </LinearLayout>
 
-            <!-- Subtitle Badges (Email & Role) -->
+            <!-- Live Network Sync Status Floating Pill -->
             <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="10dp"
+                android:id="@+id/layoutNetworkStatusPill"
+                android:layout_width="wrap_content"
+                android:layout_height="30dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/bg_navara_glass_card"
                 android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="12dp">
+
+                <View
+                    android:id="@+id/viewNetworkStatusDot"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:background="@drawable/bg_dot_online" />
 
                 <TextView
-                    android:id="@+id/tvRoleBadge"
+                    android:id="@+id/tvNetworkStatusText"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:background="@drawable/bg_navara_chip"
-                    android:fontFamily="sans-serif-black"
-                    android:paddingStart="10dp"
-                    android:paddingTop="3dp"
-                    android:paddingEnd="10dp"
-                    android:paddingBottom="3dp"
+                    android:layout_marginStart="7dp"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="@string/status_cloud_synced"
                     android:textColor="@color/navara_neon_cyan"
-                    android:textSize="10sp"
-                    tools:text="PASSENGER" />
-
-                <TextView
-                    android:id="@+id/tvUserEmail"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_marginStart="8dp"
-                    android:textColor="@color/navara_text_muted"
-                    android:textSize="11sp"
-                    tools:text="passenger@shoreline.bd" />
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <!-- 2. MAIN TITLE (Aurelia AX Ascend Style) -->
@@ -192,7 +206,7 @@
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-black"
                     android:letterSpacing="-0.02"
-                    android:text="ShoreLine Maritime"
+                    android:text="@string/shoreline_maritime"
                     android:textColor="@color/navara_text_title"
                     android:textSize="26sp" />
 
@@ -216,7 +230,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="2dp"
                 android:fontFamily="sans-serif-medium"
-                android:text="Active River Fleet &amp; Passenger Safety Network"
+                android:text="@string/active_river_fleet"
                 android:textColor="@color/navara_text_subtitle"
                 android:textSize="13sp" />
 
@@ -300,7 +314,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="passenger load"
+                                android:text="@string/home_passenger_load"
                                 android:textColor="@color/navara_text_subtitle"
                                 android:textSize="10sp" />
 
@@ -368,7 +382,7 @@
                         android:background="@drawable/bg_navara_neon_button"
                         android:fontFamily="sans-serif-black"
                         android:letterSpacing="0.04"
-                        android:text="LAUNCH SAFE RIVER JOURNEY"
+                        android:text="@string/home_launch_safe_journey"
                         android:textAllCaps="false"
                         android:textColor="@color/navara_text_dark"
                         android:textSize="14sp"
@@ -413,7 +427,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-medium"
-                            android:text="Meghna Confluence: Moderate cross-currents. Check weather-weighted routing."
+                            android:text="@string/home_alert_sample"
                             android:textColor="@color/navara_text_title"
                             android:textSize="13sp" />
                     </LinearLayout>
@@ -435,7 +449,7 @@
                             android:focusable="true"
                             android:fontFamily="sans-serif-bold"
                             android:gravity="center"
-                            android:text="Dismiss"
+                            android:text="@string/home_dismiss"
                             android:textColor="@color/navara_text_subtitle"
                             android:textSize="13sp" />
 
@@ -450,7 +464,7 @@
                             android:focusable="true"
                             android:fontFamily="sans-serif-bold"
                             android:gravity="center"
-                            android:text="View Safe Route"
+                            android:text="@string/home_view_safe_route"
                             android:textColor="@color/navara_text_title"
                             android:textSize="13sp" />
                     </LinearLayout>
@@ -466,7 +480,7 @@
                 android:layout_marginTop="24dp"
                 android:fontFamily="sans-serif-black"
                 android:letterSpacing="-0.01"
-                android:text="River Transit Services"
+                android:text="@string/home_river_transit_services"
                 android:textColor="@color/navara_text_title"
                 android:textSize="18sp" />
 
@@ -523,7 +537,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="QR scan &amp; safe capacity"
+                            android:text="@string/home_vessel_desc"
                             android:textColor="@color/navara_text_muted"
                             android:textSize="11sp" />
                     </LinearLayout>
@@ -571,7 +585,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Weather-weighted map"
+                            android:text="@string/home_route_desc"
                             android:textColor="@color/navara_text_muted"
                             android:textSize="11sp" />
                     </LinearLayout>
@@ -628,7 +642,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Live GPS telemetry stream"
+                            android:text="@string/home_tracker_desc"
                             android:textColor="@color/navara_text_muted"
                             android:textSize="11sp" />
                     </LinearLayout>
@@ -676,7 +690,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="Photo evidence upload"
+                            android:text="@string/home_report_desc"
                             android:textColor="@color/navara_text_muted"
                             android:textSize="11sp" />
                     </LinearLayout>
@@ -733,7 +747,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="P2P mesh radar beacon"
+                            android:text="@string/home_sos_desc"
                             android:textColor="@color/navara_text_muted"
                             android:textSize="11sp" />
                     </LinearLayout>
@@ -781,7 +795,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="CPR &amp; rescue directory"
+                            android:text="@string/home_guide_desc"
                             android:textColor="@color/navara_text_muted"
                             android:textSize="11sp" />
                     </LinearLayout>
@@ -828,7 +842,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:fontFamily="sans-serif-black"
-                            android:text="Port Authority Dashboard"
+                            android:text="@string/home_admin_card_title"
                             android:textColor="@color/navara_text_title"
                             android:textSize="15sp" />
 
@@ -836,7 +850,7 @@
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="2dp"
-                            android:text="BIWTA Command metrics, hotspots &amp; storm broadcast"
+                            android:text="@string/home_admin_card_desc"
                             android:textColor="@color/navara_text_subtitle"
                             android:textSize="12sp" />
                     </LinearLayout>
@@ -864,24 +878,11 @@
                     style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="wrap_content"
                     android:layout_height="44dp"
-                    android:text="🧪 Lifecycle Lab"
+                    android:text="@string/home_lifecycle_lab"
                     android:textColor="@color/navara_text_subtitle"
                     android:textSize="12sp"
                     app:cornerRadius="22dp"
                     app:strokeColor="@color/navara_glass_border"
-                    app:strokeWidth="1dp" />
-
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnBottomLogout"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
-                    android:layout_width="wrap_content"
-                    android:layout_height="44dp"
-                    android:layout_marginStart="8dp"
-                    android:text="🚪 Logout"
-                    android:textColor="#FF6B6B"
-                    android:textSize="12sp"
-                    app:cornerRadius="22dp"
-                    app:strokeColor="#66FF6B6B"
                     app:strokeWidth="1dp" />
             </LinearLayout>
 

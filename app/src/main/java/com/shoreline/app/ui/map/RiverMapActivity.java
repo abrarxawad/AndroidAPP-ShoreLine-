@@ -62,7 +62,8 @@ public class RiverMapActivity extends BaseActivity {
     private void setupToolbar() {
         setSupportActionBar(binding.includedToolbar.appToolbar);
         if (getSupportActionBar() != null) {
-            getSupportActionBar().setTitle("Interactive River Route");
+            boolean isBn = com.shoreline.app.util.LocaleHelper.isBangla(this);
+            getSupportActionBar().setTitle(isBn ? "ইন্টারেক্টিভ নদী মানচিত্র" : "Interactive River Route");
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         binding.includedToolbar.appToolbar.setNavigationOnClickListener(v -> finish());

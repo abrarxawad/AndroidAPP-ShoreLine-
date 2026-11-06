@@ -26,8 +26,12 @@ import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import com.google.android.material.checkbox.MaterialCheckBox;
 import com.google.android.material.snackbar.Snackbar;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.ListenerRegistration;
+import com.google.firebase.firestore.Query;
 import com.shoreline.app.R;
 import com.shoreline.app.data.local.ShoreLineDatabase;
 import com.shoreline.app.data.local.dao.ReportDao;
@@ -74,6 +78,7 @@ public class AdminDashboardActivity extends BaseActivity {
     // Cache of incidents for filtering
     private final List<SosSignalEntity> allIncidents = new ArrayList<>();
     private String currentFilter = "ALL"; // ALL, ACTIVE, ACKNOWLEDGED, RESOLVED
+    private ListenerRegistration adminCloudSosListener;
 
     // In-app storm alert receiver
     private final BroadcastReceiver stormAlertReceiver = new BroadcastReceiver() {
@@ -122,11 +127,16 @@ public class AdminDashboardActivity extends BaseActivity {
             registerReceiver(stormAlertReceiver, filter);
         }
         loadDashboardData();
+        startAdminCloudSosListener();
     }
 
     @Override
     protected void onPause() {
         super.onPause();
+        if (adminCloudSosListener != null) {
+            adminCloudSosListener.remove();
+            adminCloudSosListener = null;
+        }
         try {
             unregisterReceiver(stormAlertReceiver);
         } catch (Exception ignored) {}
@@ -152,39 +162,40 @@ public class AdminDashboardActivity extends BaseActivity {
         binding.rvAdminStatTiles.setAdapter(statTileAdapter);
 
         // Seed 4 initial command tiles
+        boolean isBn = com.shoreline.app.util.LocaleHelper.isBangla(this);
         List<AdminStatTile> initialTiles = new ArrayList<>();
         initialTiles.add(new AdminStatTile(
                 AdminStatTile.TileType.ACTIVE_SOS,
-                "Active SOS Signals",
+                getString(R.string.admin_stat_active_sos),
                 "0",
-                "Mayday alerts en route",
+                isBn ? "উদ্ধার অভিযান চলমান" : "Mayday alerts en route",
                 R.drawable.ic_sos,
                 "#FFEBEE",
                 "#C62828"
         ));
         initialTiles.add(new AdminStatTile(
                 AdminStatTile.TileType.OVERLOAD_REPORTS,
-                "Overload Reports",
+                getString(R.string.admin_stat_overload_reports),
                 "0",
-                "Pending inspection queue",
+                isBn ? "পর্যবেক্ষণ কিউ" : "Pending inspection queue",
                 R.drawable.ic_report,
                 "#FFF8E1",
                 "#E65100"
         ));
         initialTiles.add(new AdminStatTile(
                 AdminStatTile.TileType.MONITORED_FLEET,
-                "Monitored Vessels",
+                getString(R.string.admin_stat_monitored_fleet),
                 "18",
-                "Registered river fleet",
+                isBn ? "লঞ্চ ট্র্যাকিং সক্রিয়" : "Registered river fleet",
                 R.drawable.ic_vessel,
                 "#E8F5E9",
                 "#1B5E20"
         ));
         initialTiles.add(new AdminStatTile(
                 AdminStatTile.TileType.STORM_SIGNAL,
-                "BMD Warning Level",
-                "Signal 3",
-                "Cautionary signal active",
+                getString(R.string.admin_stat_storm_signal),
+                isBn ? "৩ নম্বর" : "Signal 3",
+                isBn ? "সতর্ক সংকেত বলবৎ" : "Cautionary signal active",
                 R.drawable.ic_storm,
                 "#EEF2F6",
                 "#0A3A60"
@@ -433,6 +444,69 @@ public class AdminDashboardActivity extends BaseActivity {
                 showToast("Incident archived / removed.");
             });
         });
+
+        // Also delete from Cloud Firestore if connected
+        try {
+            FirestoreManager.getInstance().getSosCollection()
+                    .document(incident.getSosId())
+                    .delete();
+        } catch (Exception ignored) {}
+    }
+
+    /**
+     * SYLLABUS: Real-Time Cloud Firestore Mayday Distress Monitor
+     * Synchronizes live vessel emergencies across all inland river corridors.
+     */
+    private void startAdminCloudSosListener() {
+        try {
+            if (adminCloudSosListener != null) {
+                adminCloudSosListener.remove();
+            }
+            adminCloudSosListener = FirestoreManager.getInstance().getSosCollection()
+                    .orderBy("timestamp", Query.Direction.DESCENDING)
+                    .limit(50)
+                    .addSnapshotListener((snapshots, error) -> {
+                        if (error != null) {
+                            Log.w("ADMIN_CLOUD", "Cloud SOS monitor error: " + error.getMessage());
+                            return;
+                        }
+                        if (snapshots != null && !snapshots.isEmpty()) {
+                            for (DocumentSnapshot doc : snapshots.getDocuments()) {
+                                try {
+                                    String id = doc.getString("sosId");
+                                    if (id == null) id = doc.getId();
+                                    String sender = doc.getString("senderName");
+                                    String phone = doc.getString("senderPhone");
+                                    Double lat = doc.getDouble("latitude");
+                                    Double lon = doc.getDouble("longitude");
+                                    Long time = doc.getLong("timestamp");
+                                    Long hops = doc.getLong("hopCount");
+                                    String device = doc.getString("originDeviceId");
+                                    String status = doc.getString("status");
+                                    Boolean relayed = doc.getBoolean("isRelayed");
+
+                                    SosSignalEntity entity = new SosSignalEntity(
+                                            id,
+                                            sender != null ? sender : "River Vessel",
+                                            phone != null ? phone : "16107",
+                                            lat != null ? lat : 23.7045,
+                                            lon != null ? lon : 90.4131,
+                                            time != null ? time : System.currentTimeMillis(),
+                                            hops != null ? hops.intValue() : 0,
+                                            device != null ? device : "Cloud-Vessel",
+                                            status != null ? status : "ACTIVE",
+                                            relayed != null ? relayed : false,
+                                            true
+                                    );
+                                    ShoreLineDatabase.databaseWriteExecutor.execute(() -> sosDao.insertSos(entity));
+                                } catch (Exception ignored) {}
+                            }
+                            loadDashboardData();
+                        }
+                    });
+        } catch (Exception e) {
+            Log.e("ADMIN_CLOUD", "Failed to start admin cloud listener: " + e.getMessage());
+        }
     }
 
     /**
@@ -475,49 +549,71 @@ public class AdminDashboardActivity extends BaseActivity {
         EditText etAdvisory = dialogView.findViewById(R.id.etAdvisoryBody);
         MaterialCheckBox cbLocalNotification = dialogView.findViewById(R.id.cbLocalNotification);
 
-        String[] signals = new String[]{
-                "Signal 1: Distant Cautionary (দূরের সতর্ক সংকেত)",
-                "Signal 2: Distant Warning (দূরের হুঁশিয়ারি সংকেত)",
-                "Signal 3: Local Cautionary (স্থানীয় সতর্ক সংকেত)",
-                "Signal 4: Local Warning - Suspend small vessels (স্থানীয় হুঁশিয়ারি সংকেত)",
-                "Signal 7: Danger Signal - Port affected (বিপৎসংকেত)",
-                "Signal 8: Great Danger Signal - Extreme Cyclone (মহাবিপৎসংকেত - নৌযান চলাচল বন্ধ)",
-                "Signal 10: Great Danger Signal (মহাবিপৎসংকেত)"
+        boolean isBn = com.shoreline.app.util.LocaleHelper.isBangla(this);
+
+        String[] signals = isBn ? new String[]{
+                "১ নম্বর সতর্ক সংকেত: দূরের সতর্ক সংকেত",
+                "২ নম্বর হুঁশিয়ারি সংকেত: দূরের হুঁশিয়ারি সংকেত",
+                "৩ নম্বর স্থানীয় সতর্ক সংকেত: পদ্মা-মেঘনা মোহনা",
+                "৪ নম্বর স্থানীয় হুঁশিয়ারি সংকেত: ছোট নৌযান চলাচল স্থগিত",
+                "৭ নম্বর বিপদ সংকেত: নদী বন্দর আক্রান্ত",
+                "৮ নম্বর মহাবিপদ সংকেত: তীব্র কালবৈশাখী ও ঘূর্ণিঝড়",
+                "১০ নম্বর মহাবিপদ সংকেত: সর্বোচ্চ সতর্কতা"
+        } : new String[]{
+                "Signal 1: Distant Cautionary",
+                "Signal 2: Distant Warning",
+                "Signal 3: Local Cautionary",
+                "Signal 4: Local Warning (Suspend small vessels)",
+                "Signal 7: Danger Signal (Port affected)",
+                "Signal 8: Great Danger Signal (Extreme Cyclone)",
+                "Signal 10: Great Danger Signal"
         };
         ArrayAdapter<String> signalAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, signals);
         actvSignal.setAdapter(signalAdapter);
+        actvSignal.setText(signals[2], false);
 
-        String[] basins = new String[]{
-                "Padma-Meghna Confluence (চাঁদপুর মোহনা)",
-                "Dhaka - Sadarghat Reach (বুড়িগঙ্গা)",
-                "Barishal - Kirtankhola Channel (কীর্তনখোলা)",
-                "Mongla - Passur River (পশুর নদী)",
-                "Chattogram - Karnaphuli Reach (কর্ণফুলী)"
+        String[] basins = isBn ? new String[]{
+                "পদ্মা-মেঘনা মোহনা (চাঁদপুর)",
+                "ঢাকা - সদরঘাট নদীপথ (বুড়িগঙ্গা)",
+                "বরিশাল - কীর্তনখোলা চ্যানেল",
+                "মোংলা - পশুর নদী অঞ্চল",
+                "চট্টগ্রাম - কর্ণফুলী নদীপথ"
+        } : new String[]{
+                "Padma-Meghna Confluence (Chandpur)",
+                "Dhaka - Sadarghat Reach (Buriganga)",
+                "Barishal - Kirtankhola Channel",
+                "Mongla - Passur River Reach",
+                "Chattogram - Karnaphuli Reach"
         };
         ArrayAdapter<String> basinAdapter = new ArrayAdapter<>(this,
                 android.R.layout.simple_dropdown_item_1line, basins);
         actvBasin.setAdapter(basinAdapter);
+        actvBasin.setText(basins[0], false);
+
+        etAdvisory.setText(isBn
+                ? "বাতাসের বেগ ঘণ্টায় ৪৫ কিমি অতিক্রম করছে। ৬৫ ফুটের কম দৈর্ঘ্যের সকল ছোট নৌযান চলাচল সাময়িকভাবে বন্ধ ঘোষণা করা হলো।"
+                : "Gusts exceeding 45 km/h. Small launches below 65ft prohibited from mid-river navigation.");
 
         new AlertDialog.Builder(this)
                 .setView(dialogView)
-                .setPositiveButton("📢 Broadcast Warning", (dialog, which) -> {
+                .setPositiveButton(isBn ? "📢 সতর্কবার্তা সম্প্রচার" : "📢 Broadcast Warning", (dialog, which) -> {
                     String selectedSignal = actvSignal.getText().toString();
                     String selectedBasin = actvBasin.getText().toString();
                     String message = etAdvisory.getText().toString().trim();
                     boolean triggerLocal = cbLocalNotification.isChecked();
 
                     String signalTag = "Signal 3";
-                    if (selectedSignal.contains("Signal 8")) signalTag = "Signal 8";
-                    else if (selectedSignal.contains("Signal 7")) signalTag = "Signal 7";
-                    else if (selectedSignal.contains("Signal 4")) signalTag = "Signal 4";
-                    else if (selectedSignal.contains("Signal 10")) signalTag = "Signal 10";
-                    else if (selectedSignal.contains("Signal 1")) signalTag = "Signal 1";
-                    else if (selectedSignal.contains("Signal 2")) signalTag = "Signal 2";
+                    if (selectedSignal.contains("8") || selectedSignal.contains("৮")) signalTag = "Signal 8";
+                    else if (selectedSignal.contains("7") || selectedSignal.contains("৭")) signalTag = "Signal 7";
+                    else if (selectedSignal.contains("4") || selectedSignal.contains("৪")) signalTag = "Signal 4";
+                    else if (selectedSignal.contains("10") || selectedSignal.contains("১০")) signalTag = "Signal 10";
+                    else if (selectedSignal.contains("1") || selectedSignal.contains("১")) signalTag = "Signal 1";
+                    else if (selectedSignal.contains("2") || selectedSignal.contains("২")) signalTag = "Signal 2";
 
                     broadcastStormSignal(signalTag, selectedSignal, selectedBasin, message, triggerLocal);
                 })
-                .setNegativeButton("Cancel", null)
+                .setNegativeButton(getString(R.string.action_cancel), null)
                 .show();
     }
 

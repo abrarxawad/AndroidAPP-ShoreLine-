@@ -17,12 +17,15 @@ import android.os.IBinder;
 import android.os.Looper;
 import android.view.MenuItem;
 import android.view.View;
+import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 
 import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.core.content.ContextCompat;
 
 import com.google.firebase.database.ValueEventListener;
@@ -37,6 +40,7 @@ import com.shoreline.app.service.JourneyTrackingService;
 import com.shoreline.app.ui.base.BaseActivity;
 import com.shoreline.app.util.GhatXmlParser;
 import com.shoreline.app.util.JourneyCodeGenerator;
+import com.shoreline.app.util.LocationHelper;
 import com.shoreline.app.util.SessionManager;
 
 import org.osmdroid.config.Configuration;
@@ -48,6 +52,7 @@ import org.osmdroid.views.overlay.Marker;
 import org.osmdroid.views.overlay.Polyline;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Locale;
 
@@ -67,6 +72,13 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
     private List<GhatNode> ghatList;
     private SessionManager sessionManager;
     private LiveTrackingManager liveTrackingManager;
+    private LocationHelper locationHelper;
+
+    // Real-Time GPS Tracking & Terminal Geofence state
+    private double myCurrentLat = LocationHelper.DEFAULT_LATITUDE;
+    private double myCurrentLon = LocationHelper.DEFAULT_LONGITUDE;
+    private boolean hasGpsFix = false;
+    private Marker userLocationMarker;
 
     // Service Binding
     private JourneyTrackingService trackingService;
@@ -93,7 +105,8 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
             registerForActivityResult(new ActivityResultContracts.RequestMultiplePermissions(), result -> {
                 Boolean fine = result.get(Manifest.permission.ACCESS_FINE_LOCATION);
                 if (fine != null && fine) {
-                    startPassengerVoyage();
+                    acquireRealTimeLocation();
+                    checkPermissionsAndStartVoyage();
                 } else {
                     showToast(getString(R.string.tracker_perm_required));
                 }
@@ -134,6 +147,7 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
 
         sessionManager = new SessionManager(this);
         liveTrackingManager = LiveTrackingManager.getInstance(this);
+        locationHelper = new LocationHelper(this);
 
         // Parse authentic river network XML
         networkData = GhatXmlParser.parseRiverNetwork(this);
@@ -141,9 +155,12 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
 
         setupToolbar();
         setupSpinners();
+        setupVesselAutoComplete();
         setupMaps();
         setupModeToggle();
         setupListeners();
+
+        acquireRealTimeLocation();
 
         // Check if there is an existing active journey in Room SQLite
         checkExistingActiveJourney();
@@ -170,16 +187,154 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
         if (ghatList.size() > 2) {
             binding.spinnerDestination.setSelection(2); // Barisal
         }
+
+        binding.spinnerOrigin.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> parent, View view, int position, long id) {
+                updateTerminalProximityUI();
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> parent) {}
+        });
+    }
+
+    private void setupVesselAutoComplete() {
+        List<String> registeredLaunches = Arrays.asList(
+                "MV Manami",
+                "MV Parabat-12",
+                "MV Sundarban-10",
+                "MV Kirtankhola-10",
+                "MV Green Line-3",
+                "MV Pubali-7",
+                "MV Karnaphuli-14",
+                "MV Farhan-8",
+                "MV Russell-4",
+                "MV Adventure-9"
+        );
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+                android.R.layout.simple_dropdown_item_1line, registeredLaunches);
+        binding.etVesselName.setAdapter(adapter);
+        binding.etVesselName.setThreshold(1);
+    }
+
+    private void acquireRealTimeLocation() {
+        if (!locationHelper.hasLocationPermission()) {
+            locationPermissionLauncher.launch(new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+            });
+            return;
+        }
+
+        if (!locationHelper.isLocationEnabled()) {
+            binding.tvProximityStatus.setText("⚠️ Device Location is turned OFF. Tap to enable.");
+            binding.ivProximityStatus.setColorFilter(ContextCompat.getColor(this, R.color.status_danger_red));
+            binding.layoutTerminalProximity.setOnClickListener(v ->
+                    startActivity(new Intent(android.provider.Settings.ACTION_LOCATION_SOURCE_SETTINGS)));
+            return;
+        }
+
+        binding.tvProximityStatus.setText("📡 Acquiring real GPS location...");
+        binding.ivProximityStatus.setColorFilter(ContextCompat.getColor(this, R.color.status_warning_amber));
+
+        locationHelper.getCurrentLocation(new LocationHelper.LocationResultCallback() {
+            @Override
+            public void onLocationAcquired(double latitude, double longitude, float accuracyMeters, boolean isMockOrFallback) {
+                if (isFinishing() || isDestroyed() || binding == null) return;
+                myCurrentLat = latitude;
+                myCurrentLon = longitude;
+                hasGpsFix = true;
+
+                // Center map on real user position in Khulna
+                GeoPoint currentPoint = new GeoPoint(latitude, longitude);
+                binding.mapPassenger.getController().animateTo(currentPoint);
+                binding.mapPassenger.getController().setZoom(14.0);
+
+                // Add or update live user marker
+                if (userLocationMarker == null) {
+                    userLocationMarker = new Marker(binding.mapPassenger);
+                    userLocationMarker.setTitle("📍 My Current Location");
+                    userLocationMarker.setAnchor(Marker.ANCHOR_CENTER, Marker.ANCHOR_BOTTOM);
+                    binding.mapPassenger.getOverlays().add(userLocationMarker);
+                }
+                userLocationMarker.setPosition(currentPoint);
+                binding.mapPassenger.invalidate();
+
+                // Automatically select the nearest river ghat to the user's real location
+                int closestIndex = -1;
+                double minDistance = Double.MAX_VALUE;
+                for (int i = 0; i < ghatList.size(); i++) {
+                    GhatNode g = ghatList.get(i);
+                    Location gLoc = new Location("ghat");
+                    gLoc.setLatitude(g.getLatitude());
+                    gLoc.setLongitude(g.getLongitude());
+
+                    Location uLoc = new Location("user");
+                    uLoc.setLatitude(latitude);
+                    uLoc.setLongitude(longitude);
+
+                    float d = uLoc.distanceTo(gLoc);
+                    if (d < minDistance) {
+                        minDistance = d;
+                        closestIndex = i;
+                    }
+                }
+                if (closestIndex >= 0 && closestIndex < ghatList.size()) {
+                    binding.spinnerOrigin.setSelection(closestIndex);
+                }
+
+                updateTerminalProximityUI();
+            }
+
+            @Override
+            public void onLocationFailed(String reason) {
+                if (isFinishing() || isDestroyed() || binding == null) return;
+                hasGpsFix = false;
+                binding.tvProximityStatus.setText("⚠️ " + reason);
+                binding.ivProximityStatus.setColorFilter(ContextCompat.getColor(FamilyTrackerActivity.this, R.color.status_warning_amber));
+            }
+        });
+    }
+
+    private void updateTerminalProximityUI() {
+        GhatNode origin = (GhatNode) binding.spinnerOrigin.getSelectedItem();
+        if (origin == null || binding.tvProximityStatus == null) return;
+
+        if (!hasGpsFix) {
+            binding.tvProximityStatus.setText("Searching for live GPS fix...");
+            binding.ivProximityStatus.setColorFilter(ContextCompat.getColor(this, R.color.status_warning_amber));
+            return;
+        }
+
+        Location userLoc = new Location("user");
+        userLoc.setLatitude(myCurrentLat);
+        userLoc.setLongitude(myCurrentLon);
+
+        Location originLoc = new Location("origin");
+        originLoc.setLatitude(origin.getLatitude());
+        originLoc.setLongitude(origin.getLongitude());
+
+        float distMeters = userLoc.distanceTo(originLoc);
+        if (distMeters <= 2500) {
+            binding.tvProximityStatus.setText(String.format(Locale.US,
+                    "🟢 Verified at %s (~%.0f m away) • Ready to board", origin.getName(), distMeters));
+            binding.ivProximityStatus.setColorFilter(ContextCompat.getColor(this, R.color.status_safe_green));
+        } else {
+            binding.tvProximityStatus.setText(String.format(Locale.US,
+                    "📍 Outside Terminal: %.1f km from %s", distMeters / 1000.0, origin.getName()));
+            binding.ivProximityStatus.setColorFilter(ContextCompat.getColor(this, R.color.status_warning_amber));
+        }
     }
 
     private void setupMaps() {
         configureMapView(binding.mapPassenger);
         configureMapView(binding.mapViewer);
 
-        // Center initially on Dhaka Sadarghat launch terminal
-        GeoPoint sadarghat = new GeoPoint(23.7045, 90.4131);
-        binding.mapPassenger.getController().setCenter(sadarghat);
-        binding.mapViewer.getController().setCenter(sadarghat);
+        // Center on Bangladesh river basin network
+        GeoPoint initialCenter = new GeoPoint(23.0, 90.0);
+        binding.mapPassenger.getController().setCenter(initialCenter);
+        binding.mapViewer.getController().setCenter(initialCenter);
     }
 
     private void configureMapView(MapView mapView) {
@@ -251,6 +406,73 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
             }
             trackFamilyMemberJourney(code);
         });
+
+        // Toggle Expand / Bigger Map buttons
+        binding.btnToggleMapSizePassenger.setOnClickListener(v -> togglePassengerMapSize());
+        binding.btnToggleMapSizeViewer.setOnClickListener(v -> toggleViewerMapSize());
+
+        // Open Fullscreen River Map buttons
+        binding.btnOpenFullscreenMapPassenger.setOnClickListener(v -> {
+            double lat = (passengerBoatMarker != null) ? passengerBoatMarker.getPosition().getLatitude() : myCurrentLat;
+            double lon = (passengerBoatMarker != null) ? passengerBoatMarker.getPosition().getLongitude() : myCurrentLon;
+            String vessel = (activeJourney != null) ? activeJourney.getVesselName() : "River Launch";
+            openFullscreenRiverMap(lat, lon, vessel);
+        });
+
+        binding.btnOpenFullscreenMapViewer.setOnClickListener(v -> {
+            double lat = (viewerBoatMarker != null) ? viewerBoatMarker.getPosition().getLatitude() : myCurrentLat;
+            double lon = (viewerBoatMarker != null) ? viewerBoatMarker.getPosition().getLongitude() : myCurrentLon;
+            openFullscreenRiverMap(lat, lon, "Tracked River Launch");
+        });
+    }
+
+    private boolean isPassengerMapExpanded = false;
+    private boolean isViewerMapExpanded = false;
+
+    private void togglePassengerMapSize() {
+        isPassengerMapExpanded = !isPassengerMapExpanded;
+        ViewGroup.LayoutParams params = binding.cardPassengerMap.getLayoutParams();
+        float density = getResources().getDisplayMetrics().density;
+        int normalHeight = (int) (280 * density);
+        int expandedHeight = (int) (540 * density);
+
+        params.height = isPassengerMapExpanded ? expandedHeight : normalHeight;
+        binding.cardPassengerMap.setLayoutParams(params);
+
+        binding.btnToggleMapSizePassenger.setText(isPassengerMapExpanded ? "🗗 Normal Size" : "⛶ Bigger Map");
+
+        if (passengerBoatMarker != null) {
+            binding.mapPassenger.getController().animateTo(passengerBoatMarker.getPosition());
+        } else if (hasGpsFix) {
+            binding.mapPassenger.getController().animateTo(new GeoPoint(myCurrentLat, myCurrentLon));
+        }
+        binding.mapPassenger.invalidate();
+    }
+
+    private void toggleViewerMapSize() {
+        isViewerMapExpanded = !isViewerMapExpanded;
+        ViewGroup.LayoutParams params = binding.cardViewerMap.getLayoutParams();
+        float density = getResources().getDisplayMetrics().density;
+        int normalHeight = (int) (280 * density);
+        int expandedHeight = (int) (540 * density);
+
+        params.height = isViewerMapExpanded ? expandedHeight : normalHeight;
+        binding.cardViewerMap.setLayoutParams(params);
+
+        binding.btnToggleMapSizeViewer.setText(isViewerMapExpanded ? "🗗 Normal Size" : "⛶ Bigger Map");
+
+        if (viewerBoatMarker != null) {
+            binding.mapViewer.getController().animateTo(viewerBoatMarker.getPosition());
+        }
+        binding.mapViewer.invalidate();
+    }
+
+    private void openFullscreenRiverMap(double lat, double lon, String label) {
+        Intent intent = new Intent(this, com.shoreline.app.ui.map.RiverMapActivity.class);
+        intent.putExtra("EXTRA_LATITUDE", lat);
+        intent.putExtra("EXTRA_LONGITUDE", lon);
+        intent.putExtra("EXTRA_LABEL", label);
+        startActivity(intent);
     }
 
     private void checkExistingActiveJourney() {
@@ -280,10 +502,48 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
             }
         }
 
-        if (permissions.isEmpty()) {
-            startPassengerVoyage();
-        } else {
+        if (!permissions.isEmpty()) {
             locationPermissionLauncher.launch(permissions.toArray(new String[0]));
+            return;
+        }
+
+        GhatNode origin = (GhatNode) binding.spinnerOrigin.getSelectedItem();
+        if (origin == null) return;
+
+        // Geofence Proximity Check: Calculate distance to selected origin terminal
+        Location userLoc = new Location("user");
+        userLoc.setLatitude(myCurrentLat);
+        userLoc.setLongitude(myCurrentLon);
+
+        Location originLoc = new Location("origin");
+        originLoc.setLatitude(origin.getLatitude());
+        originLoc.setLongitude(origin.getLongitude());
+
+        float distanceMeters = userLoc.distanceTo(originLoc);
+
+        // If user is far from the terminal (> 2.5 km, e.g. at home or in university lab)
+        if (hasGpsFix && distanceMeters > 2500) {
+            new AlertDialog.Builder(this)
+                    .setTitle("📍 Terminal Geofence Verification")
+                    .setIcon(R.drawable.ic_map)
+                    .setMessage(String.format(Locale.US,
+                            "Your current GPS location is %.1f km away from %s.\n\n" +
+                            "In practical maritime operations, voyage tracking can only start once docked at the terminal.\n\n" +
+                            "Select how to proceed:",
+                            distanceMeters / 1000.0, origin.getName()))
+                    .setPositiveButton("Simulate at Terminal (Demo Mode)", (dialog, which) -> {
+                        // Evaluator demo mode: starts at selected origin terminal
+                        startPassengerVoyage(origin.getLatitude(), origin.getLongitude(), true);
+                    })
+                    .setNeutralButton("Track from My Actual GPS", (dialog, which) -> {
+                        // Practical real-time mode: starts from where user is sitting right now
+                        startPassengerVoyage(myCurrentLat, myCurrentLon, false);
+                    })
+                    .setNegativeButton(R.string.action_cancel, null)
+                    .show();
+        } else {
+            // User is physically at the launch terminal!
+            startPassengerVoyage(myCurrentLat, myCurrentLon, false);
         }
     }
 
@@ -291,7 +551,7 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
      * SYLLABUS: Foreground Service Activation with Intent Extras
      * Generates a 6-character voyage code and launches JourneyTrackingService.
      */
-    private void startPassengerVoyage() {
+    private void startPassengerVoyage(double startingLat, double startingLon, boolean isSimulation) {
         GhatNode origin = (GhatNode) binding.spinnerOrigin.getSelectedItem();
         GhatNode destination = (GhatNode) binding.spinnerDestination.getSelectedItem();
         if (origin == null || destination == null) return;
@@ -319,8 +579,8 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
                 voyageStartTime,
                 voyageStartTime,
                 "ACTIVE",
-                origin.getLatitude(),
-                origin.getLongitude(),
+                startingLat,
+                startingLon,
                 0.0,
                 0.0,
                 origin.getName(),
@@ -339,6 +599,8 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
         serviceIntent.putExtra(JourneyTrackingService.EXTRA_PASSENGER_NAME, sessionManager.getUserName());
         serviceIntent.putExtra(JourneyTrackingService.EXTRA_PASSENGER_PHONE, sessionManager.getUserPhone());
         serviceIntent.putExtra(JourneyTrackingService.EXTRA_EMERGENCY_PHONE, sessionManager.getEmergencyContact());
+        serviceIntent.putExtra(JourneyTrackingService.EXTRA_START_LAT, startingLat);
+        serviceIntent.putExtra(JourneyTrackingService.EXTRA_START_LON, startingLon);
 
         ContextCompat.startForegroundService(this, serviceIntent);
         bindService(serviceIntent, serviceConnection, Context.BIND_AUTO_CREATE);
@@ -388,7 +650,7 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
 
         binding.cardActiveJourney.setVisibility(View.GONE);
         binding.cardVoyageSetup.setVisibility(View.VISIBLE);
-        showToast("Voyage ended. Family members notified of port arrival.");
+        showToast(getString(R.string.tracker_voyage_ended_toast));
     }
 
     private void startVoyageTimer() {
@@ -588,6 +850,7 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
         super.onResume();
         binding.mapPassenger.onResume();
         binding.mapViewer.onResume();
+        acquireRealTimeLocation();
     }
 
     @Override

@@ -169,32 +169,78 @@
                                 android:paddingStart="12dp"
                                 android:paddingEnd="12dp" />
 
-                            <!-- Vessel Name Input -->
-                            <com.google.android.material.textfield.TextInputLayout
+                            <!-- Live Terminal Proximity & GPS Geofence Banner -->
+                            <LinearLayout
+                                android:id="@+id/layoutTerminalProximity"
                                 android:layout_width="match_parent"
                                 android:layout_height="wrap_content"
                                 android:layout_marginTop="12dp"
-                                android:textColorHint="@color/navara_text_subtitle"
-                                app:boxBackgroundColor="#1000E5FF"
-                                app:boxBackgroundMode="outline"
-                                app:boxCornerRadiusBottomEnd="14dp"
-                                app:boxCornerRadiusBottomStart="14dp"
-                                app:boxCornerRadiusTopEnd="14dp"
-                                app:boxCornerRadiusTopStart="14dp"
-                                app:boxStrokeColor="@color/navara_neon_cyan"
-                                app:hintTextColor="@color/navara_neon_cyan">
+                                android:background="@drawable/bg_navara_glass_card"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal"
+                                android:padding="10dp">
 
-                                <com.google.android.material.textfield.TextInputEditText
+                                <ImageView
+                                    android:id="@+id/ivProximityStatus"
+                                    android:layout_width="20dp"
+                                    android:layout_height="20dp"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/ic_map"
+                                    app:tint="@color/status_warning_amber" />
+
+                                <TextView
+                                    android:id="@+id/tvProximityStatus"
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_weight="1"
+                                    android:fontFamily="sans-serif-medium"
+                                    android:text="Acquiring real-time GPS location..."
+                                    android:textColor="@color/navara_text_title"
+                                    android:textSize="12sp" />
+                            </LinearLayout>
+
+                            <!-- Vessel Name Label -->
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="14dp"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="Launch Vessel Name (লঞ্চের নাম)"
+                                android:textColor="@color/navara_text_subtitle"
+                                android:textSize="12sp" />
+
+                            <!-- Vessel Name Input Box (Standard General Box Size) -->
+                            <com.google.android.material.textfield.TextInputLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:textColorHint="@color/navara_text_subtitle"
+                                app:boxBackgroundColor="#1500E5FF"
+                                app:boxBackgroundMode="outline"
+                                app:boxCornerRadiusBottomEnd="16dp"
+                                app:boxCornerRadiusBottomStart="16dp"
+                                app:boxCornerRadiusTopEnd="16dp"
+                                app:boxCornerRadiusTopStart="16dp"
+                                app:boxStrokeColor="@color/navara_neon_cyan"
+                                app:boxStrokeWidth="1.2dp"
+                                app:hintEnabled="false">
+
+                                <AutoCompleteTextView
                                     android:id="@+id/etVesselName"
                                     android:layout_width="match_parent"
-                                    android:layout_height="wrap_content"
+                                    android:layout_height="52dp"
+                                    android:minHeight="52dp"
                                     android:fontFamily="sans-serif-bold"
-                                    android:hint="@string/tracker_vessel_hint"
+                                    android:hint="Type or select launch (e.g. MV Manami, MV Parabat-12)"
                                     android:textColorHint="@color/navara_text_subtitle"
                                     android:inputType="textCapWords"
-                                    android:text="MV Parabat 11"
+                                    android:text="MV Manami"
                                     android:textColor="@color/navara_text_title"
-                                    android:textSize="14sp" />
+                                    android:textSize="15sp"
+                                    android:paddingStart="16dp"
+                                    android:paddingEnd="16dp"
+                                    android:completionThreshold="1" />
                             </com.google.android.material.textfield.TextInputLayout>
 
                             <!-- Start Journey Button -->
@@ -465,8 +511,9 @@
 
                     <!-- Passenger osmdroid River Map Card -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardPassengerMap"
                         android:layout_width="match_parent"
-                        android:layout_height="260dp"
+                        android:layout_height="280dp"
                         android:layout_marginBottom="16dp"
                         app:cardBackgroundColor="@color/navara_glass_surface"
                         app:cardCornerRadius="20dp"
@@ -474,10 +521,70 @@
                         app:strokeColor="@color/navara_glass_border"
                         app:strokeWidth="1.2dp">
 
-                        <org.osmdroid.views.MapView
-                            android:id="@+id/mapPassenger"
+                        <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent">
+
+                            <org.osmdroid.views.MapView
+                                android:id="@+id/mapPassenger"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+
+                            <!-- Floating Map Controls Header -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:padding="8dp">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="4dp"
+                                    android:background="@drawable/bg_navara_glass_card"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:paddingTop="4dp"
+                                    android:paddingBottom="4dp"
+                                    android:fontFamily="sans-serif-bold"
+                                    android:text="🗺️ Live River Route"
+                                    android:textColor="@color/navara_text_title"
+                                    android:textSize="11sp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToggleMapSizePassenger"
+                                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="36dp"
+                                    android:layout_marginStart="6dp"
+                                    android:backgroundTint="#CC00141D"
+                                    android:fontFamily="sans-serif-bold"
+                                    android:text="⛶ Bigger Map"
+                                    android:textColor="@color/navara_neon_cyan"
+                                    android:textSize="11sp"
+                                    app:cornerRadius="18dp"
+                                    app:strokeColor="@color/navara_neon_cyan"
+                                    app:strokeWidth="1dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOpenFullscreenMapPassenger"
+                                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="36dp"
+                                    android:layout_marginStart="6dp"
+                                    android:backgroundTint="#CC00141D"
+                                    android:fontFamily="sans-serif-bold"
+                                    android:text="🌐 Full Map"
+                                    android:textColor="@color/navara_text_title"
+                                    android:textSize="11sp"
+                                    app:cornerRadius="18dp"
+                                    app:strokeColor="@color/navara_glass_border"
+                                    app:strokeWidth="1dp" />
+                            </LinearLayout>
+                        </FrameLayout>
                     </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>
@@ -678,6 +785,7 @@
 
                     <!-- Viewer osmdroid River Map Card -->
                     <com.google.android.material.card.MaterialCardView
+                        android:id="@+id/cardViewerMap"
                         android:layout_width="match_parent"
                         android:layout_height="280dp"
                         android:layout_marginBottom="16dp"
@@ -687,10 +795,70 @@
                         app:strokeColor="@color/navara_glass_border"
                         app:strokeWidth="1.2dp">
 
-                        <org.osmdroid.views.MapView
-                            android:id="@+id/mapViewer"
+                        <FrameLayout
                             android:layout_width="match_parent"
-                            android:layout_height="match_parent" />
+                            android:layout_height="match_parent">
+
+                            <org.osmdroid.views.MapView
+                                android:id="@+id/mapViewer"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent" />
+
+                            <!-- Floating Map Controls Header -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_gravity="top"
+                                android:orientation="horizontal"
+                                android:gravity="center_vertical"
+                                android:padding="8dp">
+
+                                <TextView
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_weight="1"
+                                    android:layout_marginStart="4dp"
+                                    android:background="@drawable/bg_navara_glass_card"
+                                    android:paddingStart="8dp"
+                                    android:paddingEnd="8dp"
+                                    android:paddingTop="4dp"
+                                    android:paddingBottom="4dp"
+                                    android:fontFamily="sans-serif-bold"
+                                    android:text="🗺️ Live Fleet Tracking"
+                                    android:textColor="@color/navara_text_title"
+                                    android:textSize="11sp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnToggleMapSizeViewer"
+                                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="36dp"
+                                    android:layout_marginStart="6dp"
+                                    android:backgroundTint="#CC00141D"
+                                    android:fontFamily="sans-serif-bold"
+                                    android:text="⛶ Bigger Map"
+                                    android:textColor="@color/navara_neon_cyan"
+                                    android:textSize="11sp"
+                                    app:cornerRadius="18dp"
+                                    app:strokeColor="@color/navara_neon_cyan"
+                                    app:strokeWidth="1dp" />
+
+                                <com.google.android.material.button.MaterialButton
+                                    android:id="@+id/btnOpenFullscreenMapViewer"
+                                    style="@style/Widget.MaterialComponents.Button.TextButton"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="36dp"
+                                    android:layout_marginStart="6dp"
+                                    android:backgroundTint="#CC00141D"
+                                    android:fontFamily="sans-serif-bold"
+                                    android:text="🌐 Full Map"
+                                    android:textColor="@color/navara_text_title"
+                                    android:textSize="11sp"
+                                    app:cornerRadius="18dp"
+                                    app:strokeColor="@color/navara_glass_border"
+                                    app:strokeWidth="1dp" />
+                            </LinearLayout>
+                        </FrameLayout>
                     </com.google.android.material.card.MaterialCardView>
 
                 </LinearLayout>

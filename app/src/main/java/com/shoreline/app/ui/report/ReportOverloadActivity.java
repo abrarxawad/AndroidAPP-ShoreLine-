@@ -144,6 +144,7 @@ public class ReportOverloadActivity extends BaseActivity {
         locationHelper.getCurrentLocation(new LocationHelper.LocationResultCallback() {
             @Override
             public void onLocationAcquired(double latitude, double longitude, float accuracyMeters, boolean isMockOrFallback) {
+                if (isFinishing() || isDestroyed() || binding == null) return;
                 currentLatitude = latitude;
                 currentLongitude = longitude;
                 currentAccuracy = accuracyMeters;
@@ -156,6 +157,7 @@ public class ReportOverloadActivity extends BaseActivity {
 
             @Override
             public void onLocationFailed(String reason) {
+                if (isFinishing() || isDestroyed() || binding == null) return;
                 binding.tvGpsStatus.setText(String.format("GPS Unavailable: Using Sadarghat (23.7045° N, 90.4131° E)"));
             }
         });
@@ -258,21 +260,28 @@ public class ReportOverloadActivity extends BaseActivity {
     }
 
     private void showSubmissionSuccessDialog(boolean isUploadedDirectly) {
-        String title = isUploadedDirectly ? "Report Transmitted" : "Saved to Offline Queue";
-        String message = isUploadedDirectly ?
-                "Evidence has been securely transmitted to the BIWTA Port Authority server with GPS geotag." :
-                "Mid-river mobile connectivity is currently weak or offline.\n\nYour overload report with photo evidence is safely stored in the local Room database and will automatically sync via WorkManager once network is restored.";
+        boolean isBn = com.shoreline.app.util.LocaleHelper.isBangla(this);
+        String title = isBn
+                ? (isUploadedDirectly ? "অভিযোগ সফলভাবে জমা হয়েছে" : "অফলাইন কিউতে সংরক্ষিত")
+                : (isUploadedDirectly ? "Report Transmitted" : "Saved to Offline Queue");
+        String message = isBn
+                ? (isUploadedDirectly
+                        ? "আপনার ছবি ও জিপিএস প্রমাণসহ অভিযোগটি সফলভাবে বিআইডব্লিউটিএ সার্ভারে পৌঁছেছে।"
+                        : "নদীর মাঝে মোবাইল নেটওয়ার্ক দুর্বল বা পাওয়া যাচ্ছে না।\n\nআপনার অভিযোগটি ফোনে অফলাইনে নিরাপদে জমা রাখা হয়েছে এবং নেটওয়ার্ক পেলেই WorkManager এর মাধ্যমে স্বয়ংক্রিয়ভাবে আপলোড হবে।")
+                : (isUploadedDirectly
+                        ? "Evidence has been securely transmitted to the BIWTA Port Authority server with GPS geotag."
+                        : "Mid-river mobile connectivity is currently weak or offline.\n\nYour overload report with photo evidence is safely stored in the local Room database and will automatically sync via WorkManager once network is restored.");
 
         new AlertDialog.Builder(this)
                 .setTitle(title)
                 .setMessage(message)
                 .setIcon(isUploadedDirectly ? R.drawable.ic_shoreline_logo : android.R.drawable.ic_dialog_info)
-                .setPositiveButton("View Report Queue", (dialog, which) -> {
+                .setPositiveButton(isBn ? "অভিযোগের তালিকা দেখুন" : "View Report Queue", (dialog, which) -> {
                     Intent intent = new Intent(ReportOverloadActivity.this, ReportHistoryActivity.class);
                     startActivity(intent);
                     finish();
                 })
-                .setNegativeButton("Done", (dialog, which) -> finish())
+                .setNegativeButton(isBn ? "সম্পন্ন" : "Done", (dialog, which) -> finish())
                 .setCancelable(false)
                 .show();
     }

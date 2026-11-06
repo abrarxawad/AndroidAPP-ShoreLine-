@@ -26,6 +26,7 @@ import com.shoreline.app.network.WeatherParser;
 import com.shoreline.app.ui.base.BaseActivity;
 import com.shoreline.app.ui.map.RiverMapActivity;
 import com.shoreline.app.util.GhatXmlParser;
+import com.shoreline.app.util.LocaleHelper;
 import com.shoreline.app.util.LocationHelper;
 
 import java.text.SimpleDateFormat;
@@ -392,14 +393,15 @@ public class SafeRouteActivity extends BaseActivity {
         NodeWeather destWeather = activeWeather.get(destination.getId());
 
         // Format scheduled timestamps for cards
-        String departureDisplay = "Departure: " + displayDateFormat.format(departureCalendar.getTime());
+        boolean isBn = LocaleHelper.isBangla(this);
+        String departureDisplay = (isBn ? "ছাড়ার সময়: " : "Departure: ") + displayDateFormat.format(departureCalendar.getTime());
 
         if (origin.getId().equals(destination.getId())) {
-            binding.tvRouteSummaryHeader.setText("Origin & Destination are identical");
-            binding.tvRouteMetrics.setText("Distance: 0.0 km | Travel Time: 0 mins");
-            binding.tvRouteWeatherNotice.setText("Please select different river ports.");
-            populateTerminalCard(binding.cardOriginWeather, "Origin", origin, originWeather, departureDisplay, false);
-            populateTerminalCard(binding.cardDestinationWeather, "Destination", destination, destWeather, departureDisplay, false);
+            binding.tvRouteSummaryHeader.setText(isBn ? "উৎস ও গন্তব্য একই স্থান" : "Origin & Destination are identical");
+            binding.tvRouteMetrics.setText(isBn ? "দূরত্ব: ০.০ কিমি | সময়: ০ মিনিট" : "Distance: 0.0 km | Travel Time: 0 mins");
+            binding.tvRouteWeatherNotice.setText(isBn ? "অনুগ্রহ করে দুটি ভিন্ন ঘাট নির্বাচন করুন।" : "Please select different river ports.");
+            populateTerminalCard(binding.cardOriginWeather, getString(R.string.label_origin), origin, originWeather, departureDisplay, false);
+            populateTerminalCard(binding.cardDestinationWeather, getString(R.string.label_destination), destination, destWeather, departureDisplay, false);
             binding.tvWorstPointSummary.setText(R.string.route_two_nodes_only);
             nodeWeatherAdapter.setData(null, activeWeather, "", vesselSpeedKmh);
             currentRouteResult = null;
@@ -414,11 +416,11 @@ public class SafeRouteActivity extends BaseActivity {
             // Compute Estimated Arrival Timestamp
             Calendar arrivalCalendar = (Calendar) departureCalendar.clone();
             arrivalCalendar.add(Calendar.MINUTE, currentRouteResult.totalTimeMinutes);
-            String arrivalDisplay = "Est. Arrival: " + displayDateFormat.format(arrivalCalendar.getTime());
+            String arrivalDisplay = (isBn ? "সম্ভাব্য পৌঁছানোর সময়: " : "Est. Arrival: ") + displayDateFormat.format(arrivalCalendar.getTime());
 
             // 1. Populate Origin & Destination Weather Cards (Always Visible)
-            populateTerminalCard(binding.cardOriginWeather, "Origin", origin, originWeather, departureDisplay, false);
-            populateTerminalCard(binding.cardDestinationWeather, "Destination", destination, destWeather, arrivalDisplay, false);
+            populateTerminalCard(binding.cardOriginWeather, getString(R.string.label_origin), origin, originWeather, departureDisplay, false);
+            populateTerminalCard(binding.cardDestinationWeather, getString(R.string.label_destination), destination, destWeather, arrivalDisplay, false);
 
             // 2. Estimated Destination Arrival Banner
             binding.tvEstimatedArrival.setText(getString(R.string.estimated_arrival_format,
@@ -432,11 +434,15 @@ public class SafeRouteActivity extends BaseActivity {
             binding.tvRouteSummaryHeader.setText(String.format("%s ➔ %s (%s)",
                     origin.getName(), destination.getName(), currentRouteResult.algorithmUsed));
 
-            binding.tvRouteMetrics.setText(String.format(Locale.US,
-                    "Total Distance: %.1f km | Est. Travel Time: %d mins (~%.1f hrs)",
-                    currentRouteResult.totalDistanceKm,
-                    currentRouteResult.totalTimeMinutes,
-                    (currentRouteResult.totalTimeMinutes / 60.0)));
+            binding.tvRouteMetrics.setText(isBn
+                    ? String.format(Locale.US, "মোট দূরত্ব: %.1f কিমি | আনুমানিক যাত্রার সময়: %d মিনিট (~%.1f ঘণ্টা)",
+                            currentRouteResult.totalDistanceKm,
+                            currentRouteResult.totalTimeMinutes,
+                            (currentRouteResult.totalTimeMinutes / 60.0))
+                    : String.format(Locale.US, "Total Distance: %.1f km | Est. Travel Time: %d mins (~%.1f hrs)",
+                            currentRouteResult.totalDistanceKm,
+                            currentRouteResult.totalTimeMinutes,
+                            (currentRouteResult.totalTimeMinutes / 60.0)));
 
             binding.tvRouteWeatherNotice.setText(currentRouteResult.weatherNotice);
             if (currentRouteResult.isStormRerouted) {
@@ -501,16 +507,13 @@ public class SafeRouteActivity extends BaseActivity {
         if (weather != null) {
             cardBinding.tvCardTemperature.setText(String.format(Locale.US, "%.1f°C", weather.getTempC()));
             cardBinding.tvCardCondition.setText(weather.getWeatherDescription());
-            cardBinding.tvCardWindStats.setText(String.format(Locale.US,
-                    "💨 Wind: %.1f km/h (Gusts: %.1f km/h)", weather.getWindKmh(), weather.getGustKmh()));
-            cardBinding.tvCardPrecipitation.setText(String.format(Locale.US,
-                    "🌧️ Rain: %.1f mm/h", weather.getRainMm()));
+            cardBinding.tvCardWindStats.setText(getString(R.string.wind_format, weather.getWindKmh(), weather.getGustKmh()));
+            cardBinding.tvCardPrecipitation.setText(getString(R.string.rain_format, weather.getRainMm()));
 
             // Wave height: visible only when non-null (handled safely for inland nodes)
             if (weather.getWaveHeightM() != null) {
                 cardBinding.tvCardWaveHeight.setVisibility(View.VISIBLE);
-                cardBinding.tvCardWaveHeight.setText(String.format(Locale.US,
-                        "🌊 Wave: %.1fm", weather.getWaveHeightM()));
+                cardBinding.tvCardWaveHeight.setText(getString(R.string.wave_format, weather.getWaveHeightM()));
             } else {
                 cardBinding.tvCardWaveHeight.setVisibility(View.GONE);
             }
@@ -589,6 +592,7 @@ public class SafeRouteActivity extends BaseActivity {
         locationHelper.getCurrentLocation(new LocationHelper.LocationResultCallback() {
             @Override
             public void onLocationAcquired(double latitude, double longitude, float accuracyMeters, boolean isMockOrFallback) {
+                if (isFinishing() || isDestroyed() || binding == null) return;
                 GhatNode currentLocNode = new GhatNode("GPS_CURRENT", "My Current Location", "Local", latitude, longitude, "Local");
                 String currentHour = WeatherParser.getCurrentDhakaHourString();
 
@@ -599,8 +603,9 @@ public class SafeRouteActivity extends BaseActivity {
                         new WeatherRepository.RouteWeatherCallback() {
                             @Override
                             public void onSuccess(Map<String, NodeWeather> weatherMap, boolean isFromCache, @Nullable String statusMessage) {
+                                if (isFinishing() || isDestroyed() || binding == null) return;
                                 NodeWeather cw = weatherMap.get("GPS_CURRENT");
-                                if (cw != null && !isFinishing() && !isDestroyed()) {
+                                if (cw != null) {
                                     populateTerminalCard(binding.cardCurrentLocationWeather,
                                             "My Location", currentLocNode, cw, "Current Position (" + currentHour + ")", true);
                                 }
@@ -608,6 +613,7 @@ public class SafeRouteActivity extends BaseActivity {
 
                             @Override
                             public void onFailure(String errorMessage, Map<String, NodeWeather> fallbackWeatherMap) {
+                                if (isFinishing() || isDestroyed() || binding == null) return;
                                 binding.cardCurrentLocationWeather.getRoot().setVisibility(View.GONE);
                             }
                         }
@@ -616,6 +622,7 @@ public class SafeRouteActivity extends BaseActivity {
 
             @Override
             public void onLocationFailed(String reason) {
+                if (isFinishing() || isDestroyed() || binding == null) return;
                 binding.cardCurrentLocationWeather.getRoot().setVisibility(View.GONE);
             }
         });

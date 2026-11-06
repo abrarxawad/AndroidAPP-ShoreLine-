@@ -1,10 +1,13 @@
 package com.shoreline.app.ui.auth;
 
 import android.content.Intent;
+import android.content.res.ColorStateList;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.util.Patterns;
 import android.view.View;
+
+import androidx.core.content.ContextCompat;
 
 import com.shoreline.app.R;
 import com.shoreline.app.data.local.entity.UserEntity;
@@ -13,11 +16,12 @@ import com.shoreline.app.databinding.ActivityLoginBinding;
 import com.shoreline.app.ui.base.BaseActivity;
 import com.shoreline.app.ui.home.HomeActivity;
 import com.shoreline.app.ui.lifecycle.LifecycleLabActivity;
+import com.shoreline.app.util.LocaleHelper;
 
 /**
  * SYLLABUS: User Authentication & Activity Flow (Login Screen)
  * Demonstrates ViewBinding, form validation, asynchronous repository callbacks,
- * and seamless fallback to offline demo modes.
+ * runtime language switching (Bangla/English), and seamless fallback to offline demo modes.
  */
 public class LoginActivity extends BaseActivity {
 
@@ -32,7 +36,60 @@ public class LoginActivity extends BaseActivity {
 
         authRepository = new AuthRepository(this);
 
+        setupLanguageToggle();
         setupClickListeners();
+    }
+
+    private void setupLanguageToggle() {
+        boolean isBangla = LocaleHelper.isBangla(this);
+        if (isBangla) {
+            binding.toggleLanguage.check(R.id.btnLangBn);
+            updateToggleStyles(true);
+        } else {
+            binding.toggleLanguage.check(R.id.btnLangEn);
+            updateToggleStyles(false);
+        }
+
+        binding.toggleLanguage.addOnButtonCheckedListener((group, checkedId, isChecked) -> {
+            if (!isChecked) return;
+            if (checkedId == R.id.btnLangBn) {
+                if (!LocaleHelper.isBangla(this)) {
+                    LocaleHelper.setLocale(this, LocaleHelper.LANG_BANGLA);
+                    restartForLanguageChange();
+                }
+            } else if (checkedId == R.id.btnLangEn) {
+                if (LocaleHelper.isBangla(this)) {
+                    LocaleHelper.setLocale(this, LocaleHelper.LANG_ENGLISH);
+                    restartForLanguageChange();
+                }
+            }
+        });
+    }
+
+    private void updateToggleStyles(boolean isBangla) {
+        int activeColor = ContextCompat.getColor(this, R.color.navara_neon_cyan);
+        int inactiveColor = ContextCompat.getColor(this, R.color.navara_text_subtitle);
+        int activeBorder = ContextCompat.getColor(this, R.color.navara_neon_cyan);
+        int inactiveBorder = ContextCompat.getColor(this, R.color.navara_glass_border);
+
+        if (isBangla) {
+            binding.btnLangBn.setTextColor(activeColor);
+            binding.btnLangBn.setStrokeColor(ColorStateList.valueOf(activeBorder));
+            binding.btnLangEn.setTextColor(inactiveColor);
+            binding.btnLangEn.setStrokeColor(ColorStateList.valueOf(inactiveBorder));
+        } else {
+            binding.btnLangEn.setTextColor(activeColor);
+            binding.btnLangEn.setStrokeColor(ColorStateList.valueOf(activeBorder));
+            binding.btnLangBn.setTextColor(inactiveColor);
+            binding.btnLangBn.setStrokeColor(ColorStateList.valueOf(inactiveBorder));
+        }
+    }
+
+    private void restartForLanguageChange() {
+        Intent intent = getIntent();
+        finish();
+        startActivity(intent);
+        overridePendingTransition(0, 0);
     }
 
     private void setupClickListeners() {

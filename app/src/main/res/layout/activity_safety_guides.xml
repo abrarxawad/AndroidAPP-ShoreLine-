@@ -1,16 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- STAGE 8: Offline River Rescue Guides, ContentProvider & Receivers Lab -->
+<!-- STAGE 8: Offline River Rescue Guides, ContentProvider & Receivers Lab (Navara Theme) -->
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/marine_bg_light">
+    android:background="@drawable/bg_yacht_night_helm">
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        app:elevation="0dp"
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
         <include
@@ -35,14 +37,14 @@
             <com.google.android.material.card.MaterialCardView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"
                 android:layout_marginTop="12dp"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="2dp"
-                app:cardBackgroundColor="@color/primary_variant_navy"
-                app:strokeWidth="1.5dp"
-                app:strokeColor="@color/coastal_cyan">
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:cardBackgroundColor="@color/navara_glass_surface"
+                app:strokeWidth="1.2dp"
+                app:strokeColor="@color/navara_neon_cyan">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -60,39 +62,40 @@
                             android:layout_width="28dp"
                             android:layout_height="28dp"
                             android:src="@drawable/ic_lifejacket"
-                            app:tint="@color/secondary_safety_orange" />
+                            app:tint="@color/navara_neon_cyan" />
 
                         <TextView
                             android:layout_width="0dp"
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
-                            android:text="Offline River Rescue &amp; Safety"
-                            android:textColor="@color/surface_white"
+                            android:text="@string/guide_title_main"
+                            android:textColor="@color/navara_text_title"
                             android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:fontFamily="sans-serif-black" />
 
                         <TextView
                             android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:background="@drawable/bg_chip_safe"
+                            android:background="@drawable/bg_navara_chip"
                             android:paddingStart="8dp"
                             android:paddingEnd="8dp"
-                            android:paddingTop="2dp"
-                            android:paddingBottom="2dp"
-                            android:text="CONTENT PROVIDER"
-                            android:textColor="@color/primary_maritime"
+                            android:paddingTop="3dp"
+                            android:paddingBottom="3dp"
+                            android:text="OFFLINE"
+                            android:textColor="@color/navara_neon_cyan"
                             android:textSize="10sp"
-                            android:textStyle="bold" />
+                            android:fontFamily="sans-serif-bold" />
                     </LinearLayout>
 
                     <TextView
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
                         android:layout_marginTop="6dp"
-                        android:text="All survival manuals, CPR protocols, and rescue direct-dialers work without cellular towers or internet via ShoreLineContentProvider."
-                        android:textColor="#E2E8F0"
-                        android:textSize="13sp" />
+                        android:text="@string/guide_subtitle_main"
+                        android:textColor="@color/navara_text_subtitle"
+                        android:textSize="12sp"
+                        android:fontFamily="sans-serif" />
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -102,8 +105,8 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginTop="12dp"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
                 android:scrollbars="none">
 
                 <com.google.android.material.chip.ChipGroup
@@ -118,21 +121,24 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:text="🦺 Survival Guides" />
+                        android:text="@string/guide_tab_survival"
+                        android:textColor="@color/navara_text_title" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipTabContacts"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="📞 Rescue Directory" />
+                        android:text="@string/guide_tab_contacts"
+                        android:textColor="@color/navara_text_title" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipTabLab"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🔬 Provider &amp; Receivers Lab" />
+                        android:text="@string/guide_tab_lab"
+                        android:textColor="@color/navara_text_title" />
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
@@ -147,23 +153,24 @@
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="14dp"
-                    android:layout_marginEnd="14dp"
-                    android:layout_marginTop="8dp"
-                    android:text="Offline Water Survival Manual (নদীপথে উদ্ধার নির্দেশিকা)"
-                    android:textColor="@color/text_primary"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="12dp"
+                    android:text="@string/guide_section_manual"
+                    android:textColor="@color/navara_text_title"
                     android:textSize="15sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="sans-serif-black" />
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="14dp"
-                    android:layout_marginEnd="14dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginTop="2dp"
-                    android:text="Tap any guide to expand action checkpoints and instructions."
-                    android:textColor="@color/text_secondary"
-                    android:textSize="12sp" />
+                    android:text="@string/guide_tap_hint"
+                    android:textColor="@color/navara_text_subtitle"
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvRescueGuides"
@@ -186,9 +193,9 @@
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="14dp"
-                    android:layout_marginEnd="14dp"
-                    android:layout_marginTop="8dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
+                    android:layout_marginTop="12dp"
                     android:gravity="center_vertical"
                     android:orientation="horizontal">
 
@@ -196,10 +203,10 @@
                         android:layout_width="0dp"
                         android:layout_height="wrap_content"
                         android:layout_weight="1"
-                        android:text="River Emergency Directory"
-                        android:textColor="@color/text_primary"
+                        android:text="@string/guide_contacts_header"
+                        android:textColor="@color/navara_text_title"
                         android:textSize="15sp"
-                        android:textStyle="bold" />
+                        android:fontFamily="sans-serif-black" />
 
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnAddCustomContact"
@@ -207,21 +214,23 @@
                         android:layout_width="wrap_content"
                         android:layout_height="40dp"
                         android:minHeight="40dp"
-                        android:text="+ Add Contact"
-                        android:textColor="@color/primary_maritime"
+                        android:text="@string/guide_btn_add_contact"
+                        android:textColor="@color/navara_neon_cyan"
                         android:textSize="11sp"
-                        app:strokeColor="@color/primary_maritime" />
+                        app:cornerRadius="20dp"
+                        app:strokeColor="@color/navara_neon_cyan" />
                 </LinearLayout>
 
                 <TextView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="14dp"
-                    android:layout_marginEnd="14dp"
+                    android:layout_marginStart="16dp"
+                    android:layout_marginEnd="16dp"
                     android:layout_marginTop="2dp"
-                    android:text="Populated via ContentResolver.query(emergency_contacts). Supports insert() operations."
-                    android:textColor="@color/text_secondary"
-                    android:textSize="12sp" />
+                    android:text="@string/guide_contacts_note"
+                    android:textColor="@color/navara_text_subtitle"
+                    android:textSize="12sp"
+                    android:fontFamily="sans-serif" />
 
                 <androidx.recyclerview.widget.RecyclerView
                     android:id="@+id/rvEmergencyContacts"
@@ -229,11 +238,11 @@
                     android:layout_height="wrap_content"
                     android:layout_marginTop="8dp"
                     android:nestedScrollingEnabled="false"
-                    tools:itemCount="3"
+                    tools:itemCount="4"
                     tools:listitem="@layout/item_emergency_contact" />
             </LinearLayout>
 
-            <!-- SECTION 3: SYLLABUS LAB (PROVIDER & RECEIVERS) -->
+            <!-- SECTION 3: CONTENTPROVIDER & RECEIVERS LAB -->
             <LinearLayout
                 android:id="@+id/layoutSectionLab"
                 android:layout_width="match_parent"
@@ -241,18 +250,18 @@
                 android:orientation="vertical"
                 android:visibility="gone">
 
-                <!-- ContentProvider Live Query Card -->
+                <!-- ContentProvider Query Card -->
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"
-                    android:layout_marginTop="8dp"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="2dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="14dp"
+                    android:layout_marginTop="12dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
                     app:strokeWidth="1.2dp"
-                    app:strokeColor="@color/surface_card_border"
-                    app:cardBackgroundColor="@color/surface_white">
+                    app:strokeColor="@color/navara_glass_border"
+                    app:cardBackgroundColor="@color/navara_glass_surface">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -263,24 +272,25 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="📦 ContentProvider Live Inspector"
-                            android:textColor="@color/primary_maritime"
+                            android:text="@string/guide_provider_title"
+                            android:textColor="@color/navara_neon_cyan"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:fontFamily="sans-serif-black" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="Executes raw ContentResolver queries against ShoreLineContentProvider and displays the active Cursor metadata."
-                            android:textColor="@color/text_secondary"
-                            android:textSize="12sp" />
+                            android:text="@string/guide_provider_desc"
+                            android:textColor="@color/navara_text_subtitle"
+                            android:textSize="12sp"
+                            android:fontFamily="sans-serif" />
 
                         <!-- Query Triggers -->
                         <LinearLayout
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
+                            android:layout_marginTop="12dp"
                             android:orientation="horizontal">
 
                             <com.google.android.material.button.MaterialButton
@@ -291,9 +301,10 @@
                                 android:layout_weight="1"
                                 android:layout_marginEnd="4dp"
                                 android:minHeight="44dp"
-                                android:backgroundTint="@color/primary_maritime"
-                                android:text="Query Contacts"
-                                android:textColor="@color/surface_white"
+                                android:backgroundTint="@color/navara_neon_cyan"
+                                android:text="@string/guide_btn_query_contacts"
+                                android:textColor="@color/navara_text_dark"
+                                android:fontFamily="sans-serif-bold"
                                 android:textSize="11sp" />
 
                             <com.google.android.material.button.MaterialButton
@@ -304,45 +315,25 @@
                                 android:layout_weight="1"
                                 android:layout_marginStart="4dp"
                                 android:minHeight="44dp"
-                                android:backgroundTint="@color/coastal_cyan"
-                                android:text="Query Guides"
-                                android:textColor="@color/surface_white"
+                                android:backgroundTint="@color/navara_mint"
+                                android:text="@string/guide_btn_query_guides"
+                                android:textColor="@color/navara_text_dark"
+                                android:fontFamily="sans-serif-bold"
                                 android:textSize="11sp" />
                         </LinearLayout>
-
-                        <!-- ADB Command Box -->
-                        <TextView
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:text="Terminal ADB command for viva demonstration:"
-                            android:textColor="@color/text_secondary"
-                            android:textSize="11sp" />
-
-                        <TextView
-                            android:id="@+id/tvAdbCommand"
-                            android:layout_width="match_parent"
-                            android:layout_height="wrap_content"
-                            android:layout_marginTop="4dp"
-                            android:background="@drawable/bg_terminal_window"
-                            android:fontFamily="monospace"
-                            android:padding="10dp"
-                            android:text="adb shell content query --uri content://com.shoreline.app.provider/emergency_contacts"
-                            android:textColor="#00E676"
-                            android:textSize="11sp" />
 
                         <!-- Diagnostic Console Output -->
                         <TextView
                             android:id="@+id/tvProviderConsole"
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:layout_marginTop="10dp"
-                            android:background="#0A192F"
+                            android:layout_marginTop="12dp"
+                            android:background="@drawable/bg_navara_glass_card"
                             android:fontFamily="monospace"
                             android:lineSpacingExtra="3dp"
                             android:padding="12dp"
-                            android:text="[Ready] Tap a query button to test ContentResolver."
-                            android:textColor="#64FFDA"
+                            android:text="@string/guide_cursor_ready"
+                            android:textColor="@color/navara_mint"
                             android:textSize="11sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -351,14 +342,14 @@
                 <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="12dp"
-                    android:layout_marginEnd="12dp"
+                    android:layout_marginStart="14dp"
+                    android:layout_marginEnd="14dp"
                     android:layout_marginTop="12dp"
-                    app:cardCornerRadius="14dp"
-                    app:cardElevation="2dp"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
                     app:strokeWidth="1.2dp"
-                    app:strokeColor="@color/surface_card_border"
-                    app:cardBackgroundColor="@color/surface_white">
+                    app:strokeColor="@color/navara_glass_border"
+                    app:cardBackgroundColor="@color/navara_glass_surface">
 
                     <LinearLayout
                         android:layout_width="match_parent"
@@ -369,18 +360,19 @@
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
-                            android:text="📡 BroadcastReceivers Evaluator Lab"
-                            android:textColor="@color/primary_maritime"
+                            android:text="@string/guide_receivers_title"
+                            android:textColor="@color/navara_neon_cyan"
                             android:textSize="15sp"
-                            android:textStyle="bold" />
+                            android:fontFamily="sans-serif-black" />
 
                         <TextView
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="4dp"
-                            android:text="Trigger system broadcasts to test Boot, Battery, and Network receivers on a single test device without rebooting or draining battery."
-                            android:textColor="@color/text_secondary"
-                            android:textSize="12sp" />
+                            android:text="@string/guide_receivers_desc"
+                            android:textColor="@color/navara_text_subtitle"
+                            android:textSize="12sp"
+                            android:fontFamily="sans-serif" />
 
                         <!-- Button 1: Boot Receiver -->
                         <com.google.android.material.button.MaterialButton
@@ -390,10 +382,11 @@
                             android:layout_height="46dp"
                             android:layout_marginTop="10dp"
                             android:minHeight="46dp"
-                            android:text="⚡ 1. Simulate Boot Completed (BootReceiver)"
-                            android:textColor="@color/primary_maritime"
+                            android:text="@string/guide_sim_boot"
+                            android:textColor="@color/navara_text_title"
                             android:textSize="12sp"
-                            app:strokeColor="@color/primary_maritime" />
+                            app:cornerRadius="23dp"
+                            app:strokeColor="@color/navara_glass_border" />
 
                         <!-- Button 2: Battery Low Receiver -->
                         <com.google.android.material.button.MaterialButton
@@ -403,10 +396,11 @@
                             android:layout_height="46dp"
                             android:layout_marginTop="8dp"
                             android:minHeight="46dp"
-                            android:text="⚡ 2. Simulate Battery Low &lt;15% (BatteryStateReceiver)"
-                            android:textColor="@color/secondary_safety_orange"
+                            android:text="@string/guide_sim_battery"
+                            android:textColor="#FFB74D"
                             android:textSize="12sp"
-                            app:strokeColor="@color/secondary_safety_orange" />
+                            app:cornerRadius="23dp"
+                            app:strokeColor="#80FFB74D" />
 
                         <!-- Button 3: Connectivity Receiver -->
                         <com.google.android.material.button.MaterialButton
@@ -416,10 +410,11 @@
                             android:layout_height="46dp"
                             android:layout_marginTop="8dp"
                             android:minHeight="46dp"
-                            android:text="⚡ 3. Simulate Network Restore (ConnectivityReceiver)"
-                            android:textColor="@color/coastal_cyan"
+                            android:text="@string/guide_sim_network"
+                            android:textColor="@color/navara_mint"
                             android:textSize="12sp"
-                            app:strokeColor="@color/coastal_cyan" />
+                            app:cornerRadius="23dp"
+                            app:strokeColor="#8094D2BD" />
 
                         <!-- Receiver Log Console -->
                         <TextView
@@ -427,11 +422,11 @@
                             android:layout_width="match_parent"
                             android:layout_height="wrap_content"
                             android:layout_marginTop="10dp"
-                            android:background="#0A192F"
+                            android:background="@drawable/bg_navara_glass_card"
                             android:fontFamily="monospace"
                             android:padding="12dp"
-                            android:text="[Receivers Ready] Tap any test button above to verify receiver callback execution."
-                            android:textColor="#E0E0E0"
+                            android:text="@string/guide_receivers_ready"
+                            android:textColor="@color/navara_text_title"
                             android:textSize="11sp" />
                     </LinearLayout>
                 </com.google.android.material.card.MaterialCardView>
@@ -439,8 +434,6 @@
             </LinearLayout>
 
         </LinearLayout>
-
     </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-

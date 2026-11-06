@@ -87,7 +87,7 @@
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
                             android:fontFamily="sans-serif-black"
-                            android:text="BMD Storm Signal Advisory"
+                            android:text="@string/admin_storm_card_title"
                             android:textColor="@color/navara_text_title"
                             android:textSize="15sp" />
 
@@ -100,7 +100,7 @@
                             android:paddingTop="3dp"
                             android:paddingEnd="8dp"
                             android:paddingBottom="3dp"
-                            android:text="Signal 3"
+                            android:text="@string/admin_storm_default_level"
                             android:textColor="@color/status_warning_text"
                             android:textSize="11sp"
                             android:textStyle="bold" />
@@ -113,7 +113,7 @@
                         android:layout_marginTop="8dp"
                         android:fontFamily="sans-serif"
                         android:lineSpacingExtra="3dp"
-                        android:text="Cautionary signal in effect for Padma-Meghna confluence. Trawlers must navigate near shorelines."
+                        android:text="@string/admin_storm_advisory_text"
                         android:textColor="@color/navara_text_subtitle"
                         android:textSize="12sp" />
 
@@ -126,7 +126,7 @@
                         android:background="@drawable/bg_navara_neon_button"
                         android:fontFamily="sans-serif-bold"
                         android:minHeight="48dp"
-                        android:text="📢 Broadcast BMD Storm Warning (FCM Alert)"
+                        android:text="@string/admin_broadcast_storm_btn"
                         android:textAllCaps="false"
                         android:textColor="@color/navara_text_dark"
                         android:textSize="13sp"
@@ -144,7 +144,7 @@
                 android:layout_marginEnd="16dp"
                 android:fontFamily="sans-serif-black"
                 android:letterSpacing="0.02"
-                android:text="PORT AUTHORITY COMMAND OVERVIEW"
+                android:text="@string/admin_command_overview_header"
                 android:textColor="@color/navara_neon_cyan"
                 android:textSize="13sp" />
 
@@ -179,7 +179,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/bg_navara_glass_card"
                     android:fontFamily="sans-serif-bold"
-                    android:text="🗺️ Hotspots Map"
+                    android:text="@string/admin_hotspots_map_btn"
                     android:textAllCaps="false"
                     android:textColor="@color/navara_text_title"
                     android:textSize="12sp"
@@ -193,7 +193,7 @@
                     android:layout_weight="1"
                     android:background="@drawable/bg_navara_glass_card"
                     android:fontFamily="sans-serif-bold"
-                    android:text="⚡ Simulate Alert"
+                    android:text="@string/admin_simulate_alert_btn"
                     android:textAllCaps="false"
                     android:textColor="@color/navara_neon_cyan"
                     android:textSize="12sp"
@@ -216,7 +216,7 @@
                     android:layout_weight="1"
                     android:fontFamily="sans-serif-black"
                     android:letterSpacing="0.02"
-                    android:text="SOS DISTRESS &amp; INCIDENTS"
+                    android:text="@string/admin_sos_incidents_header"
                     android:textColor="@color/navara_neon_cyan"
                     android:textSize="13sp" />
 
@@ -256,7 +256,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:text="All Incidents"
+                        android:text="@string/admin_filter_all"
                         android:textColor="@color/navara_text_title" />
 
                     <com.google.android.material.chip.Chip
@@ -264,7 +264,7 @@
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🚨 Active (Unresolved)"
+                        android:text="@string/admin_filter_active"
                         android:textColor="@color/navara_text_title" />
 
                     <com.google.android.material.chip.Chip
@@ -272,7 +272,7 @@
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="⏳ Acknowledged"
+                        android:text="@string/admin_filter_acknowledged"
                         android:textColor="@color/navara_text_title" />
 
                     <com.google.android.material.chip.Chip
@@ -280,7 +280,7 @@
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="✓ Resolved"
+                        android:text="@string/admin_filter_resolved"
                         android:textColor="@color/navara_text_title" />
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
@@ -292,7 +292,7 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="24dp"
                 android:gravity="center"
-                android:text="No distress incidents reported in this category."
+                android:text="@string/admin_empty_incidents"
                 android:textColor="@color/navara_text_subtitle"
                 android:textSize="13sp"
                 android:visibility="gone" />

@@ -24,7 +24,9 @@ import com.google.android.gms.nearby.connection.Strategy;
 import com.shoreline.app.data.local.ShoreLineDatabase;
 import com.shoreline.app.data.local.dao.SosDao;
 import com.shoreline.app.data.local.entity.SosSignalEntity;
+import com.shoreline.app.data.remote.FirestoreManager;
 import com.shoreline.app.receiver.SosAlertReceiver;
+import com.google.firebase.firestore.SetOptions;
 
 import org.json.JSONObject;
 
@@ -264,6 +266,7 @@ public class NearbySosRelayManager {
                         hopCount, originDeviceId, "ACTIVE", true, false
                 );
                 sosDao.insertSos(entity);
+                syncBeaconToFirestore(entity);
 
                 // 3. Fire In-App Custom Broadcast to trigger Morse alarm
                 Intent alertIntent = new Intent(SosAlertReceiver.ACTION_SOS_BEACON_DETECTED);
@@ -341,6 +344,7 @@ public class NearbySosRelayManager {
 
         ShoreLineDatabase.databaseWriteExecutor.execute(() -> {
             sosDao.insertSos(selfBeacon);
+            syncBeaconToFirestore(selfBeacon);
         });
 
         // 2. Build JSON Payload
@@ -402,5 +406,34 @@ public class NearbySosRelayManager {
 
     public List<String> getConnectedPeerNames() {
         return new ArrayList<>(connectedEndpoints.values());
+    }
+
+    /**
+     * SYLLABUS: Hybrid Offline-Online SOS Sync
+     * Transmits or bridges distress beacons directly to Cloud Firestore whenever internet is reachable.
+     */
+    public static void syncBeaconToFirestore(SosSignalEntity beacon) {
+        if (beacon == null) return;
+        try {
+            Map<String, Object> data = new HashMap<>();
+            data.put("sosId", beacon.getSosId());
+            data.put("senderName", beacon.getSenderName());
+            data.put("senderPhone", beacon.getSenderPhone());
+            data.put("latitude", beacon.getLatitude());
+            data.put("longitude", beacon.getLongitude());
+            data.put("timestamp", beacon.getTimestamp());
+            data.put("hopCount", beacon.getHopCount());
+            data.put("originDeviceId", beacon.getOriginDeviceId());
+            data.put("status", beacon.getStatus());
+            data.put("isRelayed", beacon.isRelayed());
+
+            FirestoreManager.getInstance().getSosCollection()
+                    .document(beacon.getSosId())
+                    .set(data, SetOptions.merge())
+                    .addOnSuccessListener(unused -> Log.d(TAG, "Distress beacon uploaded to Cloud Firestore: " + beacon.getSosId()))
+                    .addOnFailureListener(e -> Log.w(TAG, "Cloud Firestore upload failed: " + e.getMessage()));
+        } catch (Exception e) {
+            Log.e(TAG, "syncBeaconToFirestore exception: " + e.getMessage());
+        }
     }
 }

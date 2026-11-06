@@ -30,7 +30,7 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="4dp"
             android:fontFamily="sans-serif-medium"
-            android:text="Join the safe river passenger network"
+            android:text="@string/register_subtitle"
             android:textColor="@color/navara_text_subtitle"
             android:textSize="13sp" />
 

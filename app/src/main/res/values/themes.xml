@@ -1,24 +1,30 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
-    <!-- SYLLABUS: Themes and Styles (Material Design, light theme, high contrast) -->
-    <!-- Base application theme using MaterialComponents -->
-    <style name="Theme.ShoreLine" parent="Theme.MaterialComponents.Light.NoActionBar">
+    <!-- Base application theme using MaterialComponents Dark Luxury Yacht Theme -->
+    <style name="Theme.ShoreLine" parent="Theme.MaterialComponents.NoActionBar">
         <!-- Primary brand color -->
-        <item name="colorPrimary">@color/primary_maritime</item>
-        <item name="colorPrimaryVariant">@color/primary_variant_navy</item>
-        <item name="colorOnPrimary">@color/text_on_primary</item>
+        <item name="colorPrimary">@color/navara_neon_cyan</item>
+        <item name="colorPrimaryVariant">@color/navara_bg_base</item>
+        <item name="colorOnPrimary">@color/navara_text_dark</item>
 
-        <!-- Secondary brand color (Safety Alert Orange) -->
-        <item name="colorSecondary">@color/secondary_safety_orange</item>
-        <item name="colorSecondaryVariant">@color/secondary_variant_amber</item>
-        <item name="colorOnSecondary">@color/text_on_primary</item>
+        <!-- Secondary brand color (Safety Alert Orange / Cyan Accent) -->
+        <item name="colorSecondary">@color/navara_neon_cyan</item>
+        <item name="colorSecondaryVariant">@color/navara_mint</item>
+        <item name="colorOnSecondary">@color/navara_text_dark</item>
 
         <!-- Status bar color -->
-        <item name="android:statusBarColor">@color/primary_variant_navy</item>
+        <item name="android:statusBarColor">@color/navara_bg_base</item>
         <item name="android:windowLightStatusBar" tools:targetApi="m">false</item>
 
         <!-- Canvas Background -->
-        <item name="android:windowBackground">@color/bg_light_canvas</item>
-        <item name="android:colorBackground">@color/bg_light_canvas</item>
+        <item name="android:windowBackground">@color/navara_bg_base</item>
+        <item name="android:colorBackground">@color/navara_bg_base</item>
+
+        <!-- Typography / High Contrast Theme Colors -->
+        <item name="android:textColorPrimary">@color/navara_text_title</item>
+        <item name="android:textColorSecondary">@color/navara_text_subtitle</item>
+        <item name="android:editTextColor">@color/navara_text_title</item>
+        <item name="colorSurface">@color/navara_glass_surface</item>
+        <item name="colorOnSurface">@color/navara_text_title</item>
 
         <!-- Default font family -->
         <item name="fontFamily">sans-serif</item>
@@ -33,8 +39,8 @@
     <!-- Custom Button Styles conforming to 48dp minimum touch target -->
     <style name="Widget.ShoreLine.Button.Primary" parent="Widget.MaterialComponents.Button">
         <item name="android:minHeight">@dimen/min_touch_target</item>
-        <item name="backgroundTint">@color/primary_maritime</item>
-        <item name="android:textColor">@color/text_on_primary</item>
+        <item name="backgroundTint">@color/navara_neon_cyan</item>
+        <item name="android:textColor">@color/navara_text_dark</item>
         <item name="cornerRadius">@dimen/button_corner_radius</item>
         <item name="android:textSize">@dimen/text_body_primary</item>
         <item name="android:textStyle">bold</item>
@@ -51,19 +57,19 @@
 
     <style name="Widget.ShoreLine.Button.Outlined" parent="Widget.MaterialComponents.Button.OutlinedButton">
         <item name="android:minHeight">@dimen/min_touch_target</item>
-        <item name="strokeColor">@color/primary_maritime</item>
+        <item name="strokeColor">@color/navara_neon_cyan</item>
         <item name="strokeWidth">@dimen/stroke_width_active</item>
-        <item name="android:textColor">@color/primary_maritime</item>
+        <item name="android:textColor">@color/navara_neon_cyan</item>
         <item name="cornerRadius">@dimen/button_corner_radius</item>
         <item name="android:textSize">@dimen/text_body_primary</item>
     </style>
 
-    <!-- MaterialCardView Custom Style -->
+    <!-- MaterialCardView Custom Style: Yacht Glassmorphic Surface -->
     <style name="Widget.ShoreLine.Card" parent="Widget.MaterialComponents.CardView">
         <item name="cardCornerRadius">@dimen/card_corner_radius</item>
-        <item name="cardElevation">@dimen/card_elevation</item>
-        <item name="strokeColor">@color/surface_card_border</item>
+        <item name="cardElevation">0dp</item>
+        <item name="strokeColor">@color/navara_glass_border</item>
         <item name="strokeWidth">@dimen/stroke_width_standard</item>
-        <item name="cardBackgroundColor">@color/surface_white</item>
+        <item name="cardBackgroundColor">@color/navara_glass_surface</item>
     </style>
 </resources>

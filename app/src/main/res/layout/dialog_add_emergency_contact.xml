@@ -1,28 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- Dialog layout for inserting a new contact via ContentResolver -->
+<!-- Dialog layout for inserting a new contact via ContentResolver (Navara Dark Theme) -->
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:orientation="vertical"
     android:padding="20dp"
-    android:background="@color/surface_white">
+    android:background="@drawable/bg_navara_glass_card">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="➕ Add Emergency River Contact"
+        android:text="@string/guide_dialog_add_title"
         android:textSize="18sp"
-        android:textStyle="bold"
-        android:textColor="@color/primary_maritime" />
+        android:fontFamily="sans-serif-black"
+        android:textColor="@color/navara_text_title" />
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="4dp"
-        android:text="Inserts a new record into ShoreLineContentProvider via ContentResolver.insert()."
+        android:text="@string/guide_dialog_add_desc"
         android:textSize="12sp"
-        android:textColor="@color/text_secondary" />
+        android:textColor="@color/navara_text_subtitle" />
 
     <!-- Name Input -->
     <com.google.android.material.textfield.TextInputLayout
@@ -30,12 +31,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="14dp"
-        android:hint="Contact Name">
+        app:boxStrokeColor="@color/navara_neon_cyan"
+        app:hintTextColor="@color/navara_neon_cyan"
+        android:hint="@string/label_full_name">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etContactName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/navara_text_title"
             android:inputType="textPersonName"
             android:text="Chandpur River Volunteer Patrol" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -46,12 +50,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
+        app:boxStrokeColor="@color/navara_neon_cyan"
+        app:hintTextColor="@color/navara_neon_cyan"
         android:hint="Agency / Organization">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etContactAgency"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/navara_text_title"
             android:inputType="text"
             android:text="Red Crescent Water Rescue" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -62,12 +69,15 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Phone Number">
+        app:boxStrokeColor="@color/navara_neon_cyan"
+        app:hintTextColor="@color/navara_neon_cyan"
+        android:hint="@string/label_phone">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etContactPhone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/navara_text_title"
             android:inputType="phone"
             android:text="+8801811223344" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -78,15 +88,17 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
-        android:hint="Operational Role">
+        app:boxStrokeColor="@color/navara_neon_cyan"
+        app:hintTextColor="@color/navara_neon_cyan"
+        android:hint="Role">
 
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etContactRole"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:textColor="@color/navara_text_title"
             android:inputType="text"
             android:text="Mid-River Speedboat Rescue Team" />
     </com.google.android.material.textfield.TextInputLayout>
 
 </LinearLayout>
-

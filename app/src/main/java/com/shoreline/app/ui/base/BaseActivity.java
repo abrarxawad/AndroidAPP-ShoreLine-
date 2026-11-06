@@ -51,8 +51,14 @@ public abstract class BaseActivity extends AppCompatActivity {
     }
 
     // =========================================================================
-    // SYLLABUS: Activity Lifecycle Callbacks
+    // SYLLABUS: Activity Lifecycle Callbacks & Per-App Localization
     // =========================================================================
+
+    @Override
+    protected void attachBaseContext(android.content.Context newBase) {
+        android.content.Context localized = com.shoreline.app.util.LocaleHelper.applyLocale(newBase);
+        super.attachBaseContext(com.shoreline.app.util.FontScaleHelper.applyFontScale(localized));
+    }
 
     /**
      * Called when the activity is first created.
@@ -60,6 +66,8 @@ public abstract class BaseActivity extends AppCompatActivity {
      */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        com.shoreline.app.util.LocaleHelper.applyLocaleToConfiguration(this);
+        com.shoreline.app.util.FontScaleHelper.applyFontScaleToConfiguration(this);
         super.onCreate(savedInstanceState);
         String details = (savedInstanceState != null) ? "Restoring previous saved state" : "Fresh launch (savedInstanceState == null)";
         notifyLifecycleEvent("onCreate", details);

@@ -154,7 +154,7 @@
             android:layout_marginEnd="16dp"
             android:fontFamily="sans-serif-black"
             android:letterSpacing="0.04"
-            android:text="ACTIVE INLAND FLEET DIRECTORY"
+            android:text="@string/vessel_directory_header"
             android:textColor="@color/navara_neon_cyan"
             android:textSize="12sp"
             app:layout_constraintEnd_toEndOf="parent"

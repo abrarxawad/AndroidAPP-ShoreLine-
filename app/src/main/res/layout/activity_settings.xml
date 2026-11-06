@@ -1,0 +1,732 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- SETTINGS & PROFILE MANAGEMENT SCREEN (Dark Luxury Yacht Cockpit Glass Theme) -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/bg_navara_gradient">
+
+    <!-- Fixed Full-Screen Background Image (Night Cockpit View or Sunlit Day Deck) -->
+    <ImageView
+        android:id="@+id/ivSettingsBackground"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_yacht_night_helm" />
+
+    <!-- Ambient Scrim for Contrast & Readability -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#8802181E" />
+
+    <!-- Depth Scrim Gradient -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_navara_scrim_gradient" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Toolbar -->
+        <include
+            android:id="@+id/includedToolbar"
+            layout="@layout/layout_toolbar" />
+
+        <ScrollView
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1"
+            android:fillViewport="true"
+            android:overScrollMode="never">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:paddingStart="16dp"
+                android:paddingTop="12dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="48dp">
+
+                <!-- ========================================================= -->
+                <!-- CARD 1: USER ACCOUNT & PROFILE                            -->
+                <!-- ========================================================= -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardProfileSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    app:cardBackgroundColor="@color/navara_glass_surface"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/navara_glass_border"
+                    app:strokeWidth="1.2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/settings_sec_profile"
+                            android:textColor="@color/navara_text_title"
+                            android:textSize="17sp" />
+
+                        <!-- Full Name Input -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:hint="@string/settings_label_fullname"
+                            android:textColorHint="@color/navara_text_subtitle"
+                            app:boxBackgroundColor="#1000E5FF"
+                            app:boxBackgroundMode="outline"
+                            app:boxCornerRadiusBottomEnd="14dp"
+                            app:boxCornerRadiusBottomStart="14dp"
+                            app:boxCornerRadiusTopEnd="14dp"
+                            app:boxCornerRadiusTopStart="14dp"
+                            app:boxStrokeColor="@color/navara_neon_cyan"
+                            app:hintTextColor="@color/navara_neon_cyan">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etSettingsFullName"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-bold"
+                                android:inputType="textPersonName"
+                                android:textColor="@color/navara_text_title"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Email Address Input -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:hint="@string/settings_label_email"
+                            android:textColorHint="@color/navara_text_subtitle"
+                            app:boxBackgroundColor="#1000E5FF"
+                            app:boxBackgroundMode="outline"
+                            app:boxCornerRadiusBottomEnd="14dp"
+                            app:boxCornerRadiusBottomStart="14dp"
+                            app:boxCornerRadiusTopEnd="14dp"
+                            app:boxCornerRadiusTopStart="14dp"
+                            app:boxStrokeColor="@color/navara_neon_cyan"
+                            app:hintTextColor="@color/navara_neon_cyan">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etSettingsEmail"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif"
+                                android:inputType="textEmailAddress"
+                                android:textColor="@color/navara_text_title"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Personal Phone Input -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:hint="@string/settings_label_phone"
+                            android:textColorHint="@color/navara_text_subtitle"
+                            app:boxBackgroundColor="#1000E5FF"
+                            app:boxBackgroundMode="outline"
+                            app:boxCornerRadiusBottomEnd="14dp"
+                            app:boxCornerRadiusBottomStart="14dp"
+                            app:boxCornerRadiusTopEnd="14dp"
+                            app:boxCornerRadiusTopStart="14dp"
+                            app:boxStrokeColor="@color/navara_neon_cyan"
+                            app:hintTextColor="@color/navara_neon_cyan">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etSettingsPhone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-bold"
+                                android:inputType="phone"
+                                android:textColor="@color/navara_text_title"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Emergency Contact Phone Input -->
+                        <com.google.android.material.textfield.TextInputLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:hint="@string/settings_label_emergency_phone"
+                            android:textColorHint="@color/navara_text_subtitle"
+                            app:boxBackgroundColor="#1000E5FF"
+                            app:boxBackgroundMode="outline"
+                            app:boxCornerRadiusBottomEnd="14dp"
+                            app:boxCornerRadiusBottomStart="14dp"
+                            app:boxCornerRadiusTopEnd="14dp"
+                            app:boxCornerRadiusTopStart="14dp"
+                            app:boxStrokeColor="@color/navara_neon_cyan"
+                            app:hintTextColor="@color/navara_neon_cyan">
+
+                            <com.google.android.material.textfield.TextInputEditText
+                                android:id="@+id/etSettingsEmergencyPhone"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-bold"
+                                android:inputType="phone"
+                                android:textColor="@color/navara_text_title"
+                                android:textSize="14sp" />
+                        </com.google.android.material.textfield.TextInputLayout>
+
+                        <!-- Save Profile Changes Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnSaveProfile"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/bg_navara_neon_button"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/settings_btn_save_profile"
+                            android:textAllCaps="false"
+                            android:textColor="@color/navara_text_dark"
+                            android:textSize="14sp"
+                            app:backgroundTint="@null" />
+
+                        <!-- Change Password Outlined Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnOpenChangePassword"
+                            style="@style/Widget.ShoreLine.Button.Outlined"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="@string/settings_btn_change_password"
+                            android:textAllCaps="false"
+                            android:textSize="13sp" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========================================================= -->
+                <!-- CARD 2: TYPOGRAPHY & ACCESSIBILITY SCALING                -->
+                <!-- ========================================================= -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardDisplaySection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    app:cardBackgroundColor="@color/navara_glass_surface"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/navara_glass_border"
+                    app:strokeWidth="1.2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/settings_sec_display"
+                            android:textColor="@color/navara_text_title"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/settings_font_scale_desc"
+                            android:textColor="@color/navara_text_subtitle"
+                            android:textSize="12sp" />
+
+                        <!-- Font Scale Chip Selector -->
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chipGroupFontScale"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            app:singleSelection="true">
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chipFontSmall"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-medium"
+                                android:text="@string/settings_font_small"
+                                android:textColor="@color/navara_text_title"
+                                android:textSize="12sp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chipFontDefault"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="@string/settings_font_default"
+                                android:textColor="@color/navara_text_title"
+                                android:textSize="12sp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chipFontLarge"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="@string/settings_font_large"
+                                android:textColor="@color/navara_text_title"
+                                android:textSize="12sp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chipFontXLarge"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-black"
+                                android:text="@string/settings_font_xlarge"
+                                android:textColor="@color/navara_text_title"
+                                android:textSize="12sp" />
+                        </com.google.android.material.chip.ChipGroup>
+
+                        <!-- Live Typography Preview Box -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="16dp"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="@string/settings_preview_title"
+                            android:textColor="@color/navara_neon_cyan"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:id="@+id/layoutPreviewBox"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/bg_navara_glass_card"
+                            android:orientation="vertical"
+                            android:padding="14dp">
+
+                            <TextView
+                                android:id="@+id/tvPreviewHeading"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-black"
+                                android:text="@string/settings_preview_heading"
+                                android:textColor="@color/navara_text_title"
+                                android:textSize="17sp" />
+
+                            <TextView
+                                android:id="@+id/tvPreviewBody"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:fontFamily="sans-serif"
+                                android:text="@string/settings_preview_body"
+                                android:textColor="@color/navara_text_subtitle"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tvPreviewCaption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:fontFamily="monospace"
+                                android:text="@string/settings_preview_caption"
+                                android:textColor="@color/navara_mint"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@color/navara_glass_border" />
+
+                        <!-- Deck Environment & Theme Selector -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/settings_deck_theme_title"
+                            android:textColor="@color/navara_text_title"
+                            android:textSize="14sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/settings_deck_theme_desc"
+                            android:textColor="@color/navara_text_subtitle"
+                            android:textSize="11sp" />
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chipGroupDeckTheme"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            app:singleSelection="true">
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chipDeckNight"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="@string/settings_deck_night"
+                                android:textColor="@color/navara_text_title"
+                                android:textSize="12sp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chipDeckDay"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="@string/settings_deck_day"
+                                android:textColor="@color/navara_text_title"
+                                android:textSize="12sp" />
+                        </com.google.android.material.chip.ChipGroup>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========================================================= -->
+                <!-- CARD 3: LANGUAGE & SAFETY NOTIFICATIONS                   -->
+                <!-- ========================================================= -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardPreferencesSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    app:cardBackgroundColor="@color/navara_glass_surface"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/navara_glass_border"
+                    app:strokeWidth="1.2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/settings_sec_preferences"
+                            android:textColor="@color/navara_text_title"
+                            android:textSize="17sp" />
+
+                        <!-- Language Selector Row -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="@string/settings_lang_title"
+                                android:textColor="@color/navara_text_title"
+                                android:textSize="14sp" />
+
+                            <com.google.android.material.chip.ChipGroup
+                                android:id="@+id/chipGroupLanguage"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                app:singleSelection="true">
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chipLangBn"
+                                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-bold"
+                                    android:text="বাংলা"
+                                    android:textColor="@color/navara_text_title" />
+
+                                <com.google.android.material.chip.Chip
+                                    android:id="@+id/chipLangEn"
+                                    style="@style/Widget.MaterialComponents.Chip.Choice"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-bold"
+                                    android:text="English"
+                                    android:textColor="@color/navara_text_title" />
+                            </com.google.android.material.chip.ChipGroup>
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="12dp"
+                            android:background="@color/navara_glass_border" />
+
+                        <!-- Storm Advisories Push Switch -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-bold"
+                                    android:text="@string/settings_notifications_storm"
+                                    android:textColor="@color/navara_text_title"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="@string/settings_notifications_storm_desc"
+                                    android:textColor="@color/navara_text_subtitle"
+                                    android:textSize="11sp" />
+                            </LinearLayout>
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchStormAlerts"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                app:useMaterialThemeColors="true" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:layout_marginTop="12dp"
+                            android:background="@color/navara_glass_border" />
+
+                        <!-- Nearby SOS Mesh Switch -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:fontFamily="sans-serif-bold"
+                                    android:text="@string/settings_nearby_mesh"
+                                    android:textColor="@color/navara_text_title"
+                                    android:textSize="13sp" />
+
+                                <TextView
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginTop="2dp"
+                                    android:text="@string/settings_nearby_mesh_desc"
+                                    android:textColor="@color/navara_text_subtitle"
+                                    android:textSize="11sp" />
+                            </LinearLayout>
+
+                            <com.google.android.material.switchmaterial.SwitchMaterial
+                                android:id="@+id/switchNearbyMesh"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                app:useMaterialThemeColors="true" />
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========================================================= -->
+                <!-- CARD 4: OFFLINE STORAGE & CACHE                           -->
+                <!-- ========================================================= -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardStorageSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    app:cardBackgroundColor="@color/navara_glass_surface"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/navara_glass_border"
+                    app:strokeWidth="1.2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/settings_sec_storage"
+                            android:textColor="@color/navara_text_title"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/tvStorageStats"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="monospace"
+                            android:text="@string/settings_cache_size"
+                            android:textColor="@color/navara_mint"
+                            android:textSize="12sp" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="14dp"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnClearWeatherCache"
+                                style="@style/Widget.ShoreLine.Button.Outlined"
+                                android:layout_width="0dp"
+                                android:layout_height="44dp"
+                                android:layout_marginEnd="4dp"
+                                android:layout_weight="1"
+                                android:text="@string/settings_btn_clear_weather"
+                                android:textSize="11sp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnResyncHotlines"
+                                style="@style/Widget.ShoreLine.Button.Outlined"
+                                android:layout_width="0dp"
+                                android:layout_height="44dp"
+                                android:layout_marginStart="4dp"
+                                android:layout_weight="1"
+                                android:text="@string/settings_btn_resync_hotlines"
+                                android:textSize="11sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- ========================================================= -->
+                <!-- CARD 5: SYSTEM INFORMATION & SESSION                      -->
+                <!-- ========================================================= -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardAccountSection"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    app:cardBackgroundColor="@color/navara_glass_surface"
+                    app:cardCornerRadius="22dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/navara_glass_border"
+                    app:strokeWidth="1.2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="18dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/settings_sec_account"
+                            android:textColor="@color/navara_text_title"
+                            android:textSize="17sp" />
+
+                        <TextView
+                            android:id="@+id/tvAccountRole"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="@string/settings_account_role"
+                            android:textColor="@color/navara_neon_cyan"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tvAccountId"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="monospace"
+                            android:text="@string/settings_user_id"
+                            android:textColor="@color/navara_text_subtitle"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/settings_app_version"
+                            android:textColor="@color/navara_text_subtitle"
+                            android:textSize="11sp" />
+
+                        <!-- Sign Out Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnSignOut"
+                            android:layout_width="match_parent"
+                            android:layout_height="50dp"
+                            android:layout_marginTop="16dp"
+                            android:background="@drawable/bg_navara_danger_button"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/settings_btn_logout"
+                            android:textAllCaps="false"
+                            android:textColor="#FFFFFF"
+                            android:textSize="14sp"
+                            app:backgroundTint="@null" />
+
+                        <!-- Reset Data Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnResetAllData"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="48dp"
+                            android:layout_marginTop="10dp"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="@string/settings_btn_reset_data"
+                            android:textAllCaps="false"
+                            android:textColor="#FF6B6B"
+                            android:textSize="13sp"
+                            app:cornerRadius="24dp"
+                            app:strokeColor="#80FF6B6B" />
+
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</FrameLayout>
+
