@@ -79,11 +79,11 @@ public class CapacityGaugeView extends View {
             }
         }
 
-        // Setup background track paint
+        // Setup background track paint (translucent aquatic cyan track)
         backgroundArcPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         backgroundArcPaint.setStyle(Paint.Style.STROKE);
         backgroundArcPaint.setStrokeWidth(strokeWidth);
-        backgroundArcPaint.setColor(0xFFE2E8F0);
+        backgroundArcPaint.setColor(0x3300C9B7);
         backgroundArcPaint.setStrokeCap(Paint.Cap.ROUND);
 
         // Setup progress gauge paint
@@ -98,10 +98,10 @@ public class CapacityGaugeView extends View {
         textPercentPaint.setFakeBoldText(true);
         textPercentPaint.setTextSize(56f);
 
-        // Setup bottom caption paint
+        // Setup bottom caption paint (soft mint high-contrast on dark)
         textSubPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
         textSubPaint.setTextAlign(Paint.Align.CENTER);
-        textSubPaint.setColor(0xFF64748B);
+        textSubPaint.setColor(0xFF94D2BD);
         textSubPaint.setTextSize(28f);
 
         arcBounds = new RectF();

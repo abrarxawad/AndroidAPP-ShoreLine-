@@ -13,11 +13,15 @@
     <dimen name="spacing_xxlarge">48dp</dimen>
 
     <!-- Card & Component Geometry -->
-    <dimen name="card_corner_radius">12dp</dimen>
-    <dimen name="card_elevation">3dp</dimen>
-    <dimen name="button_corner_radius">8dp</dimen>
+    <dimen name="card_corner_radius">16dp</dimen>
+    <dimen name="card_corner_radius_luxury">24dp</dimen>
+    <dimen name="card_corner_radius_pill">28dp</dimen>
+    <dimen name="card_corner_radius_pill_small">18dp</dimen>
+    <dimen name="card_elevation">2dp</dimen>
+    <dimen name="card_elevation_floating">6dp</dimen>
+    <dimen name="button_corner_radius">28dp</dimen>
     <dimen name="stroke_width_standard">1dp</dimen>
-    <dimen name="stroke_width_active">2dp</dimen>
+    <dimen name="stroke_width_active">1.5dp</dimen>
 
     <!-- Typography Scale (Always sp for user accessibility scaling) -->
     <dimen name="text_caption">12sp</dimen>

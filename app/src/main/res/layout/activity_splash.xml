@@ -1,110 +1,167 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- SYLLABUS: XML Layout - ConstraintLayout, View Hierarchy, Dimensions, High Contrast Styling -->
+<!-- SYLLABUS: XML Layout - Splash Screen (Navara Aquatic Glassmorphic Luxury Style with User's Hero Background) -->
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/splashRoot"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light_canvas"
-    android:padding="@dimen/spacing_large">
+    android:background="@drawable/bg_navara_gradient">
 
-    <!-- App Logo Icon -->
+    <!-- Background Image provided by user with Yacht & 2026 Watermark -->
     <ImageView
-        android:id="@+id/ivLogo"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:contentDescription="@string/app_name"
-        android:src="@drawable/ic_shoreline_logo"
-        app:layout_constraintBottom_toTopOf="@+id/tvAppName"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_chainStyle="packed" />
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_navara_login_hero" />
 
-    <!-- App Title -->
-    <TextView
-        android:id="@+id/tvAppName"
+    <!-- Soft Ambient Scrim for Text Contrast -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#5502181E" />
+
+    <!-- Bottom Scrim Gradient for Legibility -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_navara_scrim_gradient" />
+
+    <!-- Top Brand Pill -->
+    <LinearLayout
+        android:id="@+id/brandBar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_medium"
-        android:fontFamily="sans-serif-black"
-        android:text="@string/app_name"
-        android:textColor="@color/primary_maritime"
-        android:textSize="@dimen/text_display"
-        app:layout_constraintBottom_toTopOf="@+id/tvTagline"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="48dp"
+        android:background="@drawable/bg_navara_chip"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="8dp"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/ivLogo" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <!-- River Safety Tagline -->
-    <TextView
-        android:id="@+id/tvTagline"
+        <ImageView
+            android:id="@+id/ivLogo"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:contentDescription="@string/app_name"
+            android:src="@drawable/ic_shoreline_logo"
+            app:tint="@color/navara_neon_cyan" />
+
+        <TextView
+            android:id="@+id/tvAppName"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.08"
+            android:text="SHORELINE"
+            android:textColor="@color/navara_text_title"
+            android:textSize="15sp" />
+    </LinearLayout>
+
+    <!-- Bottom Content Group -->
+    <LinearLayout
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_large"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginEnd="@dimen/spacing_large"
-        android:gravity="center"
-        android:text="@string/app_tagline"
-        android:textColor="@color/text_secondary"
-        android:textSize="@dimen/text_body_primary"
-        app:layout_constraintBottom_toTopOf="@+id/progressLoading"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvAppName" />
-
-    <!-- Indeterminate Loading Indicator -->
-    <ProgressBar
-        android:id="@+id/progressLoading"
-        android:layout_width="36dp"
-        android:layout_height="36dp"
-        android:layout_marginTop="@dimen/spacing_xlarge"
-        android:indeterminateTint="@color/secondary_safety_orange"
-        app:layout_constraintBottom_toTopOf="@+id/tvStatus"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvTagline" />
-
-    <!-- Loading Status Label -->
-    <TextView
-        android:id="@+id/tvStatus"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:text="@string/splash_loading"
-        android:textColor="@color/text_tertiary"
-        android:textSize="@dimen/text_body_secondary"
-        app:layout_constraintBottom_toTopOf="@+id/btnOpenLifecycleLab"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/progressLoading" />
-
-    <!-- SYLLABUS: Explicit Action Button (Demonstrates user action override & min 48dp touch target) -->
-    <com.google.android.material.button.MaterialButton
-        android:id="@+id/btnOpenLifecycleLab"
-        style="@style/Widget.ShoreLine.Button.Outlined"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_large"
-        android:layout_marginTop="@dimen/spacing_large"
-        android:layout_marginEnd="@dimen/spacing_large"
-        android:text="@string/btn_open_lifecycle_lab"
-        app:layout_constraintBottom_toTopOf="@+id/tvVersion"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvStatus" />
-
-    <!-- Version Footnote -->
-    <TextView
-        android:id="@+id/tvVersion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/splash_version"
-        android:textColor="@color/text_tertiary"
-        android:textSize="@dimen/text_caption"
+        android:layout_marginStart="24dp"
+        android:layout_marginEnd="24dp"
+        android:layout_marginBottom="44dp"
+        android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent">
+
+        <!-- Display Headline: "Navigating Safety Across Every River" -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="-0.02"
+            android:text="Navigating Safety"
+            android:textColor="@color/navara_neon_cyan"
+            android:textSize="38sp" />
+
+        <TextView
+            android:id="@+id/tvTagline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:fontFamily="sans-serif-medium"
+            android:letterSpacing="-0.01"
+            android:text="Across Every River"
+            android:textColor="@color/navara_text_title"
+            android:textSize="24sp" />
+
+        <!-- Subtitle detail -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:fontFamily="sans-serif"
+            android:lineSpacingExtra="3dp"
+            android:text="Bangladesh Maritime Safety, Vessel Verification &amp; Inland Navigation Network."
+            android:textColor="@color/navara_text_subtitle"
+            android:textSize="13sp" />
+
+        <!-- Action / Status Row -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="24dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ProgressBar
+                android:id="@+id/progressLoading"
+                android:layout_width="26dp"
+                android:layout_height="26dp"
+                android:indeterminateTint="@color/navara_neon_cyan" />
+
+            <TextView
+                android:id="@+id/tvStatus"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_weight="1"
+                android:fontFamily="sans-serif-medium"
+                android:text="@string/splash_loading"
+                android:textColor="@color/navara_text_subtitle"
+                android:textSize="13sp" />
+
+            <!-- Lifecycle Lab Button as Glass Pill -->
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/btnOpenLifecycleLab"
+                android:layout_width="wrap_content"
+                android:layout_height="44dp"
+                android:background="@drawable/bg_navara_glass_card"
+                android:fontFamily="sans-serif-bold"
+                android:insetTop="0dp"
+                android:insetBottom="0dp"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp"
+                android:text="Lifecycle Lab ➔"
+                android:textAllCaps="false"
+                android:textColor="@color/navara_neon_cyan"
+                android:textSize="12sp"
+                app:backgroundTint="@null" />
+        </LinearLayout>
+
+        <!-- Version Footnote -->
+        <TextView
+            android:id="@+id/tvVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:fontFamily="sans-serif"
+            android:text="ShoreLine Marine OS • v1.0 • BIWTA Verified"
+            android:textColor="#5C8A94"
+            android:textSize="11sp" />
+    </LinearLayout>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

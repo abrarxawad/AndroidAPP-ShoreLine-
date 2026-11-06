@@ -66,6 +66,9 @@ public class RiverMapActivity extends BaseActivity {
             getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         }
         binding.includedToolbar.appToolbar.setNavigationOnClickListener(v -> finish());
+        if (binding.cardMapBack != null) {
+            binding.cardMapBack.setOnClickListener(v -> finish());
+        }
     }
 
     private void setupMapView() {

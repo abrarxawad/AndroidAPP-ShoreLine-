@@ -1,25 +1,29 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- SYLLABUS: RecyclerView Item Layout - Vessel Card with Material Design & Badging -->
+<!-- SYLLABUS: RecyclerView Item Layout - Vessel Card (Navara Glassmorphic Theme) -->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/cardVesselItem"
-    style="@style/Widget.ShoreLine.Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginStart="@dimen/spacing_medium"
-    android:layout_marginTop="@dimen/spacing_micro"
-    android:layout_marginEnd="@dimen/spacing_medium"
-    android:layout_marginBottom="@dimen/spacing_small"
+    android:layout_marginStart="14dp"
+    android:layout_marginTop="6dp"
+    android:layout_marginEnd="14dp"
+    android:layout_marginBottom="6dp"
     android:clickable="true"
     android:focusable="true"
-    android:foreground="?attr/selectableItemBackground">
+    android:foreground="?attr/selectableItemBackground"
+    app:cardBackgroundColor="@color/navara_glass_surface"
+    app:cardCornerRadius="20dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/navara_glass_border"
+    app:strokeWidth="1.2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/spacing_medium">
+        android:padding="16dp">
 
         <!-- Top Row: Vessel Name & Registration -->
         <LinearLayout
@@ -38,46 +42,47 @@
                     android:id="@+id/tvItemVesselName"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="sans-serif-bold"
-                    android:textColor="@color/primary_maritime"
-                    android:textSize="@dimen/text_subheading"
+                    android:fontFamily="sans-serif-black"
+                    android:textColor="@color/navara_text_title"
+                    android:textSize="16sp"
                     tools:text="MV Parabat-12" />
 
                 <TextView
                     android:id="@+id/tvItemRegNumber"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:fontFamily="monospace"
-                    android:textColor="@color/text_tertiary"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:textColor="@color/navara_text_subtitle"
                     android:textSize="12sp"
                     tools:text="BIWTA Reg: M-01-2489" />
             </LinearLayout>
 
-            <!-- Community Safety Rating -->
+            <!-- Community Safety Rating (Glass Pill) -->
             <TextView
                 android:id="@+id/tvItemRating"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:background="@drawable/bg_terminal_window"
+                android:background="@drawable/bg_navara_chip"
                 android:drawableStart="@android:drawable/btn_star_big_on"
                 android:drawablePadding="4dp"
                 android:fontFamily="sans-serif-bold"
-                android:paddingStart="8dp"
-                android:paddingTop="4dp"
-                android:paddingEnd="8dp"
-                android:paddingBottom="4dp"
+                android:paddingStart="10dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="5dp"
                 android:textColor="#F59E0B"
                 android:textSize="12sp"
                 tools:text="★ 4.6" />
         </LinearLayout>
 
-        <!-- Divider -->
+        <!-- Glass Divider -->
         <View
             android:layout_width="match_parent"
             android:layout_height="1dp"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:layout_marginBottom="@dimen/spacing_small"
-            android:background="@color/surface_card_border" />
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="12dp"
+            android:background="#263E46" />
 
         <!-- Bottom Row: Route, Capacity, and Fitness Status -->
         <LinearLayout
@@ -93,9 +98,10 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:ellipsize="end"
+                android:fontFamily="sans-serif-medium"
                 android:maxLines="1"
-                android:textColor="@color/text_secondary"
-                android:textSize="13sp"
+                android:textColor="@color/navara_text_subtitle"
+                android:textSize="12sp"
                 tools:text="Route: Dhaka - Barisal" />
 
             <!-- Capacity Info -->
@@ -103,10 +109,15 @@
                 android:id="@+id/tvItemCapacity"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_small"
-                android:fontFamily="sans-serif-medium"
-                android:textColor="@color/coastal_cyan"
-                android:textSize="13sp"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_navara_chip"
+                android:fontFamily="sans-serif-bold"
+                android:paddingStart="8dp"
+                android:paddingTop="3dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="3dp"
+                android:textColor="@color/navara_neon_cyan"
+                android:textSize="11sp"
                 tools:text="Cap: 950" />
 
             <!-- Fitness Badge -->
@@ -114,10 +125,15 @@
                 android:id="@+id/tvItemFitnessBadge"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_marginStart="8dp"
+                android:background="@drawable/bg_chip_safe"
                 android:fontFamily="sans-serif-bold"
-                android:textColor="@color/status_safe_green"
-                android:textSize="12sp"
+                android:paddingStart="8dp"
+                android:paddingTop="3dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="3dp"
+                android:textColor="@color/status_safe_text"
+                android:textSize="11sp"
                 tools:text="CERTIFIED" />
         </LinearLayout>
     </LinearLayout>

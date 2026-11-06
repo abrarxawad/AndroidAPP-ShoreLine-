@@ -1,176 +1,232 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- SYLLABUS: XML Layout - Vessel Check Screen (<include> toolbar, SearchView, RecyclerView, Empty State) -->
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- SYLLABUS: XML Layout - Vessel Check Screen (Navara Night Cockpit Glassmorphic Theme) -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light_canvas">
+    android:background="@drawable/bg_navara_gradient">
 
-    <!-- SYLLABUS: Reusable Component (<include> Toolbar) -->
-    <include
-        android:id="@+id/includedToolbar"
-        layout="@layout/layout_toolbar"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+    <!-- Fixed Full-Screen Background Image (Night Cockpit View with Cyan Bioluminescent Wakes) -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_yacht_night_helm" />
 
-    <!-- Search & QR Scan Control Card -->
-    <com.google.android.material.card.MaterialCardView
-        android:id="@+id/cardSearchControl"
-        style="@style/Widget.ShoreLine.Card"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="@dimen/spacing_medium"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/includedToolbar">
+    <!-- Ambient Scrim for Contrast & Readability -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#8802181E" />
 
-        <LinearLayout
-            android:layout_width="match_parent"
+    <!-- Depth Scrim Gradient -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_navara_scrim_gradient" />
+
+    <!-- Main Content Container -->
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <!-- Reusable Component (<include> Toolbar) -->
+        <include
+            android:id="@+id/includedToolbar"
+            layout="@layout/layout_toolbar"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- Search & QR Scan Control Card (Frosted Glassmorphic) -->
+        <com.google.android.material.card.MaterialCardView
+            android:id="@+id/cardSearchControl"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/spacing_medium">
+            android:layout_margin="16dp"
+            app:cardBackgroundColor="@color/navara_glass_surface"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="0dp"
+            app:strokeColor="@color/navara_glass_border"
+            app:strokeWidth="1.5dp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/includedToolbar">
 
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:fontFamily="sans-serif-bold"
-                android:text="@string/vessel_search_title"
-                android:textColor="@color/primary_maritime"
-                android:textSize="@dimen/text_subheading" />
-
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginTop="2dp"
-                android:text="@string/vessel_search_subtitle"
-                android:textColor="@color/text_secondary"
-                android:textSize="@dimen/text_caption" />
-
-            <!-- Input Row -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:gravity="center_vertical"
-                android:orientation="horizontal">
+                android:orientation="vertical"
+                android:padding="18dp">
 
-                <com.google.android.material.textfield.TextInputLayout
-                    style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-                    android:layout_width="0dp"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:hint="@string/hint_vessel_number">
-
-                    <com.google.android.material.textfield.TextInputEditText
-                        android:id="@+id/etVesselSearch"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:inputType="textCapCharacters"
-                        android:minHeight="@dimen/min_touch_target" />
-                </com.google.android.material.textfield.TextInputLayout>
-
-                <!-- Search Action Button -->
-                <com.google.android.material.button.MaterialButton
-                    android:id="@+id/btnSearchVessel"
-                    style="@style/Widget.ShoreLine.Button.Primary"
+                <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_marginStart="@dimen/spacing_small"
-                    android:text="@string/action_search" />
+                    android:fontFamily="sans-serif-black"
+                    android:text="@string/vessel_search_title"
+                    android:textColor="@color/navara_text_title"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:fontFamily="sans-serif"
+                    android:text="@string/vessel_search_subtitle"
+                    android:textColor="@color/navara_text_subtitle"
+                    android:textSize="12sp" />
+
+                <!-- Input Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <com.google.android.material.textfield.TextInputLayout
+                        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:hint="@string/hint_vessel_number"
+                        android:textColorHint="@color/navara_text_subtitle"
+                        app:boxCornerRadiusBottomEnd="16dp"
+                        app:boxCornerRadiusBottomStart="16dp"
+                        app:boxCornerRadiusTopEnd="16dp"
+                        app:boxCornerRadiusTopStart="16dp"
+                        app:boxStrokeColor="@color/navara_neon_cyan"
+                        app:hintTextColor="@color/navara_neon_cyan">
+
+                        <com.google.android.material.textfield.TextInputEditText
+                            android:id="@+id/etVesselSearch"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:inputType="textCapCharacters"
+                            android:minHeight="@dimen/min_touch_target"
+                            android:textColor="@color/navara_text_title" />
+                    </com.google.android.material.textfield.TextInputLayout>
+
+                    <!-- Search Action Button -->
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnSearchVessel"
+                        android:layout_width="wrap_content"
+                        android:layout_height="52dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/bg_navara_glass_card"
+                        android:fontFamily="sans-serif-bold"
+                        android:insetTop="0dp"
+                        android:insetBottom="0dp"
+                        android:text="@string/action_search"
+                        android:textAllCaps="false"
+                        android:textColor="@color/navara_neon_cyan"
+                        android:textSize="13sp"
+                        app:backgroundTint="@null" />
+                </LinearLayout>
+
+                <!-- QR Code Scan Button (Glowing Turquoise Neon Pill) -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btnScanQr"
+                    android:layout_width="match_parent"
+                    android:layout_height="50dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/bg_navara_neon_button"
+                    android:fontFamily="sans-serif-black"
+                    android:letterSpacing="0.04"
+                    android:text="@string/btn_scan_vessel_qr"
+                    android:textAllCaps="false"
+                    android:textColor="@color/navara_text_dark"
+                    android:textSize="14sp"
+                    app:backgroundTint="@null" />
             </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
 
-            <!-- QR Code Scan Button -->
-            <!-- SYLLABUS: Barcode / QR Scanner Trigger using Activity Result API -->
-            <com.google.android.material.button.MaterialButton
-                android:id="@+id/btnScanQr"
-                style="@style/Widget.ShoreLine.Button.Secondary"
-                android:layout_width="match_parent"
+        <!-- Subheading -->
+        <TextView
+            android:id="@+id/tvDirectoryTitle"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginEnd="16dp"
+            android:fontFamily="sans-serif-black"
+            android:letterSpacing="0.04"
+            android:text="ACTIVE INLAND FLEET DIRECTORY"
+            android:textColor="@color/navara_neon_cyan"
+            android:textSize="12sp"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardSearchControl" />
+
+        <!-- RecyclerView with Custom Items -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rvVessels"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="8dp"
+            android:clipToPadding="false"
+            android:paddingBottom="24dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDirectoryTitle"
+            tools:listitem="@layout/item_vessel" />
+
+        <!-- Empty State View -->
+        <LinearLayout
+            android:id="@+id/layoutEmptyState"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/tvDirectoryTitle"
+            tools:visibility="visible">
+
+            <ImageView
+                android:layout_width="64dp"
+                android:layout_height="64dp"
+                android:alpha="0.4"
+                android:src="@drawable/ic_shoreline_logo"
+                app:tint="@color/navara_neon_cyan" />
+
+            <TextView
+                android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="@dimen/spacing_small"
-                android:text="@string/btn_scan_vessel_qr" />
+                android:layout_marginTop="12dp"
+                android:fontFamily="sans-serif-black"
+                android:text="@string/empty_no_vessels"
+                android:textColor="@color/navara_text_title"
+                android:textSize="17sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:fontFamily="sans-serif"
+                android:text="@string/empty_no_vessels_hint"
+                android:textColor="@color/navara_text_subtitle"
+                android:textSize="12sp" />
         </LinearLayout>
-    </com.google.android.material.card.MaterialCardView>
 
-    <!-- Subheading -->
-    <TextView
-        android:id="@+id/tvDirectoryTitle"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/spacing_medium"
-        android:layout_marginTop="@dimen/spacing_small"
-        android:layout_marginEnd="@dimen/spacing_medium"
-        android:fontFamily="sans-serif-bold"
-        android:text="@string/vessel_directory_header"
-        android:textColor="@color/text_primary"
-        android:textSize="@dimen/text_body_primary"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardSearchControl" />
-
-    <!-- SYLLABUS: RecyclerView with Custom Items -->
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvVessels"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
-        android:layout_marginTop="@dimen/spacing_micro"
-        android:clipToPadding="false"
-        android:paddingBottom="@dimen/spacing_large"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDirectoryTitle"
-        tools:listitem="@layout/item_vessel" />
-
-    <!-- Empty State View -->
-    <LinearLayout
-        android:id="@+id/layoutEmptyState"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:orientation="vertical"
-        android:padding="@dimen/spacing_large"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/tvDirectoryTitle"
-        tools:visibility="visible">
-
-        <ImageView
-            android:layout_width="64dp"
-            android:layout_height="64dp"
-            android:alpha="0.5"
-            android:src="@drawable/ic_shoreline_logo" />
-
-        <TextView
+        <ProgressBar
+            android:id="@+id/progressVesselLoading"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="@dimen/spacing_small"
-            android:fontFamily="sans-serif-bold"
-            android:text="@string/empty_no_vessels"
-            android:textColor="@color/text_secondary"
-            android:textSize="@dimen/text_subheading" />
+            android:indeterminateTint="@color/navara_neon_cyan"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/cardSearchControl" />
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:text="@string/empty_no_vessels_hint"
-            android:textColor="@color/text_tertiary"
-            android:textSize="@dimen/text_caption" />
-    </LinearLayout>
+    </androidx.constraintlayout.widget.ConstraintLayout>
 
-    <ProgressBar
-        android:id="@+id/progressVesselLoading"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:indeterminateTint="@color/secondary_safety_orange"
-        android:visibility="gone"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cardSearchControl" />
-
-</androidx.constraintlayout.widget.ConstraintLayout>
+</FrameLayout>

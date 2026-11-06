@@ -169,8 +169,8 @@
     <string name="route_two_nodes_only">Direct river channel (Origin &amp; Destination only)</string>
 
     <!-- Stage 5: Family Journey Tracker & Live GPS Telemetry -->
-    <string name="tracker_tab_passenger">My Voyage (যাত্রী মোড)</string>
-    <string name="tracker_tab_family">Track Family Launch (স্বজন ট্র্যাকিং)</string>
+    <string name="tracker_tab_passenger">My Voyage (যাত্রী)</string>
+    <string name="tracker_tab_family">Family Tracker (স্বজন)</string>
     <string name="tracker_setup_title">Start Voyage &amp; Live Tracking</string>
     <string name="tracker_setup_subtitle">Continuous GPS telemetry with 6-char family share code</string>
     <string name="tracker_origin_label">Departure River Ghat (ছাড়ার ঘাট):</string>

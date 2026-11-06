@@ -1,16 +1,32 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- SYLLABUS: Stage 7 - Port Authority & BIWTA Inspector Admin Dashboard -->
+<!-- SYLLABUS: Stage 7 - Port Authority & BIWTA Inspector Admin Dashboard (Navara Yacht Deck Theme) -->
 <androidx.coordinatorlayout.widget.CoordinatorLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/bg_light_canvas">
+    android:background="@drawable/bg_navara_gradient">
+
+    <!-- Background Deck Yacht Hero View -->
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:contentDescription="@null"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_deck_yacht_view" />
+
+    <!-- Dark Aquatic Tint for Maximum Readability of Admin Controls -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#B802181E" />
 
     <com.google.android.material.appbar.AppBarLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@android:color/transparent"
+        android:elevation="0dp"
         android:theme="@style/ThemeOverlay.MaterialComponents.Dark.ActionBar">
 
         <include
@@ -29,21 +45,21 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical"
-            android:paddingBottom="32dp">
+            android:paddingBottom="36dp">
 
-            <!-- BMD Warning Broadcast Banner Card -->
+            <!-- BMD Warning Broadcast Banner Card (Glassmorphic) -->
             <com.google.android.material.card.MaterialCardView
                 android:id="@+id/cardStormBanner"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginTop="12dp"
-                app:cardCornerRadius="14dp"
-                app:cardElevation="3dp"
-                app:cardBackgroundColor="@color/primary_variant_navy"
-                app:strokeWidth="1.5dp"
-                app:strokeColor="@color/secondary_variant_amber">
+                android:layout_marginStart="14dp"
+                android:layout_marginEnd="14dp"
+                android:layout_marginTop="14dp"
+                app:cardBackgroundColor="@color/navara_glass_surface"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="0dp"
+                app:strokeColor="@color/secondary_variant_amber"
+                app:strokeWidth="1.5dp">
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -70,10 +86,10 @@
                             android:layout_height="wrap_content"
                             android:layout_marginStart="10dp"
                             android:layout_weight="1"
+                            android:fontFamily="sans-serif-black"
                             android:text="BMD Storm Signal Advisory"
-                            android:textColor="@color/surface_white"
-                            android:textSize="16sp"
-                            android:textStyle="bold" />
+                            android:textColor="@color/navara_text_title"
+                            android:textSize="15sp" />
 
                         <TextView
                             android:id="@+id/tvActiveSignalBadge"
@@ -81,9 +97,9 @@
                             android:layout_height="wrap_content"
                             android:background="@drawable/bg_chip_warning"
                             android:paddingStart="8dp"
+                            android:paddingTop="3dp"
                             android:paddingEnd="8dp"
-                            android:paddingTop="2dp"
-                            android:paddingBottom="2dp"
+                            android:paddingBottom="3dp"
                             android:text="Signal 3"
                             android:textColor="@color/status_warning_text"
                             android:textSize="11sp"
@@ -94,23 +110,27 @@
                         android:id="@+id/tvStormBannerBody"
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
+                        android:layout_marginTop="8dp"
+                        android:fontFamily="sans-serif"
+                        android:lineSpacingExtra="3dp"
                         android:text="Cautionary signal in effect for Padma-Meghna confluence. Trawlers must navigate near shorelines."
-                        android:textColor="#E2E8F0"
-                        android:textSize="13sp" />
+                        android:textColor="@color/navara_text_subtitle"
+                        android:textSize="12sp" />
 
                     <!-- Broadcast Signal Action Button -->
                     <com.google.android.material.button.MaterialButton
                         android:id="@+id/btnBroadcastStormSignal"
-                        style="@style/Widget.MaterialComponents.Button"
                         android:layout_width="match_parent"
                         android:layout_height="48dp"
                         android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_navara_neon_button"
+                        android:fontFamily="sans-serif-bold"
                         android:minHeight="48dp"
                         android:text="📢 Broadcast BMD Storm Warning (FCM Alert)"
-                        android:textColor="@color/primary_variant_navy"
+                        android:textAllCaps="false"
+                        android:textColor="@color/navara_text_dark"
                         android:textSize="13sp"
-                        app:backgroundTint="@color/secondary_variant_amber" />
+                        app:backgroundTint="@null" />
                 </LinearLayout>
 
             </com.google.android.material.card.MaterialCardView>
@@ -119,22 +139,23 @@
             <TextView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="14dp"
-                android:layout_marginTop="16dp"
-                android:text="Port Authority Command Overview"
-                android:textColor="@color/text_primary"
-                android:textSize="16sp"
-                android:textStyle="bold" />
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="20dp"
+                android:layout_marginEnd="16dp"
+                android:fontFamily="sans-serif-black"
+                android:letterSpacing="0.02"
+                android:text="PORT AUTHORITY COMMAND OVERVIEW"
+                android:textColor="@color/navara_neon_cyan"
+                android:textSize="13sp" />
 
             <!-- SYLLABUS: GridLayoutManager Section (2 Columns) -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvAdminStatTiles"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="6dp"
-                android:layout_marginEnd="6dp"
-                android:layout_marginTop="6dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginEnd="8dp"
                 android:nestedScrollingEnabled="false"
                 tools:itemCount="4"
                 tools:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
@@ -145,45 +166,47 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="12dp"
-                android:layout_marginEnd="12dp"
-                android:layout_marginTop="10dp"
+                android:layout_marginStart="14dp"
+                android:layout_marginTop="12dp"
+                android:layout_marginEnd="14dp"
                 android:orientation="horizontal">
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnOpenHotspotsMap"
-                    style="@style/Widget.MaterialComponents.Button"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
-                    android:layout_weight="1"
                     android:layout_marginEnd="6dp"
-                    android:minHeight="48dp"
-                    android:backgroundTint="@color/primary_maritime"
-                    android:text="🗺️ River Hotspots Map"
-                    android:textColor="@color/surface_white"
-                    android:textSize="12sp" />
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_navara_glass_card"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="🗺️ Hotspots Map"
+                    android:textAllCaps="false"
+                    android:textColor="@color/navara_text_title"
+                    android:textSize="12sp"
+                    app:backgroundTint="@null" />
 
                 <com.google.android.material.button.MaterialButton
                     android:id="@+id/btnSimulateIncident"
-                    style="@style/Widget.MaterialComponents.Button.OutlinedButton"
                     android:layout_width="0dp"
                     android:layout_height="48dp"
-                    android:layout_weight="1"
                     android:layout_marginStart="6dp"
-                    android:minHeight="48dp"
-                    android:text="⚡ Simulate Incident"
-                    android:textColor="@color/primary_maritime"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_navara_glass_card"
+                    android:fontFamily="sans-serif-bold"
+                    android:text="⚡ Simulate Alert"
+                    android:textAllCaps="false"
+                    android:textColor="@color/navara_neon_cyan"
                     android:textSize="12sp"
-                    app:strokeColor="@color/primary_maritime" />
+                    app:backgroundTint="@null" />
             </LinearLayout>
 
             <!-- Incident Inbox Section Header -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="14dp"
-                android:layout_marginEnd="14dp"
-                android:layout_marginTop="18dp"
+                android:layout_marginStart="16dp"
+                android:layout_marginTop="22dp"
+                android:layout_marginEnd="16dp"
                 android:gravity="center_vertical"
                 android:orientation="horizontal">
 
@@ -191,27 +214,34 @@
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
-                    android:text="SOS Distress &amp; Incident Inbox"
-                    android:textColor="@color/text_primary"
-                    android:textSize="16sp"
-                    android:textStyle="bold" />
+                    android:fontFamily="sans-serif-black"
+                    android:letterSpacing="0.02"
+                    android:text="SOS DISTRESS &amp; INCIDENTS"
+                    android:textColor="@color/navara_neon_cyan"
+                    android:textSize="13sp" />
 
                 <TextView
                     android:id="@+id/tvIncidentCount"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
+                    android:background="@drawable/bg_navara_chip"
+                    android:fontFamily="sans-serif-bold"
+                    android:paddingStart="10dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="3dp"
                     android:text="0 Incidents"
-                    android:textColor="@color/text_secondary"
-                    android:textSize="12sp" />
+                    android:textColor="@color/navara_text_subtitle"
+                    android:textSize="11sp" />
             </LinearLayout>
 
             <!-- Filter Chips (All, Active, Acknowledged, Resolved) -->
             <HorizontalScrollView
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
+                android:layout_marginTop="8dp"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
                 android:scrollbars="none">
 
                 <com.google.android.material.chip.ChipGroup
@@ -226,28 +256,32 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:checked="true"
-                        android:text="All Incidents" />
+                        android:text="All Incidents"
+                        android:textColor="@color/navara_text_title" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipFilterActive"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="🚨 Active (Unresolved)" />
+                        android:text="🚨 Active (Unresolved)"
+                        android:textColor="@color/navara_text_title" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipFilterAcknowledged"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="⏳ Acknowledged" />
+                        android:text="⏳ Acknowledged"
+                        android:textColor="@color/navara_text_title" />
 
                     <com.google.android.material.chip.Chip
                         android:id="@+id/chipFilterResolved"
                         style="@style/Widget.MaterialComponents.Chip.Choice"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
-                        android:text="✓ Resolved" />
+                        android:text="✓ Resolved"
+                        android:textColor="@color/navara_text_title" />
                 </com.google.android.material.chip.ChipGroup>
             </HorizontalScrollView>
 
@@ -259,8 +293,8 @@
                 android:layout_marginTop="24dp"
                 android:gravity="center"
                 android:text="No distress incidents reported in this category."
-                android:textColor="@color/text_secondary"
-                android:textSize="14sp"
+                android:textColor="@color/navara_text_subtitle"
+                android:textSize="13sp"
                 android:visibility="gone" />
 
             <!-- SYLLABUS: RecyclerView 4 (SOS Inbox with ItemTouchHelper swipe gestures) -->
@@ -268,7 +302,7 @@
                 android:id="@+id/rvIncidentInbox"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="6dp"
+                android:layout_marginTop="8dp"
                 android:nestedScrollingEnabled="false"
                 tools:itemCount="3"
                 tools:listitem="@layout/item_admin_incident" />
@@ -278,4 +312,3 @@
     </androidx.core.widget.NestedScrollView>
 
 </androidx.coordinatorlayout.widget.CoordinatorLayout>
-

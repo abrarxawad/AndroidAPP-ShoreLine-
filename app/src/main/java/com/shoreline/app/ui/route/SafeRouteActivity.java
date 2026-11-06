@@ -119,7 +119,8 @@ public class SafeRouteActivity extends BaseActivity {
 
     private void setupSpinners() {
         ArrayAdapter<GhatNode> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_dropdown_item, ghatList);
+                R.layout.item_navara_spinner, ghatList);
+        adapter.setDropDownViewResource(R.layout.item_navara_spinner_dropdown);
 
         binding.spinnerOrigin.setAdapter(adapter);
         binding.spinnerDestination.setAdapter(adapter);
@@ -568,7 +569,9 @@ public class SafeRouteActivity extends BaseActivity {
         }
 
         binding.tvRecommendationDetails.setText(result.recommendationDetails);
+        binding.tvRecommendationDetails.setTextColor(ContextCompat.getColor(this, R.color.navara_text_title));
         binding.tvRouteComparison.setText(result.routeComparisonExplanation);
+        binding.tvRouteComparison.setTextColor(ContextCompat.getColor(this, R.color.navara_text_subtitle));
     }
 
     /**

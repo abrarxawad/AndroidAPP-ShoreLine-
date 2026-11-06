@@ -136,48 +136,48 @@
         <!-- Stage 2: Vessel Verification & Custom Gauge Screens -->
         <activity
             android:name=".ui.vessel.VesselCheckActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/nav_vessel_check"
             android:parentActivityName=".ui.home.HomeActivity"
             android:windowSoftInputMode="adjustPan" />
 
         <activity
             android:name=".ui.vessel.VesselDetailActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/nav_vessel_check"
             android:parentActivityName=".ui.vessel.VesselCheckActivity" />
 
         <!-- Stage 3: Overload Reporting & Offline Queue Screens -->
         <activity
             android:name=".ui.report.ReportOverloadActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_report_overload"
             android:parentActivityName=".ui.home.HomeActivity"
             android:windowSoftInputMode="adjustResize" />
 
         <activity
             android:name=".ui.report.ReportHistoryActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/title_report_history"
             android:parentActivityName=".ui.home.HomeActivity" />
 
         <!-- Stage 4: Safe River Route & Interactive Map Screens -->
         <activity
             android:name=".ui.route.SafeRouteActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/nav_safe_route"
             android:parentActivityName=".ui.home.HomeActivity" />
 
         <activity
             android:name=".ui.map.RiverMapActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="Interactive River Route"
             android:parentActivityName=".ui.route.SafeRouteActivity" />
 
         <!-- Stage 5: Family Journey Tracker Activity -->
         <activity
             android:name=".ui.tracker.FamilyTrackerActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/nav_family_tracker"
             android:parentActivityName=".ui.home.HomeActivity"
             android:windowSoftInputMode="adjustPan" />
@@ -192,7 +192,7 @@
         <!-- Stage 6: Offline SOS Distress Beacon Screen -->
         <activity
             android:name=".ui.sos.OfflineSosActivity"
-            android:exported="false"
+            android:exported="true"
             android:label="@string/nav_offline_sos"
             android:parentActivityName=".ui.home.HomeActivity" />
 

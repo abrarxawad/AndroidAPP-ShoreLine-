@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Closed Spinner Selected Item Layout (Navara Glassmorphic Theme) -->
+<TextView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@android:id/text1"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:ellipsize="marquee"
+    android:fontFamily="sans-serif-bold"
+    android:gravity="center_vertical"
+    android:paddingStart="4dp"
+    android:paddingEnd="28dp"
+    android:singleLine="true"
+    android:textColor="@color/navara_text_title"
+    android:textSize="14sp" />
+

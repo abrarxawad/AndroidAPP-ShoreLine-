@@ -160,7 +160,8 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
 
     private void setupSpinners() {
         ArrayAdapter<GhatNode> adapter = new ArrayAdapter<>(this,
-                android.R.layout.simple_spinner_dropdown_item, ghatList);
+                R.layout.item_navara_spinner, ghatList);
+        adapter.setDropDownViewResource(R.layout.item_navara_spinner_dropdown);
 
         binding.spinnerOrigin.setAdapter(adapter);
         binding.spinnerDestination.setAdapter(adapter);
@@ -194,9 +195,17 @@ public class FamilyTrackerActivity extends BaseActivity implements JourneyTracki
             if (checkedId == R.id.btnTabPassenger) {
                 binding.layoutPassengerMode.setVisibility(View.VISIBLE);
                 binding.layoutViewerMode.setVisibility(View.GONE);
+                binding.btnTabPassenger.setTextColor(ContextCompat.getColor(this, R.color.navara_neon_cyan));
+                binding.btnTabPassenger.setStrokeColor(ContextCompat.getColorStateList(this, R.color.navara_neon_cyan));
+                binding.btnTabViewer.setTextColor(ContextCompat.getColor(this, R.color.navara_text_subtitle));
+                binding.btnTabViewer.setStrokeColor(ContextCompat.getColorStateList(this, R.color.navara_glass_border));
             } else if (checkedId == R.id.btnTabViewer) {
                 binding.layoutPassengerMode.setVisibility(View.GONE);
                 binding.layoutViewerMode.setVisibility(View.VISIBLE);
+                binding.btnTabViewer.setTextColor(ContextCompat.getColor(this, R.color.navara_neon_cyan));
+                binding.btnTabViewer.setStrokeColor(ContextCompat.getColorStateList(this, R.color.navara_neon_cyan));
+                binding.btnTabPassenger.setTextColor(ContextCompat.getColor(this, R.color.navara_text_subtitle));
+                binding.btnTabPassenger.setStrokeColor(ContextCompat.getColorStateList(this, R.color.navara_glass_border));
             }
         });
     }

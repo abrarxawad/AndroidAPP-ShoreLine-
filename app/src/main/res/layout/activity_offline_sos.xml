@@ -1,325 +1,412 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- SYLLABUS: XML Layout - Offline Distress SOS Beacon with NearbyRadarView Custom View & Implicit Intents -->
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<!-- SYLLABUS: XML Layout - Offline Distress SOS Beacon with NearbyRadarView Custom View (Navara Yacht Helm Theme) -->
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:background="@color/bg_light_canvas"
-    android:orientation="vertical">
+    android:layout_height="match_parent">
 
-    <!-- Reusable Toolbar -->
-    <include
-        android:id="@+id/includedToolbar"
-        layout="@layout/layout_toolbar" />
-
-    <ScrollView
+    <!-- Fixed Full-Screen Yacht Cockpit Night Background Layer -->
+    <ImageView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:fillViewport="true">
+        android:contentDescription="Yacht Helm Navigation Background"
+        android:scaleType="centerCrop"
+        android:src="@drawable/bg_yacht_night_helm" />
 
-        <LinearLayout
+    <!-- Dark Aquatic Frosted Glass Tint for Readability -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@drawable/bg_navara_scrim_gradient" />
+
+    <!-- Main Foreground Layout -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <!-- Reusable Glass Toolbar -->
+        <include
+            android:id="@+id/includedToolbar"
+            layout="@layout/layout_toolbar" />
+
+        <ScrollView
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:orientation="vertical"
-            android:padding="@dimen/spacing_medium">
+            android:layout_height="match_parent"
+            android:background="@android:color/transparent"
+            android:fillViewport="true">
 
-            <!-- Card 1: Emergency Distress Transmitter -->
-            <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.ShoreLine.Card"
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_medium"
-                app:strokeColor="@color/status_danger_red"
-                app:strokeWidth="2dp">
+                android:orientation="vertical"
+                android:padding="16dp">
 
-                <LinearLayout
+                <!-- Card 1: Emergency Distress Transmitter -->
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/spacing_medium">
+                    android:layout_marginBottom="14dp"
+                    app:cardBackgroundColor="@color/navara_glass_surface"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="#80FF3B30"
+                    app:strokeWidth="1.5dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-black"
-                        android:text="@string/sos_beacon_title"
-                        android:textColor="@color/status_danger_text"
-                        android:textSize="18sp" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:text="@string/sos_beacon_subtitle"
-                        android:textColor="@color/text_secondary_muted"
-                        android:textSize="12sp" />
-
-                    <!-- Emergency Type Selection -->
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:text="@string/sos_emergency_type_label"
-                        android:textColor="@color/text_primary_navy"
-                        android:textSize="12sp"
-                        android:textStyle="bold" />
-
-                    <com.google.android.material.chip.ChipGroup
-                        android:id="@+id/chipGroupEmergencyType"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="4dp"
-                        app:selectionRequired="true"
-                        app:singleSelection="true">
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipCapsizing"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:checked="true"
-                            android:text="@string/sos_type_capsizing"
-                            android:textColor="@color/status_danger_text"
-                            android:textSize="11sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipEngineFailure"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/sos_type_engine"
-                            android:textSize="11sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipMedical"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/sos_type_medical"
-                            android:textSize="11sp" />
-
-                        <com.google.android.material.chip.Chip
-                            android:id="@+id/chipStorm"
-                            style="@style/Widget.MaterialComponents.Chip.Choice"
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:text="@string/sos_type_storm"
-                            android:textSize="11sp" />
-                    </com.google.android.material.chip.ChipGroup>
-
-                    <!-- Giant Transmit SOS Button -->
-                    <Button
-                        android:id="@+id/btnBroadcastSos"
-                        style="@style/Widget.ShoreLine.Button.Primary"
-                        android:layout_width="match_parent"
-                        android:layout_height="56dp"
-                        android:layout_marginTop="@dimen/spacing_medium"
-                        android:backgroundTint="@color/status_danger_red"
-                        android:fontFamily="sans-serif-black"
-                        android:text="@string/sos_btn_broadcast"
-                        android:textSize="15sp" />
-
-                    <!-- Transmission Status Label -->
-                    <TextView
-                        android:id="@+id/tvBroadcastStatus"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="center_horizontal"
-                        android:layout_marginTop="6dp"
-                        android:fontFamily="sans-serif-bold"
-                        android:text="@string/sos_status_idle"
-                        android:textColor="@color/text_secondary_muted"
-                        android:textSize="11sp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Card 2: Custom View - NearbyRadarView Sweep -->
-            <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.ShoreLine.Card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_medium">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:gravity="center_horizontal"
-                    android:orientation="vertical"
-                    android:padding="@dimen/spacing_medium">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:fontFamily="sans-serif-bold"
-                        android:text="@string/sos_radar_title"
-                        android:textColor="@color/primary_maritime"
-                        android:textSize="@dimen/text_subheading" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_gravity="start"
-                        android:layout_marginTop="2dp"
-                        android:text="@string/sos_radar_subtitle"
-                        android:textColor="@color/text_secondary_muted"
-                        android:textSize="12sp" />
-
-                    <!-- SYLLABUS: Custom View 2 - Canvas Drawn NearbyRadarView -->
-                    <com.shoreline.app.ui.view.NearbyRadarView
-                        android:id="@+id/radarView"
-                        android:layout_width="230dp"
-                        android:layout_height="230dp"
-                        android:layout_marginTop="@dimen/spacing_medium"
-                        android:layout_marginBottom="@dimen/spacing_small" />
-
-                    <TextView
-                        android:id="@+id/tvRadarPeerCount"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-bold"
-                        android:text="🟢 Scanning River Reach (Nearby Connections Active)"
-                        android:textColor="@color/status_safe_text"
-                        android:textSize="12sp" />
-
-                    <!-- Evaluator Demo: Simulate Neighboring Vessel Beacon -->
-                    <Button
-                        android:id="@+id/btnSimulateNearbyBeacon"
-                        style="@style/Widget.ShoreLine.Button.Secondary"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:text="⚡ Evaluator Demo: Simulate Incoming Distress Beacon"
-                        android:textSize="11sp" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
-
-            <!-- Card 3: Fallback Emergency Triggers (Implicit Intents) -->
-            <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.ShoreLine.Card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_medium">
-
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/spacing_medium">
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-bold"
-                        android:text="@string/sos_fallback_title"
-                        android:textColor="@color/primary_maritime"
-                        android:textSize="@dimen/text_subheading" />
-
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="2dp"
-                        android:text="@string/sos_fallback_subtitle"
-                        android:textColor="@color/text_secondary_muted"
-                        android:textSize="12sp" />
-
-                    <!-- Row 1: DIAL Intents -->
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:orientation="horizontal">
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                        <Button
-                            android:id="@+id/btnDialBiwta"
-                            style="@style/Widget.ShoreLine.Button.Secondary"
-                            android:layout_width="0dp"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/sos_btn_biwta"
-                            android:textSize="11sp" />
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/sos_beacon_title"
+                            android:textColor="#FF6B6B"
+                            android:textSize="18sp" />
 
-                        <Button
-                            android:id="@+id/btnDial999"
-                            style="@style/Widget.ShoreLine.Button.Secondary"
-                            android:layout_width="0dp"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/spacing_small"
-                            android:layout_weight="1"
-                            android:text="@string/sos_btn_999"
-                            android:textSize="11sp" />
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/sos_beacon_subtitle"
+                            android:textColor="@color/navara_text_subtitle"
+                            android:textSize="12sp" />
+
+                        <!-- Emergency Type Selection -->
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="@string/sos_emergency_type_label"
+                            android:textColor="@color/navara_text_title"
+                            android:textSize="12sp" />
+
+                        <com.google.android.material.chip.ChipGroup
+                            android:id="@+id/chipGroupEmergencyType"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            app:selectionRequired="true"
+                            app:singleSelection="true">
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chipCapsizing"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:checked="true"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="@string/sos_type_capsizing"
+                                android:textColor="@color/color_chip_sos_text"
+                                android:textSize="12sp"
+                                app:chipBackgroundColor="@color/color_chip_sos_bg"
+                                app:chipCornerRadius="16dp"
+                                app:chipStrokeColor="@color/color_chip_sos_stroke"
+                                app:chipStrokeWidth="1.2dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chipEngineFailure"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="@string/sos_type_engine"
+                                android:textColor="@color/color_chip_sos_text"
+                                android:textSize="12sp"
+                                app:chipBackgroundColor="@color/color_chip_sos_bg"
+                                app:chipCornerRadius="16dp"
+                                app:chipStrokeColor="@color/color_chip_sos_stroke"
+                                app:chipStrokeWidth="1.2dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chipMedical"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="@string/sos_type_medical"
+                                android:textColor="@color/color_chip_sos_text"
+                                android:textSize="12sp"
+                                app:chipBackgroundColor="@color/color_chip_sos_bg"
+                                app:chipCornerRadius="16dp"
+                                app:chipStrokeColor="@color/color_chip_sos_stroke"
+                                app:chipStrokeWidth="1.2dp" />
+
+                            <com.google.android.material.chip.Chip
+                                android:id="@+id/chipStorm"
+                                style="@style/Widget.MaterialComponents.Chip.Choice"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="@string/sos_type_storm"
+                                android:textColor="@color/color_chip_sos_text"
+                                android:textSize="12sp"
+                                app:chipBackgroundColor="@color/color_chip_sos_bg"
+                                app:chipCornerRadius="16dp"
+                                app:chipStrokeColor="@color/color_chip_sos_stroke"
+                                app:chipStrokeWidth="1.2dp" />
+                        </com.google.android.material.chip.ChipGroup>
+
+                        <!-- Giant Transmit SOS Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnBroadcastSos"
+                            android:layout_width="match_parent"
+                            android:layout_height="54dp"
+                            android:layout_marginTop="16dp"
+                            android:backgroundTint="#FF2A55"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/sos_btn_broadcast"
+                            android:textColor="#FFFFFF"
+                            android:textSize="15sp"
+                            app:cornerRadius="27dp" />
+
+                        <!-- Transmission Status Label -->
+                        <TextView
+                            android:id="@+id/tvBroadcastStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center_horizontal"
+                            android:layout_marginTop="8dp"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="@string/sos_status_idle"
+                            android:textColor="@color/navara_text_subtitle"
+                            android:textSize="12sp" />
                     </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
 
-                    <!-- Row 2: SENDTO & SEND Intents -->
+                <!-- Card 2: Custom View - NearbyRadarView Sweep -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="14dp"
+                    app:cardBackgroundColor="@color/navara_glass_surface"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/navara_glass_border"
+                    app:strokeWidth="1.2dp">
+
                     <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:orientation="horizontal">
+                        android:gravity="center_horizontal"
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-                        <Button
-                            android:id="@+id/btnSendSms"
-                            style="@style/Widget.ShoreLine.Button.Secondary"
-                            android:layout_width="0dp"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_weight="1"
-                            android:text="@string/sos_btn_sms"
-                            android:textSize="11sp" />
+                            android:layout_gravity="start"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/sos_radar_title"
+                            android:textColor="@color/navara_text_title"
+                            android:textSize="15sp" />
 
-                        <Button
-                            android:id="@+id/btnShareDistress"
-                            style="@style/Widget.ShoreLine.Button.Secondary"
-                            android:layout_width="0dp"
+                        <TextView
+                            android:layout_width="wrap_content"
                             android:layout_height="wrap_content"
-                            android:layout_marginStart="@dimen/spacing_small"
-                            android:layout_weight="1"
-                            android:text="@string/sos_btn_share"
-                            android:textSize="11sp" />
+                            android:layout_gravity="start"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/sos_radar_subtitle"
+                            android:textColor="@color/navara_text_subtitle"
+                            android:textSize="12sp" />
+
+                        <!-- SYLLABUS: Custom View 2 - Canvas Drawn NearbyRadarView -->
+                        <com.shoreline.app.ui.view.NearbyRadarView
+                            android:id="@+id/radarView"
+                            android:layout_width="230dp"
+                            android:layout_height="230dp"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="12dp" />
+
+                        <TextView
+                            android:id="@+id/tvRadarPeerCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="🟢 Scanning River Reach (Nearby Connections Active)"
+                            android:textColor="@color/status_safe_text"
+                            android:textSize="12sp" />
+
+                        <!-- Evaluator Demo: Simulate Neighboring Vessel Beacon -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnSimulateNearbyBeacon"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:layout_width="match_parent"
+                            android:layout_height="46dp"
+                            android:layout_marginTop="12dp"
+                            android:fontFamily="sans-serif-bold"
+                            android:text="⚡ Evaluator Demo: Simulate Incoming Distress Beacon"
+                            android:textColor="@color/navara_neon_cyan"
+                            android:textSize="11sp"
+                            app:cornerRadius="23dp"
+                            app:strokeColor="@color/navara_glass_border"
+                            app:strokeWidth="1.2dp" />
                     </LinearLayout>
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                </com.google.android.material.card.MaterialCardView>
 
-            <!-- Card 4: Received Distress Beacons List -->
-            <com.google.android.material.card.MaterialCardView
-                style="@style/Widget.ShoreLine.Card"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_marginBottom="@dimen/spacing_large">
-
-                <LinearLayout
+                <!-- Card 3: Fallback Emergency Triggers (Implicit Intents) -->
+                <com.google.android.material.card.MaterialCardView
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
-                    android:orientation="vertical"
-                    android:padding="@dimen/spacing_medium">
+                    android:layout_marginBottom="14dp"
+                    app:cardBackgroundColor="@color/navara_glass_surface"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/navara_glass_border"
+                    app:strokeWidth="1.2dp">
 
-                    <TextView
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:fontFamily="sans-serif-bold"
-                        android:text="@string/sos_inbox_title"
-                        android:textColor="@color/primary_maritime"
-                        android:textSize="@dimen/text_subheading" />
-
-                    <TextView
-                        android:id="@+id/tvEmptyInbox"
-                        android:layout_width="wrap_content"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="6dp"
-                        android:text="@string/sos_inbox_empty"
-                        android:textColor="@color/text_secondary_muted"
-                        android:textSize="12sp" />
-
-                    <androidx.recyclerview.widget.RecyclerView
-                        android:id="@+id/rvReceivedBeacons"
+                    <LinearLayout
                         android:layout_width="match_parent"
                         android:layout_height="wrap_content"
-                        android:layout_marginTop="@dimen/spacing_small"
-                        android:nestedScrollingEnabled="false"
-                        tools:listitem="@layout/item_sos_beacon" />
-                </LinearLayout>
-            </com.google.android.material.card.MaterialCardView>
+                        android:orientation="vertical"
+                        android:padding="16dp">
 
-        </LinearLayout>
-    </ScrollView>
-</LinearLayout>
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/sos_fallback_title"
+                            android:textColor="@color/navara_text_title"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/sos_fallback_subtitle"
+                            android:textColor="@color/navara_text_subtitle"
+                            android:textSize="12sp" />
+
+                        <!-- Row 1: DIAL Intents -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="12dp"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnDialBiwta"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="0dp"
+                                android:layout_height="44dp"
+                                android:layout_weight="1"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="@string/sos_btn_biwta"
+                                android:textColor="@color/navara_neon_cyan"
+                                android:textSize="11sp"
+                                app:cornerRadius="22dp"
+                                app:strokeColor="@color/navara_neon_cyan"
+                                app:strokeWidth="1.2dp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnDial999"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="0dp"
+                                android:layout_height="44dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="@string/sos_btn_999"
+                                android:textColor="#FF6B6B"
+                                android:textSize="11sp"
+                                app:cornerRadius="22dp"
+                                app:strokeColor="#FF6B6B"
+                                app:strokeWidth="1.2dp" />
+                        </LinearLayout>
+
+                        <!-- Row 2: SENDTO & SEND Intents -->
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="8dp"
+                            android:orientation="horizontal">
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnSendSms"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="0dp"
+                                android:layout_height="44dp"
+                                android:layout_weight="1"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="@string/sos_btn_sms"
+                                android:textColor="@color/navara_mint"
+                                android:textSize="11sp"
+                                app:cornerRadius="22dp"
+                                app:strokeColor="@color/navara_mint"
+                                app:strokeWidth="1.2dp" />
+
+                            <com.google.android.material.button.MaterialButton
+                                android:id="@+id/btnShareDistress"
+                                style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                                android:layout_width="0dp"
+                                android:layout_height="44dp"
+                                android:layout_marginStart="8dp"
+                                android:layout_weight="1"
+                                android:fontFamily="sans-serif-bold"
+                                android:text="@string/sos_btn_share"
+                                android:textColor="@color/navara_text_title"
+                                android:textSize="11sp"
+                                app:cornerRadius="22dp"
+                                app:strokeColor="@color/navara_glass_border"
+                                app:strokeWidth="1.2dp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Card 4: Received Distress Beacons List -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="24dp"
+                    app:cardBackgroundColor="@color/navara_glass_surface"
+                    app:cardCornerRadius="20dp"
+                    app:cardElevation="0dp"
+                    app:strokeColor="@color/navara_glass_border"
+                    app:strokeWidth="1.2dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="16dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif-black"
+                            android:text="@string/sos_inbox_title"
+                            android:textColor="@color/navara_text_title"
+                            android:textSize="15sp" />
+
+                        <TextView
+                            android:id="@+id/tvEmptyInbox"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:fontFamily="sans-serif"
+                            android:text="@string/sos_inbox_empty"
+                            android:textColor="@color/navara_text_subtitle"
+                            android:textSize="12sp" />
+
+                        <androidx.recyclerview.widget.RecyclerView
+                            android:id="@+id/rvReceivedBeacons"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="10dp"
+                            android:nestedScrollingEnabled="false"
+                            tools:listitem="@layout/item_sos_beacon" />
+                    </LinearLayout>
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+        </ScrollView>
+    </LinearLayout>
+</FrameLayout>

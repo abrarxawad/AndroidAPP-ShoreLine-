@@ -79,22 +79,22 @@ public class NearbyRadarView extends View {
     }
 
     private void init() {
-        // Deep maritime radar background
+        // Deep maritime radar background (Frosted translucent aquatic base)
         backgroundPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        backgroundPaint.setColor(Color.parseColor("#061C30"));
+        backgroundPaint.setColor(Color.parseColor("#6601141B"));
         backgroundPaint.setStyle(Paint.Style.FILL);
 
-        // Concentric range rings
+        // Concentric range rings (Luminous neon cyan)
         ringPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        ringPaint.setColor(Color.parseColor("#174D75"));
+        ringPaint.setColor(Color.parseColor("#4000E5FF"));
         ringPaint.setStyle(Paint.Style.STROKE);
-        ringPaint.setStrokeWidth(2.5f);
+        ringPaint.setStrokeWidth(2.0f);
 
-        // Crosshairs
+        // Crosshairs (Soft aquatic mint)
         crosshairPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        crosshairPaint.setColor(Color.parseColor("#174D75"));
+        crosshairPaint.setColor(Color.parseColor("#3300C9B7"));
         crosshairPaint.setStyle(Paint.Style.STROKE);
-        crosshairPaint.setStrokeWidth(1.5f);
+        crosshairPaint.setStrokeWidth(1.2f);
 
         // Rotating radar sweep
         sweepPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
@@ -112,7 +112,7 @@ public class NearbyRadarView extends View {
 
         // Label typography
         textPaint = new Paint(Paint.ANTI_ALIAS_FLAG);
-        textPaint.setColor(Color.parseColor("#90CAF9"));
+        textPaint.setColor(Color.parseColor("#E0FBFC"));
         textPaint.setTextSize(24f);
         textPaint.setTextAlign(Paint.Align.CENTER);
 

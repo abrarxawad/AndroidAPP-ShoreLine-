@@ -1,19 +1,22 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!-- SYLLABUS: RecyclerView Item Layout - Intermediate Route Waypoint Weather -->
+<!-- SYLLABUS: RecyclerView Item Layout - Intermediate Route Waypoint Weather (Navara Glassmorphic Theme) -->
 <com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    style="@style/Widget.ShoreLine.Card"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    android:layout_marginBottom="6dp"
-    app:cardElevation="1dp">
+    android:layout_marginBottom="8dp"
+    app:cardBackgroundColor="@color/navara_glass_surface"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="0dp"
+    app:strokeColor="@color/navara_glass_border"
+    app:strokeWidth="1.2dp">
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        android:padding="@dimen/spacing_small">
+        android:padding="12dp">
 
         <!-- Top Row: Node Index, Name & Risk Badge -->
         <LinearLayout
@@ -24,10 +27,10 @@
 
             <TextView
                 android:id="@+id/tvNodeStepIndex"
-                android:layout_width="22dp"
-                android:layout_height="22dp"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
                 android:background="@drawable/bg_chip_safe"
-                android:fontFamily="sans-serif-bold"
+                android:fontFamily="sans-serif-black"
                 android:gravity="center"
                 android:textColor="@color/status_safe_text"
                 android:textSize="11sp"
@@ -36,7 +39,7 @@
             <LinearLayout
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="@dimen/spacing_small"
+                android:layout_marginStart="10dp"
                 android:layout_weight="1"
                 android:orientation="vertical">
 
@@ -45,7 +48,7 @@
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-bold"
-                    android:textColor="@color/text_primary_navy"
+                    android:textColor="@color/navara_text_title"
                     android:textSize="14sp"
                     tools:text="Chandpur Launch Terminal" />
 
@@ -53,7 +56,8 @@
                     android:id="@+id/tvNodeRiverDetails"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:textColor="@color/text_secondary_muted"
+                    android:fontFamily="sans-serif"
+                    android:textColor="@color/navara_text_subtitle"
                     android:textSize="11sp"
                     tools:text="Meghna River • Crossing +1 hr 45 min" />
             </LinearLayout>
@@ -64,9 +68,9 @@
                 android:layout_height="wrap_content"
                 android:background="@drawable/bg_chip_safe"
                 android:fontFamily="sans-serif-bold"
-                android:paddingStart="6dp"
+                android:paddingStart="8dp"
                 android:paddingTop="2dp"
-                android:paddingEnd="6dp"
+                android:paddingEnd="8dp"
                 android:paddingBottom="2dp"
                 android:textColor="@color/status_safe_text"
                 android:textSize="10sp"
@@ -78,37 +82,38 @@
             android:id="@+id/tvWorstPointTag"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
+            android:layout_marginTop="6dp"
             android:background="@drawable/bg_chip_flagged"
             android:fontFamily="sans-serif-bold"
-            android:paddingStart="@dimen/spacing_small"
-            android:paddingTop="2dp"
-            android:paddingEnd="@dimen/spacing_small"
-            android:paddingBottom="2dp"
+            android:paddingStart="10dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="3dp"
             android:text="⚠️ WORST HAZARD POINT ON ROUTE (সর্বোচ্চ সতর্ক সংকেত পয়েন্ট)"
-            android:textColor="@color/status_danger_text"
+            android:textColor="#FF6B6B"
             android:textSize="10sp"
             android:visibility="gone"
             tools:visibility="visible" />
 
-        <!-- Weather Metrics Row -->
-        <TextView
-            android:id="@+id/tvNodeWeatherMetrics"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="4dp"
-            android:textColor="@color/text_primary_navy"
-            android:textSize="12sp"
-            tools:text="29.0°C • Wind: 24 km/h (Gusts: 36 km/h) • Rain: 0.0 mm/h" />
-
-        <!-- Condition Description -->
+        <!-- Weather Condition & Metrics Row -->
         <TextView
             android:id="@+id/tvNodeCondition"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:fontFamily="sans-serif-bold"
+            android:textColor="@color/navara_text_title"
+            android:textSize="12sp"
+            tools:text="Mainly Clear" />
+
+        <TextView
+            android:id="@+id/tvNodeWeatherMetrics"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:layout_marginTop="2dp"
-            android:textColor="@color/text_secondary_muted"
+            android:fontFamily="sans-serif-medium"
+            android:textColor="@color/navara_neon_cyan"
             android:textSize="11sp"
-            tools:text="Moderate chop; navigate inland channel (হুঁশিয়ারি সংকেত ২)" />
+            tools:text="29.0°C • 💨 Wind: 22 km/h • 🌧️ Rain: 0.0 mm/h" />
     </LinearLayout>
 </com.google.android.material.card.MaterialCardView>

@@ -1,0 +1,72 @@
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="200dp"
+    android:height="400dp"
+    android:viewportWidth="200"
+    android:viewportHeight="400">
+
+    <!-- Ambient Hull Drop Shadow -->
+    <path
+        android:fillColor="#15000000"
+        android:pathData="M100,10 C145,90 175,200 170,360 C170,375 140,385 100,385 C60,385 30,375 30,360 C25,200 55,90 100,10 Z" />
+
+    <!-- Main Outer White Hull -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#CBD5E1"
+        android:strokeWidth="1.5"
+        android:pathData="M100,15 C140,90 168,195 165,355 C165,370 135,380 100,380 C65,380 35,370 35,355 C32,195 60,90 100,15 Z" />
+
+    <!-- Bow Deck Accent Lines -->
+    <path
+        android:fillColor="#F1F5F9"
+        android:pathData="M100,28 C128,85 148,150 148,165 L52,165 C52,150 72,85 100,28 Z" />
+
+    <!-- Bow Sunpad / Lounger Cushion -->
+    <path
+        android:fillColor="#E2E8F0"
+        android:strokeColor="#CBD5E1"
+        android:strokeWidth="1"
+        android:pathData="M80,95 C80,90 120,90 120,95 L125,135 C125,140 75,140 75,135 Z" />
+
+    <!-- Center Windshield / Cabin Glass (Dark Cyan Tint) -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M100,165 C135,165 145,178 142,205 L58,205 C55,178 65,165 100,165 Z" />
+
+    <!-- Windshield Reflection -->
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M95,172 L115,172 L105,198 L85,198 Z" />
+
+    <!-- Main Hardtop Roof -->
+    <path
+        android:fillColor="#F8FAFC"
+        android:strokeColor="#CBD5E1"
+        android:strokeWidth="1"
+        android:pathData="M62,200 L138,200 C142,240 140,280 136,290 L64,290 C60,280 58,240 62,200 Z" />
+
+    <!-- Skylight / Roof Hatch -->
+    <path
+        android:fillColor="#0F172A"
+        android:pathData="M82,215 C82,212 118,212 118,215 L118,245 C118,248 82,248 82,245 Z" />
+
+    <!-- Stern Cockpit Lounge Seating -->
+    <path
+        android:fillColor="#E2E8F0"
+        android:pathData="M65,300 L135,300 L132,345 C125,350 75,350 68,345 Z" />
+
+    <!-- Swim Platform Teak Decking -->
+    <path
+        android:fillColor="#CBD5E1"
+        android:pathData="M50,355 C70,365 130,365 150,355 L148,375 C125,380 75,380 52,375 Z" />
+
+    <!-- Side Navigation Lights (Port Red, Starboard Green) -->
+    <path
+        android:fillColor="#EF4444"
+        android:pathData="M42,160 A4,4 0 1,1 42,168 A4,4 0 1,1 42,160" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M158,160 A4,4 0 1,1 158,168 A4,4 0 1,1 158,160" />
+
+</vector>
+

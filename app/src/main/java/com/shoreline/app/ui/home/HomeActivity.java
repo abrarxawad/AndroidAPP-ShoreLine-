@@ -53,12 +53,16 @@ public class HomeActivity extends BaseActivity {
     }
 
     private void setupFeatureClicks() {
-        // Logout Button
-        binding.btnLogout.setOnClickListener(v -> {
+        // Logout Buttons (Top & Bottom)
+        View.OnClickListener logoutClickListener = v -> {
             sessionManager.logout();
             showToast("Logged out successfully");
             redirectToLogin();
-        });
+        };
+        binding.btnLogout.setOnClickListener(logoutClickListener);
+        if (binding.btnBottomLogout != null) {
+            binding.btnBottomLogout.setOnClickListener(logoutClickListener);
+        }
 
         // Feature 1: Vessel Verification (Stage 2)
         binding.cardVesselCheck.setOnClickListener(v -> {
@@ -125,6 +129,18 @@ public class HomeActivity extends BaseActivity {
             Intent intent = new Intent(HomeActivity.this, LifecycleLabActivity.class);
             intent.putExtra("EXTRA_LAUNCH_TRIGGER", "HOME_DASHBOARD");
             startActivity(intent);
+        });
+
+        // Floating Maritime Advisory Card Action & Dismiss
+        if (binding.btnQuickStartVoyage != null) {
+            binding.btnQuickStartVoyage.setOnClickListener(v -> binding.cardSafeRoute.performClick());
+        }
+        binding.btnAlertAction.setOnClickListener(v -> binding.cardSafeRoute.performClick());
+        binding.btnAlertDismiss.setOnClickListener(v -> {
+            View card = (View) v.getParent().getParent().getParent();
+            if (card != null) {
+                card.animate().alpha(0f).setDuration(250).withEndAction(() -> card.setVisibility(View.GONE)).start();
+            }
         });
     }
 
