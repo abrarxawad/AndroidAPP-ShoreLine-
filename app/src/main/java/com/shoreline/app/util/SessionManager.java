@@ -17,6 +17,7 @@ public class SessionManager {
     private static final String KEY_PHONE = "phone";
     private static final String KEY_ROLE = "role"; // "PASSENGER" or "ADMIN"
     private static final String KEY_EMERGENCY_CONTACT = "emergency_contact";
+    private static final String KEY_GEMINI_API_KEY = "gemini_api_key";
 
     private final SharedPreferences pref;
     private final SharedPreferences.Editor editor;
@@ -100,6 +101,15 @@ public class SessionManager {
 
     public String getEmergencyContact() {
         return pref.getString(KEY_EMERGENCY_CONTACT, "999");
+    }
+
+    public String getGeminiApiKey() {
+        return pref.getString(KEY_GEMINI_API_KEY, "");
+    }
+
+    public void setGeminiApiKey(String apiKey) {
+        editor.putString(KEY_GEMINI_API_KEY, apiKey != null ? apiKey.trim() : "");
+        editor.apply();
     }
 
     public void logout() {

@@ -401,4 +401,9 @@
     <string name="settings_deck_night">🌙 Night Cockpit Helm</string>
     <string name="settings_deck_day">☀️ Day Sunlit Teak Deck</string>
     <string name="sos_direct_gsm_sent">Direct GSM SMS Mayday dispatched via cellular tower!</string>
+
+    <!-- AI Maritime Copilot & Chatbot -->
+    <string name="title_ai_copilot">ShoreLine AI Copilot</string>
+    <string name="ai_copilot_subtitle">🟢 Online • Maritime Safety Assistant</string>
+    <string name="ai_copilot_desc">Ask anything about launch overcrowding, weather, or emergencies</string>
 </resources>

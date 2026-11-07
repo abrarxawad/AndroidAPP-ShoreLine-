@@ -401,4 +401,9 @@
     <string name="settings_deck_night">🌙 রাতের ককপিট হেল্ম</string>
     <string name="settings_deck_day">☀️ দিনের সানলিট ডেক</string>
     <string name="sos_direct_gsm_sent">সেলুলার টাওয়ারের মাধ্যমে সরাসরি জিএসএম এসএমএস প্রেরণ সম্পন্ন!</string>
+
+    <!-- AI Maritime Copilot & Chatbot -->
+    <string name="title_ai_copilot">শোরলাইন এআই সহকারী</string>
+    <string name="ai_copilot_subtitle">🟢 অনলাইন • নদীপথ নিরাপত্তা সহকারী</string>
+    <string name="ai_copilot_desc">লঞ্চের অতিরিক্ত যাত্রী, আবহাওয়া বা যেকোনো বিপদে পরামর্শ নিন</string>
 </resources>

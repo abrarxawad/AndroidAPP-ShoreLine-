@@ -237,6 +237,14 @@
             android:label="@string/nav_safety_guides"
             android:parentActivityName=".ui.home.HomeActivity" />
 
+        <!-- AI Maritime Copilot & Chat Assistant -->
+        <activity
+            android:name=".ui.chat.AiChatActivity"
+            android:exported="true"
+            android:label="ShoreLine AI Copilot"
+            android:parentActivityName=".ui.home.HomeActivity"
+            android:windowSoftInputMode="adjustResize" />
+
         <!-- Stage 8: ShoreLine ContentProvider for River Safety & Emergency Directory -->
         <!-- SYLLABUS: Custom ContentProvider with UriMatcher, CRUD, and MIME types -->
         <provider

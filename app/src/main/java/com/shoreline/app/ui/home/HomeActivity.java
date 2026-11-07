@@ -164,6 +164,15 @@ public class HomeActivity extends BaseActivity {
             });
         }
 
+        // AI Maritime Copilot & Chat Assistant
+        if (binding.cardAiCopilot != null) {
+            binding.cardAiCopilot.setOnClickListener(v -> {
+                HapticHelper.vibrateClick(v);
+                Intent intent = new Intent(HomeActivity.this, com.shoreline.app.ui.chat.AiChatActivity.class);
+                startActivity(intent);
+            });
+        }
+
         // Feature 1: Vessel Verification (Stage 2)
         binding.cardVesselCheck.setOnClickListener(v -> {
             HapticHelper.vibrateClick(v);
