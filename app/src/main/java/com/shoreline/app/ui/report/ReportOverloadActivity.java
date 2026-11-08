@@ -1,10 +1,17 @@
 package com.shoreline.app.ui.report;
 
 import android.Manifest;
+import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Bitmap;
+import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.Network;
+import android.net.NetworkCapabilities;
+import android.net.NetworkRequest;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.text.TextUtils;
 import android.view.MenuItem;
@@ -49,6 +56,7 @@ public class ReportOverloadActivity extends BaseActivity {
     private String base64PhotoData = "";
     private Uri currentCameraPhotoUri = null;
     private File currentPhotoFile = null;
+    private ConnectivityManager.NetworkCallback networkCallback;
 
     // SYLLABUS: Modern Activity Result API for Camera Photo Capture
     private final ActivityResultLauncher<Uri> takePictureLauncher =
@@ -94,6 +102,8 @@ public class ReportOverloadActivity extends BaseActivity {
         handleIntentExtras();
         setupQuickChips();
         setupClickListeners();
+        registerNetworkMonitoring();
+        checkCurrentNetworkState();
         refreshGpsLocation();
     }
 
@@ -140,6 +150,15 @@ public class ReportOverloadActivity extends BaseActivity {
     }
 
     private void refreshGpsLocation() {
+        if (!locationHelper.hasLocationPermission()) {
+            permissionsLauncher.launch(new String[]{
+                    Manifest.permission.ACCESS_FINE_LOCATION,
+                    Manifest.permission.ACCESS_COARSE_LOCATION
+            });
+            binding.tvGpsStatus.setText("Requesting Location Permission...");
+            return;
+        }
+
         binding.tvGpsStatus.setText(R.string.gps_fetching);
         locationHelper.getCurrentLocation(new LocationHelper.LocationResultCallback() {
             @Override
@@ -158,7 +177,7 @@ public class ReportOverloadActivity extends BaseActivity {
             @Override
             public void onLocationFailed(String reason) {
                 if (isFinishing() || isDestroyed() || binding == null) return;
-                binding.tvGpsStatus.setText(String.format("GPS Unavailable: Using Sadarghat (23.7045° N, 90.4131° E)"));
+                binding.tvGpsStatus.setText(String.format("GPS Unavailable: %s (Tap 🔄 to retry)", reason));
             }
         });
     }
@@ -287,6 +306,93 @@ public class ReportOverloadActivity extends BaseActivity {
     }
 
     @Override
+    protected void onResume() {
+        super.onResume();
+        checkCurrentNetworkState();
+    }
+
+    private void registerNetworkMonitoring() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        if (cm == null) return;
+
+        networkCallback = new ConnectivityManager.NetworkCallback() {
+            @Override
+            public void onAvailable(@NonNull Network network) {
+                runOnUiThread(() -> updateNetworkStatusBanner(true));
+            }
+
+            @Override
+            public void onLost(@NonNull Network network) {
+                runOnUiThread(() -> updateNetworkStatusBanner(false));
+            }
+
+            @Override
+            public void onCapabilitiesChanged(@NonNull Network network, @NonNull NetworkCapabilities networkCapabilities) {
+                boolean hasInternet = networkCapabilities.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET);
+                runOnUiThread(() -> updateNetworkStatusBanner(hasInternet));
+            }
+        };
+
+        try {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+                cm.registerDefaultNetworkCallback(networkCallback);
+            } else {
+                NetworkRequest request = new NetworkRequest.Builder()
+                        .addCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET)
+                        .build();
+                cm.registerNetworkCallback(request, networkCallback);
+            }
+        } catch (Exception ignored) {}
+    }
+
+    private void checkCurrentNetworkState() {
+        ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        boolean isConnected = false;
+        if (cm != null) {
+            if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+                Network active = cm.getActiveNetwork();
+                if (active != null) {
+                    NetworkCapabilities caps = cm.getNetworkCapabilities(active);
+                    isConnected = (caps != null && caps.hasCapability(NetworkCapabilities.NET_CAPABILITY_INTERNET));
+                }
+            } else {
+                android.net.NetworkInfo info = cm.getActiveNetworkInfo();
+                isConnected = (info != null && info.isConnected());
+            }
+        }
+        updateNetworkStatusBanner(isConnected);
+    }
+
+    private void updateNetworkStatusBanner(boolean isOnline) {
+        if (binding == null) return;
+        if (isOnline) {
+            binding.cardOfflineNotice.setStrokeColor(ContextCompat.getColor(this, R.color.navara_neon_cyan));
+            binding.cardOfflineNotice.setCardBackgroundColor(Color.parseColor("#1200E5FF"));
+            binding.tvNetworkStatusIcon.setText("🟢");
+            binding.tvNetworkStatusBanner.setText(R.string.online_sync_banner);
+            binding.tvNetworkStatusBanner.setTextColor(ContextCompat.getColor(this, R.color.navara_neon_cyan));
+        } else {
+            binding.cardOfflineNotice.setStrokeColor(ContextCompat.getColor(this, R.color.secondary_variant_amber));
+            binding.cardOfflineNotice.setCardBackgroundColor(ContextCompat.getColor(this, R.color.navara_glass_surface));
+            binding.tvNetworkStatusIcon.setText("📡");
+            binding.tvNetworkStatusBanner.setText(R.string.offline_queue_banner);
+            binding.tvNetworkStatusBanner.setTextColor(ContextCompat.getColor(this, R.color.status_warning_amber));
+        }
+    }
+
+    private void unregisterNetworkMonitoring() {
+        if (networkCallback != null) {
+            try {
+                ConnectivityManager cm = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+                if (cm != null) {
+                    cm.unregisterNetworkCallback(networkCallback);
+                }
+            } catch (Exception ignored) {}
+            networkCallback = null;
+        }
+    }
+
+    @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if (item.getItemId() == android.R.id.home) {
             finish();
@@ -298,6 +404,7 @@ public class ReportOverloadActivity extends BaseActivity {
     @Override
     protected void onDestroy() {
         super.onDestroy();
+        unregisterNetworkMonitoring();
         binding = null;
     }
 }

@@ -165,6 +165,7 @@
     <string name="label_anonymous_report">পরিচয় গোপন রাখুন (নাম ও ফোন নম্বর প্রকাশ হবে না)</string>
     <string name="btn_submit_report">🚨 জরুরি অভিযোগ দায়ের করুন</string>
     <string name="btn_view_history">📋 জমাকৃত অভিযোগের তালিকা দেখুন</string>
+    <string name="online_sync_banner">অনলাইন ক্লাউড সংযোগ সক্রিয়: বিআইডব্লিউটিএ সার্ভারের সাথে সংযুক্ত। আপনার ছবি ও জিপিএস প্রমাণসহ অভিযোগটি সরাসরি আপলোড হবে।</string>
     <string name="offline_queue_banner">অফলাইন মোড সক্রিয়: নদীর মাঝে মোবাইল নেটওয়ার্ক নেই। অভিযোগটি আপনার ফোনে জমা রাখা হয়েছে এবং নেটওয়ার্ক পেলেই স্বয়ংক্রিয়ভাবে আপলোড হবে।</string>
     <string name="report_submitted_online">অভিযোগ সফলভাবে বিআইডব্লিউটিএ সার্ভারে জমা হয়েছে!</string>
     <string name="report_submitted_offline">অফলাইন কিউতে সংরক্ষিত হয়েছে! নেটওয়ার্ক পেলে আপলোড হবে।</string>

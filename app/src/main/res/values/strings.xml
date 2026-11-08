@@ -165,6 +165,7 @@
     <string name="label_anonymous_report">Submit Anonymously (Hide Name &amp; Contact)</string>
     <string name="btn_submit_report">🚨 Submit Official Overload Report</string>
     <string name="btn_view_history">📋 View Submitted Reports Queue</string>
+    <string name="online_sync_banner">ONLINE CLOUD SYNC ACTIVE: Connected to BIWTA Port Authority server. Your overload report with photo evidence will upload immediately.</string>
     <string name="offline_queue_banner">OFFLINE QUEUE ACTIVE: Mid-river signal is weak. Report is saved locally in Room and will automatically upload via WorkManager when network returns.</string>
     <string name="report_submitted_online">Report uploaded to Port Authority server!</string>
     <string name="report_submitted_offline">Saved to Offline Queue! Will auto-sync in background.</string>
